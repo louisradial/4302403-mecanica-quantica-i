@@ -1,0 +1,35 @@
+\begin{exercício}{Procedimento de ortonormalização de Gram-Schmidt}{exercício1}
+    Use o procedimento de Gram-Schmidt para ortonormalizar a base \(\set{\ket{a_1}, \ket{a_2}, \ket{a_3}}\) com
+    \begin{equation*}
+        \ket{a_1} = (1 + i)\vetor{e}_1 + \vetor{e}_2 + i \vetor{e}_3,\quad
+        \ket{a_2} = i \vetor{e}_1 + 3 \vetor{e}_2 + \vetor{e}_3,\quad\text{e}\quad
+        \ket{a_3} = 28 \vetor{e}_2,
+    \end{equation*}
+    onde \(\vetor{e}_n\) é um dos vetores da base canônica de \(\mathbb{C}^3\).
+\end{exercício}
+\begin{proof}[Resolução]
+    Para simplificar as contas, começamos com \(\ket{a_3}\) e definimos
+    \begin{equation*}
+        \ket{u_1} = \frac{1}{\norm{a_3}} \ket{a_3} = \vetor{e}_2.
+    \end{equation*}
+    Seguindo o algoritmo, temos
+    \begin{equation*}
+        \ket{v_2} = \ket{a_2} - \braket{u_1}{a_2}\ket{u_1} = i \vetor{e}_1 + \vetor{e}_3,
+    \end{equation*}
+    então ao normalizar,
+    \begin{equation*}
+        \ket{u_2} = \frac{1}{\norm{v_2}}\ket{v_2} = \frac{i}{\sqrt{2}} \vetor{e}_1 + \frac1{\sqrt{2}}\vetor{e}_3.
+    \end{equation*}
+    Para o elemento restante, definimos
+    \begin{align*}
+        \ket{v_3} &= \ket{a_1} - \braket{u_1}{a_1}\ket{u_1} - \braket{u_2}{a_1}\ket{u_2}\\
+                  &= (1 + i)\vetor{e}_1 + i \vetor{e}_3 - \frac{1}{\sqrt{2}}\ket{u_2}\\
+                  &= \frac{2 + i}{2}\vetor{e}_1 + \frac{2i - 1}{2}\vetor{e}_3\\
+                  &= \frac{2 + i}{2}\left(\vetor{e_1} + i \vetor{e}_3\right),
+    \end{align*}
+    portanto o elemento final da base ortonormalizada é
+    \begin{equation*}
+        \ket{u_3} = \frac{1}{\norm{v_3}} \ket{v_3} = \frac{1}{\sqrt{2}}\vetor{e}_1 + \frac{i}{\sqrt{2}} \vetor{e}_3.
+    \end{equation*}
+    Assim, a base \(\set{\ket{u_1}, \ket{u_2}, \ket{u_3}}\) é ortonormal e gera o mesmo subespaço que \(\set{\ket{a_1}, \ket{a_2}, \ket{a_3}}\), a saber \(\mathbb{C}^3\).
+\end{proof}
