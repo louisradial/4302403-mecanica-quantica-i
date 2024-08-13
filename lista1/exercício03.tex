@@ -1,0 +1,48 @@
+\begin{exercício}{Propriedades do comutador e do traço}{exercício3}
+    Sejam \(A, B,\) e \(C\) operadores lineares. Mostre que
+    \begin{enumerate}[label=(\alph*)]
+        \item \(\commutator{A}{BC} = B\commutator{A}{C} + \commutator{A}{B}C\);
+        \item \(\Tr(AB) = \Tr(BA)\);
+        \item \(\Tr(S A S^{-1}) = \Tr(A)\) para qualquer operador inversível \(S\); e
+        \item \(\Tr(ABC) = \Tr(BCA) = \Tr(CAB)\).
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+    Temos
+    \begin{align*}
+        B \commutator{A}{C} + \commutator{A}{B}C &= B(AC - CA) + (AB - BA)C\\
+                                                 &= BAC - BCA + ABC - BAC\\
+                                                 &= ABC - BCA\\
+                                                 &= \commutator{A}{BC},
+    \end{align*}
+    portanto concluímos (a).
+
+    Tomemos uma base ortonormal e enumeremo-la por \(\ket{n}\) como o seu \(n\)-ésimo vetor. Seja \(\ket{n'}\) uma outra base ortonormal, então existe um operador unitário \(U\) tal que \(U\ket{n} = \ket{n'}\). Para um operador linear \(X\) qualquer, segue que
+    \begin{equation*}
+        \sum_{n = 1} \bra{n} X \ket{n} = \sum_{n = 1} \bra{n} \herm{U}U X \herm{U}U \ket{n} = \sum_{n' = 1} \bra{n'} U X \herm{U} \ket{n'}.
+    \end{equation*}
+    Temos ainda para um par de operadores lineares \(Y\) e \(Z\) que
+    \begin{align*}
+        \sum_{n' = 1}^{N} \bra{n'} YZ \ket{n'} &= \sum_{n'=1}^{N} \sum_{m' = 1}^{N} \bra{n'} Y \ketbra{m'}{m'}Z\ket{n'}\\
+                                            &= \sum_{n'=1}^{N}\sum_{m'=1}^{N} \bra{m'} Z \ketbra{n'}{n'} Y\ket{m'}\\
+                                            &= \sum_{n'=1}^{N}\sum_{m'=1}^{N} \bra{n'} Z \ketbra{m'}{m'} Y\ket{n'}\\
+                                            &= \sum_{n'=1}^{N} \bra{n'} ZY \ket{n'}.
+    \end{align*}
+    Fixando \(Y = U\) e \(Z = X\herm{U}\), obtemos
+    \begin{equation*}
+        \sum_{n=1} \bra{n} X \ket{n} = \sum_{n' = 1} \bra{n'} X\herm{U} U \ket{n'} = \sum_{n' = 1} \bra{n'} X \ket{n'},
+    \end{equation*}
+    isto é, o traço \(\Tr(X) = \sum_{n=1} \bra{n} X \ket{n}\) é bem definido e independe da escolha de base ortonormal utilizada. Fixando \(Y = A\) e \(Z = B\) no cômputo acima, mostramos (b).
+
+    Seja \(S\) um operador inversível, então
+    \begin{equation*}
+        \Tr(SAS^{-1}) = \Tr(S(AS^{-1})) = \Tr(AS^{-1}S) = \Tr(A)
+    \end{equation*}
+    segue de (b), mostrando (c).
+
+    Um outro corolário de (b) é
+    \begin{equation*}
+        \Tr(ABC) = \Tr(A(BC)) = \Tr(BCA).
+    \end{equation*}
+    Repetindo estas permutações cíclicas por conta da associatividade da composição de operadores lineares e utilizando (b), obtemos (d).
+\end{proof}
