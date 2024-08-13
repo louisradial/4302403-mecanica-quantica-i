@@ -1,0 +1,30 @@
+\section*{Exercício 5}
+\begin{exercício}{Exponencial de matriz}{exercício5}
+    A exponencial de uma matriz \(M\) é definida pela série
+    \begin{equation*}
+        \exp(M) = \mathds{1} + \sum_{k = 1}^{\infty} \frac{1}{k!} M^{k},
+    \end{equation*}
+    onde \(\mathds{1}\) é a matriz identidade.
+    \begin{enumerate}[label=(\alph*)]
+        \item Determine \(\exp(\theta \sigma_n),\) onde \(\theta \in \mathbb{R}\) e
+            \begin{align*}
+                \sigma_1 &= \begin{pmatrix}
+                    0 & 1\\
+                    1 & 0
+                \end{pmatrix}&
+                \sigma_2 &= \begin{pmatrix}
+                    0 & -i\\
+                    i & 0
+                \end{pmatrix}&
+                \sigma_3 &= \begin{pmatrix}
+                    1 & 0\\
+                    0 & -1
+                \end{pmatrix}
+            \end{align*}
+            são as matrizes de Pauli.
+        \item Mostre que se \(M\) é diagonalizável, então \(\det(\exp(M)) = \exp(\Tr(M))\).
+        \item Mostre que se as matrizes \(M\) e \(N\) comutam, então \(\exp(M+N) = \exp(M)\exp(N)\).
+        \item Mostre que se \(H\) é hermitiana, então \(\exp(iH)\) é unitária.
+        \item Mostre que qualquer matriz \(T\) pode ser escrita como uma soma de uma matriz simétrica e uma matriz antissimétrica, como a soma de uma matriz real e uma matriz imaginária, e como uma matriz hermitiana e uma matriz anti-hermitiana.
+    \end{enumerate}
+\end{exercício}
