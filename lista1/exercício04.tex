@@ -15,3 +15,86 @@
         \item Mostre que o traço e o determinante de uma matriz hermitiana são iguais à soma e ao produto de seus autovalores, respectivamente.
     \end{enumerate}
 \end{exercício}
+\begin{proof}[Resolução do item (a)]
+    O polinômio característico de \(T\) é dado por
+    \begin{align*}
+        p_T(\lambda) = \det(T - \lambda \mathds{1}) &= (2 - \lambda)\left[(2 - \lambda)^2 - 1\right] -i \left[-i(2 - \lambda) - i\right] + \left[-1 - (2 - \lambda)\right]\\
+                                                    &= \left(3 - \lambda\right)\left[(2 - \lambda)(1 - \lambda) - 2\right]\\
+                                                    &= -\lambda(\lambda - 3)^2,
+    \end{align*}
+    portanto os autovalores de \(T\) são \(\lambda_1 = 0\), \(\lambda_2 = \lambda_3 = 3\). Tomando \(\lambda = 0\) temos \(\det(T) = p_T(0) = 0 = \lambda_1 \lambda_2 \lambda_3\). Ainda, o traço de \(T\) é \(\Tr(T) = 6 = \lambda_1 + \lambda_2 + \lambda_3\).
+\end{proof}
+\begin{proof}[Resolução do item (b)]
+    Determinemos os núcleos dos operadores \(T\) e \(T - 3\mathds{1}\), obtendo portanto os autoespaços associados aos autovalores \(\lambda_1\) e \(\lambda_2=\lambda_3\), respectivamente. Sendo \(\vetor{e}_n\) os vetores da base canônica de \(\mathbb{C}^3\), obtemos por escalonamento que o vetor \(\vetor{e}_1 + i \vetor{e}_2 - \vetor{e}_3\) gera \(\ker{T}\), portanto
+    \begin{equation*}
+        \ket{v_1} = \frac{1}{\sqrt{3}}\vetor{e}_1 + \frac{i}{\sqrt{3}}\vetor{e}_2 - \frac{1}{\sqrt{3}}\vetor{e}_3
+    \end{equation*}
+    é um autovetor normalizado de \(T\) associado à \(\lambda_1\). Pelo mesmo método, uma base de \(\ker(T - 3\mathds{1})\) é dada por \(\set{i\vetor{e}_1 + \vetor{e}_2, \vetor{e}_1 + \vetor{e}_3}\), portanto ao aplicar o processo de ortonormalização de Gram-Schmidt obtemos os autovetores normalizados e ortogonais entre si
+    \begin{equation*}
+        \ket{v_2} = \frac{1}{\sqrt{2}}\vetor{e}_1 + \frac{1}{\sqrt{2}}\vetor{e}_3\quad\text{e}\quad
+        \ket{v_3} = \frac{i}{\sqrt{6}}\vetor{e}_1 + \sqrt{\frac{2}{3}}\vetor{e}_2 - \frac{i}{\sqrt{6}}\vetor{e}_3
+    \end{equation*}
+    associados ao autovalor \(\lambda_2 = \lambda_3\). Ainda, temos \(\braket{v_1}{v_2} = \braket{v_1}{v_3} = 0\).
+
+    A matriz \(S\) que diagonaliza \(T\) tem suas colunas dadas pelas componentes dos autovetores normalizados determinados acima, isto é,
+    \begin{equation*}
+        S = \begin{pmatrix}
+            \frac{1}{\sqrt{3}} && \frac{1}{\sqrt{2}} && \frac{i}{\sqrt{6}}\\
+            \frac{i}{\sqrt{3}} && 0 && \sqrt{\frac23}\\
+            -\frac{1}{\sqrt{3}}&& \frac{1}{\sqrt{2}} && -\frac{i}{\sqrt{6}}
+        \end{pmatrix}.
+    \end{equation*}
+    Notemos que \(S\) é unitária pois
+    \begin{equation*}
+        \herm{S}S = \begin{pmatrix}
+            \frac{1}{\sqrt{3}} && -\frac{i}{\sqrt{3}} && -\frac{1}{\sqrt{3}}\\
+            \frac{1}{\sqrt{2}} && 0 && \frac{1}{\sqrt{2}}\\
+            -\frac{i}{\sqrt{6}}&& \sqrt{\frac23} && \frac{i}{\sqrt{6}}
+        \end{pmatrix}\cdot
+        \begin{pmatrix}
+            \frac{1}{\sqrt{3}} && \frac{1}{\sqrt{2}} && \frac{i}{\sqrt{6}}\\
+            \frac{i}{\sqrt{3}} && 0 && \sqrt{\frac23}\\
+            -\frac{1}{\sqrt{3}}&& \frac{1}{\sqrt{2}} && -\frac{i}{\sqrt{6}}
+        \end{pmatrix} =
+        \begin{pmatrix}
+            1 && 0 && 0\\
+            0 && 1 && 0\\
+            0 && 0 && 1
+        \end{pmatrix}.
+    \end{equation*}
+    Por fim, temos
+    \begin{equation*}
+        \herm{S}TS =
+        \begin{pmatrix}
+            \frac{1}{\sqrt{3}} && -\frac{i}{\sqrt{3}} && -\frac{1}{\sqrt{3}}\\
+            \frac{1}{\sqrt{2}} && 0 && \frac{1}{\sqrt{2}}\\
+            -\frac{i}{\sqrt{6}}&& \sqrt{\frac23} && \frac{i}{\sqrt{6}}
+        \end{pmatrix}
+        \cdot
+        \begin{pmatrix}
+            2 && i && 1\\
+            -i&& 2 && i\\
+            1 &&-i && 2
+        \end{pmatrix}
+        \cdot
+        \begin{pmatrix}
+            \frac{1}{\sqrt{3}} && \frac{1}{\sqrt{2}} && \frac{i}{\sqrt{6}}\\
+            \frac{i}{\sqrt{3}} && 0 && \sqrt{\frac23}\\
+            -\frac{1}{\sqrt{3}}&& \frac{1}{\sqrt{2}} && -\frac{i}{\sqrt{6}}
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            0 && 0 && 0\\
+            0 && 3 && 0\\
+            0 && 0 && 3
+        \end{pmatrix},
+    \end{equation*}
+    isto é, a matriz \(S\) de fato diagonaliza \(T\).
+\end{proof}
+\begin{proof}[Resolução do item (c)]
+    Pelo teorema espectral, dada uma matriz hermitiana \(M\), existe uma matriz invertível \(P\) tal que \(D = P^{-1}MP\) é diagonal com seus elementos iguais a cada autovalor de \(M\). Assim, o traço de \(D\) é igual à soma dos autovalores de \(M\) e o determinante de \(D\) é igual ao produto dos autovalores de \(M\). Agora, temos
+    \begin{equation*}
+        \Tr(M) = \Tr(PDP^{-1}) = \Tr(D)\quad\text{e}\quad\det(M) = \det(PDP^{-1}) = \det(D).
+    \end{equation*}
+    Isto é, mostramos que o traço de uma matriz hermitiana é igual à soma de seus autovalores e que o determinante de uma matriz hermitiana é igual ao produto de seus valores.
+\end{proof}

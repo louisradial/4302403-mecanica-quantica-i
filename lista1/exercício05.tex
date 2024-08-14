@@ -237,7 +237,8 @@
         \exp(M+N) &= \sum_{n = 0}^\infty \frac{1}{n!} \sum_{m=0}^n \binom{n}{m} M^m N^{n - m}\\
                   &= \sum_{n=0}^\infty \sum_{m\leq n} \left(\frac{1}{m!}M^m\right) \left(\frac{1}{(n-m)!} N^{n-m}\right)\\
                   &= \sum_{m=0}^\infty \sum_{n \geq m} \left(\frac{1}{m!} M^m\right) \left(\frac{1}{(n-m)!}N^{n-m}\right)\\
-                  &= \sum_{m=0}^\infty \frac{1}{m!} M^m \sum_{\ell = 0}^\infty \frac{1}{\ell!} N^\ell\\
+                  &= \sum_{m=0}^\infty \left(\frac{1}{m!} M^m\right) \left(\sum_{n=m}^\infty \frac{1}{(n-m)!} N^{n-m}\right)\\
+                  &= \left(\sum_{m=0}^\infty \frac{1}{m!} M^m\right)\left(\sum_{n= 0}^\infty \frac{1}{n!} N^n\right)\\
                   &= \exp(M)\exp(N),
     \end{align*}
     como desejado.
