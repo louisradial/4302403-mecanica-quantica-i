@@ -129,7 +129,7 @@
         \item Mostre que se \(M\) é diagonalizável, então \(\det(\exp(M)) = \exp(\Tr(M))\).
         \item Mostre que se as matrizes \(M\) e \(N\) comutam, então \(\exp(M+N) = \exp(M)\exp(N)\).
         \item Mostre que se \(H\) é hermitiana, então \(\exp(iH)\) é unitária.
-        \item Mostre que qualquer matriz \(T\) pode ser escrita como uma soma de uma matriz simétrica e uma matriz antissimétrica, como a soma de uma matriz real e uma matriz imaginária, e como uma matriz hermitiana e uma matriz anti-hermitiana.
+        \item Mostre que qualquer matriz pode ser escrita como uma soma de uma matriz simétrica e uma matriz antissimétrica, como a soma de uma matriz real e uma matriz imaginária, e como uma matriz hermitiana e uma matriz anti-hermitiana.
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução do item (a)]
@@ -247,5 +247,12 @@
 
 \end{proof}
 \begin{proof}[Resolução do item (e)]
-
+    Consideremos uma matriz \(T\) qualquer. Então
+    \begin{enumerate}[label=(\alph*)]
+        \item a matriz \(S = \frac12 T + \frac12T^T\) é simétrica;
+        \item a matriz \(A = \frac12T - \frac12T^T\) é antissimétrica;
+        \item a matriz \(R = \frac12T + \frac12\herm{T}\) é hermitiana; e
+        \item a matriz \(I = \frac12T - \frac12\herm{T}\) é anti-hermitiana.
+    \end{enumerate}
+    Temos
 \end{proof}
