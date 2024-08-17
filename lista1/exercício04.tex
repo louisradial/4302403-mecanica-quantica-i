@@ -36,17 +36,17 @@
     \end{equation*}
     associados ao autovalor \(\lambda_2 = \lambda_3\). Ainda, temos \(\braket{v_1}{v_2} = \braket{v_1}{v_3} = 0\).
 
-    A matriz \(S\) que diagonaliza \(T\) tem suas colunas dadas pelas componentes dos autovetores normalizados determinados acima, isto é,
+    A matriz \(U\) que diagonaliza \(T\) tem suas colunas dadas pelas componentes dos autovetores normalizados determinados acima, isto é,
     \begin{equation*}
-        S = \begin{pmatrix}
+        U = \begin{pmatrix}
             \frac{1}{\sqrt{3}} && \frac{1}{\sqrt{2}} && \frac{i}{\sqrt{6}}\\
             \frac{i}{\sqrt{3}} && 0 && \sqrt{\frac23}\\
             -\frac{1}{\sqrt{3}}&& \frac{1}{\sqrt{2}} && -\frac{i}{\sqrt{6}}
         \end{pmatrix}.
     \end{equation*}
-    Notemos que \(S\) é unitária pois
+    Notemos que \(U\) é unitária, pois
     \begin{equation*}
-        \herm{S}S = \begin{pmatrix}
+        \herm{U}U = \begin{pmatrix}
             \frac{1}{\sqrt{3}} && -\frac{i}{\sqrt{3}} && -\frac{1}{\sqrt{3}}\\
             \frac{1}{\sqrt{2}} && 0 && \frac{1}{\sqrt{2}}\\
             -\frac{i}{\sqrt{6}}&& \sqrt{\frac23} && \frac{i}{\sqrt{6}}
@@ -64,7 +64,7 @@
     \end{equation*}
     Por fim, temos
     \begin{equation*}
-        \herm{S}TS =
+        \herm{U}TU =
         \begin{pmatrix}
             \frac{1}{\sqrt{3}} && -\frac{i}{\sqrt{3}} && -\frac{1}{\sqrt{3}}\\
             \frac{1}{\sqrt{2}} && 0 && \frac{1}{\sqrt{2}}\\
@@ -89,7 +89,7 @@
             0 && 0 && 3
         \end{pmatrix},
     \end{equation*}
-    isto é, a matriz \(S\) de fato diagonaliza \(T\).
+    isto é, a matriz \(U\) de fato diagonaliza \(T\). Em particular, a matriz \(S = \herm{U}\) é unitária e \(STS^{-1}\) é diagonal.
 \end{proof}
 \begin{proof}[Resolução do item (c)]
     Pelo teorema espectral, dada uma matriz hermitiana \(M\), existe uma matriz invertível \(P\) tal que \(D = P^{-1}MP\) é diagonal com seus elementos iguais a cada autovalor de \(M\). Assim, o traço de \(D\) é igual à soma dos autovalores de \(M\) e o determinante de \(D\) é igual ao produto dos autovalores de \(M\). Agora, temos
