@@ -244,15 +244,52 @@
     como desejado.
 \end{proof}
 \begin{proof}[Resolução do item (d)]
-
+    Seja \(H\) um operador auto-adjunto, então existem \(\lambda_n \in \mathbb{R}\) e projetores ortogonais \(P_n\) satisfazendo \(P_n \circ P_m = \delta_{nm} P_m\) tais que
+    \begin{equation*}
+        H = \sum_{n} \lambda_n P_n,
+    \end{equation*}
+    pelo teorema espectral. Assim, por indução mostra-se que
+    \begin{equation*}
+        H^k = \sum_{n} \lambda_n^k P_n
+    \end{equation*}
+    para todo \(k \in \mathbb{N}\). A identidade vale trivialmente para \(k = 1\). Supondo que a identidade vale para \(j \in \mathbb{N}\), temos
+    \begin{align*}
+        H^{j + 1} = H \circ H^j &= H \circ \left(\sum_{n} \lambda_n^j P_n\right)\\
+                                &= \sum_{m} \sum_{n} \lambda_n^j \lambda_m P_m \circ P_n\\
+                                &= \sum_{n} \lambda_n^{j+1} P_n,
+    \end{align*}
+    isto é, também vale para \(j + 1\). Pelo princípio de indução finita, o resultado segue para todo \(k \in \mathbb{N}\). Por este motivo, temos
+    \begin{align*}
+        \exp(iH) &= \mathds{1} + \sum_{k = 1}^{\infty} \frac{(i H)^k}{k!}\\
+                 &= \sum_{m} P_m + \sum_{k=1}^\infty \frac{i^k}{k!} \sum_{n} \lambda_n^k P_n\\
+                 &= \sum_\ell \left(\sum_{k=1}^\infty \frac{(i \lambda_\ell)^k}{k!}\right) P_\ell\\
+                 &= \sum_{\ell} e^{i \lambda_\ell} P_\ell.
+    \end{align*}
+    O operador adjunto de \(\exp(iH)\) é
+    \begin{equation*}
+        \herm{\exp(iH)} = \sum_{\ell} e^{-i \lambda_\ell} P_\ell = \exp(-iH),
+    \end{equation*}
+    visto que os projetores ortogonais são auto-adjuntos. Como \(iH\) e \(-iH\) comutam, segue que
+    \begin{equation*}
+        \exp(-iH)\exp(iH) = \exp(iH)\exp(-iH) = \mathds{1},
+    \end{equation*}
+    isto é, \(\exp(iH)\) é um operador unitário.
 \end{proof}
 \begin{proof}[Resolução do item (e)]
     Consideremos uma matriz \(T\) qualquer. Então
-    \begin{enumerate}[label=(\alph*)]
+    \begin{enumerate}[label=(\roman*)]
         \item a matriz \(S = \frac12 T + \frac12T^T\) é simétrica;
         \item a matriz \(A = \frac12T - \frac12T^T\) é antissimétrica;
-        \item a matriz \(R = \frac12T + \frac12\herm{T}\) é hermitiana; e
-        \item a matriz \(I = \frac12T - \frac12\herm{T}\) é anti-hermitiana.
+        \item a matriz \(R = \frac12 T + \frac12 \conj{T}\) é real;
+        \item a matriz \(I = \frac12 T - \frac12 \conj{T}\) é imaginária;
+        \item a matriz \(H = \frac12T + \frac12\herm{T}\) é hermitiana; e
+        \item a matriz \(N = \frac12T - \frac12\herm{T}\) é anti-hermitiana.
     \end{enumerate}
-    Temos
+    Evidentemente, temos \(T = S + A = R + I = H + N\). Podemos também fazer de \(T\) uma soma de matrizes auto-adjuntas, definindo suas partes real e imaginária
+    \begin{equation*}
+        \Re(T) = \frac12(T + \herm{T})
+        \quad\text{e}\quad
+        \Im(T) = \frac{1}{2i}(T - \herm{T}),
+    \end{equation*}
+    donde segue que \(T = \Re(T) + i \Im(t)\).
 \end{proof}
