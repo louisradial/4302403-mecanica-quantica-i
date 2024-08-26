@@ -1,0 +1,75 @@
+% \section*{Exercício 3}
+\begin{lemma}{Regra de Leibniz para comutadores}{leibniz}
+    Sejam \(X, Y\) operadores lineares que dependem suavemente de um parâmetro \(t \in \mathbb{R}\). Então
+    \begin{equation*}
+        \diff*{\commutator{X(t)}{Y(t)}}{t} = \commutator*{\diff{X}{t}}{Y(t)} + \commutator*{X(t)}{\diff{Y}{t}}
+    \end{equation*}
+    para todo \(t\).
+\end{lemma}
+\begin{proof}
+    Temos
+    \begin{align*}
+        \diff*{\commutator{X(t)}{Y(t)}}{t} &= \diff*{\left(X(t)Y(t) - Y(t)X(t)\right)}{t}\\
+                                           % &= \diff{X}{t} Y(t) + X(t)\diff{Y}{t} - \diff{Y}{t} X(t) - Y(t)\diff{X}{t}\\
+                                           &= \left(\diff{X}{t} Y(t) - Y(t) \diff{X}{t}\right) + \left(X(t) \diff{Y}{t} - \diff{Y}{t} X(t)\right)\\
+                                           &= \commutator*{\diff{X}{t}}{Y(t)} + \commutator*{X(t)}{\diff{Y}{t}}
+    \end{align*}
+    como desejado.
+\end{proof}
+
+\begin{lemma}{Derivada de um comutador iterado}{iterado}
+    Seja \(X\) um operador linear e seja \(Y(t)\) um operador linear que depende suavemente de um parâmetro real. Denotemos o comutador iterado por
+    \begin{equation*}
+        \commutator{X}{Y(t)}^{[1]} = \commutator{X}{Y(t)}
+        \quad\text{e}\quad
+        \commutator{X}{Y(t)}^{[n]} = \commutator*{X}{\commutator{X}{Y(t)}^{[n-1]}},
+    \end{equation*}
+    onde \(n \in \mathbb{N} \setminus \set{1}\). Então
+    \begin{equation*}
+        \diff*{\commutator{X}{Y(t)}^{[n]}}{t} = \commutator*{X}{\diff{Y}{t}}^{[n]}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\).
+\end{lemma}
+\begin{proof}
+    Pelo \cref{lem:leibniz}, segue que \(\diff*{\commutator{X}{Y(t)}}{t} = \commutator*{X}{\diff{Y}{t}}\), visto que \(X\) não depende de \(t\). Suponhamos que \(\diff*{\commutator{X}{Y(t)}^{[k]}}{t} = \commutator*{X}{\diff{Y}{t}}^{[k]}\) para algum \(k \in \mathbb{N}\), então
+    \begin{equation*}
+        \diff*{\commutator{X}{Y(t)}^{[k+1]}}{t} = \commutator*{X}{\diff*{\commutator{X}{Y(t)}^{[k]}}{t}} = \commutator*{X}{\commutator*{X}{\diff{Y}{t}}^{[k]}} = \commutator*{X}{\diff{Y}{t}}^{[k+1]}.
+    \end{equation*}
+    Concluímos a demonstração ao invocar o princípio da indução finita.
+\end{proof}
+
+\setcounter{tcb@cnt@exercício}{2}
+\begin{exercício}{Expansão em série de um operador}{exercício3}
+    Seja \(f(t)\) um operador dado por
+    \begin{equation*}
+        f(t) = \exp(tA) B\exp(-tA),
+    \end{equation*}
+    onde \(A\) e \(B\) são operadores em um espaço linear de dimensão finita. Mostre que
+    \begin{equation*}
+        \diff[n]{f}{t} = \commutator{A}{f(t)}^{[n]}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\) e conclua que
+    \begin{equation*}
+        \exp(tA)B\exp(-tA) = B + \sum_{n = 1}^\infty \frac{t^n}{n!}\commutator{A}{B}^{[n]}.
+    \end{equation*}
+\end{exercício}
+\begin{proof}[Resolução]
+    Notemos que \(\exp(X)\) comuta com \(X\) para qualquer operador \(X\), uma vez que \(X\) comuta com suas potências. Assim, temos
+    \begin{equation*}
+        \diff{f}{t} = A \exp(tA) B\exp(-tA) - \exp(tA) B\exp(-tA) A = \commutator{A}{f(t)}
+    \end{equation*}
+    para todo \(t\). Suponhamos que \(\diff[k]{f}{t} = \commutator{A}{f(t)}^{[k]}\) para algum natural \(k > 1\), então
+    \begin{equation*}
+        \diff[k+1]{f}{t} = \diff*{\commutator{A}{f(t)}^{[k]}}{t} = \commutator*{A}{\diff{f}{t}}^{[k]} = \commutator*{A}{\commutator{A}{f(t)}}^{[k]} = \commutator{A}{f(t)}^{[k+1]}.
+    \end{equation*}
+    Pelo princípio da indução finita, segue que
+    \begin{equation*}
+        \diff[n]{f}{t} = \commutator{A}{f(t)}^{[n]}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\). Desse modo, a série de Taylor em torno de \(t = 0\) para \(f(t)\) é
+    \begin{align*}
+        \exp(tA)B\exp(-tA) &= B + \sum_{n = 1}^{\infty} \frac{t^n}{n!}\diff[n]{f}{t}[t=0]\\
+                           &= B + \sum_{n = 1}^{\infty} \frac{t^n}{n!}\commutator{A}{B}^{[n]},
+    \end{align*}
+    como desejado.
+\end{proof}
