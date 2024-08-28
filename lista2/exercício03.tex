@@ -38,6 +38,20 @@
     Concluímos a demonstração ao invocar o princípio da indução finita.
 \end{proof}
 
+\begin{lemma}{Operador comuta com a sua exponencial}{comuta}
+    Seja \(X\) um operador linear, então
+    \begin{equation*}
+        [X, \exp(\lambda X)] = 0
+    \end{equation*}
+    para todo \(\lambda \in \mathbb{C}\).
+\end{lemma}
+\begin{proof}
+    É claro que \(X\) comuta com suas potências pela associatividade do produto, logo
+    \begin{equation*}
+        X \exp(\lambda X) = X \left(\sum_{k=0}^\infty \frac{\lambda^k}{k!}X^k\right) = \sum_{k=0}^\infty \frac{\lambda^k}{k!}X^{k+1} = \left(\sum_{k=0}^\infty \frac{\lambda^k}{k!}X^k\right)X = \exp(\lambda X) X,
+    \end{equation*}
+    como desejado.
+\end{proof}
 \setcounter{tcb@cnt@exercício}{2}
 \begin{exercício}{Expansão em série de um operador}{exercício3}
     Seja \(f(t)\) um operador dado por
@@ -54,22 +68,21 @@
     \end{equation*}
 \end{exercício}
 \begin{proof}[Resolução]
-    Notemos que \(\exp(X)\) comuta com \(X\) para qualquer operador \(X\), uma vez que \(X\) comuta com suas potências. Assim, temos
+    Pelo \cref{lem:comuta}, obtemos
     \begin{equation*}
         \diff{f}{t} = A \exp(tA) B\exp(-tA) - \exp(tA) B\exp(-tA) A = \commutator{A}{f(t)}
     \end{equation*}
     para todo \(t\). Suponhamos que \(\diff[k]{f}{t} = \commutator{A}{f(t)}^{[k]}\) para algum natural \(k > 1\), então
     \begin{equation*}
-        \diff[k+1]{f}{t} = \diff*{\commutator{A}{f(t)}^{[k]}}{t} = \commutator*{A}{\diff{f}{t}}^{[k]} = \commutator*{A}{\commutator{A}{f(t)}}^{[k]} = \commutator{A}{f(t)}^{[k+1]}.
+        \diff[k+1]{f}{t} = \diff*{\commutator{A}{f(t)}^{[k]}}{t} = \commutator*{A}{\diff{f}{t}}^{[k]} = \commutator*{A}{\commutator{A}{f(t)}}^{[k]} = \commutator{A}{f(t)}^{[k+1]},
     \end{equation*}
-    Pelo princípio da indução finita, segue que
+    onde utilizamos o \cref{lem:iterado}. Pelo princípio da indução finita, segue que
     \begin{equation*}
         \diff[n]{f}{t} = \commutator{A}{f(t)}^{[n]}
     \end{equation*}
     para todo \(n \in \mathbb{N}\). Desse modo, a série de Taylor em torno de \(t = 0\) para \(f(t)\) é
-    \begin{align*}
-        \exp(tA)B\exp(-tA) &= B + \sum_{n = 1}^{\infty} \frac{t^n}{n!}\diff[n]{f}{t}[t=0]\\
-                           &= B + \sum_{n = 1}^{\infty} \frac{t^n}{n!}\commutator{A}{B}^{[n]},
-    \end{align*}
+    \begin{equation*}
+        \exp(tA)B\exp(-tA) = B + \sum_{n = 1}^{\infty} \frac{t^n}{n!}\diff[n]{f}{t}[t=0] = B + \sum_{n = 1}^{\infty} \frac{t^n}{n!}\commutator{A}{B}^{[n]},
+    \end{equation*}
     como desejado.
 \end{proof}
