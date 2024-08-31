@@ -1,0 +1,98 @@
+\begin{exercício}{}{exercício5}
+    Considere os operadores cujas matrizes em uma base ortonormal dada se escrevem
+    \begin{equation*}
+        \sigma_y = \begin{pmatrix}
+            0 && -i\\
+            i && 0
+        \end{pmatrix},
+        \quad
+        M = \begin{pmatrix}
+            2 && i \sqrt{2}\\
+            -i \sqrt{2} && 3
+        \end{pmatrix},
+        \quad\text{e}\quad
+        L_y = \frac{\hbar}{i\sqrt{2}}\begin{pmatrix}
+            0 && 1 && 0\\
+            -1&& 0 && 1\\
+            0 && -1&& 0
+        \end{pmatrix}.
+    \end{equation*}
+    Determine os autovalores e autovetores e os projetores sobre seus autoespaços.
+\end{exercício}
+\begin{proof}[Resolução]
+    Notemos que \(\sigma_y\ket{1} = i \ket{2}\) e \(\sigma_y \ket{2} = -i \ket{1},\) então
+    \begin{equation*}
+        \sigma_y \left(\ket{1} + i\ket{2}\right) = \ket{1} + i\ket{2}\quad\text{e}\quad \sigma_y \left(\ket{1} - i \ket{2}\right) = -\left(\ket{1} - i\ket{2}\right).
+    \end{equation*}
+    Isto é, os autovalores de \(\sigma_y\) são \(+1\) e \(-1\), com autovetores associados dados por
+    \begin{equation*}
+        \ket{+} = \frac1{\sqrt{2}}\left(\ket{1} + i\ket{2}\right)
+        \quad\text{e}\quad
+        \ket{-} = \frac1{\sqrt{2}}\left(\ket{1} - i\ket{2}\right),
+    \end{equation*}
+    respectivamente. Na base \(\set{\ket{1}, \ket{2}}\) os seus projetores ortogonais são dados por
+    \begin{equation*}
+        \ketbra{+}{+} = \frac12\begin{pmatrix}
+            1 && -i\\
+            i && 1
+        \end{pmatrix}
+        \quad\text{e}\quad
+        \ketbra{-}{-} = \frac12 \begin{pmatrix}
+            1 && i\\
+            -i&& 1
+        \end{pmatrix}.
+    \end{equation*}
+
+    Verifica-se facilmente que
+    \begin{equation*}
+        M\left(\sqrt{2}\ket{1} + i \ket{2}\right) = \sqrt{2}\ket{1} + i \ket{2}
+        \quad\text{e}\quad
+        M\left(\ket{1} - i \sqrt{2} \ket{2}\right) = 4\left(\ket{1} - i\sqrt{2}\ket{2}\right),
+    \end{equation*}
+    portanto os autovalores de \(M\) são \(1\) e \(4\), associados aos autovetores dados por
+    \begin{equation*}
+        \ket{M_1} = \frac{1}{\sqrt{3}}\left(\sqrt{2} \ket{1} + i \ket{2}\right)
+        \quad\text{e}\quad
+        \ket{M_4} = \frac{1}{\sqrt{3}}\left(\ket{1} - i \sqrt{2}\ket{2}\right).
+    \end{equation*}
+    Os projetores ortogonais dos autoespaços de \(M\) são dados por
+    \begin{equation*}
+        \ketbra{M_1}{M_1} = \frac13 \begin{pmatrix}
+            2 && -i\sqrt{2}\\
+            i\sqrt{2} && 1
+        \end{pmatrix}
+        \quad\text{e}\quad
+        \ketbra{M_4}{M_4} = \frac13 \begin{pmatrix}
+            1 && i\sqrt{2}\\
+            -i\sqrt{2} && 2
+        \end{pmatrix}
+    \end{equation*}
+    na base \(\set{\ket{1}, \ket{2}}\).
+
+    A equação secular para o operador \(L_y\) é \(\lambda(\lambda - \hbar)(\lambda+\hbar) = 0\), portanto seus autovalores são \(\lambda_1 = 0\), \(\lambda_2 = \hbar\) e \(\lambda_3 = -\hbar\). Constata-se que \(\ket{\lambda_1} = \frac{1}{\sqrt{2}} \left(\ket{1} + \ket{3}\right)\) pertence ao núcleo de \(L_y\), portanto é autovetor associado a \(\lambda_1\). Observemos que
+    \begin{align*}
+        L_y\left(\ket{1} \pm i\sqrt{2} \ket{2} - \ket{3}\right)
+        &= \left(\frac{\hbar}{i\sqrt{2}}\right)\left[-\ket{2} \pm i\sqrt{2} \left(\ket{1} - \ket{3}\right) - \ket{2}\right]\\
+        &= \hbar \left[\pm \left(\ket{1} - \ket{3}\right) + i\sqrt{2}\ket{2}\right]\\
+        &= \pm\hbar \left(\ket{1} \pm i\sqrt{2}\ket{2} - \ket{3}\right),
+    \end{align*}
+    portanto \(\ket{\lambda_2} = \frac{1}{2}\left(\ket{1} + i\sqrt{2}\ket{2} - \ket{3}\right)\) e \(\ket{\lambda_3} = \frac12 \left(\ket{1} - i\sqrt{2} \ket{2} - \ket{3}\right)\) são autovetores associados aos autovalores \(\lambda_2\) e \(\lambda_3\), respectivamente. Os projetores ortogonal dos autoespaços de \(L_y\) são dados por
+    \begin{align*}
+        \ketbra{\lambda_1}{\lambda_1} &= \frac12 \left(\begin{smallmatrix}
+            1 && 0 && 1\\
+            0 && 0 && 0\\
+            1 && 0 && 1
+        \end{smallmatrix}\right),&
+        \ketbra{\lambda_2}{\lambda_2} &= \frac14 \left(\begin{smallmatrix}
+            1 && -i\sqrt{2} && -1\\
+            i\sqrt{2} && 2 && -i\sqrt{2}\\
+            -1 && i\sqrt{2} && 1
+        \end{smallmatrix}\right),&
+        \ketbra{\lambda_3}{\lambda_3} &= \frac14 \left(\begin{smallmatrix}
+            1 && i\sqrt{2} && -1\\
+            -i\sqrt{2} && 2 && i\sqrt{2}\\
+            -1 && -i\sqrt{2} && 1
+        \end{smallmatrix}\right)
+    \end{align*}
+    na base \(\set{\ket{1}, \ket{2}, \ket{3}}.\)
+\end{proof}
