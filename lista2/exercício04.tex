@@ -1,0 +1,28 @@
+\begin{exercício}{Série de Baker-Campbell-Hausdorff para o grupo de Heisenberg}{exercício4}
+    Sejam operadores \(A\) e \(B\) tais que \([A,[A,B]] = [B,[A,B]] = 0\). Então
+    \begin{equation*}
+        \exp(A + B) = \exp(A) \exp(B) \exp\left(-\frac12 [A, B]\right).
+    \end{equation*}
+\end{exercício}
+\begin{proof}[Resolução]
+    Consideremos o operador \(X(t) = \exp(tA)\exp(tB)\) com \(X(0) = \mathds{1}\) e que depende suavemente do parâmetro \(t \in \mathbb{R}\). Notemos que \([A, B]^{[n+1]} = 0\) para todo \(n \in \mathbb{N}\), então do \cref{ex:exercício3} temos
+    \begin{equation*}
+        \exp(tA) B = \left(B + t[A,B]\right)\exp(tA)
+    \end{equation*}
+    para todo \(t \in \mathbb{R}\). Assim, obtemos
+    \begin{align*}
+        \diff{X}{t} &= A \exp(tA)\exp(tB) + \exp(tA) B \exp(tB)\\
+                    &= A \exp(tA) \exp(tB) + \left(B + t[A,B]\right)\exp(tA)\exp(tB)\\
+                    &= \left(A + B + t[A,B]\right)X(t)
+    \end{align*}
+    para todo \(t \in \mathbb{R}\). Usando as propriedades bilineares e anticomutativas do comutador, constata-se facilmente que \(A + B + t[A,B]\) comuta com \(A + B + s[A,B]\) para todos \(t, s \in \mathbb{R}\), logo a solução para a equação diferencial linear é dada por
+    \begin{align*}
+        X(t) &= \exp\left(\int_{0}^{t}\dli{\xi} A + B + \xi [A,B]\right)X(0)\\
+             &= \exp\left(tA + tB + \frac12 t^2 [A,B]\right)
+    \end{align*}
+    para todo \(t \in \mathbb{R}\). Uma vez que \([A,B]\) comuta com \(A + B\), segue que
+    \begin{equation*}
+        \exp(tA + tB) = \exp(tA)\exp(tB)\exp\left(-\frac12t^2[A,B]\right)
+    \end{equation*}
+    para todo \(t \in \mathbb{R}\). Obtemos o resultado desejado ao substituir \(t = 1\) na expressão acima.
+\end{proof}
