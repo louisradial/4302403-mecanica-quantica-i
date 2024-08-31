@@ -1,0 +1,26 @@
+\begin{exercício}{}{exercício6}
+    O espaço de estados de um certo sistema físico tem 3 dimensões. Sejam \(\set{\ket{u_1}, \ket{u_2}, \ket{u_3}}\) uma base ortonormal desse espaço. Definimos os kets \(\ket{\psi_0}\) e \(\ket{\psi_1}\) por
+    \begin{equation*}
+        \ket{\psi_0} = \frac{1}{\sqrt{2}} \ket{u_1} +\frac{i}{2} \ket{u_2} + \frac{i}{2}\ket{u_3}
+        \quad\text{e}\quad
+        \ket{\psi_1} = \frac{1}{\sqrt{2}} \ket{u_1} + \frac{i}{\sqrt{2}}\ket{u_3}.
+    \end{equation*}
+    Determine na base \(\set{\ket{u_1}, \ket{u_2}, \ket{u_3}}\) as representações dos projetores ortonormais \(\rho_0\) e \(\rho_1\) associados aos estados \(\ket{\psi_0}\) e \(\ket{\psi_1}\), respectivamente.
+\end{exercício}
+\begin{proof}[Resolução]
+    Na base \(\set{\ket{u_1}, \ket{u_2}, \ket{u_3}}\),
+    \begin{equation*}
+        \rho_0 = \ketbra{\psi_0}{\psi_0} = \frac14\left(\begin{smallmatrix}
+                2 && -i\sqrt{2} && -i\sqrt{2}\\
+                i\sqrt{2} && 1 && 1\\
+                i\sqrt{2} && 1 && 1
+        \end{smallmatrix}\right)
+        \quad\text{e}\quad
+        \rho_1 = \ketbra{\psi_1}{\psi_1} = \frac12\left(\begin{smallmatrix}
+                1 && 0 && -i\\
+                0 && 0 && 0\\
+                i && 0 && 1
+        \end{smallmatrix}\right)
+    \end{equation*}
+    são as representações dos projetores ortogonais \(\rho_0\) e \(\rho_1\).
+\end{proof}
