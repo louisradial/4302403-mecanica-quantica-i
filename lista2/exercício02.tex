@@ -1,0 +1,48 @@
+\begin{lemma}{Base formada por autovetores associados a autovalores distintos de um operador}{base_autovetores}
+    Seja \(\mathscr{V}\) um espaço linear de dimensão finita \(N\) sobre \(\mathbb{C}\). Sejam \(T : \mathscr{V} \to \mathscr{V}\) um operador, \(\ffamily{t_n}{n=1}{N} \subset \mathbb{C}\) o conjunto dos seus \(N\) autovalores e seja \(\mathcal{B} = \ffamily{v_n}{n=1}{N} \subset \mathscr{V}\) um conjunto de autovetores associados, com \(Tv_n = t_n v_n\) para todo \(1 \leq n \leq N\). Se os autovalores são dois a dois distintos, então \(\mathcal{B}\) é uma base para \(\mathscr{V}\).
+\end{lemma}
+\begin{proof}
+    Seja \(\mathcal{B}_k = \ffamily{v_n}{n=1}{k}\subset \mathcal{B}\) para \(1 \leq k \leq N\). Notemos que \(\mathcal{B}_1 = \set{v_1}\) é linearmente independente visto que \(v_1\) não é o vetor nulo. Suponhamos que \(\mathcal{B}_m\) é linearmente independente para algum \(1 \leq m < N\) e consideremos a combinação linear nula
+    \begin{equation*}
+        \sum_{n = 1}^{m+1} \lambda_n v_n = 0.
+    \end{equation*}
+    Agindo com o operador \(T\), temos
+    \begin{equation*}
+        \sum_{n=1}^{m+1} \lambda_n t_n v_n = 0,
+    \end{equation*}
+    portanto multiplicando a equação anterior por \(-t_{m+1}\) e somando a esta, segue que
+    \begin{equation*}
+        \sum_{n=1}^{m} \lambda_n (t_n - t_{m+1})v_n = 0.
+    \end{equation*}
+    Pela independência linear de \(\mathcal{B}_m\), devemos ter \(\lambda_n (t_n - t_{m+1}) = 0\), donde segue que \(\lambda_n = 0\) para todo \(1 \leq n \leq m\), uma vez que os autovalores são dois a dois distintos. Desse modo, temos
+    \begin{equation*}
+        0 = \sum_{n=1}^{m+1} \lambda_n v_n = \lambda_{m+1} v_{m+1},
+    \end{equation*}
+    portanto \(\lambda_{m+1} = 0\), pois \(v_{m+1} \neq 0\), o que mostra que \(\mathcal{B}_{m+1}\) é linearmente independente. Por indução, concluímos que \(\mathcal{B}\) é um conjunto de \(N\) vetores linearmente independente, logo uma base do espaço linear de dimensão \(N\).
+\end{proof}
+
+\begin{exercício}{}{exercício2}
+    Seja \(\mathscr{V}\) um espaço linear de dimensão finita \(N\) sobre \(\mathbb{C}\). Se \(A, B, C\) são operadores definidos em \(\mathscr{V}\) e verificam
+    \begin{equation*}
+        [A,B] = 0,\quad
+        [A,C] = 0,\quad\text{e}\quad
+        [B,C] \neq 0,
+    \end{equation*}
+    então ao menos um autovalor de \(A\) é degenerado.
+\end{exercício}
+\begin{proof}[Resolução]
+    Suponhamos, por absurdo, que nenhum autovalor de \(A\) é degenerado, então seus autoespaços são todos unidimensionais. Sejam \(\ffamily{\ket{n}}{n=1}{N}\subset \mathscr{V}\) autovetores associados aos autovalores \(\ffamily{a_n}{n=1}{N}\subset \mathbb{C}\) de \(A\) e seja \(X\) um operador que comuta com \(A\). Temos
+    \begin{equation*}
+        AX\ket{n} = XA\ket{n} = a_n X\ket{n},
+    \end{equation*}
+    isto é, \(X \ket{n}\) pertence ao autoespaço associado ao autovalor \(a_n\). Como o autoespaço é unidimensional, segue que existe \(x_n\) tal que \(X\ket{n} = x_n \ket{n}\), isto é, \(\ket{n}\) é autovetor de \(X\). Concluímos, portanto, que \(B \ket{n} = b_n \ket{n}\) e que \(C \ket{n} = c_n \ket{n}\) para todo \(1 \leq n \leq N\).
+
+    Seja \(\ket{\xi} \in \mathscr{V}\). Como \(A\) tem \(N\) autovalores distintos, então \(\ffamily{\ket{n}}{n=1}{N}\) é uma base para \(\mathscr{V}\), pelo \cref{lem:base_autovetores}, logo existem \(\ffamily{\xi_n}{n=1}{N} \subset \mathbb{C}\) tais que \(\ket{\xi} = \sum_{n = 1}^N \xi_n \ket{n}\). Assim,
+    \begin{align*}
+        BC\ket{\xi} &= B \left(\sum_{n = 1}^N \xi_n c_n \ket{n}\right)&
+        CB\ket{\xi} &= C \left(\sum_{n=1}^N \xi_n b_n \ket{n}\right)\\
+                    &= \sum_{n=1}^N \xi_n b_n c_n \ket{n}&
+                    &= \sum_{n=1}^N \xi_n b_n c_n \ket{n},
+    \end{align*}
+    isto é, \((BC - CB)\ket{\xi} = 0\). Como \(\ket{\xi}\) é arbitrário, temos \([B,C] = 0\). Esta contradição mostra que \(A\) tem pelo menos um autovalor degenerado.
+\end{proof}
