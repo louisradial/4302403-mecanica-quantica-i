@@ -1,0 +1,99 @@
+\begin{exercício}{Matriz positiva}{exercício1}
+    Seja \(\mathscr{V}\) um espaço de Hilbert de dimensão finita \(N\) sobre o corpo \(\mathbb{K}\). Um operador \(A : \mathscr{V} \to \mathscr{V}\) é dito positivo se, para qualquer vetor não nulo \(\ket{\psi}\), seu valor médio for real e não negativo, \(\bra{\psi}A\ket{\psi} \geq 0\). Se, adicionalmente, seu valor médio for positivo, dizemos que \(A\) é estritamente positivo.
+    \begin{enumerate}[label=(\alph*)]
+        \item Mostre que se \(\mathbb{K} = \mathbb{C}\), um operador é positivo se e somente se é auto-adjunto com todos autovalores não negativos.
+        \item Mostre que se \(\mathbb{K} = \mathbb{R}\), um operador positivo não é em geral simétrico.
+        \item Suponha que \(\mathscr{V} = \mathbb{R}^N\), \(\mathbb{K} = \mathbb{R},\) e que \(A\) é um operador simétrico e estritamente positivo. Mostre que
+            \begin{equation*}
+                \int_{\mathbb{R}^N} \prod_{n = 1}^N \dli{x_i}\exp\left(-\frac12 \sum_{jk} x_j A_{jk} x_k + \sum_{j} b_j x_j\right) = \sqrt{\frac{(2\pi)^N}{\det{A}}}\exp\left(\frac12 \sum_{jk}b_j A^{-1}_{jk}b_k\right)
+            \end{equation*}
+            para todo \(b \in \mathscr{V}.\)
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução do item (a)]
+    Sejam \(\ket{\psi} \in \mathscr{V}\) e \(A : \mathscr{V} \to \mathscr{V}\) um operador positivo, então
+    \begin{equation*}
+        \braket{\psi}{A\psi} = \braket{\herm{A}\psi}{\psi} = \conj{\braket{\psi}{\herm{A}\psi}}
+    \end{equation*}
+    por definição do operador adjunto. Como \(A\) é positivo, temos
+    \begin{equation*}
+        \bra{\psi}A-\herm{A}\ket{\psi} = 0
+    \end{equation*}
+    para todo \(\ket{\psi} \in \mathscr{V},\) logo \(A = \herm{A}\) segue da não degenerescência do produto interno. Isto é, todo operador positivo é auto-adjunto. Notemos ainda que se \(a\) é um autovalor de \(A\) e \(\ket{v}\) um autovetor normalizado associado, temos
+    \begin{equation*}
+        0 \leq \bra{v}A\ket{v} = a \braket{v}{v} = a,
+    \end{equation*}
+    isto é, todos os autovalores de um operador positivo são não negativos.
+
+    Suponhamos que \(B : \mathscr{V} \to \mathscr{V}\) é um operador auto-adjunto tal que seus autovalores sejam não negativos. Sejam \(\ffamily{b_n}{n=1}{\ell_B} \subset [0, \infty)\) os \(\ell_B \leq N\) autovalores distintos de \(B\). Pelo teorema espectral, seja \(P_n : \mathscr{V} \to \mathscr{V}\) o projetor ortogonal para o autoespaço associado a \(b_n\), de modo que
+    \begin{equation*}
+        B = \sum_{n=1}^{\ell_B} b_n P_n,
+    \end{equation*}
+    com \(P_n \circ P_m = \delta_{nm} P_n\) e \(P_n = \herm{P_n}\). Seja \(\ket{\psi} \in \mathscr{V}\), então
+    \begin{equation*}
+        \bra{\psi}B\ket{\psi} = \bra{\psi}\sum_{n=1}^{\ell_B} b_n P_n\ket{\psi} = \sum_{n=1}^{\ell_B} \bra{\psi}P_n\ket{\psi}.
+    \end{equation*}
+    Notemos que
+    \begin{equation*}
+        \bra{\psi}P_n\ket{\psi} = \bra{\psi}P_n^2\ket{\psi} = \braket{\herm{P_n}\psi}{P_n \psi} = \norm{P_n\psi}^2 \geq 0,
+    \end{equation*}
+    logo
+    \begin{equation*}
+        \bra{\psi}B\ket{\psi} = \sum_{n=1}^{\ell_B} b_n \norm{P_n\psi}^2 \geq 0.
+    \end{equation*}
+    Concluímos portanto que \(B\) é positivo.
+\end{proof}
+\begin{proof}[Resolução do item (b)]
+    Consideremos \(N = 2\), sejam \(\set{\ket{1},\ket{2}}\) uma base ortonormal para \(\mathscr{V}\) e \(T : \mathscr{V} \to \mathscr{V}\) um operador cuja representação nesta base é
+    \begin{equation*}
+        T = \begin{pmatrix}
+            a && b\\
+            c && d
+        \end{pmatrix},
+    \end{equation*}
+    com \(a,b,c,d \in \mathbb{R}\). Seja \(\ket{\psi} \in \mathscr{V}\setminus\set{0}\), então existem \(r > 0\) e \(\theta \in [0, 2\pi]\) tais que \(\ket{\psi} = r\cos\theta\ket{1} + r\sin\theta \ket{2}\). Assim,
+    \begin{equation*}
+        \bra{\psi}T\ket{\psi} = r^2\left[a \cos^2\theta + (b + c)\sin\theta\cos\theta + d \sin^2\theta\right],
+    \end{equation*}
+    logo vemos que ao tomar \(a = d \geq 0\) e \(b + c = 0\), o operador \(T\) é positivo. Em particular,
+    \begin{equation*}
+        T = \begin{pmatrix}
+            1 && 1\\
+            -1&& 1
+        \end{pmatrix}
+    \end{equation*}
+    é um exemplo de operador (estritamente) positivo que não é simétrico.
+\end{proof}
+\begin{proof}[Resolução do item (c)]
+    Consideremos a integral
+    \begin{equation*}
+        I(b) = \int_{\mathbb{R}^n} \dli{x}\exp\left(-\frac12\bra{x}A\ket{x} + \braket{x}{b}\right)
+    \end{equation*}
+    com \(b \in \mathscr{V}\).
+    Como o operador é estritamente positivo, segue que é injetor, pois zero não é autovalor. Como o espaço é de dimensão finita, segue que \(A\) é bijetor, portanto admite inversa. Assim, para todos \(x, b \in \mathscr{V}\), temos
+    \begin{align*}
+        -\frac12 \bra{x}A\ket{x} + \braket{x}{b} &= - \frac12\braket{\tilde{x} + A^{-1}b}{A\tilde{x} + b} + \braket{\tilde{x} + A^{-1}{b}}{b}\\
+                                                 &= - \frac12\braket{\tilde{x} + A^{-1}b}{A\tilde{x}} + \frac12\braket{\tilde{x} + A^{-1} b}{b}\\
+                                                 &= - \frac12 \bra{\tilde{x}}A\ket{\tilde{x}} - \frac12 \braket{A^{-1}b}{A\tilde{x}} + \frac12\braket{\tilde{x}}{b} + \frac12\bra{b}A^{-1}\ket{b}\\
+                                                 &= \frac12\bra{b}A^{-1}\ket{b} - \frac12 \bra{\tilde{x}}A\ket{\tilde{x}},
+    \end{align*}
+    onde \(\tilde{x} = x - A^{-1}b\). Deste modo, temos
+    \begin{equation*}
+        I(b) = \exp\left(\frac12 \bra{b}A^{-1}\ket{b}\right)\int_{\mathbb{R}^n} \dli{\tilde{x}} \exp\left(-\frac12 \bra{\tilde{x}}A\ket{\tilde{x}}\right),
+    \end{equation*}
+    já que \(\diffp{x_j}{\tilde{x}_k} = \delta_{jk}.\)
+
+    Como o operador é simétrico, existe uma base ortonormal em que sua representação é diagonal, seja \(M\) o operador ortogonal que realiza a mudança de base, isto é, \(D = M^{\top}AM\) é a diagonalização de \(A\). Temos
+    \begin{equation*}
+        \bra{\tilde{x}}A\ket{\tilde{x}} = \bra{\tilde{x}}MDM^{\top}\ket{\tilde{x}} = \bra{M^\top\tilde{x}}D\ket{M^\top\tilde{x}} = \bra{y}D\ket{y},
+    \end{equation*}
+    onde \(y = M^\top \tilde{x}\). Como \(\diffp{\tilde{x}_j}{y_k} = M_{jk}\), segue que o determinante do jacobiano da transformação é unitário, por conta de \(M\) ser ortogonal. Assim, a integral resulta em
+    \begin{align*}
+        I(b) &= \exp\left(\frac12 \bra{b}A^{-1}\ket{b}\right)\int_{\mathbb{R}^n} \dli{y} \exp\left(-\frac12 \bra{y}D\ket{y}\right)\\
+             &= \exp\left(\frac12 \bra{b}A^{-1}\ket{b}\right)\prod_{n=1}^N\int_{\mathbb{R}} \dli{y_n} \exp\left(-\frac12 a_n y_n^2\right)\\
+             &= \exp\left(\frac12 \bra{b}A^{-1}\ket{b}\right)\prod_{n=1}^N \sqrt{\frac{2\pi}{a_n}}\\
+             &= \sqrt{\frac{(2\pi)^N}{\prod_{n=1}^Na_n}}\exp\left(\frac12 \bra{b}A^{-1}\ket{b}\right)\\
+             &= \sqrt{\frac{(2\pi)^N}{\det A}}\exp\left(\frac12 \bra{b}A^{-1}\ket{b}\right),
+    \end{align*}
+    pois o produto dos autovalores é igual ao determinante.
+\end{proof}
