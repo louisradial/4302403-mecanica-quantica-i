@@ -1,4 +1,4 @@
-\begin{exercício}{}{exercício4}
+\begin{exercício}{Conjunto completo de operadores compatíveis}{exercício4}
     Considere um sistema físico no espaço dos estados, que em três dimensões pode ser descrito na base ortonormal \(\set{\ket{u_1}, \ket{u_2}, \ket{u_3}}.\) Considere dois operadores \(L_z\) e \(S\) definidos por
     \begin{align*}
         L_z\ket{u_1} & = \ket{u_1}&
@@ -12,10 +12,114 @@
         \item Escreva as matrizes representando, na base \(\set{\ket{u_1}, \ket{u_2}, \ket{u_3}}\), os operadores \(L_z, L_z^2, S\) e \(S^2\). Esses operadores são observáveis?
         \item Forneça a forma mais geral da matriz que representa um operador que comuta com \(L_z\).
         \item Forneça a forma mais geral da matriz que representa um operador que comuta com \(L_z^2\).
-        \item Forneça a forma mais geral da matriz que representa um operador que comuta com \(S^2\).
+        \item Forneça a forma mais geral da matriz que representa um operador que comuta com \(S\).
         \item \(L_z^2\) e \(S\) formam um conjunto completo de operadores que comutam? Forneça uma base de autovetores comuns.
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
+    Na base \(\set{\ket{u_1}, \ket{u_2}, \ket{u_3}}\), temos
+    \begin{align*}
+        L_z &= \begin{pmatrix}
+            1 && 0 && 0\\
+            0 && 0 && 0\\
+            0 && 0 &&-1
+        \end{pmatrix}&
+        L_z^2 &= \begin{pmatrix}
+            1 && 0 && 0\\
+            0 && 0 && 0\\
+            0 && 0 && 1
+        \end{pmatrix}&
+        S &= \begin{pmatrix}
+            0 && 0 && 1\\
+            0 && 1 && 0\\
+            1 && 0 && 0
+        \end{pmatrix}&
+        S^2 &= \begin{pmatrix}
+            1 && 0 && 0\\
+            0 && 1 && 0\\
+            0 && 0 && 1
+        \end{pmatrix}
+    \end{align*}
+    como as representações dos operadores \(L_z, L_z^2, S\) e \(S^2\), todos auto-adjuntos.
 
+    Seja \(B\) um operador que comuta com \(L_z\) e sejam \(B_{nm} \in \mathbb{C}\) tais que \(B\ket{u_n} = \sum_{m} B_{nm}\ket{u_m}\). Com essas definições, temos
+    \begin{equation*}
+        [L_z, B] = \begin{pmatrix}
+            B_{11} && B_{12} && B_{13}\\
+            0 && 0 && 0\\
+            -B_{31} && - B_{32} && -B_{33}
+        \end{pmatrix} - \begin{pmatrix}
+            B_{11} && 0 && -B_{13}\\
+            B_{21} && 0 && -B_{23}\\
+            B_{31} && 0 && -B_{33}
+        \end{pmatrix} =
+        \begin{pmatrix}
+            0 && B_{12} && 2B_{13}\\
+            -B_{21} && 0 && B_{23}\\
+            -2B_{31} && -B_{32} && 0
+        \end{pmatrix},
+    \end{equation*}
+    portanto segue de \([L_z,B] = 0\) que \(B\ket{u_n} = B_{nn} \ket{u_n}\), isto é, a representação de \(B\) é uma matriz diagonal.
+
+    Seja \(C\) um operador que comuta com \(L_z^2\) e sejam \(C_{nm} \in \mathbb{C}\) tais que \(C\ket{u_n} = \sum_{m} C_{nm}\ket{u_m}\). Com essas definições, temos
+    \begin{equation*}
+        [L_z^2, C] = \begin{pmatrix}
+            C_{11} && C_{12} && C_{13}\\
+            0 && 0 && 0\\
+            C_{31} && C_{32} && C_{33}
+        \end{pmatrix} - \begin{pmatrix}
+            C_{11} && 0 && C_{13}\\
+            C_{21} && 0 && C_{23}\\
+            C_{31} && 0 && C_{33}
+        \end{pmatrix} =
+        \begin{pmatrix}
+            0 && C_{12} && 0\\
+            -C_{21} && 0 && -C_{23}\\
+            0 && C_{32} && 0
+        \end{pmatrix},
+    \end{equation*}
+    portanto segue de \([L_z^2,C] = 0\) que a representação de \(C\) é uma matriz da forma
+    \begin{equation*}
+        C =
+        \begin{pmatrix}
+            C_{11} && 0 && C_{13}\\
+            0 && C_{22} && 0\\
+            C_{31} && 0 && C_{33}
+        \end{pmatrix}.
+    \end{equation*}
+
+    Seja \(D\) um operador que comuta com \(S\) e sejam \(D_{nm} \in \mathbb{C}\) tais que \(D\ket{u_n} = \sum_{m} D_{nm}\ket{u_m}\). Dom essas definições, temos
+    \begin{equation*}
+        [S, D] = \begin{pmatrix}
+            D_{31} && D_{32} && D_{33}\\
+            D_{21} && D_{22} && D_{23}\\
+            D_{11} && D_{12} && D_{13}
+        \end{pmatrix} - \begin{pmatrix}
+            D_{13} && D_{12} && D_{11}\\
+            D_{23} && D_{22} && D_{21}\\
+            D_{33} && D_{32} && D_{31}
+        \end{pmatrix} =
+        \begin{pmatrix}
+            D_{13} - D_{31} && D_{32} - D_{12} && D_{33} - D_{11}\\
+            D_{21} - D_{23} && 0 && D_{23} - D_{21}\\
+            D_{11} - D_{33} && D_{12} - D_{32} && D_{13} - D_{31}
+        \end{pmatrix},
+    \end{equation*}
+    portanto segue de \([S,D] = 0\) que a representação de \(D\) é uma matriz da forma
+    \begin{equation*}
+        D =
+        \begin{pmatrix}
+            D_{11} && D_{12} && D_{13}\\
+            D_{21} && D_{22} && D_{21}\\
+            D_{13} && D_{12} && D_{11}
+        \end{pmatrix}.
+    \end{equation*}
+
+    Notemos que \([L_z^2, S] = 0\), então existe uma base deste espaço linear composta por autovetores comuns a \(L_z^2\) e a \(S\). Notemos que \(\ket{u_2}\) é autovetor tanto de \(L_z^2\) quanto de \(S\) e que qualquer combinação linear de \(\set{\ket{u_1}, \ket{u_3}}\) é autovetor de \(L_z^2\). Em particular, temos
+    \begin{equation*}
+        S\left(\ket{u_1} + \ket{u_3}\right) = \ket{u_1} + \ket{u_3}
+        \quad\text{e}\quad
+        S\left(\ket{u_1} - \ket{u_3}\right) = -\left(\ket{u_1} - \ket{u_3}\right),
+    \end{equation*}
+    portanto \(\set*{\ket{u_2}, \frac{1}{\sqrt{2}}\left(\ket{u_1} + \ket{u_3}\right), \frac{1}{\sqrt{2}}\left(\ket{u_1} - \ket{u_3}\right)}\) é uma base composta por autovetores comuns a \(L_z^2\) e a \(S\).
 \end{proof}
