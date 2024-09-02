@@ -11,5 +11,22 @@
     Definimos \(B = \frac12 (E_C - E_O) > 0\) e o ângulo \(\theta\) tal que \(B = \sqrt{A^2 + B^2}\cos\theta\) e \(A = \sqrt{A^2 + B^2}\sin\theta\). Calcule a probabilidade de encontrar um elétron \(\pi\) localizado sobre o átomo de carbono ou oxigênio em função de \(\theta\).
 \end{exercício}
 \begin{proof}[Resolução]
-
+    Consideremos primeiro o caso em que
+    Com as definições dadas, sendo \(\alpha = \frac{E_C + E_O}{2}\) e \(\beta = \sqrt{A^2 + B^2}\), temos \(H = \alpha \mathds{1} + \beta T\), onde \(T\) é o operador dado por \(T\ket{1} = \cos\theta \ket{1} - \sin\theta \ket{2}\) e \(T\ket{2} = -\sin\theta\ket{1} - \cos\theta\ket{2}\). Assim, segue que um vetor não nulo é autovetor de \(T\) se e somente se é autovetor de \(H\), visto que \(\beta \neq 0\). Sejam os vetores não nulos
+    \begin{equation*}
+        \ket{+} = \cos\left(\frac{\theta}{2}\right)\ket{1} - \sin\left(\frac{\theta}{2}\right)\ket{2}
+        \quad\text{e}\quad
+        \ket{-} = \sin\left(\frac{\theta}{2}\right)\ket{1} + \cos\left(\frac{\theta}{2}\right)\ket{2},
+    \end{equation*}
+    então
+    \begin{align*}
+        T\ket{+} &= \left[\cos\left(\frac{\theta}{2}\right)\cos\theta + \sin\left(\frac{\theta}{2}\right)\sin\theta\right]\ket{1} + \left[\sin\left(\frac{\theta}{2}\right)\cos\theta - \cos\left(\frac{\theta}{2}\right)\sin\theta\right]\ket{2}\\
+                 &= \cos\left(\frac{\theta}{2}\right)\ket{1} - \sin\left(\frac{\theta}{2}\right) \ket{2} = \ket{+}
+    \end{align*}
+    e
+    \begin{align*}
+        T\ket{-} &= \left[\sin\left(\frac{\theta}{2}\right)\cos\theta - \cos\left(\frac{\theta}{2}\right)\sin\theta\right]\ket{1} - \left[\sin\left(\frac{\theta}{2}\right)\sin\theta - \cos\left(\frac{\theta}{2}\right)\cos\theta\right]\ket{2}\\
+                 &= -\sin\left(\frac{\theta}{2}\right)\ket{1} - \cos\left(\frac{\theta}{2}\right) \ket{2} = -\ket{-}
+    \end{align*}
+    portanto concluímos que \(\ket{+}\) e \(\ket{-}\) são autoestados de \(H\) associados às energias \(\alpha + \beta\) e \(\alpha - \beta\), respectivamente.
 \end{proof}
