@@ -1,7 +1,7 @@
-\begin{exercício}{}{exercício3}
-    Nos propomos modelar o comportamento dos dois elétrons \(\pi\) da ligação dupla da molécula de formaldeído \ce{H2C=O}. O oxigênio sendo mais eletronegativo que o carbono, discuta por que o hamiltoniano de um elétron toma a forma
+\begin{exercício}{Elétron \(\pi\) da ligação dupla da molécula de formaldeído}{exercício3}
+    Nos propomos modelar o comportamento dos dois elétrons \(\pi\) da ligação dupla da molécula de formaldeído \ce{H2C=O}. O oxigênio sendo mais eletronegativo que o carbono, discuta por que o hamiltoniano \(H\) de um elétron toma a forma
     \begin{equation*}
-        \begin{pmatrix}
+        H = \begin{pmatrix}
             E_C && -A\\
             -A &&E_O
         \end{pmatrix}
@@ -11,7 +11,31 @@
     Definimos \(B = \frac12 (E_C - E_O) > 0\) e o ângulo \(\theta\) tal que \(B = \sqrt{A^2 + B^2}\cos\theta\) e \(A = \sqrt{A^2 + B^2}\sin\theta\). Calcule a probabilidade de encontrar um elétron \(\pi\) localizado sobre o átomo de carbono ou oxigênio em função de \(\theta\).
 \end{exercício}
 \begin{proof}[Resolução]
-    Consideremos primeiro o caso em que
+    Sejam \(\ket{\tilde{1}}\) e \(\ket{\tilde{2}}\) os estados que representam o elétron localizado no carbono e no oxigênio, respectivamente. O valor médio da energia nestes estados são \(\bra{\tilde{1}}H\ket{\tilde{1}} = E_C\) e \(\bra{\tilde{2}}H\ket{\tilde{2}} = E_O\). Como o hamiltoniano \(H\) é um operador auto-adjunto, devemos ter \(\tilde{A} = \bra{\tilde{1}}H\ket{\tilde{2}} = \conj{\bra{\tilde{2}}H\ket{\tilde{1}}}\). Escrevamos \(\tilde{A} = Ae^{i(\pi + \delta)}\), com \(A \in \mathbb{R}\) e \(\delta \in [-\pi, \pi]\), e consideremos o operador \(U\) dado por
+    \begin{equation*}
+        U\ket{\tilde{1}} = e^{i \delta} \ket{\tilde{1}}\quad\text{e}\quad U\ket{\tilde{2}} = \ket{\tilde{2}}.
+    \end{equation*}
+    Como este operador é unitário, definimos \(\ket{1} = U\ket{\tilde{1}}\) e \(\ket{2} = U\ket{\tilde{2}}\), de modo que \(\set{\ket{1}, \ket{2}}\) é uma base ortonormal e temos
+    \begin{align*}
+        \bra{1}H\ket{1} &= \bra{\tilde{1}}\herm{U}HU\ket{\tilde{1}}&
+        \bra{1}H\ket{2} &= \bra{\tilde{1}}\herm{U}HU\ket{\tilde{2}}&
+        \bra{2}H\ket{2} &= \bra{\tilde{2}}\herm{U}HU\ket{\tilde{2}}\\
+                        &= e^{i(\delta - \delta)} \bra{\tilde{1}}H\ket{\tilde{1}}&
+                        &= e^{-i\delta} \bra{\tilde{1}}H\ket{\tilde{2}}&
+                        &= \bra{\tilde{2}}H\ket{\tilde{2}}\\
+                        &= E_C&
+                        &= -A&
+                        &= E_O.
+    \end{align*}
+    Isto é,
+    \begin{equation*}
+        H = \begin{pmatrix}
+            E_C && -A\\
+            -A && E_O
+        \end{pmatrix}
+    \end{equation*}
+    é a representação de \(H\) na base \(\set{\ket{1}, \ket{2}}\), cujos vetores ainda representam o elétron localizado no carbono e no oxigênio.
+
     Com as definições dadas, sendo \(\alpha = \frac{E_C + E_O}{2}\) e \(\beta = \sqrt{A^2 + B^2}\), temos \(H = \alpha \mathds{1} + \beta T\), onde \(T\) é o operador dado por \(T\ket{1} = \cos\theta \ket{1} - \sin\theta \ket{2}\) e \(T\ket{2} = -\sin\theta\ket{1} - \cos\theta\ket{2}\). Assim, segue que um vetor não nulo é autovetor de \(T\) se e somente se é autovetor de \(H\), visto que \(\beta \neq 0\). Sejam os vetores não nulos
     \begin{equation*}
         \ket{+} = \cos\left(\frac{\theta}{2}\right)\ket{1} - \sin\left(\frac{\theta}{2}\right)\ket{2}
@@ -29,4 +53,17 @@
                  &= -\sin\left(\frac{\theta}{2}\right)\ket{1} - \cos\left(\frac{\theta}{2}\right) \ket{2} = -\ket{-}
     \end{align*}
     portanto concluímos que \(\ket{+}\) e \(\ket{-}\) são autoestados de \(H\) associados às energias \(\alpha + \beta\) e \(\alpha - \beta\), respectivamente.
+
+    Consideremos um estado arbitrário \(\ket{\psi} = \mu \ket{+} + \lambda \ket{-}\) com \(\abs{\mu}^2 + \abs{\lambda}^2 = 1\). Então
+    \begin{align*}
+        p_C &= \braket{\psi}{1}\braket{1}{\psi}&
+        p_O &= \braket{\psi}{2}\braket{2}{\psi}\\
+            &= \abs*{\braket{1}{\psi}}^2&
+            &= \abs*{\braket{2}{\psi}}^2\\
+            &= \abs*{\mu \cos\left(\frac{\theta}{2}\right) + \lambda \sin\left(\frac{\theta}{2}\right)}^2&
+            &= \abs*{-\mu \sin\left(\frac{\theta}{2}\right) + \lambda \cos\left(\frac{\theta}{2}\right)}^2\\
+            &= \textstyle\abs*{\mu}^2 \cos^2\left(\frac{\theta}{2}\right) + \Re(\conj{\mu}\lambda) \sin\theta + \abs*{\lambda}^2 \sin^2\left(\frac{\theta}{2}\right)&
+            &= \textstyle\abs*{\mu}^2 \sin^2\left(\frac{\theta}{2}\right) - \Re(\conj{\mu}\lambda) \sin\theta + \abs*{\lambda}^2 \cos^2\left(\frac{\theta}{2}\right)
+    \end{align*}
+    são as probabilidades de encontrar um elétron no carbono e no oxigênio, respectivamente.
 \end{proof}
