@@ -71,15 +71,18 @@
     \end{equation*}
     logo o espectro se aproxima de \(\set{A, \frac{2 \Delta}{3} + A, -2A + \frac{\Delta}{3}}\).
 
-    Se o íon modificado absorve nos comprimentos de \SI{620}{nm} e de \SI{450}{nm}, segue que as diferenças entre os níveis de energia correspondentes às absorções são \SI{2.00}{eV} e \SI{2.76}{eV}, isto é, \(\sim \frac{8}{3}A\) e \(\sim \frac{11}{3}A\). Notemos que estas diferenças
-    não se adéquam aos casos \(\Delta \gg A\) ou \(\Delta \ll A\). No caso geral, temos \(A_- < A < A_+\), com
+    Se o íon modificado absorve nos comprimentos de \SI{620}{nm} e de \SI{450}{nm}, segue que as diferenças entre os níveis de energia correspondentes às absorções são \SI{2.00}{eV} e \SI{2.76}{eV}, isto é, \(\sim \frac{8}{3}A\) e \(\sim \frac{11}{3}A\). Note que, como \(\Delta > 0\), temos \(A_- < A < A_+\), com
     \begin{equation*}
-        A_+ - A = \frac{3A - \Delta - \sqrt{\Delta^2 + 2A \Delta + 9A^2}}{2} \quad\text{e}\quad
+        A_+ - A = \frac{\Delta - 3A + \sqrt{\Delta^2 + 2A \Delta + 9A^2}}{2} \quad\text{e}\quad
         A_+ - A_- = \sqrt{\Delta^2 + 2A \Delta + 9A^2}.
     \end{equation*}
     Assim, temos \(A_+ - A_- = \frac{11}{3}A\) e \(A_+ - A = \frac83A\), donde segue que
     \begin{equation*}
-        \frac{8}{3}A = \frac{3A - \Delta - \frac{11}{3}A}{2} \implies \Delta = - 6A,
+        \frac{8}{3}A = \frac{\Delta -3A+ \frac{11}{3}A}{2} \implies \Delta = \frac{14}{3}A.
     \end{equation*}
-    o que não é possível, pois por hipótese \(\Delta > 0\). Concluímos que o hamiltoniano \(\tilde{H}\) não é um modelo adequado para o íon modificado.
+    Substituindo, entretanto, na expressão para \(A_+ - A_-\), temos
+    \begin{equation*}
+        \sqrt{\left(\frac{14A}{3}\right)^2 + 2\frac{14A}{3}A + 9A^2} = \frac{19}{3} A \neq \frac{11}{3}A,
+    \end{equation*}
+    portanto concluímos que o hamiltoniano \(\tilde{H}\) não é um bom modelo para o íon modificado.
 \end{proof}
