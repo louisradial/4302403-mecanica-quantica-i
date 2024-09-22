@@ -1,0 +1,48 @@
+\begin{exercício}{Divisor de feixes}{exercício3}
+    Considere um divisor de feixes -- por exemplo, um espelho semi-transparente para uma onda luminosa ou um cristal de Bragg para neutrons -- que vamos supor sem absorção. Ondas chegam como mesmo ângulo de incidência do lado esquerdo e direito do separador de feixes com amplitudes respectivas \(A_E\) e \(A_D\). As amplitudes emergentes \(B_E\) e \(B_D\), provenientes tanto de reflexão como de transmissão, são ligadas linearmente com as amplitudes incidentes por
+    \begin{equation*}
+        \begin{pmatrix}
+            B_D \\ B_E
+        \end{pmatrix}
+        = R' \begin{pmatrix}
+            A_D \\ A_E
+        \end{pmatrix},\quad\text{com}\quad
+        R' = \begin{pmatrix}
+            a & b\\c & d.
+        \end{pmatrix}
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item Mostre que quando não há absorção, \(R'\) é unitária. Deduza que \(\det(R') = \exp(i\theta)\).
+        \item Como nos interessamos por experimentos que fazem interferir as ondas emergentes, um fator de fase global não tem consequência física e podemos substituir \(R = i \exp\left(-i\frac\theta2\right)R'\) com \(\det(R) = -1\). Vamos super que não há nenhuma absorção pelo divisor de feixes. Deduza que a forma geral de \(R\) é
+            \begin{equation*}
+                R = \begin{pmatrix}
+                    r & \conj{t} \\
+                    t & -\conj{r},
+                \end{pmatrix}
+            \end{equation*}
+            com \(\abs{r}^2 + \abs{t}^2 = 1\).
+        \item Mostre também que \(R\) pode ser escrito como
+            \begin{equation*}
+                R = \begin{pmatrix}
+                    \abs{r}e^{i\chi} & \abs{t} e^{-i\phi}\\
+                    \abs{t}e^{i\phi} & -\abs{r} e^{-i\chi}\\
+                \end{pmatrix}.
+            \end{equation*}
+            Seja \(\delta_D\) diferença de fase entre a onda refletida e a onda transmitida por uma onda vindo da direita, e \(\delta_E\) a mesma diferença de fase para uma onda vindo da esquerda. Mostre que \(\delta_D + \delta_E = \pi + 2n\pi,\) com \(n \in \mathbb{Z}\). No caso em que o divisor de feixe é simétrico, \(\delta_E = \delta_D = \frac\pi2\), qual é a forma de \(R\)? Mostre que
+            \begin{equation*}
+                R = \frac1{\sqrt{2}}\begin{pmatrix}
+                    i & 1\\
+                    1 & i
+                \end{pmatrix}
+                \quad\text{ou}\quad
+                R = \frac1{\sqrt{2}}\begin{pmatrix}
+                    1 & 1\\
+                    1 & -1
+                \end{pmatrix}
+            \end{equation*}
+            no caso simétrico.
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+
+\end{proof}

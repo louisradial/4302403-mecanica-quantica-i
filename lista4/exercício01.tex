@@ -1,0 +1,54 @@
+\begin{exercício}{Sistema de dois níveis com acoplamento}{exercício1}
+    Considere um sistema de dois níveis cujo hamiltoniano é representado pela matriz
+    \begin{equation*}
+        H = \hbar \begin{pmatrix}
+            A && B\\
+            B && -A
+        \end{pmatrix}
+    \end{equation*}
+    na base \(\set{\ket{+}, \ket{-}}\).
+    \begin{enumerate}[label=(\alph*)]
+        \item Mostre que
+            \begin{equation*}
+                \ket{\chi_+} = \cos\left(\frac\theta2\right)\ket{+} + \sin\left(\frac\theta2\right)\ket{-}
+            \end{equation*}
+            é autovetor de \(H\) associado ao autovalor \(E_+ = \hbar\sqrt{A^2 + B^2}\) e que
+            \begin{equation*}
+                \ket{\chi_-} = -\sin\left(\frac\theta2\right)\ket{+} + \cos\left(\frac\theta2\right)\ket{-}
+            \end{equation*}
+            é autovetor de \(H\) associado ao autovalor \(E_- = -\hbar\sqrt{A^2 + B^2}\).
+        \item Um vetor de estado \(\ket{\varphi(t)}\) no tempo \(t\) pode ser decomposto na base \(\set{\ket{+}, \ket{-}}\) como
+            \begin{equation*}
+                \ket{\varphi(t)} = c_+(t) \ket{+} + c_-(t) \ket{-}.
+            \end{equation*}
+            Escreva o sistema de equações diferenciais acopladas que deve ser obedecido pelas componentes \(c_+(t)\) e \(c_-(t)\).
+        \item Podemos agora decompor \(\ket{\varphi(0)}\) na base \(\set{\ket{+}, \ket{-}}\) como
+            \begin{equation*}
+                \ket{\varphi(0)} = \lambda\ket{\chi_+} + \mu\ket{\chi_-},
+            \end{equation*}
+            com \(\abs{\lambda}^2 + \abs{\mu}^2 = 1\). Mostre que \(c_+(t)\) se escreve como
+            \begin{equation*}
+                c_+(t) = \lambda \exp\left(\frac{\Omega t}{2i}\right)\cos\left(\frac{\theta}{2}\right) -\mu \exp\left(-\frac{\Omega t}{2i}\right)\sin\left(\frac{\theta}{2}\right),
+            \end{equation*}
+            onde \(\hbar \Omega\) é a diferença entre os dois níveis de energia.
+        \item Mostre que
+            \begin{equation*}
+                c_\pm''(t) + \left(\frac{\Omega}{2}\right)^2 c_{\pm}(t) = 0
+            \end{equation*}
+            é satisfeita pelas componentes \(c_+(t)\) e \(c_-(t)\).
+        \item Suponha que \(c_+(0) = 0\). Calcule \(\mu, \lambda\) e \(c_+(t)\).
+        \item Mostre que
+            \begin{equation*}
+                P_+(t) = \sin^2\theta \sin^2\left(\frac{\Omega t}{2}\right) = \frac{B^2}{A^2 + B^2}\sin^2\left(\frac{\Omega t}{2}\right)
+            \end{equation*}
+            é a probabilidade de encontrar o sistema no tempo \(t\) no estado \(\ket{+}\).
+        \item Mostre que se \(c_+(0) = 1\) então
+            \begin{equation*}
+                c_+(t) = \cos\left(\frac{\Omega t}{2}\right) - i \cos\theta \sin\left(\frac{\Omega t}{2}\right).
+            \end{equation*}
+            Deduza \(P_+(t)\) e \(P_-(t)\), verificando a compatibilidade de seu resultado com o do item anterior.
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+
+\end{proof}
