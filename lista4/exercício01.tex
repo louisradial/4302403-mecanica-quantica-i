@@ -33,7 +33,7 @@
             onde \(\hbar \Omega\) é a diferença entre os dois níveis de energia.
         \item Mostre que
             \begin{equation*}
-                c_\pm''(t) + \left(\frac{\Omega}{2}\right)^2 c_{\pm}(t) = 0
+                \ddot{c}_\pm(t) + \left(\frac{\Omega}{2}\right)^2 c_{\pm}(t) = 0
             \end{equation*}
             é satisfeita pelas componentes \(c_+(t)\) e \(c_-(t)\).
         \item Suponha que \(c_+(0) = 0\). Calcule \(\mu, \lambda\) e \(c_+(t)\).
@@ -96,31 +96,93 @@
     \end{align*}
     Definindo \(\Omega = \frac{E_+ - E_-}{\hbar} = \frac{2E_+}{\hbar}\), temos
     \begin{equation*}
-        \ket{\varphi(t)} = \lambda\exp\left(\frac{\Omega t}{2i}\right)\ket{\chi_+} + \mu\exp\left(\frac{\Omega t}{2i}\right)\ket{\chi_-}.
+        \ket{\varphi(t)} = \lambda\exp\left(\frac{\Omega t}{2i}\right)\ket{\chi_+} + \mu\exp\left(-\frac{\Omega t}{2i}\right)\ket{\chi_-}.
     \end{equation*}
     Desse modo, obtemos
     \begin{equation*}
-        c_\pm(t) = \braket{\pm}{\varphi(t)} = \lambda\exp\left(\frac{\Omega t}{2i}\right)\braket{\pm}{\chi_+} + \mu\exp\left(\frac{\Omega t}{2i}\right)\braket{\pm}{\chi_-},
+        c_\pm(t) = \braket{\pm}{\varphi(t)} = \lambda\exp\left(\frac{\Omega t}{2i}\right)\braket{\pm}{\chi_+} + \mu\exp\left(\frac{-\Omega t}{2i}\right)\braket{\pm}{\chi_-},
     \end{equation*}
     donde segue que
     \begin{equation*}
         \left\{
         \begin{aligned}
-            c_+(t) = \lambda\exp\left(\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right) - \mu\exp\left(\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right)\\
-            c_-(t) = \lambda\exp\left(\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right) + \mu\exp\left(\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right)
+            c_+(t) = \lambda\exp\left(\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right) - \mu\exp\left(-\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right)\\
+            c_-(t) = \lambda\exp\left(\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right) + \mu\exp\left(-\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right)
         \end{aligned}\right.
     \end{equation*}
     são as componentes \(c_+(t)\) e \(c_-(t)\).
 \end{proof}
 \begin{proof}[Resolução do item (d)]
-
+    Temos
+    \begin{align*}
+        \diff[2]{c_+}{t} &= \frac{\Omega}{2i}\diff*{\left[\lambda \exp\left(\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right) + \mu\exp\left(-\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right)\right]}{t}\\
+                         &= \left(\frac{\Omega}{2i}\right)^2\left[\lambda \exp\left(\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right) - \mu\exp\left(-\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right)\right]\\
+                         &= -\left(\frac{\Omega}{2}\right)^2 c_+(t),
+    \end{align*}
+    e
+    \begin{align*}
+        \diff[2]{c_-}{t} &= \frac{\Omega}{2i}\diff*{\left[\lambda\exp\left(\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right) - \mu\exp\left(-\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right)\right]}{t}\\
+                         &= \left(\frac{\Omega}{2i}\right)^2\left[\lambda\exp\left(\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right) + \mu\exp\left(-\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right)\right]\\
+                         &= -\left(\frac{\Omega}{2}\right)^2 c_-(t),
+    \end{align*}
+    isto é, \(\ddot{c}_{\pm} + \left(\frac{\Omega}{2}\right)^2 c_{\pm} = 0\).
 \end{proof}
 \begin{proof}[Resolução do item (e)]
-
+    Como \(c_+(0) = 0,\) o estado inicial é \(\ket{\phi(0)} = \ket{-}\), logo
+    \begin{equation*}
+        \lambda = \braket{\chi_+}{-} = \sin\left(\frac\theta2\right)
+        \quad\text{e}\quad
+        \mu = \braket{\chi_-}{-} = \cos\left(\frac\theta2\right).
+    \end{equation*}
+    Assim, as componentes são dadas por
+    \begin{equation*}
+        \left\{
+        \begin{aligned}
+            c_+(t) &= \frac12\sin{\theta}\left[\exp\left(\frac{\Omega t}{2i}\right) - \exp\left(-\frac{\Omega t}{2i}\right)\right] = -i \sin{\theta}\sin\left(\frac{\Omega t}{2}\right)\\
+            c_-(t) &= \exp\left(\frac{\Omega t}{2i}\right)\sin^2\left(\frac\theta2\right) + \exp\left(-\frac{\Omega t}{2i}\right)\cos^2\left(\frac\theta2\right)
+        \end{aligned}\right.
+    \end{equation*}
+    no instante \(t\).
 \end{proof}
 \begin{proof}[Resolução do item (f)]
-
+    No caso em que \(c_+(0) = 0\), temos
+    \begin{align*}
+        P_+(t) &= \abs*{\braket{+}{\varphi(t)}}^2 = \conj{c_+(t)}c_+(t)\\
+               &= \left[i\sin\theta\sin\left(\frac{\Omega t}{2}\right)\right]\left[-i\sin\theta\sin\left(\frac{\Omega t}{2}\right)\right]\\
+               &= \sin^2\left(\frac{\Omega t}{2}\right) \sin^2\theta\\
+               &= \frac{B^2}{A^2 + B^2}\sin^2\left(\frac{\Omega t}{2}\right)
+    \end{align*}
+    como a probabilidade de encontrar o sistema no estado \(\ket{+}\).
 \end{proof}
 \begin{proof}[Resolução do item (g)]
+    No caso em que \(c_+(0) = 1,\) temos \(\lambda = \cos\left(\frac{\theta}{2}\right)\) e \(\mu = \sin\left(\frac\theta2\right)\), então as componentes são dadas por
+    \begin{equation*}
+        \left\{
+        \begin{aligned}
+            c_+(t) &= \exp\left(\frac{\Omega t}{2i}\right)\cos^2\left(\frac\theta2\right) - \exp\left(-\frac{\Omega t}{2i}\right)\sin^2\left(\frac\theta2\right)\\
+            c_-(t) &= \frac12\exp\left(\frac{\Omega t}{2i}\right)\sin\theta + \frac12\exp\left(-\frac{\Omega t}{2i}\right)\sin\theta = \sin\theta \cos\left(\frac{\Omega t}{2}\right)
+        \end{aligned}\right.,
+    \end{equation*}
+    portanto a probabilidade de encontrar \(\ket{\varphi(t)}\) no estado \(\ket{+}\) é
+    \begin{equation*}
+        P_+(t) = 1 - P_-(t) = 1 - \conj{c_-(t)}c_-(t) = 1 - \sin^2\theta \cos^2\left(\right)
+    \end{equation*}
 
+    Notemos que
+    \begin{equation*}
+        P_\pm(t) = \abs{\braket{\pm}{\varphi(t)}}^2 = \abs*{c_\pm(t)}^2 = \conj{c_\pm(t)}c_{\pm}(t)
+    \end{equation*}
+    então
+    \begin{align*}
+        P_+(t) &= {\textstyle\left[\conj{\lambda}\exp\left(-\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right) - \conj{\mu}\exp\left(\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right)\right]\left[\lambda\exp\left(\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right) - \mu\exp\left(-\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right)\right]}\\
+               &= \abs{\lambda}^2 \cos^2\left(\frac\theta2\right) - \frac12 \conj{\lambda}\mu \exp\left(-\frac{\Omega t}{i}\right) \sin\theta - \frac12 \conj{\mu}\lambda \exp\left(\frac{\Omega t}{i}\right) \sin\theta + \abs{\mu}^2 \sin^2\left(\frac\theta2\right)\\
+               &= \abs{\lambda}^2\cos^2\left(\frac\theta2\right) - \Re\left[\conj{\mu} \lambda \exp\left(\frac{\Omega t}{i}\right) \sin\theta\right] + \abs{\mu}^2 \sin^2\left(\frac\theta2\right)
+    \end{align*}
+    e
+    \begin{align*}
+        P_-(t) &= {\textstyle\left[\conj{\lambda}\exp\left(-\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right) + \conj{\mu}\exp\left(\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right)\right]\left[\lambda\exp\left(\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right) + \mu\exp\left(-\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right)\right]}\\
+               &= \abs{\lambda}^2\sin^2\left(\frac\theta2\right) + \frac12\conj{\lambda}\mu\exp\left(-\frac{\Omega t}{i}\right)\sin\theta + \frac12 \conj{\mu} \lambda \exp\left(\frac{\Omega t}{i}\right)\sin\theta + \abs{\mu}^2\cos^2\left(\frac\theta2\right)\\
+               &=\abs{\lambda}^2\sin^2\left(\frac{\theta}{2}\right) + \Re\left[\conj{\mu}\lambda\exp\left(\frac{\Omega t}{i}\right)\sin\theta\right] + \abs{\mu}^2\cos^2\left(\frac\theta2\right)
+    \end{align*}
+    são as probabilidades de encontrar o estado \(\ket{\varphi(t)}\) nos estados \(\ket{+}\) e \(\ket{-}\), respectivamente, com \(P_+(t) + P_-(t) = 1\) para todo \(t\).
 \end{proof}
