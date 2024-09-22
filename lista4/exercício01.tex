@@ -49,6 +49,78 @@
             Deduza \(P_+(t)\) e \(P_-(t)\), verificando a compatibilidade de seu resultado com o do item anterior.
     \end{enumerate}
 \end{exercício}
-\begin{proof}[Resolução]
+\begin{proof}[Resolução do item (a)]
+    Definamos \(\theta \in [0,2\pi)\) por \(A = \sqrt{A^2 + B^2}\cos\theta\) e \(B = \sqrt{A^2 + B^2}\sin\theta\), de modo que
+    \begin{equation*}
+        H = E_+ \begin{pmatrix}
+            \cos\theta & \sin\theta\\
+            \sin\theta & -\cos\theta
+        \end{pmatrix}
+    \end{equation*}
+    é a representação do hamiltoniano na base \(\set{\ket{+},\ket{-}}\), com \(E_+ = \hbar\sqrt{A^2 +B^2}\). Consideremos os vetores \(\ket{\chi_+} = \cos\left(\frac\theta2\right)\ket{+} + \sin\left(\frac\theta2\right)\ket{-}\) e \(\ket{\chi_-} = -\sin\left(\frac\theta2\right)\ket{+} + \cos\left(\frac\theta2\right)\ket{-}\), então
+    \begin{align*}
+        H\ket{\chi_+} &= E_+\left\{\left[\cos\theta\cos\left(\frac\theta2\right) + \sin\theta\sin\left(\frac{\theta}2\right)\right]\ket{+} + \left[\sin\theta\cos\left(\frac\theta2\right) - \cos\theta\sin\left(\frac{\theta}2\right)\right]\right\}\\
+                      &= E_+\left[\cos\left(\theta - \frac\theta2\right)\ket{+} + \sin\left(\theta - \frac{\theta}{2}\right)\ket{-}\right]\\
+                      &= E_+\ket{\chi_+}
+    \end{align*}
+    e
+    \begin{align*}
+        H\ket{\chi_-} &= E_+\left\{\left[-\cos\theta\sin\left(\frac\theta2\right) + \sin\theta\cos\left(\frac{\theta}2\right)\right]\ket{+} + \left[-\sin\theta\sin\left(\frac\theta2\right) - \cos\theta\cos\left(\frac{\theta}2\right)\right]\right\}\\
+                      &= -E_+\left[\sin\left(\theta - \frac\theta2\right)\ket{+} + \cos\left(\theta - \frac{\theta}{2}\right)\ket{-}\right]\\
+                      &= -E_+\ket{\chi_-}
+    \end{align*}
+    isto é, \(\ket{\chi_+}\) é o autovetor de \(H\) associado ao autovalor \(E_+\) e \(\ket{\chi_-}\) é o autovetor de \(H\) associado ao autovalor \(E_- = - E_+\).
+\end{proof}
+
+\begin{proof}[Resolução do item (b)]
+    Da evolução temporal para o estado \(\ket{\varphi(t)}\),
+    \begin{equation*}
+        i \hbar \diff*{\ket{\varphi(t)}}{t} = H \ket{\phi(t)},
+    \end{equation*}
+    temos o sistema de equações diferenciais
+    \begin{equation*}
+        \left\{
+        \begin{aligned}
+            i\hbar \diff{c_+}{t} = E_+ \cos\theta c_+(t) + E_+ \sin\theta c_-(t)\\
+            i\hbar \diff{c_-}{t} = E_+ \sin\theta c_+(t) - E_+ \cos\theta c_-(t)
+        \end{aligned}\right.
+    \end{equation*}
+    que as componentes devem satisfazer.
+\end{proof}
+\begin{proof}[Resolução do item (c)]
+    Decompondo na base de autoestados do hamiltoniano, segue que
+    \begin{align*}
+        \ket{\varphi(t)} &= \exp\left(\frac{Ht}{i\hbar}\right)\ket{\varphi(0)}\\
+                         &= \lambda\exp\left(\frac{Ht}{i\hbar}\right)\ket{\chi_+} + \mu\exp\left(\frac{Ht}{i\hbar}\right)\ket{\chi_-}\\
+                         &= \lambda\exp\left(\frac{E_+t}{i\hbar}\right)\ket{\chi_+} + \mu\exp\left(\frac{E_-t}{i\hbar}\right)\ket{\chi_-}.
+    \end{align*}
+    Definindo \(\Omega = \frac{E_+ - E_-}{\hbar} = \frac{2E_+}{\hbar}\), temos
+    \begin{equation*}
+        \ket{\varphi(t)} = \lambda\exp\left(\frac{\Omega t}{2i}\right)\ket{\chi_+} + \mu\exp\left(\frac{\Omega t}{2i}\right)\ket{\chi_-}.
+    \end{equation*}
+    Desse modo, obtemos
+    \begin{equation*}
+        c_\pm(t) = \braket{\pm}{\varphi(t)} = \lambda\exp\left(\frac{\Omega t}{2i}\right)\braket{\pm}{\chi_+} + \mu\exp\left(\frac{\Omega t}{2i}\right)\braket{\pm}{\chi_-},
+    \end{equation*}
+    donde segue que
+    \begin{equation*}
+        \left\{
+        \begin{aligned}
+            c_+(t) = \lambda\exp\left(\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right) - \mu\exp\left(\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right)\\
+            c_-(t) = \lambda\exp\left(\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right) + \mu\exp\left(\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right)
+        \end{aligned}\right.
+    \end{equation*}
+    são as componentes \(c_+(t)\) e \(c_-(t)\).
+\end{proof}
+\begin{proof}[Resolução do item (d)]
+
+\end{proof}
+\begin{proof}[Resolução do item (e)]
+
+\end{proof}
+\begin{proof}[Resolução do item (f)]
+
+\end{proof}
+\begin{proof}[Resolução do item (g)]
 
 \end{proof}
