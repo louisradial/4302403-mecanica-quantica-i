@@ -147,7 +147,7 @@
 \begin{proof}[Resolução do item (f)]
     No caso em que \(c_+(0) = 0\), temos
     \begin{align*}
-        P_+(t) &= \abs*{\braket{+}{\varphi(t)}}^2 = \conj{c_+(t)}c_+(t)\\
+        P_{-\to+}(t) &= \abs*{\braket{+}{\varphi(t)}}^2 = \conj{c_+(t)}c_+(t)\\
                &= \left[i\sin\theta\sin\left(\frac{\Omega t}{2}\right)\right]\left[-i\sin\theta\sin\left(\frac{\Omega t}{2}\right)\right]\\
                &= \sin^2\left(\frac{\Omega t}{2}\right) \sin^2\theta\\
                &= \frac{B^2}{A^2 + B^2}\sin^2\left(\frac{\Omega t}{2}\right)
@@ -155,34 +155,35 @@
     como a probabilidade de encontrar o sistema no estado \(\ket{+}\).
 \end{proof}
 \begin{proof}[Resolução do item (g)]
-    No caso em que \(c_+(0) = 1,\) temos \(\lambda = \cos\left(\frac{\theta}{2}\right)\) e \(\mu = \sin\left(\frac\theta2\right)\), então as componentes são dadas por
+    No caso em que \(c_+(0) = 1,\) o estado inicial é \(\ket{\varphi(0)} = \ket{+}\), logo
+    \begin{equation*}
+        \lambda = \braket{\chi_+}{+} = \cos\left(\frac\theta2\right)
+        \quad\text{e}\quad
+        \mu = \braket{\chi_-}{+} = -\sin\left(\frac\theta2\right).
+    \end{equation*}
+    Então as componentes são dadas por
     \begin{equation*}
         \left\{
         \begin{aligned}
-            c_+(t) &= \exp\left(\frac{\Omega t}{2i}\right)\cos^2\left(\frac\theta2\right) - \exp\left(-\frac{\Omega t}{2i}\right)\sin^2\left(\frac\theta2\right)\\
-            c_-(t) &= \frac12\exp\left(\frac{\Omega t}{2i}\right)\sin\theta + \frac12\exp\left(-\frac{\Omega t}{2i}\right)\sin\theta = \sin\theta \cos\left(\frac{\Omega t}{2}\right)
-        \end{aligned}\right.,
+            c_+(t) &= \exp\left(\frac{\Omega t}{2i}\right)\cos^2\left(\frac\theta2\right) + \exp\left(-\frac{\Omega t}{2i}\right)\sin^2\left(\frac\theta2\right)\\
+            c_-(t) &= \frac12\exp\left(\frac{\Omega t}{2i}\right)\sin\theta - \frac12\exp\left(-\frac{\Omega t}{2i}\right)\sin\theta = -i \sin\theta \sin\left(\frac{\Omega t}{2}\right).
+        \end{aligned}\right.
     \end{equation*}
-    portanto a probabilidade de encontrar \(\ket{\varphi(t)}\) no estado \(\ket{+}\) é
-    \begin{equation*}
-        P_+(t) = 1 - P_-(t) = 1 - \conj{c_-(t)}c_-(t) = 1 - \sin^2\theta \cos^2\left(\right)
-    \end{equation*}
-
     Notemos que
-    \begin{equation*}
-        P_\pm(t) = \abs{\braket{\pm}{\varphi(t)}}^2 = \abs*{c_\pm(t)}^2 = \conj{c_\pm(t)}c_{\pm}(t)
-    \end{equation*}
-    então
     \begin{align*}
-        P_+(t) &= {\textstyle\left[\conj{\lambda}\exp\left(-\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right) - \conj{\mu}\exp\left(\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right)\right]\left[\lambda\exp\left(\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right) - \mu\exp\left(-\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right)\right]}\\
-               &= \abs{\lambda}^2 \cos^2\left(\frac\theta2\right) - \frac12 \conj{\lambda}\mu \exp\left(-\frac{\Omega t}{i}\right) \sin\theta - \frac12 \conj{\mu}\lambda \exp\left(\frac{\Omega t}{i}\right) \sin\theta + \abs{\mu}^2 \sin^2\left(\frac\theta2\right)\\
-               &= \abs{\lambda}^2\cos^2\left(\frac\theta2\right) - \Re\left[\conj{\mu} \lambda \exp\left(\frac{\Omega t}{i}\right) \sin\theta\right] + \abs{\mu}^2 \sin^2\left(\frac\theta2\right)
+        c_+(t) &= \left[\cos\left(-\frac{\Omega t}{2}\right) + i\sin\left(-\frac{\Omega t}{2}\right)\right]\cos^2\left(\frac{\theta}{2}\right) +  \left[\cos\left(\frac{\Omega t}{2}\right) + i\sin\left(\frac{\Omega t}{2}\right)\right]\sin^2\left(\frac{\theta}{2}\right)\\
+               &= \cos\left(\frac{\Omega t}{2}\right) \left[\cos^2\left(\frac{\theta}{2}\right) + \sin^2\left(\frac{\theta}{2}\right)\right] - i\sin \left(\frac{\Omega t}{2}\right) \left[\cos^2\left(\frac{\theta}{2}\right) - \sin^2\left(\frac{\theta}{2}\right)\right]\\
+               &= \cos\left(\frac{\Omega t}{2}\right) - i \sin\left(\frac{\Omega t}{2}\right)\cos\theta
     \end{align*}
-    e
+    e então
     \begin{align*}
-        P_-(t) &= {\textstyle\left[\conj{\lambda}\exp\left(-\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right) + \conj{\mu}\exp\left(\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right)\right]\left[\lambda\exp\left(\frac{\Omega t}{2i}\right)\sin\left(\frac\theta2\right) + \mu\exp\left(-\frac{\Omega t}{2i}\right)\cos\left(\frac\theta2\right)\right]}\\
-               &= \abs{\lambda}^2\sin^2\left(\frac\theta2\right) + \frac12\conj{\lambda}\mu\exp\left(-\frac{\Omega t}{i}\right)\sin\theta + \frac12 \conj{\mu} \lambda \exp\left(\frac{\Omega t}{i}\right)\sin\theta + \abs{\mu}^2\cos^2\left(\frac\theta2\right)\\
-               &=\abs{\lambda}^2\sin^2\left(\frac{\theta}{2}\right) + \Re\left[\conj{\mu}\lambda\exp\left(\frac{\Omega t}{i}\right)\sin\theta\right] + \abs{\mu}^2\cos^2\left(\frac\theta2\right)
+        P_{+\to+}(t) = \abs*{c_+(t)}^2 &= \left[\cos\left(\frac{\Omega t}{2}\right) + i \sin\left(\frac{\Omega t}{2}\right)\cos\theta\right]\left[\cos\left(\frac{\Omega t}{2}\right) - i \sin\left(\frac{\Omega t}{2}\right)\cos\theta\right]\\
+                                 &= \cos^2\left(\frac{\Omega t}{2}\right) + \sin^2\left(\frac{\Omega t}{2}\right)\cos^2\theta\\
+                                 &= 1 - \sin^2\left(\frac{\Omega t}{2}\right)\sin^2\theta
     \end{align*}
-    são as probabilidades de encontrar o estado \(\ket{\varphi(t)}\) nos estados \(\ket{+}\) e \(\ket{-}\), respectivamente, com \(P_+(t) + P_-(t) = 1\) para todo \(t\).
+    é a probabilidade de encontrar o sistema no estado \(\ket{+}\). Temos também
+    \begin{align*}
+        P_{+\to-}(t) = \abs*{c_-(t)}^2 = \sin^2\theta \sin^2\left(\frac{\Omega t}{2}\right),
+    \end{align*}
+    satisfazendo \(P_{+\to+}(t) = P_{+\to-}(t) = 1\). Os resultados obtidos para as probabilidades nos casos \(c_+(0) = 0\) e \(c_+(0) = 1\) são compatíveis no sentido em que as probabilidades de transição e de permanência são as mesmas, isto é, \(P_{+\to+}(t) = P_{-\to-}(t)\) e \(P_{+\to-}(t) = P_{-\to+}(t)\) para todo \(t\).
 \end{proof}
