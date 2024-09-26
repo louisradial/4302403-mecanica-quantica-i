@@ -3,8 +3,19 @@
     \begin{equation*}
         \ket{\psi(t = 0)} = \frac{1}{\sqrt{2}}\left(\ket{+} + i \ket{-}\right),
     \end{equation*}
-    em que \(\ket+\) e \(\ket{-}\) são os autovetores de um certo operador \(S_z\) associados aos autovalores \(\alpha\) e \(-\alpha\). O hamiltoniano desse sistema tem a forma \(H = - \omega S_z\). Calcule o vetor de estado \(\ket{\psi(t)}\). Qual a probabilidade de medir esses estado físico com o valor de \(S_z\) igual a \(\alpha\)? Qual a probabilidade de que uma medida consecutiva da energia do sistema forneça o valor \(\omega \alpha\)?
+    em que \(\ket+\) e \(\ket{-}\) são os autovetores de um certo operador \(S_z\) associados aos autovalores \(\alpha\) e \(-\alpha\). O hamiltoniano desse sistema tem a forma \(H = - \omega S_z\). Calcule o vetor de estado \(\ket{\psi(t)}\). Qual a probabilidade de medir esse estado físico com o valor de \(S_z\) igual a \(\alpha\)? Qual a probabilidade de que uma medida consecutiva da energia do sistema forneça o valor \(\omega \alpha\)?
 \end{exercício}
 \begin{proof}[Resolução]
+    É claro que \(\ket{+}\) e \(\ket{-}\) são autoestados do hamiltoniano associados aos autovalores \(- \omega \alpha\) e \(\omega \alpha\), respectivamente. Desse modo, a evolução temporal do estado inicial \(\ket{\psi(0)}\) é
+    \begin{align*}
+        \ket{\psi(t)} &= \frac1{\sqrt{2}}\left[\exp\left(\frac{tH}{i\hbar}\right)\ket+ + i \exp\left(\frac{tH}{i\hbar}\right)\ket-\right]\\
+                      &= \frac1{\sqrt{2}}\left[\exp\left(\frac{i \omega \alpha t}{\hbar}\right)\ket+ + i\exp\left(-\frac{i\omega \alpha t}{\hbar}\right)\ket-\right]
+    \end{align*}
+    no instante \(t\).
 
+    A probabilidade de medir o estado com valor de \(S_z\) igual a \(\alpha\) no instante \(t_0\) é
+    \begin{equation*}
+        P_{\alpha}(t_0) = \abs{\braket{+}{\psi(t)}}^2 = \frac12.
+    \end{equation*}
+    Sendo \(\ket{\varphi(t_0)}\) o estado imediatamente após a medida de \(S_z\), temos \(\ket{\varphi(t_0)} = \ket{+}\) no caso em que a medida foi \(\alpha\) ou \(\ket{\varphi(t_0)} = \ket{-}\) caso a medida tenha sido \(-\alpha\). Então \(\ket{\varphi(t_0)}\) é autoestado do hamiltoniano, portanto uma medida subsequente de energia será ou \(-\alpha \omega\) no primeiro caso ou \(\alpha \omega\) no segundo, com probabilidade unitária para qualquer instante de tempo \(t > t_0\). Assim, a probabilidade de medir a energia \(\omega \alpha\) após medir o valor de \(S_z\) é \(\frac12\), pois equivale à probabilidade de medir \(S_z\) com valor \(-\alpha\) no instante \(t_0\).
 \end{proof}
