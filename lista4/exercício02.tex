@@ -1,3 +1,20 @@
+\begin{lemma}{Igualdade na desigualdade de Cauchy-Schwarz}{cauchy_schwarz_equality}
+    Seja \((V, \inner{\noarg}{\noarg})\) um espaço de produto interno. A igualdade \(\abs*{\inner{x}{y}}^2 = \inner{x}{x}\inner{y}{y}\) é satisfeita se e somente se \(\set{x,y} \subset V\) é linearmente dependente.
+\end{lemma}
+\begin{proof}
+    Suponha \(\set{x,y} \subset V\) linearmente dependente. Se um dos vetores é o vetor nulo, então a igualdade é satisfeita trivialmente. Podemos assumir sem perda de generalidade que \(x, y \in V\setminus\set{0}\), então existe \(\alpha \in \mathbb{C}\setminus\set{0}\) tal que \(\alpha x = y\). Assim, temos
+    \begin{equation*}
+        \abs*{\inner{x}{y}}^2 = \inner{x}{y}\inner{y}{x} = \inner{x}{\alpha x}\inner*{y}{\frac1\alpha y} = \inner{x}{x} \inner{y}{y},
+    \end{equation*}
+    isto é, a igualdade é satisfeita.
+
+    Suponha que \(\abs*{\inner{x}{y}} = \inner{x}{x} \inner{y}{y}\). Novamente, se algum dos dois vetores é o vetor nulo, então \(\set{x,y}\) é trivialmente linearmente dependente, portanto podemos assumir sem perda de generalidade que \(x, y \in V \setminus\set{0}\). Consideremos
+    \begin{equation*}
+        \inner*{y - \frac{\inner{x}{y}}{\inner{x}{x}}x}{y - \frac{\inner{x}{y}}{\inner{x}{x}}x} = \inner{y}{y} - \frac{\abs*{\inner{x}{y}}}{\inner{x}{x}}.
+    \end{equation*}
+    Por hipótese, o lado direito é nulo, portanto pelo produto interno ser positivo definido temos \(y - \frac{\inner{x}{y}}{\inner{x}{x}}x = 0\), logo \(\set{x,y}\) é linearmente dependente.
+\end{proof}
+
 \begin{exercício}{Condição necessária e suficiente para autovetor de um operador auto-adjunto}{exercício2}
     Mostre que uma condição necessária e suficiente para que \(\ket\varphi\) seja um autovetor de um operador auto-adjunto \(A\) é que o desvio padrão \(\Delta_\varphi A = 0\).
 \end{exercício}
