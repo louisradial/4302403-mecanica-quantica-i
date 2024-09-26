@@ -2,5 +2,25 @@
     Mostre que uma condição necessária e suficiente para que \(\ket\varphi\) seja um autovetor de um operador auto-adjunto \(A\) é que o desvio padrão \(\Delta_\varphi A = 0\).
 \end{exercício}
 \begin{proof}[Resolução]
+    Suponha que \(\ket{\varphi}\) é autovetor do operador auto-adjunto \(A\) associado ao autovalor \(a \in \mathbb{R}\), então
+    \begin{align*}
+        \Delta_\varphi A &= \bra{\varphi}A^2\ket{\varphi} - \left(\bra{\varphi}A\ket{\varphi}\right)^2\\
+                         &= a\bra{\varphi}A\ket{\varphi} - \left(a\braket{\varphi}{\varphi}\right)^2\\
+                         &= a^2\braket{\varphi}{\varphi} - a^2 = 0,
+    \end{align*}
+    dado que \(\braket{\varphi}{\varphi} = 1\).
 
+    Suponha que o desvio padrão do operador auto-adjunto \(A\) no estado \(\ket{\varphi}\) é zero. Como \(A\) é auto-adjunto, temos
+    \begin{equation*}
+        \bra{\varphi}A^2\ket{\varphi} = \braket{A^\dagger \varphi}{A\varphi} = \braket{A\varphi}{A\varphi} = \norm{A\varphi}^2
+    \end{equation*}
+    então, por hipótese, obtemos
+    \begin{equation*}
+        \braket{\varphi}{A\varphi}^2 = \norm{A\varphi}^2 > 0
+    \end{equation*}
+    e podemos concluir que \(\braket{\varphi}{A \varphi} \in \mathbb{R}\). Suponhamos por contradição que \(\set{\ket{A\varphi}, \ket{\varphi}}\) é linearmente independente, portanto a desigualdade de Cauchy-Schwarz é uma inequação estrita,
+    \begin{equation*}
+        \norm{A \phi}^2 = \braket{\varphi}{A \varphi}^2 = \abs*{\braket{\varphi}{A \varphi}}^2 < \norm{\varphi}^2 \norm{A \phi}^2 = \norm{A \phi}^2,
+    \end{equation*}
+    o que é um absurdo. Esta contradição nos mostra que \(\set{\ket{A \varphi}, \ket{\varphi}}\) é linearmente dependente, isto é, existe \(a \in \mathbb{C}\) tal que \(A\ket{\varphi} = a \ket{\varphi}\), portanto \(\ket{\varphi}\) é autovetor de \(A\) associado ao autovalor \(a \in \mathbb{R}\).
 \end{proof}
