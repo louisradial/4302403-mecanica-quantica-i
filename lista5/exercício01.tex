@@ -1,16 +1,24 @@
 \begin{exercício}{}{exercício1}
     Uma partícula de massa \(m\) está no estado representado por
     \begin{equation*}
-        \braket{x}{\psi(t)} = \psi(x,t) = A\exp\left[-\frac{max^2}{\hbar} - iat\right],
+        \braket{x}{\psi(t)} = \psi(x,t) = A\exp\left[-a\left(\frac{mx^2}{\hbar} - it\right)\right],
     \end{equation*}
     onde \(a\) e \(A\) são constantes reais positivas.
     \begin{enumerate}[label=(\alph*)]
         \item Encontre \(A\).
-        \item Para que energia potencial \(V(x)\) esse estado satisfaz a equação de Schrödinger?
+        \item Para que energia potencial \(V(x)\) esse estado satisfaz a equação de evolução temporal?
         \item Calcule os valores esperados de \(x, x^2, p\) e \(p^2\).
         \item Encontre \(\Delta x\) e \(\Delta p\). O produto é consistente com uma relação de incerteza de Heisenberg?
     \end{enumerate}
 \end{exercício}
-\begin{proof}[Resolução]
-
+\begin{proof}[Resolução do item (a)]
+    A norma \(L^2(\mathbb{R})\) da função de onda \(\psi(x, t)\) é
+    \begin{equation*}
+        \norm{\psi}^2 = \int_{\mathbb{R}} \dli{x} \conj{\psi}(x,t)\psi(x,t) =\abs{A}^2 \int_{\mathbb{R}} \dli{x} \exp\left(-\frac{2amx^2}{\hbar}\right) = \abs{A}^2 \sqrt{\frac{\pi \hbar}{2 a m}}.
+    \end{equation*}
+    Impondo \(\norm{\psi} = 1\), obtemos \(\abs{A} = \left(\frac{\pi\hbar}{2 am}\right)^{\frac14}\). Portanto, podemos escolher \(A = \left(\frac{\pi\hbar}{2 am}\right)^{\frac14}\), de modo que
+    \begin{equation*}
+        \psi(x,t) = \left(\frac{\pi\hbar}{2 am}\right)^{\frac14} \exp\left[-a\left(\frac{mx^2}{\hbar} + it\right)\right]
+    \end{equation*}
+    é a função de onda.
 \end{proof}
