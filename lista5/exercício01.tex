@@ -1,7 +1,7 @@
-\begin{exercício}{}{exercício1}
+\begin{exercício}{Estado fundamental do oscilador harmônico}{exercício1}
     Uma partícula de massa \(m\) está no estado representado por
     \begin{equation*}
-        \braket{x}{\psi(t)} = \psi(x,t) = A\exp\left[-a\left(\frac{mx^2}{\hbar} - it\right)\right],
+        \braket{x}{\psi(t)} = \psi(x,t) = A\exp\left[-a\left(\frac{mx^2}{\hbar} + it\right)\right],
     \end{equation*}
     onde \(a\) e \(A\) são constantes reais positivas.
     \begin{enumerate}[label=(\alph*)]
@@ -16,9 +16,62 @@
     \begin{equation*}
         \norm{\psi}^2 = \int_{\mathbb{R}} \dli{x} \conj{\psi}(x,t)\psi(x,t) =\abs{A}^2 \int_{\mathbb{R}} \dli{x} \exp\left(-\frac{2amx^2}{\hbar}\right) = \abs{A}^2 \sqrt{\frac{\pi \hbar}{2 a m}}.
     \end{equation*}
-    Impondo \(\norm{\psi} = 1\), obtemos \(\abs{A} = \left(\frac{\pi\hbar}{2 am}\right)^{\frac14}\). Portanto, podemos escolher \(A = \left(\frac{\pi\hbar}{2 am}\right)^{\frac14}\), de modo que
+    Impondo \(\norm{\psi} = 1\), obtemos \(\abs{A} = \left(\frac{\pi\hbar}{2 am}\right)^{-\frac14}\). Portanto, podemos escolher \(A = \left(\frac{\pi\hbar}{2 am}\right)^{-\frac14}\), de modo que
     \begin{equation*}
-        \psi(x,t) = \left(\frac{\pi\hbar}{2 am}\right)^{\frac14} \exp\left[-a\left(\frac{mx^2}{\hbar} + it\right)\right]
+        \psi(x,t) = \left(\frac{\pi\hbar}{2 am}\right)^{-\frac14} \exp\left[-a\left(\frac{mx^2}{\hbar} + it\right)\right]
     \end{equation*}
     é a função de onda.
+\end{proof}
+\begin{proof}[Resolução do item (b)]
+    Notemos que
+    \begin{equation*}
+        \diffp{\psi(x,t)}{t} = -ia\psi(x,t),\quad\diffp{\psi(x,t)}{x} = -\frac{2a m}{\hbar}x\psi(x,t),\quad\text{e}\quad\diffp[2]{\psi(x,t)}{x} = \left(\frac{4a^2 m^2}{\hbar^2}x^2 - \frac{2a m}{\hbar}\right)\psi(x,t)
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        V(x) \psi(x, t) = i\hbar \diffp{\psi}{t} + \frac{\hbar^2}{2m}\diffp[2]{\psi}{x} = 2m a^2 x^2 \psi(x, t),
+    \end{equation*}
+    isto é, \(V(x) = 2m a^2 x^2\) é a energia potencial, uma vez que \(\psi(x, t) \neq 0\).
+\end{proof}
+\begin{proof}[Resolução dos itens (c) e (d)]
+    O valor esperado de \(x\) é
+    \begin{equation}
+        \mean{x} = \int_{\mathbb{R}}\dli{x}\conj{\psi}(x,t) x\psi(x,t) = \int_{\mathbb{R}} \dli{x} \abs{A}^2 x \exp\left(-\frac{2amx^2}{\hbar}\right) = 0
+    \end{equation}
+    e de \(x^2\) é
+    \begin{align*}
+        \mean{x^2} = \int_{\mathbb{R}}\dli{x}\conj{\psi}(x,t) x^2\psi(x,t)
+        &= \int_{\mathbb{R}} \dli{x} \abs{A}^2x^2 \exp\left(-\frac{2amx^2}{\hbar}\right)\\
+        &= \frac{\hbar}{4a m}\int_{\mathbb{R}} \dli{x} \abs{A}^2 \exp\left(-\frac{2amx^2}{\hbar}\right)\\
+        &= \frac{\hbar}{4am},
+    \end{align*}
+    portanto
+    \begin{equation*}
+        \Delta x = \sqrt{\mean{x^2} - \mean{x}^2} = \frac12\sqrt{\frac{\hbar}{am}}
+    \end{equation*}
+    é o desvio padrão da posição.
+
+    O valor esperado de \(p_x\) é
+    \begin{align*}
+        \mean{p_x} = \int_{\mathbb{R}}\dli{x}\conj{\psi}(x,t) p_x \psi(x,t)
+        &= -i\hbar \int_{\mathbb{R}} \dli{x} \conj{\psi}(x,t) \diffp{\psi(x,t)}{x}\\
+        &= -i\hbar \int_{\mathbb{R}} \dli{x} \conj{\psi}(x,t) \left(-\frac{2am}{\hbar}x\psi(x,t)\right)\\
+        &= 2iam \mean{x} = 0
+    \end{align*}
+    e de \(p_x^2\) é
+    \begin{align*}
+        \mean{p_x^2} = \int_{\mathbb{R}} \dli{x} \conj{\psi}(x,t)p_x^2\psi(x,t)
+        &= -\hbar^2\int_{\mathbb{R}} \conj{\psi}(x,t)\diffp[2]{\psi}{x}\\
+        &= -\int_{\mathbb{R}} \dli{x} \conj{\psi}(x,t)\left(4a^2 m^2x^2 - 2am\hbar\right)\psi(x,t)\\
+        &= -\left(4a^2 m^2 \mean{x^2} - 2\hbar am\right) = \hbar am,
+    \end{align*}
+    portanto
+    \begin{equation*}
+        \Delta p_x = \sqrt{\mean{p_x^2}- \mean{p_x}^2} = \sqrt{\hbar am}
+    \end{equation*}
+    é o desvio padrão do momento. Notemos que
+    \begin{equation*}
+        \Delta p_x \Delta x = \frac12 \hbar,
+    \end{equation*}
+    em acordo com a desigualdade de Heisenberg.
 \end{proof}
