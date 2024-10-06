@@ -1,4 +1,4 @@
-\begin{exercício}{}{exercício2}
+\begin{exercício}{Partículas em uma caixa unidimensional}{exercício2}
     Mil partículas estão confinadas em uma caixa unidimensional, com paredes em \(x = 0\) e \(x = a\). Em \(t = 0\) o estado de cada partícula é representado por
     \begin{equation*}
         \braket{x}{\psi(0)} = \psi(x,0) = A x(x-a).
@@ -11,6 +11,78 @@
         \item Quantas partículas têm energia \(E_5\) em \(t = 0?\)
     \end{enumerate}
 \end{exercício}
-\begin{proof}[Resolução]
+\begin{proof}[Resolução do item (a)]
+    Da condição de normalização temos
+    \begin{align*}
+        1 = \norm{\psi(0)}^2 = \braket{\psi(0)}{\psi(0)} &= \int_{\mathbb{R}} \dli{x} \braket{\psi(0)}{x}\braket{x}{\psi(0)}\\
+                                                         &= \abs{A}^2\int_0^a \dli{x}x^2(x-a)^2 = \abs{A}^2 a^5\left(\frac15- \frac12 + \frac13\right)\\
+                                                         &= \frac{a^5}{30}\abs{A}^2,
+    \end{align*}
+    isto é, \(\abs{A} = \sqrt{\frac{30}{a^5}}\). Como uma fase global não tem relevância física, podemos escolher \(A = \abs{A}\).
+\end{proof}
+\begin{proof}[Resolução do item (b)]
+    Como as partículas estão confinadas na caixa, temos \(\varphi(x,t) = 0\) sempre que \(x \notin [0,a]\). Assim, as soluções estacionárias da equação da evolução temporal com energia \(\hbar \omega\) e função de onda \(\braket{x}{\varphi(t)} = \varphi(x,t) = \varphi(x) \exp\left(-i \omega t\right)\) satisfazem a equação diferencial
+    \begin{equation*}
+        -\frac{\hbar^2}{2m} \diff[2]{\varphi(x)}{x} = \hbar\omega \varphi(x),
+    \end{equation*}
+    para \(x \in [0,a]\), portanto
+    \begin{equation*}
+        \varphi(x) = \alpha \sin(k x) + \beta\cos(kx),
+    \end{equation*}
+    onde \(k = \sqrt{\frac{2 m \omega}{\hbar}}\) e \(\alpha, \beta \in \mathbb{C}\) são constantes. Da continuidade da função de onda em \(x = 0\), segue que \(\beta = 0\) e da continuidade em \(x = a\), temos \(ka = n\pi\) para algum \(n \in \mathbb{Z}\setminus\set{0}\). Impondo a condição de normalização temos
+    \begin{align*}
+        1 = \norm{\varphi(t)}^2 = \int_{\mathbb{R}} \dli{x} \abs{\varphi(x, t)}^2 &= \abs{\alpha_n}^2 \int_0^a \dli{x} \sin^2\left(\frac{n\pi x}{a}\right) = \frac{a}{2}\abs{\alpha_n}^2,
+    \end{align*}
+    isto é, \(\abs{\alpha_n} = \sqrt{\frac{2}{a}}\). Determinamos assim que \(\setc{\ket{\varphi_n(t)}}{n \in \mathbb{N}}\) é um conjunto ortonormal completo de estados estacionários na caixa, onde
+    \begin{equation*}
+        \braket{x}{\varphi_n(t)} = \varphi_n(x,t) = \sqrt{\frac{2}{a}} \sin\left(\frac{n\pi x}{a}\right)\exp\left(-i \frac{\hbar n^2 \pi^2}{2ma^2}t\right)
+    \end{equation*}
+    para todo \(x \in [0,a]\).
 
+    Podemos agora escrever o estado \(\ket{\psi(t)}\) em termos dessa base. Temos em \(t = 0\) que
+    \begin{align*}
+        \braket{\varphi_n(0)}{\psi(0)}
+        &= \int_{\mathbb{R}}\dli{x} \braket{\varphi_n(0)}{x} \braket{x}{\psi(0)}\\
+        &= \sqrt{\frac{2}{a}}A\int_0^a \dli{x} x(x-a)\sin\left(\frac{n\pi x}{a}\right)\\
+        &= \sqrt{\frac2a}A\left[\frac{a(ax - x^2)\cos\left(\frac{n\pi x}{a}\right)}{n\pi} + \frac{(2x - a)a^2\sin\left(\frac{n\pi x}{a}\right)}{n^2\pi^2} + 2\left(\frac{a}{n\pi}\right)^3 \cos\left(\frac{n\pi x}{a}\right)\right]_0^a\\
+        &= 2\sqrt{\frac{60}{a^6}}\left(\frac{a}{n\pi}\right)^3 \left[\cos(n\pi) - 1\right]\\
+        &= \frac{4\sqrt{15} \left[(-1)^n - 1\right]}{(n\pi)^3},
+    \end{align*}
+    portanto \(\braket{\varphi_{2n}(0)}{\psi(0)} = 0\) e
+    \begin{equation*}
+        \braket{\varphi_{2n-1}(0)}{\psi(0)} =-\frac{8\sqrt{15}}{(2n - 1)^3 \pi^3}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\). Isto é,
+    \begin{equation*}
+        \ket{\psi(0)} = \sum_{n \in \mathbb{N}} \ket{\varphi_n(0)}\braket{\varphi_n(0)}{\psi(0)} = -\frac{8\sqrt{15}}{\pi^3}\sum_{n \in \mathbb{N}} \frac{1}{(2n - 1)^3} \ket{\varphi_{2n-1}(0)}
+    \end{equation*}
+    é o estado inicial. Vemos de imediato que \(\setc*{\frac{\hbar^2 (2n - 1)^2 \pi^2}{2ma^2}}{n \in \mathbb{N}}\) são as energias possíveis neste instante.
+\end{proof}
+\begin{proof}[Resolução do item (c)]
+    A energia média é dada por
+    \begin{align*}
+        \mean{H}_{\psi(0)} = \bra{\psi(0)}H\ket{\psi(0)} &= \frac{960}{\pi^6} \sum_{n \in \mathbb{N}} \sum_{m \in \mathbb{N}} \frac{1}{(2n - 1)^3(2m - 1)^3} \bra{\varphi_{2m - 1}(0)} H \ket{\varphi_{2n - 1)(0)}}\\
+                                                         &= \frac{960 \hbar^2}{2ma^2\pi^4} \sum_{n \in \mathbb{N}}\sum_{m \in \mathbb{N}} \frac{1}{(2n - 1)(2m - 1)^3} \braket{\varphi_{2m - 1}(0)}{\varphi_{2n-1}(0)}\\
+                                                         &= \frac{960\hbar^2}{2ma^2 \pi^4} \sum_{n \in \mathbb{N}} \frac{1}{(2n - 1)^4}\\
+                                                         &= \frac{5\hbar^2}{ma^2},
+    \end{align*}
+    o momento médio é dado por
+    \begin{equation*}
+        \mean{p_x}_{\psi(0)} = -i \hbar\abs{A}^2\int_0^a \dli{x} x(x - a) \diff*{[x(x-a)]}{x} = -i\hbar \abs{A}^2 \int_0^0\dli{u} u = 0,
+    \end{equation*}
+    e o valor esperado da posição é
+    \begin{equation*}
+        \mean{x}_{\psi(0)} = \abs{A}^2\int_0^a \dli{x} x^3(x-a)^2 = \frac{30}{a^5}a^6 \left(\frac16 - \frac25 + \frac14\right) = \frac12a
+    \end{equation*}
+    em \(t = 0\).
+\end{proof}
+\begin{proof}[Resolução do item (d)]
+    A probabilidade de encontrar uma partícula em \([0,\frac{a}2]\) é
+    \begin{equation*}
+        P\left(x < \frac{a}{2}\right) = \int_{0}^{\frac{a}2}\dli{x} \abs{A}^2 x^2(x - a)^2 = \frac{30}{a^5} a^5 \left(\frac{2^{-5}}{5} - \frac{2^{-4}}{2} + \frac{2^{-3}}{3}\right) = \frac12.
+    \end{equation*}
+    Deste modo, estimamos que de mil partículas, \(500\) estão em \([0,\frac{a}{2}]\).
+\end{proof}
+\begin{proof}[Resolução do item (e)]
+    Sendo \(E_5 = \frac{\hbar^2 5^2 \pi^2}{2ma^2}\), vemos da expressão do estado inicial \(\ket{\psi(0)}\) em termos da base dos estados estacionários que \(P(E = E_5) = \left(-\frac{8\sqrt{15}}{5^3 \pi^3}\right)^2 =\frac{192}{5^5\pi^6}\) é a probabilidade de encontrar uma partícula com energia \(E_5\). Assim, de mil partículas, estimamos que nenhuma tem essa energia.
 \end{proof}
