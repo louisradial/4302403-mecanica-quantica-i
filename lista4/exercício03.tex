@@ -121,31 +121,19 @@
     \end{equation*}
     portanto a diferença de fase é \(\delta_E = (2n+1)\pi - \chi + \phi\), para algum \(n \in \mathbb{Z}\). Assim, concluímos que \(\delta_E + \delta_D = (2n + 1)\pi\) com \(n \in \mathbb{Z}\).
 
-    No caso simétrico temos \(\delta_E = \delta_D = \frac{\pi}{2}\), portanto \(\chi = \frac{\pi}{2} + \phi\). Com isso, temos
+    No caso simétrico temos \(\abs{t} = \abs{r}\) e \(\delta_E = \delta_D = \frac{\pi}{2}\), portanto \(\chi = \frac{\pi}{2} + \phi\) e \(\abs{t} = \abs{r} = \frac1{\sqrt{2}}\). Com isso, temos
     \begin{equation*}
-        \begin{pmatrix}
-            R_D\\
-            T_D
-        \end{pmatrix}=
-        \begin{pmatrix}
-            i\abs{r}\\
-            \abs{t}
-        \end{pmatrix}
-        A_De^{i\phi}
-        \quad\text{e}\quad
-        \begin{pmatrix}
-            T_E\\
-            R_E
-        \end{pmatrix}=
-        \begin{pmatrix}
-            \abs{t}\\
-            -i\abs{r}
-        \end{pmatrix}
-        A_Ee^{-i\phi}.
+        R = \frac{1}{\sqrt{2}}\begin{pmatrix}
+            ie^{i\phi} && e^{-i\phi}\\
+            e^{i\phi} && ie^{-i\phi}
+        \end{pmatrix},
     \end{equation*}
-    Se as ondas incidentes são iguais, as reflexões nos respectivos lados devem ser iguais por simetria, então
+    portanto tomando \(\phi = 0\), obtemos
     \begin{equation*}
-        R_D = R_E \implies i e^{i\phi} = -i e^{-i\phi} \implies \phi = \frac{2k - 1}{2}\pi,
+        R = \frac{1}{\sqrt{2}}\begin{pmatrix}
+            i && 1\\
+            1 && i
+        \end{pmatrix},
     \end{equation*}
-    com \(k \in \mathbb{Z}\).
+    como desejado.
 \end{proof}
