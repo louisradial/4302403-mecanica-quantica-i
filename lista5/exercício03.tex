@@ -1,4 +1,4 @@
-\begin{exercício}{}{exercício3}
+\begin{exercício}{Potencial delta de Dirac}{exercício3}
     Considere uma partícula cujo hamiltoniano se escreve
     \begin{equation*}
         H = - \frac{\hbar^2}{2m} \diff*[2]{}{x} - \alpha \delta(x),
@@ -31,6 +31,68 @@
         \item Qual a probabilidade \(\overline{\dl{\mathcal{P}(p)}}\) de medir o momento da partícula entre \(p\) e \(p + \dl{p}\) em um dos estados estacionários normalizados calculados acima? Para que valor de \(p\) essa probabilidade é máxima? Em que domínio \(\Delta p\) é importante? Calcule a ordem de grandeza de \(\Delta x \Delta p\).
     \end{enumerate}
 \end{exercício}
-\begin{proof}[Resolução]
+\begin{proof}[Resolução do item (a)]
+    Para um estado estacionário com função de onda \(\braket{x}{\varphi(t)} = \varphi(x)\exp\left(-i \frac{E}{\hbar} t\right)\) temos
+    \begin{equation*}
+        -\frac{\hbar^2}{2m}\diff[2]{\varphi}{x} - \alpha \delta(x) \varphi(x) = E\varphi(x) \implies \diff[2]{\varphi}{x} + \frac{2m \alpha}{\hbar^2} \delta(x)\varphi(x) + \frac{2m E}{\hbar^2}\varphi(x) = 0
+    \end{equation*}
+    para todo \(x \in \mathbb{R}\). Integrando em \([-\varepsilon, \varepsilon]\) obtemos
+    \begin{equation*}
+        \diff{\varphi}{x}[x = \varepsilon] - \diff{\varphi}{x}[x = -\varepsilon] = - \frac{2 m \alpha}{\hbar^2} \varphi(0) - \frac{2m E}{\hbar^2}\int_{-\varepsilon}^\varepsilon \dli{x} \varphi(x).
+    \end{equation*}
+    Tomando o limite em que \(\varepsilon \to 0\) e utilizando a continuidade da função de onda, segue que
+    \begin{equation*}
+        \diff{\varphi}{x}[x = 0^+] - \diff{\varphi}{x}[x = 0^-] = -\frac{2m \alpha}{\hbar^2}\varphi(0),
+    \end{equation*}
+    isto é, a derivada da função de onda sofre uma descontinuidade em \(x = 0\).
+\end{proof}
 
+\begin{proof}[Resolução do item (b)]
+    Para \(x \in (-\infty, 0)\) e para \(x \in (0, \infty)\), temos
+    \begin{equation*}
+        \diff[2]{\varphi}{x} + \frac{2m E}{\hbar^2}\varphi(x) = 0,
+    \end{equation*}
+    donde segue que, para \(E < 0\), temos
+    \begin{equation*}
+        \varphi(x) = \begin{cases}
+            \displaystyle A_1 e^{\rho x} + A_1' e^{-\rho x},&\text{se }x < 0\\
+            \displaystyle A_2 e^{\rho x} + A_2' e^{-\rho x},&\text{se }x > 0,
+        \end{cases}
+    \end{equation*}
+    com \(A_1, A_1', A_2, A_2' \in \mathbb{C}\) e \(\rho = \frac{2m\abs{E}}{\hbar^2}\).
+
+    Como \(\varphi\) é contínua em \(x = 0\), temos
+    \begin{equation*}
+        A_1 + A_1' = A_2 + A_2' = \varphi(0).
+    \end{equation*}
+    Da descontinuidade da derivada da função de onda em \(x = 0\), temos
+    \begin{equation*}
+        \rho A_1 - \rho A_1' - \rho A_2 + \rho A_2' = \frac{2m \alpha}{\hbar} \varphi(0).
+    \end{equation*}
+    Com isso, podemos escrever
+    \begin{equation*}
+        A_1 - A_1' - A_2 + A_2' = \frac{2m \alpha}{\hbar \rho} (A_1 + A_1') \implies A_2' - A_2 = \left(\frac{2m \alpha}{\hbar \rho} - 1\right)A_1 + \left(1 + \frac{2m \alpha}{\hbar \rho}\right)A_1',
+    \end{equation*}
+    donde segue que
+    \begin{equation*}
+        A_2' = \frac{m \alpha}{\hbar \rho} A_1 + \left(1 + \frac{m \alpha}{\hbar \rho}\right)A_1'
+    \end{equation*}
+    e
+    \begin{equation*}
+        A_2 = \left(1 - \frac{m \alpha}{\hbar \rho}\right) A_1 - \frac{m \alpha}{\hbar \rho} A_1'.
+    \end{equation*}
+    Simplificando e escrevendo em forma de equação matricial, temos
+    \begin{equation*}
+        \begin{pmatrix}
+            A_2\\A_2'
+        \end{pmatrix} =
+        \begin{pmatrix}
+            1 - \frac{\hbar \alpha}{2\abs{E}} & - \frac{\hbar \alpha}{2\abs{E}}\\
+            \frac{\hbar \alpha}{2\abs{E}} & 1 + \frac{\hbar \alpha}{2\abs{E}}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\A_1'
+        \end{pmatrix}.
+    \end{equation*}
+    Como a função de onda deve ser normalizável, ela deve ser limitada, portanto sabemos que \(a\)
 \end{proof}
