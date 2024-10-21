@@ -28,7 +28,7 @@
             Use o fato de que \(\varphi(x)\) é uma função de quadrado integrável para deduzir os autovalores da energia. Calcule as funções de onda normalizadas correspondentes.
 
         \item Represente graficamente essas funções de onda. Forneça a ordem de grandeza de sua largura \(\Delta x\).
-        \item Qual a probabilidade \(\overline{\dl{\mathcal{P}(p)}}\) de medir o momento da partícula entre \(p\) e \(p + \dl{p}\) em um dos estados estacionários normalizados calculados acima? Para que valor de \(p\) essa probabilidade é máxima? Em que domínio \(\Delta p\) é importante? Calcule a ordem de grandeza de \(\Delta x \Delta p\).
+        \item Qual a probabilidade \(\overline{\dl{\mathcal{P}(p)}}\) de medir o momento da partícula entre \(p\) e \(p + \dl{p}\) em um dos estados estacionários normalizados calculados acima? Para que valor de \(p\) essa probabilidade é máxima? \todo[Em que domínio \(\Delta p\) é importante?] Calcule a ordem de grandeza de \(\Delta x \Delta p\).
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução do item (a)]
@@ -59,7 +59,7 @@
             \displaystyle A_2 e^{\rho x} + A_2' e^{-\rho x},&\text{se }x > 0,
         \end{cases}
     \end{equation*}
-    com \(A_1, A_1', A_2, A_2' \in \mathbb{C}\) e \(\rho = \frac{2m\abs{E}}{\hbar^2}\).
+    com \(A_1, A_1', A_2, A_2' \in \mathbb{C}\) e \(\rho = \sqrt{\frac{2m\abs{E}}{\hbar^2}}\).
 
     Como \(\varphi\) é contínua em \(x = 0\), temos
     \begin{equation*}
@@ -67,32 +67,145 @@
     \end{equation*}
     Da descontinuidade da derivada da função de onda em \(x = 0\), temos
     \begin{equation*}
-        \rho A_1 - \rho A_1' - \rho A_2 + \rho A_2' = \frac{2m \alpha}{\hbar} \varphi(0).
+        \rho A_1 - \rho A_1' - \rho A_2 + \rho A_2' = \frac{2m \alpha}{\hbar^2} \varphi(0).
     \end{equation*}
     Com isso, podemos escrever
     \begin{equation*}
-        A_1 - A_1' - A_2 + A_2' = \frac{2m \alpha}{\hbar \rho} (A_1 + A_1') \implies A_2' - A_2 = \left(\frac{2m \alpha}{\hbar \rho} - 1\right)A_1 + \left(1 + \frac{2m \alpha}{\hbar \rho}\right)A_1',
+        A_1 - A_1' - A_2 + A_2' = \frac{2m \alpha}{\hbar^2 \rho} (A_1 + A_1') \implies A_2' - A_2 = \left(\frac{2m \alpha}{\hbar^2 \rho} - 1\right)A_1 + \left(1 + \frac{2m \alpha}{\hbar^2 \rho}\right)A_1',
     \end{equation*}
     donde segue que
     \begin{equation*}
-        A_2' = \frac{m \alpha}{\hbar \rho} A_1 + \left(1 + \frac{m \alpha}{\hbar \rho}\right)A_1'
+        A_2' = \frac{m \alpha}{\hbar \rho} A_1 + \left(1 + \frac{m \alpha}{\hbar^2 \rho}\right)A_1'
     \end{equation*}
     e
     \begin{equation*}
-        A_2 = \left(1 - \frac{m \alpha}{\hbar \rho}\right) A_1 - \frac{m \alpha}{\hbar \rho} A_1'.
+        A_2 = \left(1 - \frac{m \alpha}{\hbar^2 \rho}\right) A_1 - \frac{m \alpha}{\hbar^2 \rho} A_1'.
     \end{equation*}
-    Simplificando e escrevendo em forma de equação matricial, temos
+    Escrevendo em forma de equação matricial, temos
     \begin{equation*}
         \begin{pmatrix}
             A_2\\A_2'
         \end{pmatrix} =
         \begin{pmatrix}
-            1 - \frac{\hbar \alpha}{2\abs{E}} & - \frac{\hbar \alpha}{2\abs{E}}\\
-            \frac{\hbar \alpha}{2\abs{E}} & 1 + \frac{\hbar \alpha}{2\abs{E}}
+            1 - \frac{m \alpha}{h^2 \rho} & - \frac{m \alpha}{\hbar^2 \rho}\\
+            \frac{m \alpha}{\hbar^2 \rho} & 1 + \frac{m \alpha}{\hbar^2 \rho}
         \end{pmatrix}
         \begin{pmatrix}
             A_1\\A_1'
         \end{pmatrix}.
     \end{equation*}
-    Como a função de onda deve ser normalizável, ela deve ser limitada, portanto sabemos que \(a\)
+    Como a função de onda deve ser normalizável, ela deve ser limitada, portanto sabemos que as constantes \(A_1'\) e \(A_2\) se anulam. Assim, devemos ter \(\frac{m \alpha}{\hbar^2 \rho} = 1\) e concluímos que há apenas um autoestado ligado, de energia
+    \begin{equation*}
+        E = - \frac{m \alpha^2}{2\hbar^2}
+    \end{equation*}
+    e função de onda
+    \begin{equation*}
+        \varphi(x, t) = A_1 \exp\left(-\frac{m \alpha}{\hbar^2}\abs{x}\right)\exp\left(i\frac{m \alpha^2}{2\hbar^3}t\right).
+    \end{equation*}
+    Impondo a condição de normalização, temos
+    \begin{equation*}
+        1 = \int_{\mathbb{R}}\dli{x}\conj{\varphi(x,t)}\varphi(x,t) = 2\abs{A_1}^2 \int_{0}^\infty \dli{x} \exp\left(-\frac{2m \alpha}{\hbar^2}x\right) \implies \abs{A_1} = \sqrt{\frac{m \alpha}{\hbar^2}},
+    \end{equation*}
+    isto é, a função de onda é dada por
+    \begin{equation*}
+        \varphi(x, t) = \sqrt{\frac{m \alpha}{\hbar^2}}\exp\left(-\frac{m \alpha}{\hbar^2}\abs{x}\right)\exp\left(i\frac{m \alpha^2}{2\hbar^3}t\right)
+    \end{equation*}
+    para todo \(x \in \mathbb{R}\).
 \end{proof}
+
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.8\linewidth,
+            height=0.25\textheight,
+            xmin=-5.15, xmax=5.15,
+            ymin=0,ymax=1.25,
+            domain=-5:5,
+            samples=500,
+            axis lines=middle,
+            xlabel={\(x\)},
+            % xlabel near ticks,
+            % ylabel near ticks,
+            ylabel={\(\varphi(x)\)},
+            % legend pos=north east,
+            ytick={1},
+            xtick={-{3*sqrt(2)},-{2*sqrt(2)}, -{sqrt(2)}, 0, {sqrt(2)}, {2*sqrt(2)}, {3*sqrt(2)}},
+            xticklabels={\(-\frac{3\sqrt{2}\hbar^2}{m \alpha}\), \(-\frac{2\sqrt{2}\hbar^2}{m \alpha}\), \(-\frac{\sqrt{2}\hbar^2}{m \alpha}\), \(0\), \(\frac{\sqrt{2}\hbar^2}{m \alpha}\), \(\frac{2\sqrt{2}\hbar^2}{m \alpha}\), \(\frac{3\sqrt{2}\hbar^2}{m \alpha}\)},
+            yticklabels={\(\sqrt{\frac{m \alpha}{\hbar^2}}\)},
+            ]
+            \addplot[thick, Mauve] {exp(-abs(x))};
+            \draw[thick, dotted, Pink] ({-sqrt(2)},0) -- ({-sqrt(2)}, {exp(-sqrt(2))});
+            \draw[thick, dotted, Pink] ({sqrt(2)}, 0) -- ({sqrt(2)}, {exp(-sqrt(2))});
+        \end{axis}
+        \end{tikzpicture}
+    \caption{Função de onda do autoestado no instante inicial.}
+\end{figure}
+
+\begin{proof}[Resolução do item (c)]
+    Por paridade temos
+    \begin{equation*}
+        \mean{x}_{\varphi} = \int_{\mathbb{R}}\dli{x} \conj{\varphi(x,t)} x \varphi(x, t) = \frac{m \alpha}{\hbar^2}\int_{\mathbb{R}} \dli{x} x \exp{\left(-\frac{2m \alpha}{\hbar^2}\abs{x}\right)} = 0.
+    \end{equation*}
+    Assim, o valor esperado de \(x^2\) é
+    \begin{align*}
+        \mean{x^2}_{\varphi} = \int_{\mathbb{R}} \dli{x} \conj{\varphi(x,t)} x^2\varphi(x,t)
+        &= \frac{m \alpha}{\hbar^2} \int_{\mathbb{R}} \dli{x} x^2 \exp{\left(-\frac{2m \alpha}{\hbar^2}\abs{x}\right)}\\
+        &= \left(\frac{\hbar^2}{m\alpha}\right)^2 \int_0^\infty \dli{\xi} \xi^2e^{-\xi}\\
+        &= \left(\frac{\hbar^2}{m\alpha}\right)^2 \diffp*[2]{\int_0^\infty\dli{\xi} e^{-\beta\xi}}{\beta}[\beta = 1]\\
+        &= \left(\frac{\hbar^2}{m\alpha}\right)^2 \diffp*[2]{\beta^{-1}}{\beta}[\beta = 1]\\
+        &= 2\left(\frac{\hbar^2}{m\alpha}\right)^2.
+    \end{align*}
+    Desta forma, o desvio padrão de \(x\) é \(\Delta_\varphi x = \sqrt{2}\frac{\hbar^2}{m \alpha}\).
+\end{proof}
+
+\begin{proof}[Resolução do item (d)]
+    A distribuição de momento é dada pela transformada de Fourier inversa
+    \begin{align*}
+        b(k) = \frac{1}{\sqrt{2\pi}} \int_{\mathbb{R}} \dli{x} e^{i k x} \varphi(x)
+        &= \sqrt{\frac{m \alpha}{2\pi \hbar^2}}\int_{\mathbb{R}} \dli{x} e^{ikx - \rho\abs{x}}\\
+        &= \sqrt{\frac{m \alpha}{2\pi \hbar^2}} \left(\frac{1}{ik + \rho} - \frac{1}{ik - \rho}\right)\\
+        &= \sqrt{\frac{m \alpha}{2\pi \hbar^2}}\frac{2\rho}{k^2 + \rho^2}\\
+        &= \sqrt{\frac{m \alpha}{2\pi \hbar^2}} \frac{2m \alpha}{(\hbar k)^2 + \left(\frac{m \alpha}{\hbar}\right)^2}.
+    \end{align*}
+    Assim, a probabilidade de medir o momento da partícula entre \(p\) e \(p + \dli{p}\) é dada por
+    \begin{equation*}
+        \dl{\mathcal{P}(p)} = \abs{b(k)}^2\dl{k} = \frac{2m^3 \alpha^3}{\pi \hbar^3\left[p^2 + \left(\frac{m \alpha}{\hbar}\right)^2\right]^2} \dl{p} = \frac{2 \hbar}{\pi m \alpha \left[\left(\frac{\hbar p}{m \alpha}\right)^2 + 1\right]^2}\dl{p}.
+    \end{equation*}
+    Disso, vemos que \(p = 0\) maximiza a densidade probabilidade, já que é uma função par e decresce para todo \(p > 0\). Ainda, como é uma função par, segue que \(\mean{p}_{\varphi} = 0\) e temos
+    \begin{align*}
+        \mean{p^2}_{\varphi} = \int_{\mathbb{R}} p^2 \dli{\mathcal{P}(p)}
+        &= \int_{\mathbb{R}} \dli{p} \frac{\hbar}{m \alpha \pi} \frac{2p^2}{\left[1 + \left(\frac{\hbar p}{m \alpha}\right)^2\right]^2}\\
+        &= \frac{m^2 \alpha^2}{\hbar^2\pi} \int_{\mathbb{R}} \dli{\xi} \frac{2\xi^2}{(1 + \xi^2)^2}\\
+        &= -\frac{m^2 \alpha^2}{\hbar^2 \pi} \int_{\mathbb{R}} \dli{\xi}\xi \diff[2]{\arctan\xi}{\xi}\\
+        &= \frac{m^2 \alpha^2}{\hbar^2},
+    \end{align*}
+    portanto o desvio padrão do momento é \(\Delta_\varphi p = \frac{m \alpha}{\hbar}\). Concluímos que a relação de incerteza de posição e momento é dada por \(\Delta_\varphi x \Delta_\varphi p = \sqrt{2}\hbar\).
+\end{proof}
+
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.8\linewidth,
+            height=0.25\textheight,
+            xmin=-5.15, xmax=5.15,
+            ymin=0,ymax=1.25,
+            domain=-5:5,
+            samples=500,
+            axis lines=middle,
+            xlabel={\(p\)},
+            % xlabel near ticks,
+            % ylabel near ticks,
+            ylabel={\(\mathcal{P}(p)\)},
+            % legend pos=north east,
+            ytick={1},
+            xtick={-3,-2,-1,0,1,2,3},
+            xticklabels={\(-\frac{3m \alpha}{\hbar}\), \(-\frac{2m \alpha}{\hbar}\), \(-\frac{m \alpha}{\hbar}\), \(0\), \(\frac{m \alpha}{\hbar}\), \(\frac{2m \alpha}{\hbar}\), \(\frac{3m \alpha}{\hbar}\)},
+            yticklabels={\(\frac{2\hbar}{\pi m \alpha}\)},
+            ]
+            \addplot[thick, Mauve] {1/((1 + x^2)^2)};
+        \end{axis}
+        \end{tikzpicture}
+    \caption{Densidade de probabilidade para o momento.}
+\end{figure}
