@@ -1,0 +1,268 @@
+\begin{exercício}{Modelo grosseiro para um elétron em uma molécula diatômica}{exercício3}
+    Podemos modelar de forma bastante aproximada o potencial sentido por um elétron em uma molécula diatômica por
+    \begin{equation*}
+        V(x) = \frac{\hbar^2 g}{2m}\left[\delta(x + \ell) + \delta(x - \ell)\right]
+    \end{equation*}
+    com \(g < 0\). A linha que une os núcleos é tomada como eixo \(x\) e os dois núcleos se situam em \(x = -\ell\) e \(x = \ell\).
+    \begin{enumerate}[label=(\alph*)]
+        \item Mostre que podemos classificar as soluções da equação de Schrödinger em soluções pares e ímpares.
+        \item Se a função de onda é par, mostre que existe apenas um único estado ligado para
+            \begin{equation*}
+                \kappa = \frac{\abs{g}}{2}(1 + e^{-2 \kappa \ell}),
+            \end{equation*}
+            onde \(\hbar \kappa = \sqrt{2 m \abs{E}}\). Faça um esboço qualitativo da função de onda desse estado ligado.
+        \item Se a função de onda é ímpar, determine a equação que fornece as energias dos estados ligados
+            \begin{equation*}
+                \kappa = \frac{\abs{g}}{2}(1 - e^{-2 \kappa \ell}).
+            \end{equation*}
+            Sempre existe um estado ligado nesse caso? O que é necessário impor? Faça um esboço qualitativo da função de onda do estado ligado.
+        \item Suponha agora que \(\kappa \ell \gg 1\). Mostre que os dois estados ligados constituem um sistema de dois níveis cujo hamiltoniano é dado por \(H = E_0 \unity - A \sigma_1\).
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução do item (a)]
+    Sabemos que para todo \(\alpha \in \mathbb{R}\setminus\set{0}\) vale \(\delta(\alpha z) = \frac{1}{\abs{\alpha}} \delta(z)\), então o potencial \(V\) é uma função par.
+\end{proof}
+\begin{proof}[Resolução dos itens (b) e (c)]
+    Consideremos uma solução de estado estacionário ligado com energia \(E < 0\) e função de onda dada por \(\varphi(x,t) = \varphi(x) \exp(-i\frac{E}{\hbar}t)\). Assim, temos para todo \(x \in \mathbb{R}\)
+    \begin{align*}
+        -\frac{\hbar^2}{2m} \diff[2]{\varphi}{x} + V(x)\varphi(x) = E \varphi(x)
+        &\implies \diff[2]{\varphi}{x} + \abs{g}\left[\delta(x + \ell) + \delta(x - \ell)\right]\varphi(x) = -\frac{2m}{\hbar^2}E \varphi(x)\\
+        &\implies \diff[2]{\varphi}{x} + \left[\abs{g}\delta(x + \ell) + \abs{g}\delta(x - \ell) - \kappa^2\right]\varphi(x) = 0,
+    \end{align*}
+    onde definimos \(\hbar \kappa = \sqrt{2m \abs{E}}\). Integrando no intervalo \([\xi - \varepsilon, \xi + \varepsilon]\), obtemos
+    \begin{align*}
+        \diff{\varphi}{x}[x = \xi + \varepsilon] - \diff{\varphi}{x}[x = \xi - \varepsilon]
+        &= \int_{\xi - \varepsilon}^{\xi + \varepsilon} \dli{x}\left[\kappa^2 - \abs{g}\delta(x + \ell) - \abs{g}\delta(x - \ell)\right]\varphi(x)\\
+        &= \kappa^2 \int_{\xi - \varepsilon}^{\xi + \varepsilon}\dli{x} \varphi(x) - \abs{g}\varphi(\ell) \int_{\xi - \varepsilon}^{\xi + \varepsilon}\dli{x} \delta(x - \ell) - \abs{g}\varphi(-\ell) \int_{\xi - \varepsilon}^{\xi + \varepsilon} \dli{x} \delta(x + \ell).
+    \end{align*}
+    Assim, tomando o limite \(\varepsilon \to 0\) segue da continuidade de \(\varphi(x)\) que
+    \begin{equation*}
+        \diff{\varphi}{x}[x = \xi^+] - \diff{\varphi}{x}[x = \xi^-] = \begin{cases}
+            0, & \text{se }\xi \notin \set{- \ell, \ell}\\
+            -\abs{g}\varphi(\xi),& \text{se }\xi \in\set{- \ell, \ell}
+        \end{cases}
+    \end{equation*}
+    é a descontinuidade da derivada de \(\varphi(x)\) no ponto \(x = \xi\).
+
+    A solução geral da equação diferencial é dada por
+    \begin{equation*}
+        \varphi(x) = \begin{cases}
+            A_1 e^{\kappa x} + A_2 e^{-\kappa x},&\text{se }x \in (-\infty, -\ell)\\
+            B_1 e^{\kappa x} + B_2 e^{-\kappa x},&\text{se }x \in (-\ell, \ell)\\
+            C_1 e^{\kappa x} + C_2 e^{-\kappa x},&\text{se }x \in (\ell, \infty)
+        \end{cases}
+    \end{equation*}
+    já que em cada um destes intervalos a equação diferencial se torna \(\diff[2]{\varphi}{x} - \kappa^2 \varphi(x) = 0\). Da continuidade da função de onda em \(x = -\ell\) e em \(x = \ell\), temos
+    \begin{equation*}
+        \varphi(-\ell) = A_1 e^{-\kappa \ell} + A_2 e^{\kappa \ell} = B_1 e^{- \kappa \ell} + B_2 e^{\kappa \ell}
+        \quad\text{e}\quad
+        \varphi(\ell) = B_1 e^{\kappa \ell} + B_2 e^{-\kappa \ell} = C_1 e^{\kappa \ell} + C_2 e^{-\kappa \ell}.
+    \end{equation*}
+    Da descontinuidade da derivada da função de onda em \(x = - \ell\) e em \(x = \ell\), temos
+    \begin{equation*}
+        \frac{\abs{g}\varphi(-\ell)}{\kappa} = A_1 e^{- \kappa \ell} - A_2 e^{\kappa \ell} - B_1 e^{- \kappa \ell} + B_2 e^{\kappa \ell}
+        \quad\text{e}\quad
+        \frac{\abs{g}\varphi(\ell)}{\kappa} = B_1 e^{\kappa \ell} - B_2 e^{-\kappa \ell} - C_1 e^{\kappa \ell} + C_2 e^{-\kappa \ell}.
+    \end{equation*}
+    Definindo \(\gamma = e^{2 \kappa \ell}\), podemos reescrever as equações para as condições em \(x = -\ell\) e em \(x = \ell\) como
+    \begin{equation*}
+        \begin{cases}
+            B_1 + \gamma B_2 = A_1 + \gamma A_2\\
+            - \kappa B_1 + \kappa\gamma B_2 = (\abs{g} - \kappa)A_1 + (\abs{g} + \kappa)\gamma A_2
+        \end{cases}
+        \quad\text{e}\quad
+        \begin{cases}
+            \gamma B_1  + B_2 = \gamma C_1 + C_2\\
+            \kappa \gamma B_1 - \kappa B_2 = (\abs{g} + \kappa)\gamma C_1 + (\abs{g} - \kappa)C_2
+        \end{cases}
+    \end{equation*}
+    ou então em forma matricial
+    \begin{align*}
+        \begin{pmatrix}
+            1 & \gamma\\
+            -1 & \gamma
+        \end{pmatrix}
+        \begin{pmatrix}
+            B_1\\
+            B_2
+        \end{pmatrix} &=
+        \begin{pmatrix}
+            1 & \gamma\\
+            \frac{\abs{g} - \kappa}{\kappa} & \frac{\abs{g} + \kappa}{\kappa}\gamma
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}&
+        \begin{pmatrix}
+            \gamma & 1\\
+            \gamma & -1
+        \end{pmatrix}
+        \begin{pmatrix}
+            B_1\\
+            B_2
+        \end{pmatrix} &=
+        \begin{pmatrix}
+            \gamma & 1\\
+            \frac{\abs{g} + \kappa}{\kappa}\gamma & \frac{\abs{g} - \kappa}{\kappa}
+        \end{pmatrix}
+        \begin{pmatrix}
+            C_1\\
+            C_2
+        \end{pmatrix}\\
+              &= \left[
+                  \begin{pmatrix}
+                      1 & \gamma\\
+                      -1 & \gamma
+                  \end{pmatrix}
+                  +
+                  \begin{pmatrix}
+                      0 & 0\\
+                      \frac{\abs{g}}{\kappa} & \frac{\abs{g}}{\kappa}\gamma
+              \end{pmatrix}\right]
+              \begin{pmatrix}
+                  A_1\\
+                  A_2
+              \end{pmatrix}&
+              &= \left[
+                  \begin{pmatrix}
+                      \gamma & 1\\
+                      \gamma & -1
+                  \end{pmatrix}
+                  +
+                  \begin{pmatrix}
+                      0 & 0\\
+                      \frac{\abs{g}}{\kappa}\gamma & \frac{\abs{g}}{\kappa}
+              \end{pmatrix}\right]
+              \begin{pmatrix}
+                  C_1\\
+                  C_2
+              \end{pmatrix}.
+    \end{align*}
+    Resolvendo para \(B_1\) e \(B_2\), obtemos
+    \begin{align*}
+        \begin{pmatrix}
+            B_1\\
+            B_2
+        \end{pmatrix} &= \left[\unity +
+            \frac{\abs{g}}{2 \gamma \kappa}
+            \begin{pmatrix}
+                \gamma & -\gamma\\
+                1 & 1
+            \end{pmatrix}
+            \begin{pmatrix}
+                0 & 0\\
+                1 & \gamma
+            \end{pmatrix}
+        \right]
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}&
+        \begin{pmatrix}
+            B_1\\
+            B_2
+        \end{pmatrix} &= \left[\unity -
+            \frac{\abs{g}}{2 \gamma \kappa}
+            \begin{pmatrix}
+                -1 & -1\\
+                -\gamma & \gamma
+            \end{pmatrix}
+            \begin{pmatrix}
+                0 & 0\\
+                \gamma & 1
+            \end{pmatrix}
+        \right]
+        \begin{pmatrix}
+            C_1\\
+            C_2
+        \end{pmatrix}\\
+        &= \left[\unity + \frac{\abs{g}}{2 \gamma \kappa}
+            \begin{pmatrix}
+                -\gamma & - \gamma^2\\
+                1 & \gamma
+            \end{pmatrix}
+        \right]
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}&
+        &= \left[\unity - \frac{\abs{g}}{2 \kappa \gamma}
+            \begin{pmatrix}
+                - \gamma & -1\\
+                \gamma^2 & \gamma
+            \end{pmatrix}
+        \right]
+        \begin{pmatrix}
+            C_1\\
+            C_2
+        \end{pmatrix}\\
+        &=
+        \begin{pmatrix}
+            1 - \frac{\abs{g}}{2 \kappa} & -\frac{\abs{g} \gamma}{2 \kappa}\\
+            \frac{\abs{g}}{2 \kappa \gamma} & 1 + \frac{\abs{g}}{2 \kappa}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}&
+        &=
+        \begin{pmatrix}
+            1 + \frac{\abs{g}}{2 \kappa} & \frac{\abs{g}}{2 \kappa \gamma}\\
+            -\frac{\abs{g}\gamma}{2 \kappa} & 1 - \frac{\abs{g}}{2 \kappa}
+        \end{pmatrix}
+        \begin{pmatrix}
+            C_1\\
+            C_2
+        \end{pmatrix}.
+    \end{align*}
+    Podemos assim relacionar \(A_1\) e \(A_2\) com \(C_1\) e \(C_2\) por
+    \begin{align*}
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}
+        &=
+        \begin{pmatrix}
+            1 + \frac{\abs{g}}{2 \kappa} & \frac{\abs{g} \gamma}{2 \kappa}\\
+            - \frac{\abs{g}}{2 \kappa \gamma} & 1 - \frac{\abs{g}}{2 \kappa}
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 + \frac{\abs{g}}{2 \kappa} & \frac{\abs{g}}{2 \kappa \gamma}\\
+            -\frac{\abs{g}\gamma}{2 \kappa} & 1 - \frac{\abs{g}}{2 \kappa}
+        \end{pmatrix}
+        \begin{pmatrix}
+            C_1\\
+            C_2
+        \end{pmatrix}\\
+        &=
+        \begin{pmatrix}
+            \left(1 + \frac{\abs{g}}{2 \kappa}\right)^2 - \frac{\gamma^2 g^2}{4 \kappa^2} & \frac{\gamma \abs{g}}{2 \kappa}\left(1 - \frac{\abs{g}}{2 \kappa}\right) + \frac{\abs{g}}{2 \gamma \kappa}\left(1 + \frac{\abs{g}}{2 \kappa}\right)\\
+            -\frac{\gamma \abs{g}}{2 \kappa}\left(1 + \frac{\abs{g}}{2 \kappa}\right) - \frac{\abs{g}}{2 \gamma \kappa}\left(1 - \frac{\abs{g}}{2 \kappa}\right) & \left(1 - \frac{\abs{g}}{2 \kappa}\right)^2 - \frac{g^2}{4 \gamma^2 \kappa^2}
+        \end{pmatrix}
+        \begin{pmatrix}
+            C_1\\
+            C_2
+        \end{pmatrix}
+    \end{align*}
+    Para que a função de onda seja quadrado integrável, devemos ter \(A_2 = C_1 = 0\), de forma que
+    \begin{equation*}
+        \begin{pmatrix}
+            1\\
+            0
+        \end{pmatrix} A_1 =
+        \begin{pmatrix}
+             \frac{\gamma \abs{g}}{2 \kappa}\left(1 - \frac{\abs{g}}{2 \kappa}\right) + \frac{\abs{g}}{2 \gamma \kappa}\left(1 + \frac{\abs{g}}{2 \kappa}\right)\\
+             \left(1 - \frac{\abs{g}}{2 \kappa}\right)^2 - \frac{g^2}{4 \gamma^2 \kappa^2}
+        \end{pmatrix}
+        C_2.
+    \end{equation*}
+    Portanto,
+    \begin{equation*}
+        \left(1 - \frac{\abs{g}}{2 \kappa}\right)^2 - \frac{g^2}{4 \gamma^2 \kappa^2} = 0 \implies \left(2\kappa - \abs{g}\right)^2 = \frac{g^2}{\gamma^2} \implies 2 \kappa - \abs{g} = \pm \frac{\abs{g}}{\gamma} \implies \kappa = \frac{\abs{g}}{2}\left(1 \pm e^{-2 \kappa \ell}\right).
+    \end{equation*}
+    é a equação que determina a energia do estado ligado.
+    \begin{equation*}
+        \pm \frac{g^2}{4 \gamma^2 \kappa 2}(\gamma \pm 1)^2.
+    \end{equation*}
+\end{proof}

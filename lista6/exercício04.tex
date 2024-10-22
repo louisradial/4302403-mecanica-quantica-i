@@ -1,0 +1,19 @@
+\begin{exercício}{}{exercício4}
+    Suponha que os operadores \(a\) e \(\herm{a}\) em
+    \begin{equation*}
+        H = \hbar \omega \left(\herm{a}a + \frac12\unity\right)
+    \end{equation*}
+    obedecem a relação de anticomutação \(\anticommutator{a}{\herm{a}} = \unity\).
+    \begin{enumerate}[label=(\alph*)]
+        \item Quais os valores de \(a\ket{n}\) e \(\herm{a}\ket{n}\) que seguem dessa relação de anticomutação?
+        \item Como \(\mean{H} \geq 0\), podemos tomar por consistência \(a\ket{0} = 0\). Combinando esse fato com os resultados de (a), quais os únicos estados \(\ket{n}\) não nulos?
+        \item Se além da relação de anticomutação, \(a\) e \(\herm{a}\) também obedecem \(\anticommutator{a}{a} = \anticommutator{\herm{a}}{\herm{a}} = 0\), mostre que \(N^2 = N\).
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução do item (c)]
+    Se um operador \(u\) satisfaz \(\anticommutator{u} = 0\), segue que \(u\) é nilpotente com \(u^2 = 0\). Desse modo, temos
+    \begin{equation*}
+        N^2 = (\herm{a}a)^2 = \herm{a}a\herm{a}a = \herm{a}\left(\unity - \herm{a}a\right)a = \herm{a}a - (\herm{a})^2a^2 = \herm{a}a = N,
+    \end{equation*}
+    como desejado.
+\end{proof}
