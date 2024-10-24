@@ -255,14 +255,43 @@
              \frac{\gamma \abs{g}}{2 \kappa}\left(1 - \frac{\abs{g}}{2 \kappa}\right) + \frac{\abs{g}}{2 \gamma \kappa}\left(1 + \frac{\abs{g}}{2 \kappa}\right)\\
              \left(1 - \frac{\abs{g}}{2 \kappa}\right)^2 - \frac{g^2}{4 \gamma^2 \kappa^2}
         \end{pmatrix}
-        C_2.
+        C_2 =
+        \begin{pmatrix}
+            \frac{\abs{g}}{4 \kappa^2 \gamma}\left[(1+\gamma^2)(2 \kappa - \abs{g}) + 2 \abs{g} \right]\\
+            \left(1 - \frac{\abs{g}}{2 \kappa}\right)^2 - \frac{g^2}{4 \gamma^2 \kappa^2}
+        \end{pmatrix}C_2
     \end{equation*}
     Portanto,
     \begin{equation*}
         \left(1 - \frac{\abs{g}}{2 \kappa}\right)^2 - \frac{g^2}{4 \gamma^2 \kappa^2} = 0 \implies \left(2\kappa - \abs{g}\right)^2 = \frac{g^2}{\gamma^2} \implies 2 \kappa - \abs{g} = \pm \frac{\abs{g}}{\gamma} \implies \kappa = \frac{\abs{g}}{2}\left(1 \pm e^{-2 \kappa \ell}\right).
     \end{equation*}
-    é a equação que determina a energia do estado ligado.
+    é a equação que determina a energia do estado ligado. Sendo \(\mu \in \set{-1,1}\), temos para estes estados que \(2\kappa - \abs{g} = \mu \frac{\abs{g}}{\gamma}\), então
+    \begin{align*}
+        A_1 &= \frac{\abs{g}}{4 \kappa^2 \gamma} \left[(1 + \gamma^2)(2 \kappa - \abs{g}) + 2\abs{g})\right]C_2\\
+            &= \frac{\abs{g}}{4 \kappa^2 \gamma} \left[(1 + \gamma^2)\frac{\mu\abs{g}}{\gamma} + 2\abs{g}\right]C_2\\
+            &= \mu\frac{g^2}{4\kappa^2 \gamma^2}(1 + \gamma^2 + 2 \gamma \mu)C_2\\
+            &= \mu\left[\frac{\abs{g}}{2 \kappa \gamma}(\gamma + \mu)\right]^2C_2\\
+            &= \mu\left[\frac{\abs{g}}{2\kappa} + \frac{1}{2\kappa}\left(\mu\frac{\abs{g}}{2 \kappa}\right)\right]^2 C_2\\
+            &= \mu \left(\frac{\abs{g}}{2 \kappa} + \frac{2\kappa - \abs{g}}{2\kappa}\right)^2 C_2\\
+            &= \mu C_2.
+    \end{align*}
+    Das expressões para \(B_1\) e \(B_2\), obtemos
     \begin{equation*}
-        \pm \frac{g^2}{4 \gamma^2 \kappa 2}(\gamma \pm 1)^2.
+        B_1 = \mu\left(1 - \frac{\abs{g}}{2\kappa}\right)C_2\quad\text{e}\quad B_2 = \mu\frac{\abs{g}}{2\kappa \gamma}C_2 = \left(1 - \frac{\abs{g}}{2\kappa}\right)C_2,
     \end{equation*}
+    portanto a função de onda é dada por
+    \begin{equation*}
+        \varphi(x) = \begin{cases}
+            \mu C_2 e^{\kappa x},&\text{se }x \in (-\infty, -\ell)\\
+            C_2\left(1 - \frac{\abs{g}}{2\kappa}\right)\left(\mu e^{\kappa x} + e^{-\kappa x}\right),&\text{se }x \in (-\ell, \ell)\\
+            C_2 e^{-\kappa x},&\text{se }x \in (\ell, \infty)
+        \end{cases}
+    \end{equation*}
+    e vemos que o caso \(\mu = +1\) corresponde à função de onda par e o caso \(\mu = -1\) corresponde à função de onda ímpar. Mostramos, en passant, que há apenas estados ligados com funções de onda par ou ímpar e que as energias são tais que
+    \begin{equation*}
+        \kappa_p = \frac{\abs{g}}{2} \left(1 + e^{-2\kappa_p \ell}\right)
+        \quad\text{e}\quad
+        \kappa_i = \frac{\abs{g}}{2} \left(1 - e^{-2\kappa_i \ell}\right)
+    \end{equation*}
+    nos casos par e ímpar, respectivamente.
 \end{proof}
