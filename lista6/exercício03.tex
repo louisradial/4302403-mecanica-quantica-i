@@ -20,7 +20,11 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução do item (a)]
-    Sabemos que para todo \(\alpha \in \mathbb{R}\setminus\set{0}\) vale \(\delta(\alpha z) = \frac{1}{\abs{\alpha}} \delta(z)\), então o potencial \(V\) é uma função par.
+    Sabemos que para todo \(\alpha \in \mathbb{R}\setminus\set{0}\) vale \(\delta(\alpha z) = \frac{1}{\abs{\alpha}} \delta(z)\), então o potencial \(V\) é uma função par, pois temos
+    \begin{equation*}
+        V(-x) = \frac{\hbar^2 g}{2m }\left[\delta(\ell - x) + \delta(-x - \ell)\right] = \frac{\hbar^2 g}{2m}\left[\delta(x - \ell) + \delta(x + \ell)\right] = V(x)
+    \end{equation*}
+    para todo \(x \in \mathbb{R}\). Mostramos no Exercício 4 da Lista 5 que, se o potencial é par, as funções de onda são ou pares ou ímpares. Mostraremos explicitamente que é o caso para este sistema no que segue.
 \end{proof}
 \begin{proof}[Resolução dos itens (b) e (c)]
     Consideremos uma solução de estado estacionário ligado com energia \(E < 0\) e função de onda dada por \(\varphi(x,t) = \varphi(x) \exp(-i\frac{E}{\hbar}t)\). Assim, temos para todo \(x \in \mathbb{R}\)
@@ -216,7 +220,7 @@
             C_2
         \end{pmatrix}.
     \end{align*}
-    Podemos assim relacionar \(A_1\) e \(A_2\) com \(C_1\) e \(C_2\) por
+    A essa altura notamos que se considerássemos um estado de energia \(E > 0\) teríamos o mesmo sistema de equações trocando \(\kappa \to i \kappa\), mas como desejamos funções de quadrado integrável teríamos \(A_1 = A_2 = C_1 = C_2 = 0\), e seguiria que \(B_1 = B_2 = 0\), isto é, haveria apenas a solução trivial. Retornando ao caso \(E < 0\), podemos relacionar \(A_1\) e \(A_2\) com \(C_1\) e \(C_2\) por
     \begin{align*}
         \begin{pmatrix}
             A_1\\
@@ -243,7 +247,7 @@
         \begin{pmatrix}
             C_1\\
             C_2
-        \end{pmatrix}
+        \end{pmatrix}.
     \end{align*}
     Para que a função de onda seja quadrado integrável, devemos ter \(A_2 = C_1 = 0\), de forma que
     \begin{equation*}
@@ -252,8 +256,8 @@
             0
         \end{pmatrix} A_1 =
         \begin{pmatrix}
-             \frac{\gamma \abs{g}}{2 \kappa}\left(1 - \frac{\abs{g}}{2 \kappa}\right) + \frac{\abs{g}}{2 \gamma \kappa}\left(1 + \frac{\abs{g}}{2 \kappa}\right)\\
-             \left(1 - \frac{\abs{g}}{2 \kappa}\right)^2 - \frac{g^2}{4 \gamma^2 \kappa^2}
+            \frac{\gamma \abs{g}}{2 \kappa}\left(1 - \frac{\abs{g}}{2 \kappa}\right) + \frac{\abs{g}}{2 \gamma \kappa}\left(1 + \frac{\abs{g}}{2 \kappa}\right)\\
+            \left(1 - \frac{\abs{g}}{2 \kappa}\right)^2 - \frac{g^2}{4 \gamma^2 \kappa^2}
         \end{pmatrix}
         C_2 =
         \begin{pmatrix}
@@ -281,17 +285,128 @@
     \end{equation*}
     portanto a função de onda é dada por
     \begin{equation*}
-        \varphi(x) = \begin{cases}
+        \varphi_\mu(x) = \begin{cases}
             \mu C_2 e^{\kappa x},&\text{se }x \in (-\infty, -\ell)\\
             C_2\left(1 - \frac{\abs{g}}{2\kappa}\right)\left(\mu e^{\kappa x} + e^{-\kappa x}\right),&\text{se }x \in (-\ell, \ell)\\
             C_2 e^{-\kappa x},&\text{se }x \in (\ell, \infty)
         \end{cases}
     \end{equation*}
-    e vemos que o caso \(\mu = +1\) corresponde à função de onda par e o caso \(\mu = -1\) corresponde à função de onda ímpar. Mostramos, en passant, que há apenas estados ligados com funções de onda par ou ímpar e que as energias são tais que
+    e vemos que o caso \(\mu = +1\) corresponde à função de onda par e o caso \(\mu = -1\) corresponde à função de onda ímpar. De fato, temos
     \begin{equation*}
-        \kappa_p = \frac{\abs{g}}{2} \left(1 + e^{-2\kappa_p \ell}\right)
+        \varphi_+(x) = \begin{cases}
+            C_+e^{\kappa_+ x},&\text{se }x \in (-\infty, -\ell)\\
+            C_+\left(1 - \frac{\abs{g}}{2\kappa_+}\right)\left(e^{\kappa_+ x} + e^{-\kappa_+ x}\right),&\text{se }x \in (-\ell, \ell)\\
+            C_+e^{-\kappa_+ x},&\text{se }x \in (\ell, \infty)
+        \end{cases}
+    \end{equation*}
+    que verifica \(\varphi_+(-x) = \varphi_+(x)\) para todo \(x \in \mathbb{R}\) e
+    \begin{equation*}
+        \varphi_-(x) = \begin{cases}
+            -C_-e^{\kappa_- x},&\text{se }x \in (-\infty, -\ell)\\
+            C_-\left(1 - \frac{\abs{g}}{2\kappa_-}\right)\left(-e^{\kappa_- x} + e^{-\kappa_- x}\right),&\text{se }x \in (-\ell, \ell)\\
+            C_-e^{-\kappa_- x},&\text{se }x \in (\ell, \infty)
+        \end{cases}
+    \end{equation*}
+    que verifica \(\varphi_-(-x) = -\varphi_-(x)\) para todo \(x \in \mathbb{R}\). Mostramos, en passant, que há apenas estados ligados com funções de onda par ou ímpar e que as energias são tais que
+    \begin{equation*}
+        \kappa_+ = \frac{\abs{g}}{2} \left(1 + e^{-2\kappa_+ \ell}\right)
         \quad\text{e}\quad
-        \kappa_i = \frac{\abs{g}}{2} \left(1 - e^{-2\kappa_i \ell}\right)
+        \kappa_- = \frac{\abs{g}}{2} \left(1 - e^{-2\kappa_- \ell}\right)
     \end{equation*}
     nos casos par e ímpar, respectivamente.
+
+    \begin{figure}[!ht]
+        \centering
+        \begin{tikzpicture}
+            \def\g{2}
+            \def\l{2}
+            \def\cimpar{5.129769549}
+            \def\kimpar{0.98017259}
+            \def\cpar{5.32017221}
+            \def\kpar{1.01710443}
+            \begin{axis}[
+                width=0.8\linewidth,
+                height=0.25\textheight,
+                xmin=-5.15, xmax=5.15,
+                ymin=-0.8,ymax=0.8,
+                domain=-6:6,
+                samples=500,
+                axis lines=middle,
+                xlabel={\(x\)},
+                xlabel style = {anchor=north east},
+                % ylabel near ticks,
+                ylabel={\(\varphi(x)\)},
+                legend pos=south east,
+                ytick=\empty,
+                xtick={-2,2},
+                xticklabels={-\ell, \ell},
+                % yticklabels={},
+                ]
+                \addplot[thick, Mauve] {x <= -2 ? \cpar*exp(\kpar*x) : (x <= 2 ? \cpar*(2 - 2/\kpar)*cosh(\kpar*x) : \cpar*exp(-\kpar*x))};
+                \addlegendentry{\(\varphi_+(x)\)};
+                \addplot[thick, Pink] {x <= -2 ? -\cimpar*exp(\kimpar*x) : (x <= 2 ? -\cimpar*(2 - 2/\kimpar)*sinh(\kimpar*x) : \cimpar*exp(-\kimpar*x))};
+                \addlegendentry{\(\varphi_-(x)\)};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Funções de onda dos estados ligados}
+    \end{figure}
+
+    Consideremos a função \(f_+ : \mathbb{R} \to \mathbb{R}\) definida por \(f_+(x) = x - \frac12\abs{g}(1 + e^{-2\ell x})\), com \(f_+(0) = - \abs{g} < 0\). Notemos que \(f_+(\abs{g}) = \frac12\abs{g}(1 - e^{-2\ell \abs{g}}) > 0\), portanto pela continuidade da função concluímos pelo teorema do valor intermediário que existe pelo menos um zero da função \(f_+\) no intervalo \((0, \abs{g})\). Como \(f_+'(x) = 1 + \abs{g} \ell e^{-2\ell x} > 1\) é positiva para todo \(x \in \mathbb{R}\), concluímos que \(f_+\) é estritamente crescente, logo injetora. Desse modo, existe um único zero de \(f_+\), isto é, há apenas um estado ligado para a função de onda par e sabemos que \(\kappa_+ \in (0, \abs{g})\).
+
+    Consideremos a função \(f_- : \mathbb{R} \to \mathbb{R}\) definida por \(f_-(x) = x + \frac12\abs{g}(e^{-2\ell x}- 1)\), com \(f_-(0) = 0\). Como \(f'_-(x) = 1 - \abs{g} \ell e^{-2 \ell x}\) e \(f_-''(x) = \abs{g} \ell^2 e^{-2 \ell x} > 0\), sabemos que \(x_* = \frac{1}{2\ell}\ln(\abs{g} \ell)\) é um ponto de mínimo local de \(f_-\), e que \(f_-'\) é estritamente crescente, com \(f_-'\) positiva em \((x_*, \infty)\) e negativa em \((-\infty, x_*)\). Isto é, as restrições de \(f_-\) a esses intervalos,
+    \begin{align*}
+        h_- : (-\infty, x_*) &\to \mathbb{R} &
+        h_+ : (x_*, \infty) &\to \mathbb{R}\\
+                          x &\mapsto f_-(x)&
+                          x &\mapsto f_-(x),
+    \end{align*}
+    são funções injetoras, com \(h_-\) estritamente decrescente e \(h_+\) estritamente crescente.
+
+    O caso em que \(x_* = 0\) pode ser desconsiderado, isto é, devemos impor \(\abs{g} \ell \neq 1\). De fato, se \(\abs{g}\ell = 1\), então \(h_-\) e \(h_+\) são funções contínuas e monotônicas com
+    \begin{equation*}
+        \lim_{x \to 0^+}{h_+(x)} = 0,\quad
+        \lim_{x \to 0^-}{h_-(x)} = 0,\quad
+        \lim_{x \to +\infty}{h_+(x)} = +\infty,\quad\text{e}\quad
+        \lim_{x \to -\infty}{h_-(x)} = +\infty,
+    \end{equation*}
+    portanto \(h_-\) e \(h_+\) não admitem zero, e concluímos que o único zero de \(f_-\) é 0. Ora, isso implica \(\kappa_- = 0\), e segue que \(E = 0\), contradizendo a hipótese de que \(E < 0\).
+
+    Para \(x_* \neq 0\iff \abs{g} \ell \neq 1\), consideramos \(f_-(x_*) = \frac1{2\ell}[\ln(\abs{g}\ell) + 1 - \abs{g} \ell]\) e mostraremos que \(f_-(x_*) < 0\). Seja então a função auxiliar \(y : (0, \infty) \to \mathbb{R}\) definida por \(y(\xi) = \ln(\xi) + 1 - \xi\), com \(y(1) = 0\). Notemos que \(y'(\xi) = \frac{1}{\xi} - 1\), portanto \(\xi > 1 \implies y'(\xi) < 0\) e \(\xi \in (0,1) \implies y'(\xi) > 0\), isto é, \(y\) é estritamente crescente em \((0,1)\) e estritamente decrescente em \((1, \infty)\). Dessa forma, como \(y\) é contínua e
+    \begin{equation*}
+        \lim_{\xi \to 0^+}{y(\xi)} = -\infty\quad\text{e}\quad \lim_{\xi \to +\infty}{y(\xi)} = -\infty,
+    \end{equation*}
+    concluímos que \(\xi = 1\) é o único zero de \(y\), com \(y(\xi) < 0\) sempre que \(\xi \neq 1\). Está mostrado, assim, que \(f_-(x_*) < 0\) sempre que \(x_* \neq 0\). Dessa forma, no caso em que \(x_* > 0\), temos \(0 \in (-\infty, x_*)\), portanto o único zero de \(h_-\) é 0, e concluímos que \(h_+\) admite um único zero em \((x_*, \infty)\), por ser uma função injetora e contínua. Pelo mesmo argumento, concluímos que no caso em que \(x_* < 0\) a função injetora \(h_-\) admite um único zero em \((-\infty, x_*)\) e o único zero de \(h_+\) é 0. Em resumo, mostramos que se \(\abs{g}\ell \neq 1\), então os únicos zeros de \(f_-\) são \(0\) e \(\kappa_-\), com \(\abs{\kappa_-} > x_*\). Isto é, há apenas um estado ligado para a função de onda ímpar.
+\end{proof}
+
+\begin{proof}[Resolução do item (d)]
+    No caso em que \(\kappa \ell \gg 1\), temos das equações de energia que
+    \begin{equation*}
+        \kappa_\pm = \frac{\abs{g}}{2}\left(1 \pm e^{-2 \kappa \ell}\right) \simeq \frac{\abs{g}}{2} \implies \kappa_+ = \kappa_- = \frac{\abs{g}}{2},
+    \end{equation*}
+    isto é, o autovalor de energia se torna degenerado. Ainda assim, os autovetores \(\ket{\varphi_+}\) e \(\ket{\varphi_-}\) são linearmente independentes já que as suas funções de onda têm paridades distintas. Dessa forma, temos
+    \begin{equation*}
+        H = E \ketbra{\varphi_+}{\varphi_+} + E \ketbra{\varphi_-}{\varphi_-} = E_0 \unity,
+    \end{equation*}
+    onde \(E = \frac{\hbar^2 g^2}{8m}\).
+
+    No caso em que \(\kappa \ell \ll 1\), temos
+    \begin{equation*}
+        \kappa_\pm = \frac{\abs{g}}{2}\left(1 \pm e^{-2 \kappa \ell}\right) \simeq \frac{\abs{g}}{2}(1 \pm 1)  \mp \abs{g}\ell \kappa_{\pm} \implies \kappa_+ = \frac{\abs{g}}{1 + \abs{g} \ell} \simeq \abs{g}\quad\text{e}\quad\kappa_- = 0.
+    \end{equation*}
+    Assim, temos
+    \begin{equation*}
+        H = 4E \ketbra{\varphi_+}{\varphi_+} = 2 E \left(\ketbra{\varphi_+}{\varphi_+} + \ketbra{\varphi_-}{\varphi_-}\right) + 2 E \left(\ketbra{\varphi_+}{\varphi_+} - \ketbra{\varphi_-}{\varphi_-}\right) = 2E \unity + 2 E \sigma_3,
+    \end{equation*}
+    onde \(\sigma_3 = \ketbra{\varphi_+}{\varphi_+} - \ketbra{\varphi_-}{\varphi_-}\) é representado por uma matriz de Pauli na base \(\set{\ket{\varphi_+}, \ket{\varphi_-}}\). Consideremos agora a base \(\set{\ket{+}, \ket{-}}\) com
+    \begin{equation*}
+        \ket{+} = \frac{1}{\sqrt{2}} \ket{\varphi_+} + \frac{i}{\sqrt{2}}\ket{\varphi_-}
+        \quad\text{e}\quad
+        \ket{-} = \frac{1}{\sqrt{2}} \ket{\varphi_+} - \frac{i}{\sqrt{2}}\ket{\varphi_-},
+    \end{equation*}
+    então
+    \begin{equation*}
+        H\ket{+} = 2\sqrt{2}E \ket{\varphi_+}\text{ e }
+        H\ket{-} = 2\sqrt{2}E \ket{\varphi_+} \implies \bra{+}H\ket{+} = 2E,\quad\bra{-}H\ket{+} = 2E,\quad\text{e}\quad\bra{-}H\ket{-} = 2E,
+    \end{equation*}
+    isto é, podemos escrever \(H = E_0 \unity - A \sigma_1\), onde \(E_0 = 2E = -A\) e \(\sigma_1= \ketbra{+}{-} + \ketbra{-}{+}\) é uma matriz de Pauli na base \(\set{\ket{+},\ket{-}}\).
 \end{proof}
