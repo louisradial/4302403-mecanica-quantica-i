@@ -16,7 +16,10 @@
                 \kappa = \frac{\abs{g}}{2}(1 - e^{-2 \kappa \ell}).
             \end{equation*}
             Sempre existe um estado ligado nesse caso? O que é necessário impor? Faça um esboço qualitativo da função de onda do estado ligado.
-        \item Suponha agora que \(\kappa \ell \gg 1\). Mostre que os dois estados ligados constituem um sistema de dois níveis cujo hamiltoniano é dado por \(H = E_0 \unity - A \sigma_1\).
+        \item Suponha agora que \(\kappa \ell \gg 1\). Mostre que os dois estados ligados constituem um sistema de dois níveis cujo hamiltoniano é dado por \(H = \left(\begin{smallmatrix}
+                E_0 & -A\\
+                -A & E_0
+        \end{smallmatrix}\right)\).
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução do item (a)]
@@ -379,34 +382,38 @@
 \end{proof}
 
 \begin{proof}[Resolução do item (d)]
-    No caso em que \(\kappa \ell \gg 1\), temos das equações de energia que
+    No caso em que \(\kappa \ell \gg 1\), escrevamos \(e^{-2 \kappa \ell} = \epsilon\), então as energias dos estados ligados em ordem linear de \(\epsilon\) são dadas por
     \begin{equation*}
-        \kappa_\pm = \frac{\abs{g}}{2}\left(1 \pm e^{-2 \kappa \ell}\right) \simeq \frac{\abs{g}}{2} \implies \kappa_+ = \kappa_- = \frac{\abs{g}}{2},
+        \kappa_\pm = \frac{\abs{g}}{2}\left(1 \pm \epsilon\right) \implies -E_\pm =\frac{\hbar^2 \kappa_{\pm}^2}{2m} = \frac{\hbar^2g^2}{8m} \left[1 \pm \epsilon\right]^2 = \frac{\hbar^2 g^2(1 \pm 2 \epsilon)}{8m}.
     \end{equation*}
-    isto é, o autovalor de energia se torna degenerado. Ainda assim, os autovetores \(\ket{\varphi_+}\) e \(\ket{\varphi_-}\) são linearmente independentes já que as suas funções de onda têm paridades distintas. Dessa forma, temos
+    Desse modo, temos
+    \begin{align*}
+        H &= E_+ \ketbra{\varphi_+}{\varphi_+} + E_- \ketbra{\varphi_-}{\varphi_-} \\
+          &= -\frac{\hbar^2g^2}{8m} \left(\ketbra{\varphi_+}{\varphi_+} + \ketbra{\varphi_-}{\varphi_-}\right) - \frac{\hbar^2 g^2 \epsilon}{4m} \left[\ketbra{\varphi_+}{\varphi_+} - \ketbra{\varphi_-}{\varphi_-}\right]\\
+          &= E_0 \unity + A \sigma_z,
+    \end{align*}
+    onde definimos \(E_0 = -\frac{\hbar^2 g^2}{8m}\), \(A = -\frac{\hbar^2 g^2}{4m}\epsilon\) e \(\sigma_z = \ketbra{\varphi_+}{\varphi_+} - \ketbra{\varphi_-}{\varphi_-}\).
+    Consideremos agora a base \(\set{\ket{+}, \ket{-}}\) com
     \begin{equation*}
-        H = E \ketbra{\varphi_+}{\varphi_+} + E \ketbra{\varphi_-}{\varphi_-} = E_0 \unity,
-    \end{equation*}
-    onde \(E = \frac{\hbar^2 g^2}{8m}\).
-
-    No caso em que \(\kappa \ell \ll 1\), temos
-    \begin{equation*}
-        \kappa_\pm = \frac{\abs{g}}{2}\left(1 \pm e^{-2 \kappa \ell}\right) \simeq \frac{\abs{g}}{2}(1 \pm 1)  \mp \abs{g}\ell \kappa_{\pm} \implies \kappa_+ = \frac{\abs{g}}{1 + \abs{g} \ell} \simeq \abs{g}\quad\text{e}\quad\kappa_- = 0.
-    \end{equation*}
-    Assim, temos
-    \begin{equation*}
-        H = 4E \ketbra{\varphi_+}{\varphi_+} = 2 E \left(\ketbra{\varphi_+}{\varphi_+} + \ketbra{\varphi_-}{\varphi_-}\right) + 2 E \left(\ketbra{\varphi_+}{\varphi_+} - \ketbra{\varphi_-}{\varphi_-}\right) = 2E \unity + 2 E \sigma_3,
-    \end{equation*}
-    onde \(\sigma_3 = \ketbra{\varphi_+}{\varphi_+} - \ketbra{\varphi_-}{\varphi_-}\) é representado por uma matriz de Pauli na base \(\set{\ket{\varphi_+}, \ket{\varphi_-}}\). Consideremos agora a base \(\set{\ket{+}, \ket{-}}\) com
-    \begin{equation*}
-        \ket{+} = \frac{1}{\sqrt{2}} \ket{\varphi_+} + \frac{i}{\sqrt{2}}\ket{\varphi_-}
+        \ket{+} = \frac{1}{\sqrt{2}} \ket{\varphi_+} + \frac{1}{\sqrt{2}}\ket{\varphi_-}
         \quad\text{e}\quad
-        \ket{-} = \frac{1}{\sqrt{2}} \ket{\varphi_+} - \frac{i}{\sqrt{2}}\ket{\varphi_-},
+        \ket{-} = -\frac{1}{\sqrt{2}} \ket{\varphi_+} + \frac{1}{\sqrt{2}}\ket{\varphi_-},
     \end{equation*}
-    então
+    então \(\sigma_z \ket{\pm} = -\ket{\mp}\) e
     \begin{equation*}
-        H\ket{+} = 2\sqrt{2}E \ket{\varphi_+}\text{ e }
-        H\ket{-} = 2\sqrt{2}E \ket{\varphi_+} \implies \bra{+}H\ket{+} = 2E,\quad\bra{-}H\ket{+} = 2E,\quad\text{e}\quad\bra{-}H\ket{-} = 2E,
+        H\ket{\pm} = E_0 \ket{\pm} + A \sigma_z \ket{\pm} = E_0 \ket{\pm} - A \ket{\mp}.
     \end{equation*}
-    isto é, podemos escrever \(H = E_0 \unity - A \sigma_1\), onde \(E_0 = 2E = -A\) e \(\sigma_1= \ketbra{+}{-} + \ketbra{-}{+}\) é uma matriz de Pauli na base \(\set{\ket{+},\ket{-}}\).
+    Desse modo, temos
+    \begin{equation*}
+        \bra{\mp}H\ket{\pm} = -A, \quad\text{e}\quad
+        \bra{\pm}H\ket{\pm} = E_0
+    \end{equation*}
+    isto é,
+    \begin{equation*}
+        H = \begin{pmatrix}
+            E_0 & -A\\
+            -A & E_0
+        \end{pmatrix}
+    \end{equation*}
+    é a representação de \(H\) na base \(\set{\ket{+},\ket{-}}\).
 \end{proof}
