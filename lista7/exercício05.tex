@@ -1,0 +1,268 @@
+\begin{lemma}{Matriz de espalhamento a partir da matriz de transmissão}{matriz_espalhamento}
+    Para um potencial que se anula na região \((-\infty,\ell_1) \cup (\ell_2, \infty)\) com \(\ell_1 < \ell_2\), seja
+    \begin{equation*}
+        \varphi_k(x) = \begin{cases}
+            A_1 e^{ikx} + A_2 e^{-ikx}, &\text{se }x < \ell_1\\
+            B_1 e^{ikx} + B_2 e^{-ikx}, &\text{se }x > \ell_2
+        \end{cases}
+    \end{equation*}
+    a função de onda de uma partícula livre com energia \(\frac{(\hbar k)^2}{2m}\). Definamos as matrizes de transmissão \(M\) e de espalhamento \(S\) de forma que
+    \begin{equation*}
+        \begin{pmatrix}
+            B_1\\
+            B_2
+        \end{pmatrix} =
+        M
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}\quad\text{e}\quad
+        \begin{pmatrix}
+            B_1\\
+            A_2
+        \end{pmatrix} =
+        S
+        \begin{pmatrix}
+            A_1\\
+            B_2
+        \end{pmatrix}.
+    \end{equation*}
+    Para uma matriz de transmissão dada por
+    \begin{equation*}
+        M = \begin{pmatrix}
+            F && G^*\\
+            G && F^*
+        \end{pmatrix}
+    \end{equation*}
+    com \(\abs{F}^2 - \abs{G}^2 = 1\), então
+    \begin{equation*}
+        S = \frac{1}{F^*}\begin{pmatrix}
+            1 && G^*\\
+            -G&& 1
+        \end{pmatrix}
+    \end{equation*}
+    é a matriz de espalhamento.
+\end{lemma}
+\begin{proof}
+    Da definição da matriz de transmissão, temos
+    \begin{equation*}
+        \begin{cases}
+            B_1 = F A_1 + G^* A_2\\
+            B_2 = G A_1 + F^* A_2
+        \end{cases}
+    \end{equation*}
+    então
+    \begin{equation*}
+        A_2 = \frac{B_2 - G A_1}{F^*}
+    \end{equation*}
+    e obtemos
+    \begin{align*}
+        B_1 &= F A_1 + \frac{G^* B_2 - \abs{G}^2A_1}{F^*}\\
+            &= \frac{(\abs{F}^2 - \abs{G}^2)A_1 + G^* B_2}{F^*}\\
+            &= \frac{A_1 + G^* B_2}{F^*}.
+    \end{align*}
+    Isto é, temos
+    \begin{equation*}
+        \begin{pmatrix}
+            B_1\\A_2
+        \end{pmatrix} = \frac{1}{F^*}
+        \begin{pmatrix}
+            1 && G^*\\
+            -G&& 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\B_2
+        \end{pmatrix},
+    \end{equation*}
+    como desejado.
+\end{proof}
+\begin{exercício}{Efeito Ramsauer}{exercício5}
+    Considere um poço de potencial retangular de largura \(2a\) dado por
+    \begin{equation*}
+        V(x) = \begin{cases}
+            -V_0,&\text{se }x \in [-a,a]\\
+            0,&\text{se }x \notin[-a,a]
+        \end{cases}
+    \end{equation*}
+    com \(V_0 > 0\). Esse sistema pode sistema pode ser usado para modelar o espalhamento de elétrons de baixa energia por átomos. O poço atrativo representa o campo do núcleo, cuja carga positiva fica evidente quando os elétrons que sofrem espalhamento penetram a estrutura de camadas dos elétrons atômicos. O coeficiente de reflexão \(R\) é uma medida da seção de choque de espalhamento. Experimentos que medem essa seção de choque para átomos de gases raros detectam um mínimo da seção de choque de baixa energia que é consistente com o primeiro máximo de \(T\) para os valores típicos da profundidade e largura do poço. Essa transparência para elétrons de baixa energia que apresentam os átomos dos gases raros é conhecida pelo nome de efeito Ramsauer.
+    \begin{enumerate}[label=(\alph*)]
+        \item Calcule o coeficiente de transmissão \(T\) para uma partícula de massa \(m\) e energia \(E > 0\) como função de \(g = \frac{2a}{\hbar}\sqrt{2mV_0}\) e de \(\bar{E} = \frac{E}{V_0}.\)
+        \item Encontre a condição para transmissão perfeita, isto é, \(T = 1\).
+        \item No limite \(g^2 \gg 1\), mostre que o mínimo de \(T\) segue uma curva que é bem aproximada por \(T_\mathrm{min} = 4\bar{E}\). Faça um gráfico de \(T\) em função de \(\bar{E}\) para \(g^2 = 10^5\).
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+    A função de onda de uma partícula com energia \(V_0 \bar{E} > V_0\) pode ser escrita como
+    \begin{equation*}
+        \varphi(x) = \begin{cases}
+            A_1 e^{i k_1 x} + A_2 e^{-i k_1 x},&\text{se }x < -a\\
+            B_1 e^{i k_2 x} + B_2 e^{-i k_2 x},&\text{se }x \in [-a,a]\\
+            C_1 e^{i k_1 x} + C_2 e^{-i k_1 x},&\text{se }x > -a,
+        \end{cases}
+    \end{equation*}
+    onde
+    \begin{equation*}
+        \hbar k_1 = \sqrt{2m V_0 \bar{E}} \quad\text{e}\quad \hbar k_2 = \sqrt{2 m (\bar{E} + 1)V_0}.
+    \end{equation*}
+    Da continuidade da função de onda temos
+    \begin{equation*}
+        A_1 e^{-i k_1 a} + A_2 e^{ik_1 a} = B_1 e^{-ik_2 a} + B_2 e^{ik_2 a}
+        \quad\text{e}\quad
+        C_1 e^{i k_1 a} + C_2 e^{-ik_1 a} = B_1 e^{ik_2 a} + B_2 e^{-ik_2 a}
+    \end{equation*}
+    e da continuidade de sua primeira derivada,
+    \begin{equation*}
+        ik_1(A_1 e^{-i k_1 a} - A_2 e^{ik_1 a}) = ik_2(B_1 e^{-ik_2 a} - B_2 e^{ik_2 a})
+        \quad\text{e}\quad
+        ik_1(C_1 e^{i k_1 a} - C_2 e^{-ik_1 a}) = ik_2(B_1 e^{ik_2 a} - B_2 e^{-ik_2 a}).
+    \end{equation*}
+    Podemos reescrever matricialmente como
+    \begin{equation*}
+        \begin{pmatrix}
+            B_1 \\
+            B_2
+        \end{pmatrix} = \frac12
+        \begin{pmatrix}
+            \left(1 + \frac{k_1}{k_2}\right)e^{i(k_2 - k_1)a} &&
+            \left(1 - \frac{k_1}{k_2}\right)e^{i(k_2 + k_1)a} \\
+            \left(1 - \frac{k_1}{k_2}\right)e^{-i(k_2 + k_1)a} &&
+            \left(1 + \frac{k_1}{k_2}\right)e^{-i(k_2 - k_1)a}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}
+    \end{equation*}
+    e
+    \begin{equation*}
+        \begin{pmatrix}
+            C_1\\
+            C_2
+        \end{pmatrix} = \frac12
+        \begin{pmatrix}
+            \left(1 + \frac{k_2}{k_1}\right)e^{i(k_2 - k_1)a} &&
+            \left(1 - \frac{k_2}{k_1}\right)e^{-i(k_2 + k_1)a} \\
+            \left(1 - \frac{k_2}{k_1}\right)e^{i(k_2 + k_1)a} &&
+            \left(1 + \frac{k_2}{k_1}\right)e^{-i(k_2 - k_1)a}
+        \end{pmatrix}
+        \begin{pmatrix}
+            B_1\\
+            B_2
+        \end{pmatrix},
+    \end{equation*}
+    isto é,
+    \begin{align*}
+        \begin{pmatrix}
+            C_1\\
+            C_2
+        \end{pmatrix} &=
+        \begin{pmatrix}
+            \frac{k_2 + k_1}{2k_1}e^{i(k_2 - k_1)a} &&
+            -\frac{k_2-k_1}{2k_1}e^{-i(k_2 + k_1)a} \\
+            - \frac{k_2-k_1}{2k_1}e^{i(k_2 + k_1)a} &&
+            \frac{k_2 + k_1}{2k_1}e^{-i(k_2 - k_1)a}
+        \end{pmatrix}
+        \begin{pmatrix}
+            \frac{k_2 + k_1}{2k_2}e^{i(k_2 - k_1)a} &&
+            \frac{k_2 - k_1}{2k_2}e^{i(k_2 + k_1)a} \\
+            \frac{k_2 - k_1}{2k_2}e^{-i(k_2 + k_1)a} &&
+            \frac{k_2 + k_1}{2k_2}e^{-i(k_2 - k_1)a}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}\\
+        &= \begin{pmatrix}
+            \frac{(k_2 + k_1)^2}{4k_1k_2} e^{2i(k_2 - k_1)a} - \frac{(k_2 - k_1)^2}{4k_1k_2} e^{-2i(k_2 + k_1)a} && \frac{k_2^2 - k_1^2}{4k_1k_2} (e^{2i k_2 a} - e^{-2i k_2 a})\\
+            \frac{k_2^2 - k_1^2}{4k_1k_2}(e^{-2ik_2a} - e^{2ik_2a}) && \frac{(k_2 + k_1)^2}{4k_1k_2} e^{-2i(k_2 - k_1)a} - \frac{(k_2 - k_1)^2}{4k_1k_2} e^{2i(k_2 + k_1)a}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}\\
+        &= \begin{pmatrix}
+            e^{-2ik_1 a} \left[\cos(2k_2a) + i\frac{k_2^2 + k_1^2}{2k_1k_2} \sin(2k_2a)\right]&& i\frac{k_2^2 - k_1^2}{2k_1k_2} \sin(2k_2 a)\\
+            -i\frac{k_2^2 - k_1^2}{2k_1k_2}\sin(2k_2 a) && e^{2ik_1 a} \left[\cos(2k_2a) - i\frac{k_2^2 + k_1^2}{2k_1k_2} \sin(2k_2a)\right]
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}.
+    \end{align*}
+    Dessa forma, determinamos a matriz de transmissão e podemos escrever a matriz de espalhamento pela equação
+    \begin{equation*}
+        \begin{pmatrix}
+            C_1 \\
+            A_2
+        \end{pmatrix} =
+        e^{-2ik_1 a} \left[\cos(2k_2a) - i\frac{k_2^2 + k_1^2}{2k_1k_2} \sin(2k_2a)\right]^{-1} \begin{pmatrix}
+            1 && i\frac{k_2^2 - k_1^2}{2k_1k_2} \sin(2k_2 a)\\
+            i\frac{k_2^2 - k_1^2}{2k_1k_2} \sin(2k_2 a) && 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1 \\
+            C_2
+        \end{pmatrix}.
+    \end{equation*}
+    Se a partícula é proveniente da região \(x < -a\), temos \(C_2 = 0\), logo o coeficiente de transmissão é dado por
+    \begin{align*}
+        T = \frac{\abs{C_1}^2}{\abs{A_1}^2}
+        &= \abs*{\cos(2k_2a) - i\frac{k_2^2 + k_1^2}{2k_1k_2} \sin(2k_2a)}^{-2}\\
+        &= \left[\cos^2(2k_2 a) + \left(\frac{k_2^2 + k_1^2}{2k_1k_2}\right)^2 \sin^2(2k_2a)\right]^{-1}\\
+        &= \left[1 + \left(\frac{k_2^2 - k_1^2}{2k_1k_2}\right)^2\sin^2(2k_2 a)\right]^{-1}\\
+        &= \left[1 + \left(\frac{(\hbar k_2)^2 - (\hbar k_1)^2}{2(\hbar k_1)(\hbar k_2)}\right)^2\sin^2 \left(\frac{2a}{\hbar}\sqrt{2m(\bar{E} + 1)V_0}\right)\right]^{-1}\\
+        &= \left[1 + \frac{1}{4\bar{E}(\bar{E}+1)}\sin^2(g\sqrt{\bar{E}+1})\right]^{-1}\\
+        &= \frac{4 \bar{E}(\bar{E}+1)}{4\bar{E}(\bar{E} + 1) + \sin^2(g\sqrt{\bar{E} + 1})},
+    \end{align*}
+    onde definimos \(g = \frac{2a}{\hbar}\sqrt{2m V_0}\).
+
+    Notemos que ocorre transmissão perfeita sempre que \(g\sqrt{\bar{E} + 1} = n\pi\), onde \(n \in \mathbb{N}\) e \(n \geq \frac{g}{\pi}\), isto é, quando
+    \begin{equation*}
+        \bar{E}_n = \left(\frac{n\pi}{g}\right)^2 - 1.
+    \end{equation*}
+    O mínimo de transmissão ocorre quando \(g \sqrt{\bar{E} + 1} = (n - \frac{1}{2})\pi\), onde \(n \in \mathbb{N}\) e \(n \geq \frac{g}{\pi} + \frac12\), isto é, quando
+    \begin{equation*}
+        \bar{E}_n = \left[\frac{(2n - 1)\pi}{2g}\right]^2 - 1.
+    \end{equation*}
+    \begin{figure}[!ht]
+        \centering
+        \begin{tikzpicture}
+            \def\g{sqrt(100000)}
+            \begin{axis}[
+                width=0.95\linewidth,
+                height=0.25\textheight,
+                xmin=0, xmax=2.25,
+                ymin=0,ymax=1.12,
+                domain=0:2.25,
+                samples=2001,
+                axis lines=middle,
+                xlabel={\(\bar{E}\)},
+                xlabel style = {anchor=north east},
+                % ylabel near ticks,
+                ylabel={\(T\)},
+                legend pos=south east,
+                ytick={0,1},
+                xtick={0,1,2},
+                % xticklabels={},
+                % yticklabels={},
+                ]
+                \addplot[thick, Mauve] {1/(1 + ((sin(deg(\g*sqrt(x+1))))/(2*sqrt(x*(x+1))))^2)};
+                \addlegendentry{\(T\)};
+                \addplot[thick, Pink, dotted] {1 - 1/(2*x+1)^2};
+                \addlegendentry{\(T_\mathrm{min}\)};
+                \addplot[thick, Red, dashed] {4*x};
+                \addlegendentry{\(4\bar{E}\)}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Coeficiente de transmissão para \(g = 10^{\frac52}.\)}
+    \end{figure}
+    Nos mínimos de transmissão temos
+    \begin{equation*}
+        T_\mathrm{min} = \frac{4\bar{E}^2 + 4\bar{E}}{4\bar{E}^2 + 4\bar{E} + 1} = 1 - \frac{1}{(2\bar{E} + 1)^2} = 1 - (2\bar{E} + 1)^{-2},
+    \end{equation*}
+    portanto para \(\bar{E} \ll 1\) temos
+    \begin{equation*}
+        T_\mathrm{min} \simeq 1 - \left[1 - 4\bar{E}\right] = 4\bar{E}
+    \end{equation*}
+    pela expansão binomial.
+\end{proof}
