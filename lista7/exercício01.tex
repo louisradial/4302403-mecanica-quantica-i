@@ -1,6 +1,83 @@
-\begin{exercício}{}{exercício1}
-
+\begin{exercício}{Posição quadrática média de uma partícula livre}{exercício1}
+    \begin{enumerate}[label=(\alph*)]
+        \item Mostre que \([p^2, x] = -2i\hbar p\).
+        \item Considere a posição quadrática média \(\mean{x^2}(t)\) do estado de função de onda \(\varphi(x,t)\). Mostre que
+            \begin{equation*}
+                \diff{\mean{x^2}}{t} = \frac{1}{m} \mean{px + xp} = \frac{i\hbar}{m} \int_{\mathbb{R}} \dli{x} x\left[\varphi \diffp{\varphi^*}{x}- \varphi^* \diffp{\varphi}{x}\right].
+            \end{equation*}
+        \item Mostre que se a partícula é livre, então
+            \begin{equation*}
+                \diff[2]{\mean{x^2}}{t} = \frac{2}{m^2}\mean{p^2} = 2v_1^2,
+            \end{equation*}
+            onde \(v_1 = \frac{\sqrt{\mean{p^2}}}{m}\) é constante.
+        \item Conclua que
+            \begin{equation*}
+                \mean{x^2}(t) - \mean{x^2}(0) = \chi t + v_1^2 t^2,
+            \end{equation*}
+            e que
+            \begin{equation*}
+                \left[\Delta x(t)\right]^2 - \left[\Delta x(0)\right]^2 + \left[\chi - 2v_0 \mean{x}(0)\right]t + \left(v_1^2 - v_0^2\right)t^2
+            \end{equation*}
+            onde \(\chi = \diff{\mean{x^2}}{t}[t=0]\) e \(v_0 = \frac{\mean{p}}{m}\) são constantes.
+    \end{enumerate}
 \end{exercício}
+\begin{proof}[Resolução do item (a)]
+    Da relação de comutação \([x,p] = i\hbar \unity\), temos
+    \begin{align*}
+        [p^2, x]
+        = p^2 x - xp^2
+        = p\left([p,x] + xp\right) - \left([x,p] + px\right)p
+        = -2[x,p]p + pxp - pxp
+        = - 2i \hbar p,
+    \end{align*}
+    como desejado.
+\end{proof}
+\begin{proof}[Resolução do item (b)]
+    Do teorema de Ehrenfest, sabemos que
+    \begin{equation*}
+        \diff{\mean{x^2}}{t} = \frac{1}{i\hbar} \mean{[x^2, H]} = \frac1{2i m \hbar}\mean{[x^2, p^2]},
+    \end{equation*}
+    com \(H = \frac{1}{2m}p^2 + V(x)\) e \([x, V(x)] = 0\). Notemos ainda que
+    \begin{equation*}
+        [x^2, p^2] = x^2 p^2 - p^2 x^2 = x \left([x,p] + px\right) p - p\left([p,x] + xp\right)x = i \hbar \anticommutator{x}{p} + (xp)^2 - (px)^2 ,
+    \end{equation*}
+    com
+    \begin{equation*}
+        (xp)^2 = \left([x,p] + px\right)^2 = i\hbar [x,p] +  2i\hbar px + (px)^2 = i \hbar \anticommutator{x}{p} + (px)^2
+    \end{equation*}
+    isto é,
+    \begin{equation*}
+        [x^2, p^2] = 2i\hbar \anticommutator{x}{p}
+    \end{equation*}
+    e obtemos
+    \begin{equation*}
+        \diff{\mean{x^2}}{t} = \frac{1}{m}\mean{\anticommutator{x}{p}},
+    \end{equation*}
+    como desejado.
+\end{proof}
+\begin{proof}[Resolução]
+    Do item (b), segue que
+    \begin{equation*}
+        \diff[2]{\mean{x^2}}{t} = \frac{1}{m} \diff{\mean{\anticommutator{x}{p}}}{t} = \frac{1}{i \hbar m} \mean*{\commutator*{\anticommutator{x}{p}}{H}}. %= \frac{1}{i \hbar m}\mean*{\commutator*{\anticommutator{x}{p}}{\frac{p^2}{2m} + V(x)}}.
+    \end{equation*}
+    Pelo item (a) obtemos
+    \begin{align*}
+        \commutator*{\anticommutator{x}{p}}{H} &= \frac1{2m}[xp + px, p^2] + [xp + px, V]\\
+                                               &= \frac{1}{2m}\left(xp^3 - p^2xp + pxp^2 - p^3x\right) + \left(xpV - Vxp + pxV - Vpx\right)\\
+                                               &= \frac{1}{2m}\left([x,p^2]p + p[x,p^2]\right) + \left(xpV - xVp + pVx - Vp x\right)\\
+                                               &= \frac{2 i\hbar p^2}{m} + x[p, V] + [p, V]x\\
+                                               &= \frac{2i \hbar p^2}{m} + \anticommutator*{x}{\commutator{p}{V}},
+    \end{align*}
+    portanto
+    \begin{equation*}
+        \diff[2]{\mean{x^2}}{t} = \frac{2\mean{p^2}}{m^2} + \frac{1}{i\hbar m} \mean*{\anticommutator*{x}{\commutator{p}{V(x)}}}.
+    \end{equation*}
+    No caso de partícula livre, temos \(V(x) = 0\), e assim
+    \begin{equation*}
+        \diff[2]{\mean{x^2}}{t} = \frac{2\mean{p^2}}{m^2},
+    \end{equation*}
+    que é constante para uma partícula livre.
+\end{proof}
 \begin{proof}[Resolução]
 
 \end{proof}
