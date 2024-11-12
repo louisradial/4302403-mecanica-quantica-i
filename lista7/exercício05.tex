@@ -234,7 +234,7 @@
                 xmin=0, xmax=2.25,
                 ymin=0,ymax=1.12,
                 domain=0:2.25,
-                samples=2001,
+                samples=4501,
                 axis lines=middle,
                 xlabel={\(\bar{E}\)},
                 xlabel style = {anchor=north east},
@@ -243,15 +243,17 @@
                 legend pos=south east,
                 ytick={0,1},
                 xtick={0,1,2},
+                smooth
                 % xticklabels={},
                 % yticklabels={},
                 ]
                 \addplot[thick, Mauve] {1/(1 + ((sin(deg(\g*sqrt(x+1))))/(2*sqrt(x*(x+1))))^2)};
                 \addlegendentry{\(T\)};
-                \addplot[thick, Pink, dotted] {1 - 1/(2*x+1)^2};
+                \addplot[thick, Pink, dash dot] {1 - 1/(2*x+1)^2};
                 \addlegendentry{\(T_\mathrm{min}\)};
                 \addplot[thick, Red, dashed] {4*x};
-                \addlegendentry{\(4\bar{E}\)}
+                \addlegendentry{\(4\bar{E}\)};
+                \addplot[Pink, dotted] {1};
             \end{axis}
         \end{tikzpicture}
         \caption{Coeficiente de transmissão para \(g = 10^{\frac52}.\)}
