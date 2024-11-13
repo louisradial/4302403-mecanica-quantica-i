@@ -1,6 +1,47 @@
-\begin{exercício}{}{exercício2}
-
+\begin{exercício}{Pacote de onda gaussiano}{exercício2}
+    Considere a seguinte função de onda de uma partícula livre
+    \begin{equation*}
+        \varphi(x,t) = \frac{1}{\sqrt{2\pi}} \int_{\mathbb{R}} \dli{k} A(k) \exp\left[ikx - i\omega(k) t\right],
+    \end{equation*}
+    onde \(A(k)\) é a gaussiana dada por
+    \begin{equation*}
+        A(k) = \frac{1}{(\pi \sigma^2)^{\frac14}} \exp\left[-\frac{(k - \bar{k})^2}{2 \sigma^2}\right].
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item Mostre que
+            \begin{equation*}
+                \int_{\mathbb{R}} \dli{k} \abs{A(k)}^2 = 1, \quad\text{e}\quad \Delta k = \frac{\sigma}{\sqrt{2}}
+            \end{equation*}
+            e que a função de onda \(\varphi(x,0)\) vale
+            \begin{equation*}
+                \varphi(x,0) = \frac{\sqrt{\sigma}}{\pi^{\frac14}}\exp\left[i \bar{k} x - \frac12 \sigma^2 x^2\right].
+            \end{equation*}
+            Esboce a densidade de probabilidade \(\abs{\varphi(x,0)}^2\). Qual é a largura dessa curva? Identifique a dispersão \(\Delta x\) e verifique que \(\Delta x \Delta k = \frac12\).
+        \item Mostre que se \(\frac{\hbar \sigma^2 t}{m} \ll 1\), então
+            \begin{equation*}
+                \varphi(x,t) = \exp\left(\frac{i\hbar \bar{k}^2}{2m}t\right)\varphi(x - v_gt, 0),
+            \end{equation*}
+            onde \(v_g = \frac{\hbar \bar{k}}{m}.\)
+        \item Mostre que
+            \begin{equation*}
+                \varphi(x,t) = \frac{1}{(\pi \sigma^2)^{\frac14}} \sigma'\exp\left[i\bar{k}x - i \omega(k) t  - \frac12 \sigma'^2 (x - v_gt)^2\right]
+            \end{equation*}
+            com \(\sigma'^{-2} = \sigma^{-2} + \frac{i \hbar t}{m}\) e determine \(\abs{\varphi(x,t)}^2\).
+        \item Mostre que
+            \begin{equation*}
+                \Delta x^2(t) = \frac{1}{\sigma^2}\left(1 + \frac{\hbar^2 \sigma^4 t^2}{m^2}\right).
+            \end{equation*}
+            Qual a interpretação física desse resultado?
+        \item Um nêutron sai de um reator nuclear nuclear com um comprimento de onda de \SI{0.1}{\nano\meter}. Suponha que sua função de onda em \(t = 0\) é um pacote de onda gaussiano de largura \(\Delta x = \SI{0.1}{\nano\meter}.\) Após quanto tempo a largura do pacote de onda terá duplicado? Que distância terá percorrido o nêutron?
+    \end{enumerate}
 \end{exercício}
-\begin{proof}[Resolução]
-
+\begin{proof}[Resolução do item (a)]
+    Notemos que \(A(k)\) é normalizada pois
+    \begin{equation*}
+        \int_{\mathbb{R}} \dli{k} \abs{A(k)}^2 = \frac{1}{\sqrt{\pi \sigma^2}} \int_{\mathbb{R}}\dli{k}\exp\left[-\frac{(k - \bar{k})^2}{\sigma^2}\right] = \frac{1}{\sqrt{\pi \sigma^2}} \sqrt{\pi \sigma^2} = 1.
+    \end{equation*}
+    Temos também
+    \begin{equation*}
+        \mean{k} = \int_{\mathbb{R}}
+    \end{equation*}
 \end{proof}
