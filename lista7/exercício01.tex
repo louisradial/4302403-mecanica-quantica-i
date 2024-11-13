@@ -55,7 +55,7 @@
     \end{equation*}
     como desejado.
 \end{proof}
-\begin{proof}[Resolução]
+\begin{proof}[Resolução do item (c)]
     Do item (b), segue que
     \begin{equation*}
         \diff[2]{\mean{x^2}}{t} = \frac{1}{m} \diff{\mean{\anticommutator{x}{p}}}{t} = \frac{1}{i \hbar m} \mean*{\commutator*{\anticommutator{x}{p}}{H}}. %= \frac{1}{i \hbar m}\mean*{\commutator*{\anticommutator{x}{p}}{\frac{p^2}{2m} + V(x)}}.
@@ -78,6 +78,31 @@
     \end{equation*}
     que é constante para uma partícula livre.
 \end{proof}
-\begin{proof}[Resolução]
+\begin{proof}[Resolução do item (d)]
+    Integrando de 0 até \(t\), temos
+    \begin{equation*}
+        \diff{\mean{x^2}}{t}[t] - \diff{\mean{x}^2}{t}[t=0] = 2v_1^2 t
+    \end{equation*}
+    e integrando novamente obtemos
+    \begin{equation*}
+        \mean{x^2}(t) - \mean{x^2}(0) = \chi t + v_1^2 t^2,
+    \end{equation*}
+    onde definimos \(\chi = \diff{\mean{x^2}}{t}[t=0]\).
 
+    Pelo teorema de Ehrenfest temos
+    \begin{equation*}
+        \diff{\mean{x}}{t} = \frac{1}{i\hbar} \mean{[x, H]} = \frac{1}{2i\hbar m} \mean{[x,p^2]} = \frac{\mean{p}}{m} = v_0,
+    \end{equation*}
+    que é constante uma partícula livre. De modo análogo ao que foi feito anteriormente, obtemos
+    \begin{equation*}
+        \mean{x}(t) = \mean{x}(0) + v_0 t.
+    \end{equation*}
+    Assim, concluímos que
+    \begin{align*}
+        \left[\Delta x(t)\right]^2 = \mean{x^2}(t) - \left[\mean{x}(t)\right]^2
+        &= \mean{x^2}(0) + \chi t + v_1^2 t^2 - \left[\mean{x}(0) + v_0 t\right]^2\\
+        &= \mean{x^2}(0) - \left[\mean{x}(0)\right]^2 + \left(\chi - 2v_0 \mean{x}(0)\right)t + (v_1^2 - v_0^2)t^2\\
+        &= \left[\Delta x(0)\right]^2 + \left[\chi - 2v_0 \mean{x}(0)\right]t + (v_1^2 - v_0^2)t^2
+    \end{align*}
+    como desejado.
 \end{proof}
