@@ -1,6 +1,238 @@
-\begin{exercício}{}{exercício4}
+\begin{lemma}{Matriz de espalhamento a partir da matriz de transmissão}{matriz_espalhamento}
+    Para um potencial que se anula na região \((-\infty,\ell_1) \cup (\ell_2, \infty)\) com \(\ell_1 < \ell_2\), seja
+    \begin{equation*}
+        \varphi_k(x) = \begin{cases}
+            A_1 e^{ikx} + A_2 e^{-ikx}, &\text{se }x < \ell_1\\
+            B_1 e^{ikx} + B_2 e^{-ikx}, &\text{se }x > \ell_2
+        \end{cases}
+    \end{equation*}
+    a função de onda de uma partícula livre com energia \(\frac{(\hbar k)^2}{2m}\). Definamos as matrizes de transmissão \(M\) e de espalhamento \(S\) de forma que
+    \begin{equation*}
+        \begin{pmatrix}
+            B_1\\
+            B_2
+        \end{pmatrix} =
+        M
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}\quad\text{e}\quad
+        \begin{pmatrix}
+            B_1\\
+            A_2
+        \end{pmatrix} =
+        S
+        \begin{pmatrix}
+            A_1\\
+            B_2
+        \end{pmatrix}.
+    \end{equation*}
+    Para uma matriz de transmissão dada por
+    \begin{equation*}
+        M = \begin{pmatrix}
+            F && G^*\\
+            G && F^*
+        \end{pmatrix}
+    \end{equation*}
+    com \(\abs{F}^2 - \abs{G}^2 = 1\), então
+    \begin{equation*}
+        S = \frac{1}{F^*}\begin{pmatrix}
+            1 && G^*\\
+            -G&& 1
+        \end{pmatrix}
+    \end{equation*}
+    é a matriz de espalhamento.
+\end{lemma}
+\begin{proof}
+    Da definição da matriz de transmissão, temos
+    \begin{equation*}
+        \begin{cases}
+            B_1 = F A_1 + G^* A_2\\
+            B_2 = G A_1 + F^* A_2
+        \end{cases}
+    \end{equation*}
+    então
+    \begin{equation*}
+        A_2 = \frac{B_2 - G A_1}{F^*}
+    \end{equation*}
+    e obtemos
+    \begin{align*}
+        B_1 &= F A_1 + \frac{G^* B_2 - \abs{G}^2A_1}{F^*}\\
+            &= \frac{(\abs{F}^2 - \abs{G}^2)A_1 + G^* B_2}{F^*}\\
+            &= \frac{A_1 + G^* B_2}{F^*}.
+    \end{align*}
+    Isto é, temos
+    \begin{equation*}
+        \begin{pmatrix}
+            B_1\\A_2
+        \end{pmatrix} = \frac{1}{F^*}
+        \begin{pmatrix}
+            1 && G^*\\
+            -G&& 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\B_2
+        \end{pmatrix},
+    \end{equation*}
+    como desejado.
+\end{proof}
+\begin{exercício}{Microscópio a efeito túnel}{exercício4}
+    G. Binning e H. Rohrer receberam o prêmio Nobel de Física de 1986 \enquote{for their design of the scanning tunneling microscope}. Esse microscópio é constituído por uma ponta metálica que se desloca muito perto da superfície de uma amostra de material condutor. A aplicação de uma pequena diferença de potencial entre a ponta e a amostra possibilita que elétrons escapem da amostra para a ponta por \emph{efeito túnel}. A corrente elétrica obtida pelo deslocamento da ponta sobre a amostra permite reconstruir uma imagem da superfície do material em escala atômica. O exercício a seguir mostra como as variações da intensidade da corrente em função da distância entre a ponta e a amostra possibilita visualizar átomos. Se a diferença de potencial aplicada é bem pequena, aparece uma barreira de potencial entre a ponta exploradora e a amostra, que tem a forma indicada pela linha pontilhada na figura abaixo.
 
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=0.45\linewidth,
+                height=0.15\textheight,
+                xmin=-0.5, xmax=1.5,
+                ymin=0,ymax=1.5,
+                domain=-0.5:1.5,
+                samples=2001,
+                axis lines=middle,
+                xlabel={\(x\)},
+                xlabel style = {anchor=north east},
+                % ylabel near ticks,
+                ylabel={\(E\)},
+                legend pos=south east,
+                ytick={0,1},
+                xtick={0,1},
+                xticklabels={\(0\),\(a\)},
+                yticklabels={\(0\),\(V_0\)},
+                ]
+
+                \addplot[Mauve, thick] {(x >= 0) ? ((x <= 1) ? 1 : 0) : 0};
+
+                \addplot[Pink, dotted, thick] {(x >= 0.025) ? ((x <= 0.975) ? 1 - 0.12*x : 0.05) : 0.15};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+
+    A barreira pode então ser descrita em boa aproximação por
+    \begin{equation*}
+        V(x) = \begin{cases}
+            V_0,&\text{se }x \in [0,a]\\
+            0,&\text{se }x \notin[0,a].
+        \end{cases}
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item Determine as funções de onda que representam um fluxo de elétrons de momento \(p\) e energia \(E \leq V_0\) através da barreira de potencial.
+        \item Calcule a expressão para o fluxo de elétrons transmitidos através da barreira de potencial.
+        \item O coeficiente de transmissão \(T\) é definido como sendo a razão entre as correntes incidentes e transmitidas. Determine \(T\).
+        \item Calcule a variação de corrente de um microscópio a efeito túnel quando o espaço entre a ponta e a amostra sofre uma variação de \SI{0.1}{\nano\meter} com \(V_0 = \SI{6}{\eV}\), \(a = \SI{1}{\nano\meter}\), e \(E = \SI{1}{\eV}\).
+    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-
+    A função de onda de uma partícula com energia \(E = V_0 \bar{E} < V_0\) pode ser escrita como
+    \begin{equation*}
+        \varphi(x) = \begin{cases}
+            A_1 e^{i k_1 x} + A_2 e^{-i k_1 x},&\text{se }x < 0\\
+            B_1 e^{i k_2 x} + B_2 e^{-i k_2 x},&\text{se }x \in [0,a]\\
+            C_1 e^{i k_1 x} + C_2 e^{-i k_1 x},&\text{se }x > a,
+        \end{cases}
+    \end{equation*}
+    onde
+    \begin{equation*}
+        \hbar k_1 = \sqrt{2m V_0 \bar{E}} \quad\text{e}\quad \hbar k_2 = \sqrt{2 m (1 - \bar{E})V_0}.
+    \end{equation*}
+    Da continuidade da função de onda temos
+    \begin{equation*}
+        A_1 + A_2 = B_1 + B_2
+        \quad\text{e}\quad
+        C_1 e^{i k_1 a} + C_2 e^{-ik_1 a} = B_1 e^{ik_2 a} + B_2 e^{-ik_2 a}
+    \end{equation*}
+    e da continuidade de sua primeira derivada,
+    \begin{equation*}
+        k_1(A_1 - A_2 ) = k_2(B_1  - B_2 )
+        \quad\text{e}\quad
+        k_1(C_1 e^{i k_1 a} - C_2 e^{-ik_1 a}) = k_2(B_1 e^{ik_2 a} - B_2 e^{-ik_2 a}).
+    \end{equation*}
+    Podemos reescrever matricialmente como
+    \begin{equation*}
+        \begin{pmatrix}
+            B_1 \\
+            B_2
+        \end{pmatrix} = \frac12
+        \begin{pmatrix}
+            1 + \frac{k_1}{k_2} &&
+            1 - \frac{k_1}{k_2} \\
+            1 - \frac{k_1}{k_2} &&
+            1 + \frac{k_1}{k_2}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}
+    \end{equation*}
+    e
+    \begin{equation*}
+        \begin{pmatrix}
+            C_1\\
+            C_2
+        \end{pmatrix} = \frac12
+        \begin{pmatrix}
+            \left(1 + \frac{k_2}{k_1}\right)e^{i(k_2 - k_1)a} &&
+            \left(1 - \frac{k_2}{k_1}\right)e^{-i(k_2 + k_1)a} \\
+            \left(1 - \frac{k_2}{k_1}\right)e^{i(k_2 + k_1)a} &&
+            \left(1 + \frac{k_2}{k_1}\right)e^{-i(k_2 - k_1)a}
+        \end{pmatrix}
+        \begin{pmatrix}
+            B_1\\
+            B_2
+        \end{pmatrix},
+    \end{equation*}
+    isto é,
+    \begin{align*}
+        \begin{pmatrix}
+            C_1\\
+            C_2
+        \end{pmatrix} &=
+        \begin{pmatrix}
+            \frac{k_2 + k_1}{2k_1}e^{i(k_2 - k_1)a} &&
+            -\frac{k_2-k_1}{2k_1}e^{-i(k_2 + k_1)a} \\
+            - \frac{k_2-k_1}{2k_1}e^{i(k_2 + k_1)a} &&
+            \frac{k_2 + k_1}{2k_1}e^{-i(k_2 - k_1)a}
+        \end{pmatrix}
+        \begin{pmatrix}
+            \frac{k_2 + k_1}{2k_2} &&
+            \frac{k_2 - k_1}{2k_2} \\
+            \frac{k_2 - k_1}{2k_2} &&
+            \frac{k_2 + k_1}{2k_2}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}\\
+        &= \begin{pmatrix}
+            \frac{(k_2 + k_1)^2}{4k_1k_2} e^{2i(k_2 - k_1)a} - \frac{(k_2 - k_1)^2}{4k_1k_2} e^{-2i(k_2 + k_1)a} && \frac{k_2^2 - k_1^2}{4k_1k_2} (e^{2i k_2 a} - e^{-2i k_2 a})\\
+            \frac{k_2^2 - k_1^2}{4k_1k_2}(e^{-2ik_2a} - e^{2ik_2a}) && \frac{(k_2 + k_1)^2}{4k_1k_2} e^{-2i(k_2 - k_1)a} - \frac{(k_2 - k_1)^2}{4k_1k_2} e^{2i(k_2 + k_1)a}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}\\
+        &= \begin{pmatrix}
+            e^{-2ik_1 a} \left[\cos(2k_2a) + i\frac{k_2^2 + k_1^2}{2k_1k_2} \sin(2k_2a)\right]&& i\frac{k_2^2 - k_1^2}{2k_1k_2} \sin(2k_2 a)\\
+            -i\frac{k_2^2 - k_1^2}{2k_1k_2}\sin(2k_2 a) && e^{2ik_1 a} \left[\cos(2k_2a) - i\frac{k_2^2 + k_1^2}{2k_1k_2} \sin(2k_2a)\right]
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}.
+    \end{align*}
+    Dessa forma, determinamos a matriz de transmissão e podemos escrever a matriz de espalhamento pela equação
+    \begin{equation*}
+        \begin{pmatrix}
+            C_1 \\
+            A_2
+        \end{pmatrix} =
+        e^{-2ik_1 a} \left[\cos(2k_2a) - i\frac{k_2^2 + k_1^2}{2k_1k_2} \sin(2k_2a)\right]^{-1} \begin{pmatrix}
+            1 && i\frac{k_2^2 - k_1^2}{2k_1k_2} \sin(2k_2 a)\\
+            i\frac{k_2^2 - k_1^2}{2k_1k_2} \sin(2k_2 a) && 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1 \\
+            C_2
+        \end{pmatrix}.
+    \end{equation*}
+    Se a partícula é proveniente da região \(x < -a\), temos \(C_2 = 0\), logo o coeficiente de transmissão é dado por
 \end{proof}
