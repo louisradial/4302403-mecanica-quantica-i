@@ -24,24 +24,128 @@
             onde \(v_g = \frac{\hbar \bar{k}}{m}.\)
         \item Mostre que
             \begin{equation*}
-                \varphi(x,t) = \frac{1}{(\pi \sigma^2)^{\frac14}} \sigma'\exp\left[i\bar{k}x - i \omega(k) t  - \frac12 \sigma'^2 (x - v_gt)^2\right]
+                \varphi(x,t) = \frac{1}{(\pi \sigma^2)^{\frac14}} \sigma'\exp\left[i\bar{k}x - i \omega(\bar{k}) t  - \frac12 \sigma'^2 (x - v_gt)^2\right]
             \end{equation*}
             com \(\sigma'^{-2} = \sigma^{-2} + \frac{i \hbar t}{m}\) e determine \(\abs{\varphi(x,t)}^2\).
         \item Mostre que
             \begin{equation*}
-                \Delta x^2(t) = \frac{1}{\sigma^2}\left(1 + \frac{\hbar^2 \sigma^4 t^2}{m^2}\right).
+                \Delta x^2(t) = \frac{1}{2\sigma^2}\left(1 + \frac{\hbar^2 \sigma^4 t^2}{m^2}\right).
             \end{equation*}
             Qual a interpretação física desse resultado?
-        \item Um nêutron sai de um reator nuclear nuclear com um comprimento de onda de \SI{0.1}{\nano\meter}. Suponha que sua função de onda em \(t = 0\) é um pacote de onda gaussiano de largura \(\Delta x = \SI{0.1}{\nano\meter}.\) Após quanto tempo a largura do pacote de onda terá duplicado? Que distância terá percorrido o nêutron?
+        \item Um nêutron sai de um reator nuclear com um comprimento de onda de \SI{0.1}{\nano\meter}. Suponha que sua função de onda em \(t = 0\) é um pacote de onda gaussiano de largura \(\Delta x = \SI{0.1}{\nano\meter}.\) Após quanto tempo a largura do pacote de onda terá duplicado? Que distância terá percorrido o nêutron?
     \end{enumerate}
 \end{exercício}
-\begin{proof}[Resolução do item (a)]
+\begin{proof}[Resolução]
     Notemos que \(A(k)\) é normalizada pois
     \begin{equation*}
         \int_{\mathbb{R}} \dli{k} \abs{A(k)}^2 = \frac{1}{\sqrt{\pi \sigma^2}} \int_{\mathbb{R}}\dli{k}\exp\left[-\frac{(k - \bar{k})^2}{\sigma^2}\right] = \frac{1}{\sqrt{\pi \sigma^2}} \sqrt{\pi \sigma^2} = 1.
     \end{equation*}
     Temos também
+    \begin{align*}
+        \mean{k} = \int_{\mathbb{R}}\dli{k} A^*(k) k A(k)
+        &= \frac{1}{\sqrt{\pi \sigma^2}} \int_{\mathbb{R}} \dli{k} k \exp\left[-\frac{(k - \bar{k})^2}{\sigma^2}\right]\\
+        &= \frac{1}{\sqrt{\pi \sigma^2}} \int_{\mathbb{R}} \dli{k} (k + \bar{k}) \exp\left[-\frac{k^2}{\sigma^2}\right]\\
+        &= \frac{\bar{k}}{\sqrt{\pi \sigma^2}} \int_{\mathbb{R}}\dli{k} \exp\left[-\frac{k^2}{\sigma^2}\right]\\
+        &= \frac{\bar{k}}{\sqrt{\pi \sigma^2}} \int_{\mathbb{R}} \dli{k} \exp\left[-\frac{k^2}{\sigma^2}\right]\\
+        &= \bar{k}
+    \end{align*}
+    e
+    \begin{align*}
+        \mean{k^2} = \int_{\mathbb{R}} \dli{k} A^*(k) k^2 A(k)
+        &= \frac{1}{\sqrt{\pi \sigma^2}} \int_{\mathbb{R}} \dli{k} k^2 \exp\left[-\frac{(k - \bar{k})^2}{\sigma^2}\right]\\
+        &= \frac{1}{\sqrt{\pi \sigma^2}} \int_{\mathbb{R}} \dli{k} (k^2 + 2k \bar{k} + \bar{k}^2) \exp\left[-\frac{k^2}{\sigma^2}\right]\\
+        &= \frac{\bar{k}^2}{\sqrt{\pi \sigma^2}} \int_{\mathbb{R}} \dli{k} \exp\left[-\frac{k^2}{\sigma^2}\right]+ \frac{1}{\sqrt{\pi \sigma^2}}\int_{\mathbb{R}}\dli{k} k^2 \exp\left[-\frac{k^2}{\sigma^2}\right]\\
+        &= \bar{k}^2 - \frac{1}{\sqrt{\pi \sigma^2}}\diffp*{\int_{\mathbb{R}}\dli{k}\exp\left[- \beta k^2\right]}{\beta}[\beta = \sigma^{-2}]\\
+        &= \bar{k}^2 - \frac{1}{\sqrt{\pi \sigma^2}} \diffp*{\sqrt{\frac{\pi}{\beta}}}{\beta}[\beta = \sigma^{-2}]\\
+        &= \bar{k}^2 + \frac{1}{2} \sqrt{\frac{\pi}{\pi \sigma^2 \sigma^{-6}}}\\
+        &= \bar{k}^2 + \frac12 \sigma^2,
+    \end{align*}
+    portanto \(\Delta k = \sqrt{\mean{k^2} - \mean{k}^2} = \frac{\sigma}{\sqrt{2}}\). Notemos que \(\abs{A(k)}^2 \leq \frac{1}{\sqrt{\pi \sigma^2}}\) para todo \(k \in \mathbb{R}\), com igualdade valendo se e somente se \(k = \bar{k}\), isto é, \(\bar{k}\) é o valor de \(k\) que maximiza \(\abs{A(k)}^2\) e então a velocidade de grupo é
     \begin{equation*}
-        \mean{k} = \int_{\mathbb{R}}
+        v_g = \diffp{\omega}{k}[k=\bar{k}].
     \end{equation*}
+    Como a partícula é livre, temos \([H, p] = 0\), logo \(\hbar\omega(k) = \frac{\hbar^2 k^2}{2m}\), então
+    \begin{equation*}
+        v_g = \frac{\hbar \bar{k}}{m}
+    \end{equation*}
+    é a velocidade de grupo deste pacote de onda.
+
+    No instante \(t\), a função de onda da partícula é dada por
+    \begin{align*}
+        \varphi(x,t) &= \frac{1}{\sqrt{2\pi}} \int_{\mathbb{R}} \dli{k} A(k) e^{ikx - i \omega(k)t}\\
+                     &= \frac{1}{(\pi \sigma^2)^{\frac14}\sqrt{2\pi}} \int_{\mathbb{R}} \dli{k} \exp\left[-\frac{(k - \bar{k})^2}{2 \sigma^2} + i \left(k x - \frac{\hbar k^2t}{2m}\right)\right]\\
+                     &= \frac{1}{(4\pi^3 \sigma^2)^{\frac14}} \int_{\mathbb{R}} \dli{k} \exp\left[-\frac{\left(m + i\hbar \sigma^2 t\right)k^2 - 2m\left(\bar{k} + i\sigma^2 x\right)k + m\bar{k}^2}{2 m\sigma^2}\right].
+    \end{align*}
+    Definindo \(\tilde{\sigma}(t)\) a partir de \(\left(\frac{\sigma}{\tilde{\sigma}}\right)^2 = 1 + \frac{i\hbar \sigma^2 t}{m}\), temos
+    \begin{align*}
+        \frac{(m + i\hbar \sigma^2 t)k^2 - 2m(\bar{k} + i \sigma^2 x)k + m\bar{k}^2}{m\left(\frac{\sigma}{\tilde{\sigma}}\right)^2}
+        &= k^2 - 2\frac{\bar{k} + i \sigma^2 x}{1 + i\frac{\hbar \sigma^2 t}{m}}k + \frac{\bar{k}^2}{1 + i\frac{\hbar \sigma^2 t}{m}}\\
+        &= k^2 - 2\left(\frac{\tilde{\sigma}}{\sigma}\right)^2(\bar{k} + i \sigma^2 x)k + \left(\frac{\tilde{\sigma}}{\sigma}\right)^2 \bar{k}^2\\
+        &= \left[k - \left(\frac{\tilde{\sigma}}{\sigma}\right)^2 (\bar{k} + i \sigma^2 x)\right]^2 + \left(\frac{\tilde{\sigma}}{\sigma}\right)^2\left[\bar{k}^2 - \left(\frac{\tilde{\sigma}}{\sigma}\right)^2(\bar{k} + i \sigma^2 x)^2\right]
+    \end{align*}
+    portanto
+    \begin{align*}
+        \varphi(x,t) &= \frac{1}{(4\pi^3 \sigma^2)^{\frac14}}\exp\left[-\frac{\bar{k}^2 - \left(\frac{\tilde{\sigma}}{\sigma}\right)^2 ( \bar{k} + i \sigma^2 x)^2}{2 \sigma^2}\right]\int_{\mathbb{R}} \dli{k}\exp\left\{-\frac{\left[k - \left(\frac{\tilde{\sigma}}{\sigma}\right)^2 (\bar{k}+ i \sigma^2 x)\right]^2}{2 \tilde{\sigma}^2}\right\}\\
+                     &= \frac{1}{(4\pi^3 \sigma^2)^{\frac14}}\exp\left\{-\frac{\left[1 - \left(\frac{\tilde{\sigma}}{\sigma}\right)^2\right]\bar{k}^2 - 2i \tilde{\sigma}^2\bar{k}x + \sigma^2 \tilde{\sigma}^2 x^2}{2 \sigma^2}\right\}\int_{\mathbb{R}} \dli{k}\exp\left(-\frac{k^2}{2 \tilde{\sigma}^2}\right)\\
+                     &= \frac{\tilde{\sigma}}{(\pi \sigma^2)^{\frac14}} \exp\left[-\frac{\left(\frac{1}{\tilde{\sigma}^2} - \frac{1}{\sigma^2}\right)\bar{k}^2 - 2i \bar{k} x + \sigma^2 x^2}{2\left(\frac{\sigma}{\tilde{\sigma}}\right)^2}\right]
+                     % &= \frac{\tilde{\sigma}}{(\pi \sigma^2)^{\frac14}} \exp\left[-\frac{\frac{i\hbar\bar{k}^2t}{m} + 2i \bar{k} x + \sigma^2 x^2}{2\left(1 + \frac{i \hbar \sigma^2 t}{m}\right)}\right]\\
+                     % &= \frac{\tilde{\sigma}}{(\pi \sigma^2)^{\frac14}} \exp\left[-\frac{2i \omega(\bar{k})t + 2i \bar{k} x + \sigma^2 x^2}{2\left(1 + \frac{i \hbar \sigma^2 t}{m}\right)}\right]
+    \end{align*}
+    é a função de onda. Notemos que
+    \begin{equation*}
+        (x - v_g t)^2 = x^2 - 2v_gt x + v_g^2 t^2 = x^2 - 2\frac{\hbar t}{m}\bar{k}x + \left(\frac{\hbar t}{m}\right)^2 \bar{k}^2 = x^2 + 2i \left(\frac{1}{\tilde{\sigma}^2} - \frac{1}{\sigma^2}\right) \bar{k} x - \left(\frac{1}{\tilde{\sigma}^2} - \frac{1}{\sigma^2}\right)^2 \bar{k}^2,
+    \end{equation*}
+    isto é,
+    \begin{equation*}
+        \sigma^2 x^2 = \sigma^2 (x - v_g t)^2 - 2i \left(\frac{\sigma^2}{\tilde{\sigma}^2} - 1\right) \bar{k} x + \left(\frac{1}{\tilde{\sigma}^2} - \frac{1}{\sigma^2}\right)\left(\frac{\sigma^2}{\tilde{\sigma}^2} - 1\right) \bar{k}^2,
+    \end{equation*}
+    logo podemos escrever
+    \begin{align*}
+        \varphi(x,t) &= \frac{\tilde{\sigma}}{(\pi \sigma^2)^{\frac14}} \exp\left[-\frac{\left(\frac{1}{\tilde{\sigma}^2} - \frac{1}{\sigma^2}\right)\bar{k}^2 - 2i \bar{k} x +\sigma^2 (x - v_g t)^2 - 2i \left(\frac{\sigma^2}{\tilde{\sigma}^2} - 1\right) \bar{k} x + \left(\frac{1}{\tilde{\sigma}^2} - \frac{1}{\sigma^2}\right)\left(\frac{\sigma^2}{\tilde{\sigma}^2} - 1\right) \bar{k}^2}{2\left(\frac{\sigma}{\tilde{\sigma}}\right)^2}\right]\\
+                     &= \frac{\tilde{\sigma}}{(\pi \sigma^2)^{\frac14}}\exp\left[-\frac{\left(\frac1{\tilde{\sigma}^2} - \frac{1}{\sigma^2}\right)\left(\frac{\sigma}{\tilde{\sigma}}\right)^2 \bar{k}^2 - 2i\left(\frac{\sigma}{\tilde{\sigma}}\right)^2i\bar{k}x + \sigma^2 ( x - v_g t)^2}{2 \left(\frac{\sigma}{\tilde{\sigma}}\right)^2}\right]\\
+                     &= \frac{\tilde{\sigma}}{(\pi \sigma^2)^{\frac14}} \exp\left[i\bar{k}x - \frac{i\hbar\bar{k}^2 t}{2m} - \frac{1}{2}\tilde{\sigma}^2(x - v_g t)^2\right]\\
+                     &= \frac{\tilde{\sigma}}{(\pi \sigma^2)^{\frac14}}\exp\left[i\bar{k}x - i\omega(\bar{k})t - \frac12 \tilde{\sigma}^2 (x - v_gt)^2\right].
+    \end{align*}
+    No instante inicial temos \(\tilde{\sigma} = \sigma\), então
+    \begin{equation*}
+        \varphi(x,0) = \frac{\sqrt{\sigma}}{\pi^{\frac14}} \exp\left[i\bar{k}x - \frac12 \sigma^2 x^2\right]
+    \end{equation*}
+    e para \(\frac{\hbar \sigma^2 t}{m} \ll 1\), temos \(\tilde{\sigma} \simeq \sigma\), portanto
+    \begin{align*}
+        \varphi(x, t) &\simeq \frac{\sqrt{\sigma}}{\pi^{\frac14}} \exp\left[i \bar{k}x - i \omega(\bar{k})t - \frac12 \sigma^2 (x - v_g t)^2\right] \\
+                      &= \frac{\sqrt{\sigma}}{\pi^{\frac14}} \exp\left[i\omega(\bar{k})t\right]\exp\left[i \bar{k}x - 2i \omega(\bar{k})t - \frac12 \sigma^2 (x - v_g t)^2\right]\\
+                      &= \frac{\sqrt{\sigma}}{\pi^{\frac14}} \exp\left[i\omega(\bar{k})t\right]\exp\left[i \bar{k}x - i \frac{\hbar \bar{k}^2}{m}t - \frac12 \sigma^2 (x - v_g t)^2\right]\\
+                      &= \frac{\sqrt{\sigma}}{\pi^{\frac14}} \exp\left[i\omega(\bar{k})t\right]\exp\left[i \bar{k}(x - v_gt) - \frac12 \sigma^2 (x - v_g t)^2\right]\\
+                      &= \exp\left[i\omega(\bar{k})t\right]\varphi(x-v_g t, 0).
+    \end{align*}
+
+    Notemos que
+    \begin{align*}
+        \abs{\varphi(x,t)}^2 &= \frac{\abs{\tilde{\sigma}}^2}{\sqrt{\pi \sigma^2}} \exp\left\{-\frac{1}{2}\left[\tilde{\sigma}^2 + \left(\tilde{\sigma}^2\right)^*\right](x - v_g t)^2\right\} \\
+                             &= \frac{\abs{\tilde{\sigma}}^2}{\sqrt{\pi \sigma^2}} \exp\left[-\Re(\tilde{\sigma}^2)(x - v_gt)^2\right]\\
+                             &= \frac{m \sigma}{\sqrt{\pi (m^2 + \hbar^2 \sigma^4 t^2)}} \exp\left[-\frac{m^2 \sigma^2}{m^2 + \hbar^2 \sigma^4 t^2}(x - v_g t)^2\right],
+    \end{align*}
+    logo
+    \begin{equation*}
+        \abs{\varphi(x,0)}^2 = \frac{\sigma}{\sqrt{\pi}}\exp\left[- \sigma^2 x^2\right]
+    \end{equation*}
+    é a densidade de probabilidade no instante inicial. Seguindo de modo análogo ao que foi feito para \(A(k)\), obtemos \(\mean{x} = v_g t\) e \(\mean{x^2} = \frac{m^2 + \hbar^2 \sigma^4 t^2}{2m^2 \sigma^2} + (v_g t)^2\), portanto
+    \begin{equation*}
+        (\Delta x)^2 = \frac{1}{2\sigma^2}\left(1 + \frac{\hbar^2 \sigma^4 t^2}{m^2}\right),
+    \end{equation*}
+    com
+    \begin{equation*}
+        \Delta k \Delta x = \frac12\sqrt{1 + \frac{\hbar ^2 \sigma^4 t^2}{m^2}},
+    \end{equation*}
+    isto é, a incerteza é mínima apenas em \(t = 0\) e temos \(\Delta k \Delta x > \frac12\) para todo \(t \neq 0\).
+
+    Para que o pacote de onda duplique sua largura, devemos ter \(\frac{\hbar^2 \sigma^4 t_2^2}{m^2} = 3\), isto é,
+    \begin{equation*}
+        t_2 = \frac{m\sqrt{3}}{\hbar \sigma^2},
+    \end{equation*}
+    de forma que a sua posição esperada neste instante é
+    \begin{equation*}
+        \mean{x}(t_2) = \frac{\bar{k} \sqrt{3}}{\sigma^2}.
+    \end{equation*}
+    Para um nêutron cujo pacote de onda tem comprimento de onda médio \(\bar{k} = \SI{0.1}{\nano\meter}\) e largura inicial \(\Delta x(0) = \SI{0.1}{\nano\meter}\), temos \(t_2 = \SI{0.6}{\pico\second}\) e \(\mean{x}(t_2) = \SI{2}{\nano\meter}\).
 \end{proof}
