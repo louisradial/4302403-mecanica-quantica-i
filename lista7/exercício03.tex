@@ -1,6 +1,22 @@
-\begin{exercício}{}{exercício3}
-
+\begin{exercício}{Pacote de onda senoidal}{exercício3}
+    Uma partícula livre de massa \(m\) movendo-se em uma dimensão está no estado inicial
+    \begin{equation*}
+        \Psi(x,0) = \sin(k_0x).
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item Determine \(\Psi(x,t).\)
+        \item Quais os valores de \(p\) que podem ser medidos no instante \(t\) e quais as probabilidades associadas?
+        \item Suponha que \(p\) seja medido em \(t = \SI{3}{\second}\) e o valor \(\hbar k_0\) seja encontrado. Como é \(\Psi(x,t)\) para \(t > \SI{3}{\second}\)?
+    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-
+    Notemos que
+    \begin{equation*}
+        \Psi(x,0) = \frac{\exp(ik_0 x) - \exp(-ik_0x)}{2i},
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        \Psi(x,t) = \frac{\exp(i k_0 x - i \omega_0 t) - \exp(-ik_0 x-i\omega_0t)}{2i} = e^{-i\omega_0 t} \sin(k_0x),
+    \end{equation*}
+    com \(\hbar \omega_0 = \frac{\hbar^2 k_0^2}{2m}\). Desse modo, os valores de \(p\) que podem ser medidos são \(-\hbar k_0\) e \(\hbar k_0\), com probabilidades iguais a \(\frac12\). Se em \(t = \SI{3}{\second}\) é medido \(\hbar k_0\), então a função de onda se torna \(\Psi(x,t) = \frac1{2i}e^{ik_0x - i\omega_0 t}\) para \(t > \SI{3}{\second}\).
 \end{proof}
