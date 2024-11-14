@@ -122,29 +122,29 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    A função de onda de uma partícula com energia \(E = V_0 \bar{E} < V_0\) pode ser escrita como
+    A função de onda de uma partícula livre com energia \(E = V_0 \bar{E} < V_0\) e momento \(p = \hbar k\) pode ser escrita como
     \begin{equation*}
         \varphi(x) = \begin{cases}
-            A_1 e^{i k_1 x} + A_2 e^{-i k_1 x},&\text{se }x < 0\\
-            B_1 e^{i k_2 x} + B_2 e^{-i k_2 x},&\text{se }x \in [0,a]\\
-            C_1 e^{i k_1 x} + C_2 e^{-i k_1 x},&\text{se }x > a,
+            A_1 e^{i k x} + A_2 e^{-i k x},&\text{se }x < 0\\
+            B_1 e^{\rho x} + B_2 e^{-\rho x},&\text{se }x \in [0,a]\\
+            C_1 e^{i k x} + C_2 e^{-i k x},&\text{se }x > a,
         \end{cases}
     \end{equation*}
     onde
     \begin{equation*}
-        \hbar k_1 = \sqrt{2m V_0 \bar{E}} \quad\text{e}\quad \hbar k_2 = \sqrt{2 m (1 - \bar{E})V_0}.
+        \hbar k = \sqrt{2m V_0 \bar{E}} \quad\text{e}\quad \hbar \rho = \sqrt{2 m (1 - \bar{E})V_0}.
     \end{equation*}
     Da continuidade da função de onda temos
     \begin{equation*}
         A_1 + A_2 = B_1 + B_2
         \quad\text{e}\quad
-        C_1 e^{i k_1 a} + C_2 e^{-ik_1 a} = B_1 e^{ik_2 a} + B_2 e^{-ik_2 a}
+        C_1 e^{i k a} + C_2 e^{-ik a} = B_1 e^{\rho a} + B_2 e^{-\rho a}
     \end{equation*}
     e da continuidade de sua primeira derivada,
     \begin{equation*}
-        k_1(A_1 - A_2 ) = k_2(B_1  - B_2 )
+        ik(A_1 - A_2 ) = \rho(B_1  - B_2 )
         \quad\text{e}\quad
-        k_1(C_1 e^{i k_1 a} - C_2 e^{-ik_1 a}) = k_2(B_1 e^{ik_2 a} - B_2 e^{-ik_2 a}).
+        ik(C_1 e^{i k a} - C_2 e^{-ik a}) = \rho(B_1 e^{\rho a} - B_2 e^{-\rho a}).
     \end{equation*}
     Podemos reescrever matricialmente como
     \begin{equation*}
@@ -153,10 +153,10 @@
             B_2
         \end{pmatrix} = \frac12
         \begin{pmatrix}
-            1 + \frac{k_1}{k_2} &&
-            1 - \frac{k_1}{k_2} \\
-            1 - \frac{k_1}{k_2} &&
-            1 + \frac{k_1}{k_2}
+            1 + \frac{ik}{\rho} &&
+            1 - \frac{ik}{\rho} \\
+            1 - \frac{ik}{\rho} &&
+            1 + \frac{ik}{\rho}
         \end{pmatrix}
         \begin{pmatrix}
             A_1\\
@@ -170,10 +170,10 @@
             C_2
         \end{pmatrix} = \frac12
         \begin{pmatrix}
-            \left(1 + \frac{k_2}{k_1}\right)e^{i(k_2 - k_1)a} &&
-            \left(1 - \frac{k_2}{k_1}\right)e^{-i(k_2 + k_1)a} \\
-            \left(1 - \frac{k_2}{k_1}\right)e^{i(k_2 + k_1)a} &&
-            \left(1 + \frac{k_2}{k_1}\right)e^{-i(k_2 - k_1)a}
+            \left(1 + \frac{\rho}{ik}\right)e^{(\rho - ik)a} &&
+            \left(1 - \frac{\rho}{ik}\right)e^{-(\rho + ik)a} \\
+            \left(1 - \frac{\rho}{ik}\right)e^{(\rho + ik)a} &&
+            \left(1 + \frac{\rho}{ik}\right)e^{-(\rho - ik)a}
         \end{pmatrix}
         \begin{pmatrix}
             B_1\\
@@ -185,34 +185,35 @@
         \begin{pmatrix}
             C_1\\
             C_2
-        \end{pmatrix} &=
+        \end{pmatrix} &= \frac1{4 ik \rho}
         \begin{pmatrix}
-            \frac{k_2 + k_1}{2k_1}e^{i(k_2 - k_1)a} &&
-            -\frac{k_2-k_1}{2k_1}e^{-i(k_2 + k_1)a} \\
-            - \frac{k_2-k_1}{2k_1}e^{i(k_2 + k_1)a} &&
-            \frac{k_2 + k_1}{2k_1}e^{-i(k_2 - k_1)a}
+            \left(ik + \rho\right)e^{(\rho - ik)a} &&
+            \left(ik - \rho\right)e^{-(\rho + ik)a} \\
+            \left(ik - \rho\right)e^{(\rho + ik)a} &&
+            \left(ik + \rho\right)e^{-(\rho - ik)a}
         \end{pmatrix}
         \begin{pmatrix}
-            \frac{k_2 + k_1}{2k_2} &&
-            \frac{k_2 - k_1}{2k_2} \\
-            \frac{k_2 - k_1}{2k_2} &&
-            \frac{k_2 + k_1}{2k_2}
+            \rho + ik &&
+            \rho - ik \\
+            \rho - ik &&
+            \rho + ik
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}\\
+        &= \frac{1}{4ik\rho}
+        \begin{pmatrix}
+            (\rho + ik)^2 e^{(\rho - ik)a} - (\rho -ik)^2 e^{-(\rho + ik)a} && (\rho^2 + k^2) \left[e^{(\rho - ik)a} - e^{-(\rho + ik)a}\right]\\
+            (\rho^2 + k^2) \left[e^{-(\rho - ik)a} - e^{(\rho + ik)a}\right] && (\rho + ik)^2e^{-{(\rho -ik)a}} - (\rho - ik)^2e^{(\rho + ik)a}
         \end{pmatrix}
         \begin{pmatrix}
             A_1\\
             A_2
         \end{pmatrix}\\
         &= \begin{pmatrix}
-            \frac{(k_2 + k_1)^2}{4k_1k_2} e^{2i(k_2 - k_1)a} - \frac{(k_2 - k_1)^2}{4k_1k_2} e^{-2i(k_2 + k_1)a} && \frac{k_2^2 - k_1^2}{4k_1k_2} (e^{2i k_2 a} - e^{-2i k_2 a})\\
-            \frac{k_2^2 - k_1^2}{4k_1k_2}(e^{-2ik_2a} - e^{2ik_2a}) && \frac{(k_2 + k_1)^2}{4k_1k_2} e^{-2i(k_2 - k_1)a} - \frac{(k_2 - k_1)^2}{4k_1k_2} e^{2i(k_2 + k_1)a}
-        \end{pmatrix}
-        \begin{pmatrix}
-            A_1\\
-            A_2
-        \end{pmatrix}\\
-        &= \begin{pmatrix}
-            e^{-2ik_1 a} \left[\cos(2k_2a) + i\frac{k_2^2 + k_1^2}{2k_1k_2} \sin(2k_2a)\right]&& i\frac{k_2^2 - k_1^2}{2k_1k_2} \sin(2k_2 a)\\
-            -i\frac{k_2^2 - k_1^2}{2k_1k_2}\sin(2k_2 a) && e^{2ik_1 a} \left[\cos(2k_2a) - i\frac{k_2^2 + k_1^2}{2k_1k_2} \sin(2k_2a)\right]
+            e^{-ika}\left[\frac{\rho^2 - k^2}{2i k \rho}\sinh(\rho a) + \cosh(\rho a)\right] && \frac{\rho^2 + k^2}{2ik\rho}e^{-ika}\sinh(\rho a)\\
+            -\frac{\rho^2 + k^2}{2ik\rho} e^{ika} \sinh(\rho a) &&e^{ika}\left[\cosh(\rho a)-\frac{\rho^2 - k^2}{2i k \rho}\sinh(\rho a)\right]
         \end{pmatrix}
         \begin{pmatrix}
             A_1\\
@@ -225,14 +226,22 @@
             C_1 \\
             A_2
         \end{pmatrix} =
-        e^{-2ik_1 a} \left[\cos(2k_2a) - i\frac{k_2^2 + k_1^2}{2k_1k_2} \sin(2k_2a)\right]^{-1} \begin{pmatrix}
-            1 && i\frac{k_2^2 - k_1^2}{2k_1k_2} \sin(2k_2 a)\\
-            i\frac{k_2^2 - k_1^2}{2k_1k_2} \sin(2k_2 a) && 1
+        e^{-ika}\left[\cosh(\rho a)-\frac{\rho^2 - k^2}{2i k \rho}\sinh(\rho a)\right]^{-1}
+        \begin{pmatrix}
+            1 && \frac{\rho^2 + k^2}{2ik\rho}e^{-ika}\sinh(\rho a)\\
+            \frac{\rho^2 + k^2}{2ik\rho} e^{ika} \sinh(\rho a) && 1
         \end{pmatrix}
         \begin{pmatrix}
             A_1 \\
             C_2
         \end{pmatrix}.
     \end{equation*}
-    Se a partícula é proveniente da região \(x < -a\), temos \(C_2 = 0\), logo o coeficiente de transmissão é dado por
+    Se a partícula é proveniente da região \(x < 0\), temos \(C_2 = 0\), logo o coeficiente de transmissão é dado por
+    \begin{equation*}
+        T^{-1} = \abs*{\cosh(\rho a) - \frac{\rho^2 - k^2}{2ik\rho}\sinh(\rho a)}^2 = 1 + \left(\frac{\rho^2 + k^2}{2k\rho}\right)^2 \sinh^2(\rho a) = 1 + \left(\frac{2m V_0}{4mV_0 \sqrt{\bar{E} - \bar{E}^2}}\right)^2\sinh^2(\rho a),
+    \end{equation*}
+    isto é,
+    \begin{equation*}
+        T = \frac{4\bar{E}(1 - \bar{E})}{4\bar{E} (1 - \bar{E}) + \sinh^2\left[\frac{a}{\hbar}\sqrt{2mV_0(1 - \bar{E})}\right]}.
+    \end{equation*}
 \end{proof}
