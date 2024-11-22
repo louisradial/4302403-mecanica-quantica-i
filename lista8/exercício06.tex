@@ -1,0 +1,94 @@
+\begin{exercício}{}{exercício6}
+    Considere uma partícula sem spin representada pela função de onda
+    \begin{equation*}
+        \psi(x,y,z) = A(x + y + 2z) e^{-\alpha r},
+    \end{equation*}
+    onde \(r^2 = x^2 + y^2 + z^2\), com \(A, \alpha \in \mathbb{R}\) constantes.
+    \begin{enumerate}[label=(\alph*)]
+        \item Qual o momento angular total da partícula?
+        \item Qual o valor esperado da componente \(z\) do momento angular da partícula?
+        \item Caso medíssemos \(L_x\), qual a probabilidade de que o resultado encontrado fosse \(\hbar\)?
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+    Em coordenadas esféricas, temos
+    \begin{equation*}
+        \psi(r, \theta, \varphi) = Ar ( \sin\theta \cos\varphi + \sin \theta\sin\varphi  + 2\cos\theta) e^{-\alpha r}.
+    \end{equation*}
+    Notemos que
+    \begin{equation*}
+        \sin\theta \cos\varphi = \sqrt{\frac{2\pi}{3}} \left[Y_{1}^{-1}(\theta, \varphi) - Y_{1}^{1}(\theta, \varphi)\right] \quad\text{e}\quad
+        \sin\theta \sin\varphi = i\sqrt{\frac{2\pi}{3}} \left[Y_{1}^{-1}(\theta, \varphi) + Y_{1}^{1}(\theta, \varphi)\right],
+    \end{equation*}
+    então
+    \begin{equation*}
+        \psi(r, \theta,\varphi) = \sqrt{\frac{4\pi}{3}}A\left[\frac{1 + i}{\sqrt{2}}Y_{1}^{-1}(\theta,\varphi) + 2Y_{1}^{0}(\theta, \varphi)- \frac{1 - i}{\sqrt{2}}Y_{1}^{1}(\theta,\varphi) \right]re^{-\alpha r},
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        L^2\psi = 2\hbar^2 \psi,
+    \end{equation*}
+    isto é, o momento angular total da partícula é \(\hbar\sqrt{2}\). Temos também
+    \begin{equation*}
+        L_z \psi(r,\theta,\varphi) = -\sqrt{\frac{4\pi}{3}}A\hbar \left[\frac{1 + i}{\sqrt{2}}Y_{1}^{-1}(\theta,\varphi) + \frac{1 - i}{\sqrt{2}}Y_{1}^{1}(\theta,\varphi)\right]r e^{-\alpha r},
+    \end{equation*}
+    portanto da relação de ortogonalidade
+    \begin{equation*}
+        \int_0^{\pi}\dli{\theta} \int_0^{2\pi}\sin\theta \dli{\varphi} \conj{Y_{\ell}^m}(\theta, \varphi) Y_{\tilde{\ell}}^{\tilde{m}}(\theta,\varphi) = \delta_{\ell \tilde{\ell}} \delta_{m \tilde{m}},
+    \end{equation*}
+    temos
+    \begin{align*}
+        \mean{L_z}_\psi &= \int_{0}^\infty \dli{r}\int_0^{\pi} r \dli{\theta} \int_0^{2\pi} r\sin\theta \dli{\varphi} \conj{\psi}(r,\theta,\varphi) L_z \psi(r,\theta,\varphi) = 0.
+    \end{align*}
+    Outra forma de ver este resultado é notando que \(\psi(x,y,z) = \psi(y,x,z)\), portanto
+    \begin{align*}
+        L_z \psi(x,y,z) %&= \left(x p_y - y p_x\right)\psi(x,y,z)\\
+                        = i\hbar y\left[Ae^{-\alpha r} - \alpha \psi(x,y,z) \diffp{r}{x}\right]-i\hbar x\left[Ae^{-\alpha r} - \alpha \psi(x,y,z) \diffp{r}{y}\right]
+                        = i A \hbar (y - x)  e^{- \alpha r}
+    \end{align*}
+    e temos
+    \begin{align*}
+        \mean{L_z}_{\psi} &= \int_{\mathbb{R}^3} \dli{x,y,z} \conj{\psi}(x,y,z) L_z \psi(x,y,z)\\
+                          &= i\hbar A\left[\int_{\mathbb{R}^3} \dli{x,y,z} \conj{\psi}(x,y,z)y e^{-\alpha r} - \int_{\mathbb{R}^3} \dli{x,y,z} \conj{\psi}(x,y,z) x e^{-\alpha r}\right]\\
+                          &= i\hbar A\left[\int_{\mathbb{R}^3} \dli{x,y,z} \conj{\psi}(x,y,z)y e^{-\alpha r} - \int_{\mathbb{R}^3} \dli{x',y',z} \conj{\psi}(y',x',z) y' e^{-\alpha r}\right]\\
+                          &= i\hbar A\left[\int_{\mathbb{R}^3} \dli{x,y,z} \conj{\psi}(x,y,z)y e^{-\alpha r} - \int_{\mathbb{R}^3} \dli{x',y',z} \conj{\psi}(x',y',z) y' e^{-\alpha r}\right] = 0,
+    \end{align*}
+    como vimos antes.
+
+    Consideremos agora outras coordenadas esféricas, com o ângulo polar definido a partir do eixo \(x\) e o ângulo azimutal a partir do eixo \(y\), então
+    \begin{equation*}
+        \psi(r, \tilde{\theta}, \tilde{\varphi}) = Ar \left(\cos\tilde\theta + \sin\tilde\theta \cos\tilde\varphi + 2 \sin\tilde\theta \sin\tilde\varphi\right) e^{-\alpha r}
+    \end{equation*}
+    é a função de onda nestas coordenadas. Como antes, podemos escrever
+    \begin{equation*}
+        \psi(r, \tilde{\theta}, \tilde{\varphi}) = \sqrt{\frac{4\pi}{3}}A \left[\frac{1+2i}{\sqrt{2}}Y_{1}^{-1}(\tilde\theta,\tilde\varphi) + Y_{1}^0(\tilde\theta,\tilde\varphi) - \frac{1 - 2i}{\sqrt{2}}Y_{1}^{1}(\tilde\theta,\tilde\varphi)\right] r e^{-\alpha r},
+    \end{equation*}
+    com \(L_x Y_{\ell}^{m}(\tilde{\theta}, \tilde{\varphi}) = \hbar m Y_{\ell}^m(\tilde{\theta}, \tilde{\varphi})\) e \(L^2 Y_{\ell}^m(\tilde{\theta}, \tilde{\varphi}) = \hbar^2\ell(\ell + 1)Y_{\ell}^m(\tilde{\theta}, \tilde{\varphi})\). Deste modo,
+    \begin{align*}
+        p_\hbar &= \int_0^\infty \dli{r} \int_0^\pi r\dli{\tilde\theta}\int_0^{2\pi}r\sin\tilde\theta \dli{\tilde\varphi} \abs*{\conj{Y_{1}^{1}}(\tilde\theta,\tilde\varphi)\psi(r,\tilde\theta,\tilde\varphi)}^2\\
+                &= \abs*{-\frac{1 - 2i}{\sqrt{2}}}^2 \frac{4\pi A^2}{3} \int_0^\infty \dli{r} r^4 e^{-2 \alpha r}\\
+                &= \frac{\abs*{\frac{1 - 2i}{\sqrt{2}}}^2}{\abs*{\frac{1 - 2i}{\sqrt{2}}}^2 + \abs*{\frac{1+ 2i}{\sqrt{2}}}^2 + 1}\\
+                &= \frac{5}{12}
+    \end{align*}
+    é a probabilidade de medir a componente \(x\) do momento angular como \(\hbar\).
+    % Consideramos os operadores \(L_\pm = L_x \pm i L_y\) definidos por
+    % \begin{equation*}
+    %     L_\pm Y_{\ell}^m(\theta,\varphi) = \hbar \sqrt{\ell(\ell + 1) - m(m \pm 1)} Y_{\ell}^{m\pm1}(\theta,\varphi),
+    % \end{equation*}
+    % então \(L_x = \frac12 \left(L_+ + L_-\right)\), isto é,
+    % \begin{equation*}
+    %     L_xY_{\ell}^m(\theta,\varphi) = \frac{\hbar}{2} \left[\sqrt{\ell^2 + \ell - m^2 - m}Y_{\ell}^{m + 1}(\theta,\varphi) + \sqrt{\ell^2 + \ell - m^2 + m}Y_{\ell}^{m-1}(\theta,\varphi)\right],
+    % \end{equation*}
+    % portanto
+    % \begin{align*}
+    %     L_x Y_{1}^{-1}(\theta,\varphi) &= \frac{\hbar}{\sqrt{2}} Y_1^0(\theta,\varphi)&
+    %     L_x Y_{1}^{0}(\theta,\varphi) &= \frac{\hbar}{\sqrt{2}} \left[Y_1^{-1}(\theta,\varphi) + Y_1^{1}(\theta,\varphi)\right]&
+    %     L_x Y_{1}^{1}(\theta,\varphi) &= \frac{\hbar}{\sqrt{2}} Y_1^0(\theta,\varphi).
+    % \end{align*}
+    % Concluímos que \(X_+(\theta,\varphi) = \frac12 \left[Y_{1}^{-1}(\theta,\varphi) + \sqrt{2}\right]\)
+    % Dessa forma, temos
+    % \begin{align*}
+    %     L_x \psi &= \sqrt{\frac{4\pi}{3}} \hbar A \left\{\frac{1 + i}{2}Y_1^0(\theta, \varphi) - \frac{1-i}{2}Y_1^0(\theta, \varphi) + \frac{2}{\sqrt{2}}\left[Y_{1}^{-1}(\theta, \varphi) + Y_1^1(\theta, \varphi)\right]\right\}r e^{-\alpha r}\\
+    %              &= \sqrt{\frac{4\pi}{3}} \hbar A \left[\sqrt{2} Y_1^{-1}(\theta,\varphi) + i Y_{1}^0(\theta,\varphi) + \sqrt{2} Y_{1}^{1}(\theta,\varphi)\right]r e^{-\alpha r}
+    % \end{align*}
+\end{proof}
