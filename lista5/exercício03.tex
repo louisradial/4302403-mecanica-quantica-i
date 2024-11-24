@@ -28,7 +28,7 @@
             Use o fato de que \(\varphi(x)\) é uma função de quadrado integrável para deduzir os autovalores da energia. Calcule as funções de onda normalizadas correspondentes.
 
         \item Represente graficamente essas funções de onda. Forneça a ordem de grandeza de sua largura \(\Delta x\).
-        \item Qual a probabilidade \(\overline{\dl{\mathcal{P}(p)}}\) de medir o momento da partícula entre \(p\) e \(p + \dl{p}\) em um dos estados estacionários normalizados calculados acima? Para que valor de \(p\) essa probabilidade é máxima? \todo[Em que domínio \(\Delta p\) é importante?] Calcule a ordem de grandeza de \(\Delta x \Delta p\).
+        \item Qual a probabilidade \(\overline{\dl{\mathcal{P}(p)}}\) de medir o momento da partícula entre \(p\) e \(p + \dl{p}\) em um dos estados estacionários normalizados calculados acima? Para que valor de \(p\) essa probabilidade é máxima? Em que domínio \(\Delta p\) é importante? Calcule a ordem de grandeza de \(\Delta x \Delta p\).
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução do item (a)]
@@ -151,12 +151,12 @@
     \begin{align*}
         \mean{x^2}_{\varphi} = \int_{\mathbb{R}} \dli{x} \conj{\varphi(x,t)} x^2\varphi(x,t)
         &= \frac{m \alpha}{\hbar^2} \int_{\mathbb{R}} \dli{x} x^2 \exp{\left(-\frac{2m \alpha}{\hbar^2}\abs{x}\right)}\\
-        &= \left(\frac{\hbar^2}{m\alpha}\right)^2 \int_0^\infty \dli{\xi} \xi^2e^{-\xi}\\
-        &= \left(\frac{\hbar^2}{m\alpha}\right)^2 \diffp*[2]{\int_0^\infty\dli{\xi} e^{-\beta\xi}}{\beta}[\beta = 1]\\
-        &= \left(\frac{\hbar^2}{m\alpha}\right)^2 \diffp*[2]{\beta^{-1}}{\beta}[\beta = 1]\\
-        &= 2\left(\frac{\hbar^2}{m\alpha}\right)^2.
+        &= \left(\frac{\hbar^2}{2m\alpha}\right)^2 \int_0^\infty \dli{\xi} \xi^2e^{-\xi}\\
+        &= \left(\frac{\hbar^2}{2m\alpha}\right)^2 \diffp*[2]{\int_0^\infty\dli{\xi} e^{-\beta\xi}}{\beta}[\beta = 1]\\
+        &= \left(\frac{\hbar^2}{2m\alpha}\right)^2 \diffp*[2]{\beta^{-1}}{\beta}[\beta = 1]\\
+        &= \frac12\left(\frac{\hbar^2}{m\alpha}\right)^2.
     \end{align*}
-    Desta forma, o desvio padrão de \(x\) é \(\Delta_\varphi x = \sqrt{2}\frac{\hbar^2}{m \alpha}\).
+    Desta forma, o desvio padrão de \(x\) é \(\Delta_\varphi x = \frac{\hbar^2}{m \alpha\sqrt{2}}\).
 \end{proof}
 
 \begin{proof}[Resolução do item (d)]
@@ -180,7 +180,7 @@
         &= -\frac{m^2 \alpha^2}{\hbar^2 \pi} \int_{\mathbb{R}} \dli{\xi}\xi \diff[2]{\arctan\xi}{\xi}\\
         &= \frac{m^2 \alpha^2}{\hbar^2},
     \end{align*}
-    portanto o desvio padrão do momento é \(\Delta_\varphi p = \frac{m \alpha}{\hbar}\). Concluímos que a relação de incerteza de posição e momento é dada por \(\Delta_\varphi x \Delta_\varphi p = \sqrt{2}\hbar\).
+    portanto o desvio padrão do momento é \(\Delta_\varphi p = \frac{m \alpha}{\hbar}\). Concluímos que a relação de incerteza de posição e momento é dada por \(\Delta_\varphi x \Delta_\varphi p = \frac{\hbar}{\sqrt{2}}\), e que o desvio padrão do momento é significativo no domínio de campo forte.
 \end{proof}
 
 \begin{figure}[!ht]
