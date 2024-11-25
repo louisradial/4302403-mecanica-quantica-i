@@ -5,11 +5,94 @@
         \item Determine a função de onda \(\psi(x)\) do elétron.
         \item Utilizando as condições de continuidade da função de onda, determine as equações que permitem calcular os valores das energias.
         \item Como podemos resolver essas equações?
-        \item Para que valor máximo de \(V_0\) existe apenas um estado possível?
-        \item Para um poço de largura igual a \SI{5}{\nano\meter}, calcule, em elétron-volts, o valor máximo de \(V_0\) que permite um único estado. Determine a separação máxima entre os dois primeiros níveis. Compare esse valor ao salto de banda de potencial entre \ce{GaAs} e \(\ce{AlAs}\).
+        \item Para que valor máximo de \(V_0\) existe apenas um estado possível? Para um poço de largura igual a \SI{5}{\nano\meter}, calcule, em elétron-volts, o valor máximo de \(V_0\) que permite um único estado.
+        \item O que ocorre com a separação entre os dois primeiros níveis conforme aumentamos \(V_0\)? Determine a separação máxima entre os dois primeiros níveis. \todo[Em que situação isso ocorre?] Compare esse valor ao salto de banda de potencial entre \ce{GaAs} e \(\ce{AlAs}\).
         \item Sabendo que o \textit{gap} do \ce{Al_yGa_{1-y}As} varia entre o do \ce{GaAs}, \(y = 0\), e o do \ce{AlAs}, \(y=1\), proporcionalmente à concentração \(y\) em alumínio, calcule \(y\) para que tenhamos ao menos um estado ligado possível dentro do poço de \SI{5}{\nano\meter} de largura.
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
+    A função de onda é dada por
+    \begin{equation*}
+        \psi(x) = \begin{cases}
+            Ae^{\rho x},&\text{se }x < -a\\
+            \alpha\cos(\kappa x) + \beta\sin(\kappa x),&\text{se }x \in [-a,a]\\
+            Be^{-\rho x},&\text{se }x > a
+        \end{cases}
+    \end{equation*}
+    onde \(\hbar \kappa = \sqrt{2 m E}\) e \(\hbar \rho = \sqrt{2m(V_0 - E)}\). Da continuidade da função de onda e de sua primeira derivada, temos para \(x = -a\) que
+    \begin{equation*}
+        A e^{-\rho a} = \alpha \cos(\kappa a) - \beta \sin(\kappa a)
+        \quad\text{e}\quad
+        \rho A e^{-\rho a} = \kappa \left[\alpha \sin(\kappa a) + \beta \cos(\kappa a)\right]
+    \end{equation*}
+    e para \(x = a\) que
+    \begin{equation*}
+        B e^{-\rho a} = \alpha \cos(\kappa a) + \beta \sin(\kappa a)
+        \quad\text{e}\quad
+        -\rho Be^{-\rho a} = \kappa\left[-\alpha\sin(\kappa a) + \beta \cos(\kappa a)\right]
+    \end{equation*}
+    Podemos reescrever estas equações de forma matricial com
+    \begin{equation*}
+        \begin{pmatrix}
+            A\\
+            B
+        \end{pmatrix} =
+        \begin{pmatrix}
+            e^{\rho a} \cos(\kappa a) && -e^{\rho a} \sin(\kappa a)\\
+            e^{\rho a} \cos(\kappa a) && e^{\rho a} \sin(\kappa a)
+        \end{pmatrix}
+        \begin{pmatrix}
+            \alpha\\
+            \beta
+        \end{pmatrix}
+        \quad\text{e}\quad
+        \begin{pmatrix}
+            A\\
+            B
+        \end{pmatrix} =
+        \begin{pmatrix}
+            e^{\rho a} \frac{\kappa}{\rho}\sin(\kappa a) && e^{\rho a}\frac{\kappa}{\rho}\cos(\kappa a)\\
+            e^{\rho a} \frac{\kappa}{\rho}\sin(\kappa a) && -e^{\rho a}\frac{\kappa}{\rho}\cos(\kappa a)\\
+        \end{pmatrix}
+        \begin{pmatrix}
+            \alpha\\
+            \beta
+        \end{pmatrix},
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        \begin{pmatrix}
+            \cos(\kappa a) - \frac{\kappa}{\rho} \sin(\kappa a) && - \sin(\kappa a) - \frac{\kappa}{\rho}\cos(\kappa a)\\
+            \cos(\kappa a) - \frac{\kappa}{\rho} \sin(\kappa a) && \sin(\kappa a) + \frac{\kappa}{\rho}\cos(\kappa a)
+        \end{pmatrix}
+        \begin{pmatrix}
+            \alpha\\
+            \beta
+        \end{pmatrix} =
+        \begin{pmatrix}
+            0\\
+            0
+        \end{pmatrix}.
+    \end{equation*}
+    Dessa forma, para que a solução seja não trivial, o determinante da matriz acima deve se anular, portanto
+    \begin{equation*}
+        \left[\cos(\kappa a) - \frac{\kappa}{\rho}\sin(\kappa a)\right]\left[\sin(\kappa a) + \frac{\kappa}{\rho}\cos(\kappa a)\right] = 0,
+    \end{equation*}
+    relação esta que determina a energia dos estados ligados. Notemos ainda, que se o primeiro termo se anula, então \(\beta = 0\), e para o segundo, \(\alpha = 0\). No caso \(\alpha = 0\), temos \(\tan(\kappa a) = - \frac{\kappa}{\rho} < 0\) e
+    \begin{equation*}
+        \rho^2 \sin^2(\kappa a) = \kappa^2 \cos^2(\kappa a) \implies \kappa^2 = (\rho^2 + \sin^2)\sin^2(\kappa a) = \frac{2m V_0}{\hbar^2} \implies \kappa a = \sqrt{\frac{2m V_0 a^2}{\hbar^2}}\abs{\sin(\kappa a)},
+    \end{equation*}
+    portanto podemos resolver a equação graficamente a partir da equação transcendental \(c \xi = \abs{\sin\xi}\), com \(c = \sqrt{\frac{\hbar^2}{2m V_0 a^2}}\) e \(\tan\xi < 0\). Analogamente para \(\beta = 0\), temos \(\tan(\kappa a) = \frac{\rho}{\kappa} > 0\), e obtemos
+    \begin{equation*}
+        c \kappa a = \abs{\cos(\kappa a)},
+    \end{equation*}
+    que pode ser resolvida graficamente a partir de \(c \xi = \abs{\cos\xi}\) e \(\tan\xi > 0\).
 
+    Para que haja apenas um estado ligado, devemos ter \(c \xi > 1\) sempre que \(\xi > \frac{\pi}{2}\), isto é, \(c > \frac{2}{\pi}\), donde segue que
+    \begin{equation*}
+        V_0 < \frac{\pi^2 \hbar^2}{8ma^2}.
+    \end{equation*}
+    Para um poço de largura \(a = \SI{5}{\nano\meter}\), o valor máximo de \(V_0\) é de \SI{3.76}{\milli\electronvolt} para que haja apenas um elétron ligado.
+
+    Ao aumentar o potencial, a constante \(c\) diminui, permitindo portanto mais estados ligados. No limite \(V_0 \to \infty\), temos \(c \to 0\), de forma que os estados ligados consecutivos satisfazem \(\kappa_n a = \frac{n \pi}{2}\), com \(n \in \mathbb{N}\). Neste limite, os estados ligados têm energia \(E_n = \frac{\hbar^2\pi^2n^2}{8ma^2}\), portanto a separação entre os primeiros dois níveis é dado por \(\Delta E = \frac{3\hbar^2 \pi^2}{8 m a^2}\).
 \end{proof}
