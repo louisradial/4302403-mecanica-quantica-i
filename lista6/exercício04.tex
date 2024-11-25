@@ -1,4 +1,4 @@
-\begin{exercício}{}{exercício4}
+\begin{exercício}{Relação de anticomutação}{exercício4}
     Suponha que os operadores \(a\) e \(\herm{a}\) em
     \begin{equation*}
         H = \hbar \omega \left(\herm{a}a + \frac12\unity\right)
@@ -10,8 +10,27 @@
         \item Se além da relação de anticomutação, \(a\) e \(\herm{a}\) também obedecem \(\anticommutator{a}{a} = \anticommutator{\herm{a}}{\herm{a}} = 0\), mostre que \(N^2 = N\).
     \end{enumerate}
 \end{exercício}
+\begin{proof}[Resolução do item (a)]
+    Consideremos o operador auto-adjunto \(N = \herm{a}a\), então o espectro de \(N\) é não-negativo. De fato, se \(\lambda\) é um autovalor associado ao autovetor \(\ket{\lambda}\), temos
+    \begin{equation*}
+        0 \leq \norm{a \lambda}^2 = \bra{\lambda}\herm{a}a\ket{\lambda} = \bra{\lambda}N\ket{\lambda} = \lambda,
+    \end{equation*}
+    e concluímos ainda que, se \(0\) é autovalor de \(N\), então \(a \ket{0} = 0\), e para todo \(\lambda > 0\), \(a\ket{0} \neq 0\). Notemos ainda que
+    \begin{equation*}
+        \anticommutator{N}{a} = \herm{a}aa - a\herm{a}a = \anticommutator{\herm{a}}{a}a = a,
+    \end{equation*}
+    portanto para \(\lambda > 0\), temos
+    \begin{equation*}
+        N a\ket{\lambda} = \anticommutator{N}{a} \ket{\lambda} - a N \ket{\lambda} = (1 - \lambda)a \ket{\lambda},
+    \end{equation*}
+    logo \(a \ket{\lambda}\) é autovetor de \(N\) associado ao autovalor \(1 - \lambda \geq 0\), e concluímos que o espectro de \(N\) é contido em \([0,1]\). Semelhantemente, temos
+    \begin{equation*}
+        0 \leq \norm{\herm{a}\lambda}^2 = \bra{\lambda}a\herm{a}\ket{\lambda} = \bra{\lambda}\unity - \herm{a}a\ket{\lambda} = 1 - \lambda,
+    \end{equation*}
+    portanto se \(1\) é autovalor de \(N\), então \(\herm{a}\ket{1} = 0\)
+\end{proof}
 \begin{proof}[Resolução do item (c)]
-    Se um operador \(u\) satisfaz \(\anticommutator{u} = 0\), segue que \(u\) é nilpotente com \(u^2 = 0\). Desse modo, temos
+    Se um operador \(u\) satisfaz \(\anticommutator{u}{u} = 0\), segue que \(u\) é nilpotente com \(u^2 = 0\). Desse modo, temos
     \begin{equation*}
         N^2 = (\herm{a}a)^2 = \herm{a}a\herm{a}a = \herm{a}\left(\unity - \herm{a}a\right)a = \herm{a}a - (\herm{a})^2a^2 = \herm{a}a = N,
     \end{equation*}
