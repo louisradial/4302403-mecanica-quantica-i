@@ -5,3 +5,24 @@
     \end{equation*}
     Calcule \(\mean{L_x}, \mean{L_x^2}\) e \(\Delta L_x\).
 \end{exercício}
+\begin{proof}
+    Consideramos os operadores \(L_\pm = L_x \pm i L_y\) com
+    \begin{equation*}
+        L_\pm \ket{lm} = \hbar a_\pm^{lm}\ket{l m\pm1},
+    \end{equation*}
+    onde \(a_\pm^{lm} = \sqrt{l(l+1) - m(m\pm1)},\)
+    portanto
+    \begin{equation*}
+        L_x\ket{lm} = \frac12 \left(L_+ + L_-\right)\ket{lm} = \frac{\hbar}{2}\left[a_+^{lm}\ket{lm + 1} + a_-^{lm}\ket{lm -1}\right],
+    \end{equation*}
+    e concluímos que \(\mean{L_x} = 0\), já que \(\braket{l'm'}{lm} = \delta_{l'l}\delta_{m'm}\). Assim, temos
+    \begin{equation*}
+        L_x^2 \ket{lm} = \frac{\hbar^2}{4}\left[a_+^{lm}a_+^{lm+1}\ket{l m+2} + \left(a_-^{lm}a_+^{lm-1}+a_+^{lm}a_-^{lm+1}\right)\ket{lm} + a_-^{lm}a_-^{lm-1}\ket{lm-2}\right],
+    \end{equation*}
+    logo
+    \begin{align*}
+        \mean{L_x^2} &= \frac{\hbar^2}{4}\left(a_-^{lm}a_+^{lm-1}+a_+^{lm}a_-^{lm+1}\right)\\
+                     &= \frac{\hbar^2}{4}\left[\sqrt{l(l+1) - m(m-1)}\sqrt{l(l+1) - m(m+1)} - \sqrt{l(l+1) - m(m+1)}\sqrt{l(l+1) - m(m+1)}\right]\\
+                     &= \frac{\hbar^2}{4}\left[\sqrt{}\right]
+    \end{align*}
+\end{proof}
