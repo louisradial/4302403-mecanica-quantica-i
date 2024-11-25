@@ -42,20 +42,21 @@
     \end{equation*}
     O acoplamento entre os osciladores harmônicos é dado pelo hamiltoniano
     \begin{equation*}
-        H_1 = \frac{2e^2}{R} - \frac{e^2}{R+x_1} - \frac{e^2}{R - x_2},
+        H_1 = \frac{e^2}{R} + \frac{e^2}{R + x_1 - x_2} - \frac{e^2}{R+x_1} - \frac{e^2}{R - x_2},
     \end{equation*}
     onde definimos \(e^2 = \frac{q^2}{4\pi \epsilon_0}\). Notemos que
-    \begin{equation*}
-        H_1 = \frac{2e^2}{R} - \frac{e^2}{R} \left(1 - \frac{x_1}{R}\right)^{-1} - \frac{e^2}{R}\left(1 + \frac{x_2}{R}\right)^{-1} = \frac{e^2}{R}\left[2 - \left(1 - \frac{x_1}{R}\right)^{-1} - \left(1 + \frac{x_2}{R}\right)^{-1}\right],
-    \end{equation*}
+    \begin{align*}
+        H_1 &= \frac{e^2}{R} + \frac{e^2}{R}\left(1 + \frac{x_1 + x_2}{R}\right)^{-1} - \frac{e^2}{R} \left(1 - \frac{x_1}{R}\right)^{-1} - \frac{e^2}{R}\left(1 + \frac{x_2}{R}\right)^{-1} \\
+            &= \frac{e^2}{R}\left[1 + \left(1 + \frac{x_1 - x_2}{R}\right)^{-1} - \left(1 - \frac{x_1}{R}\right)^{-1} - \left(1 + \frac{x_2}{R}\right)^{-1}\right],
+    \end{align*}
     portanto em primeira ordem de \(\frac{x_1}{R}\) e \(\frac{x_2}{R}\), temos
     \begin{equation*}
-        H_1 \simeq \frac{e^2(x_2 - x_1)}{R^2}.
+        H_1 \simeq \frac{e^2\left[(x_1 + x_2)^2 + x_1^2 - x_2^2\right]}{R^3}
     \end{equation*}
     Neste limite, o hamiltoniano do sistema é dado por
     \begin{align*}
-        H &= \frac{1}{2m}(P_1^2 + P_2^2) + \frac12 m \omega^2(x_1^2 + x_2^2) + \frac{e^2}{R^2}(x_2 - x_1)\\
-          &= \frac{1}{4m}\left[(P_s + P_a)^2 + (P_s - P_a)^2\right] + \frac14 m \omega^2\left[(x_s + x_a)^2 + (x_s - x_a)^2\right] - \frac{2e^2}{R^2} x_a\\
+        H &= \frac{1}{2m}(P_1^2 + P_2^2) + \frac12 m \omega^2(x_1^2 + x_2^2) + \frac{e^2\left[(x_1 + x_2)^2 + x_1^2 - x_2^2\right]}{R^3}\\
+          &= \frac{1}{4m}\left[(P_s + P_a)^2 + (P_s - P_a)^2\right] + \frac14 m \omega^2\left[(x_s + x_a)^2 + (x_s - x_a)^2\right] -\frac{e^2\left[x_s^2 + \right]}{2R^3}\\
           &= \frac{1}{2m}\left(P_s^2 + P_a^2\right) + \frac{1}{2}m \omega^2 \left(x_s^2 + x_a^2\right) - \frac{2e^2}{R^2} x_a.
     \end{align*}
 \end{proof}
