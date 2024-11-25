@@ -22,7 +22,13 @@
     logo
     \begin{align*}
         \mean{L_x^2} &= \frac{\hbar^2}{4}\left(a_-^{lm}a_+^{lm-1}+a_+^{lm}a_-^{lm+1}\right)\\
-                     &= \frac{\hbar^2}{4}\left[\sqrt{l(l+1) - m(m-1)}\sqrt{l(l+1) - m(m+1)} - \sqrt{l(l+1) - m(m+1)}\sqrt{l(l+1) - m(m+1)}\right]\\
-                     &= \frac{\hbar^2}{4}\left[\sqrt{}\right]
+                     &= \frac{\hbar^2}{4}\left[\sqrt{l(l+1) + m(m-1)}\sqrt{l(l+1) - (m-1)m} - \sqrt{l(l+1) - m(m+1)}\sqrt{l(l+1) - m(m+1)}\right]\\
+                     &= \frac{\hbar^2}{4}\left[l(l+1) - m(m-1) + l(l+1) - m(m+1)\right]\\
+                     &= \frac{\hbar^2}{2}\left[l(l+1) - m^2\right],
     \end{align*}
+    isto é, \(\Delta L_x = \hbar \sqrt{\frac{l(l+1) - m^2}{2}}\) é o desvio padrão de \(L_x\) neste estado. Outra maneira de obter este último resultado é escrevendo
+    \begin{equation*}
+        \mean{L^2} = \mean{L_x^2} + \mean{L_y^2} + \mean{L_z^2} = 2\mean{L_x^2} + \mean{L_z^2},
+    \end{equation*}
+    pela \todo[simetria] \(\mean{L_x^2} = \mean{L_y^2}\). Assim, como \(\mean{L^2} = l(l + 1)\hbar^2\) e \(\mean{L_z^2} = \hbar^2 m^2\), temos o mesmo resultado.
 \end{proof}
