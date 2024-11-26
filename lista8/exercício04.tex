@@ -10,5 +10,36 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
+    Classicamente, a energia cinética de uma partícula de massa \(\mu\) é dada por
+    \begin{equation*}
+        T = \frac{\mu \dot{r}^2}{2} + \frac{L^2}{2\mu r^2},
+    \end{equation*}
+    onde \(L\) é o seu momento angular orbital. Em coordenadas cartesianas, temos
+    \begin{equation*}
+        \vetor{L} = \vetor{r} \times \vetor{p} = x_i \vetor{e}_i \times p_j \vetor{e}_j = x_i  p_j \epsilon_{ijk}\vetor{e}_k,
+    \end{equation*}
+    com \(L_z = x p_y - y p_x\).
 
+    Se a trajetória é planar, temos \(x = r\cos\varphi\) e \(y = r\sin\varphi\), logo \(r = \sqrt{x^2 + y^2}\) e \(\tan\varphi = \frac{y}{x}\). Assim,
+    \begin{align*}
+        \frac1{i\hbar}L_z = y \diffp{}{x} - x \diffp{}{y} &= y \left(\diffp{r}{x} \diffp{}{r} + \diffp{\varphi}{x}\diffp{}{\varphi}\right) - x \left(\diffp{r}{y} \diffp{}{r} + \diffp{\varphi}{y}\diffp{}{\varphi}\right)\\
+                                                          &= y \left(\frac{x}{r}\diffp{}{r} - \frac{y}{x^2\sec^2\varphi} \diffp{}{\varphi}\right) - x \left(\frac{y}{r} \diffp{}{r} + \frac{1}{x\sec^2\varphi}\diffp{}{\varphi}\right)\\
+                                                          &= -\left(1 + \frac{y^2}{x^2}\right)\cos^2\varphi \diffp{}{\varphi}\\
+                                                          &= - \diffp{}{\varphi},
+    \end{align*}
+    isto é,
+    \begin{equation*}
+        L_z = -i \hbar \diffp{}{\varphi}
+    \end{equation*}
+    é a expressão para a componente \(z\) do momento angular para uma trajetória planar\footnote{Coincidentemente, é a mesma expressão para uma trajetória tridimensional arbitrária.}. Consideremos uma autofunção \(f(r, \varphi)\) de \(L_z\) associada ao autovalor \(\hbar m\), então podemos escrever \(f(r, \varphi) = R(r) \Phi(\varphi)\), com
+    \begin{equation*}
+        \diff{\Phi}{\varphi} + i m \Phi(\varphi) = 0,
+    \end{equation*}
+    logo \(\Phi(\varphi) = e^{-i m \varphi}\) e devemos ter \(m\in \mathbb{Z}\) para que \(\Phi\) seja \(2\pi\)-periódica.
+
+    As demais componentes do momento angular são nulas pois não há variação em \(z\), e o plano de rotação pode ser tomado como \(z = 0\). Desta forma, o hamiltoniano de uma partícula em rotação no plano é dado por
+    \begin{equation*}
+        H = \frac{1}{2\mu r^2} L^2 = -\frac{\hbar^2}{2\mu r^2} \diffp[2]{}{\varphi},
+    \end{equation*}
+    logo \([L_z,H] = 0\), já que \(L^2 = L_z^2\). Assim, o \(H\) e \(L_z\) formam um conjunto completo de operadores compatíveis.
 \end{proof}
