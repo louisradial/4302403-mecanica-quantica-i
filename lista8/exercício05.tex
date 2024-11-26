@@ -1,11 +1,21 @@
-\begin{exercício}{}{exercício5}
+\begin{exercício}{Molécula diatômica em rotação em torno de seu centro de massa}{exercício5}
     O \cref{ex:exercício4} é uma representação da massa reduzida \(\mu\) de uma molécula diatômica, cujos átomos estão a uma distância fixa \(r\) um do outro, e que efetua movimentos de rotação.
     \begin{enumerate}[label=(\alph*)]
         \item Determine os níveis de energia de rotação da molécula diatômica utilizando a expressão geral para os autovalores de um momento angular \(\vetor{L}\).
         \item O espectro de absorção de rotação da molécula de monóxido de carbono apresenta um pico de absorção para um comprimento de onda \(\lambda = \SI{1.3}{\milli\meter}\), correspondente à uma transição entre os níveis \(\ell = 1\) e \(\ell = 2\). Calcule o momento de inércia da molécula a partir dos dados experimentais.
-        \item Deduza a distância entre os átomos constituintes da molécula. \todo[Para \(N_A\) átomos, C = \SI{12}{g}, O = \SI{16}{g}.]
+        \item Deduza a distância entre os átomos constituintes da molécula.
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
+    Como feito no \cref{ex:exercício4}, os níveis de energia de rotação da molécula diatômica é dado por
+    \begin{equation*}
+        E_\ell = \frac{\hbar^2 \ell^2}{2I},
+    \end{equation*}
+    onde \(I = \mu r^2\) é o momento de inércia do sistema no referencial do centro de massa, com \(\hbar \ell\) sendo o momento angular.
 
+    Se a transição do nível \(\ell = 1\) para \(\ell = 2\) corresponde a uma absorção para um comprimento de onda \(\lambda\), o momento de inércia é dado por
+    \begin{equation*}
+        I = \frac{3\hbar \lambda}{4\pi c}.
+    \end{equation*}
+    Para o espectro de absorção de rotação da molécula de monóxido de carbono, temos \(\lambda = \SI{1.3}{\milli\meter}\), portanto \(I = \SI{1.1e-28}{kg.nm^2}\) é o momento de inércia desta molécula no seu centro de massa. A massa reduzida desta molécula é \(\mu = \SI{1.1e-26}{kg}\), donde segue que \(r = \sqrt{\frac{I}{\mu}} = \SI{9.9e-2}{\nano\meter}\).
 \end{proof}
