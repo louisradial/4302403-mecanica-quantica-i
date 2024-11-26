@@ -8,12 +8,11 @@
 \begin{proof}[Resolução]
     Seja \(\vetor{\eta} \in \setc{\vetor{x} \in \mathbb{R}^3}{\norm{\vetor{x}}^2 = 1}\), então
     \begin{align*}
-        (\vetor \eta \cdot \vetor \sigma)^2 &= \sum_{k=1}^3 \eta_k \sigma_k \sum_{\ell = 1}^3 \eta_\ell \sigma_\ell\\
-                                        &= \sum_{k=1}^3\sum_{\ell=1}^3 \eta_k \eta_\ell \left(\delta_{k\ell}\unity + i \sum_{m = 1}^3 \epsilon_{k\ell m}\sigma_m\right)\\
-                                        &= \sum_{k=1}^3 (\eta_k)^2 \unity + i\sum_{k=1}^3\sum_{\ell=1}^3 \sum_{m = 1}^3 \eta_k \eta_\ell\epsilon_{k\ell m}\sigma_m\\
-                                        &= \unity + \frac12 \sum_{k=1}^3\sum_{\ell=1}^3 \eta_k \eta_\ell [\sigma_k, \sigma_\ell]\\
-                                        &= \unity + \frac12 \sum_{k=1}^3 [\eta_k \sigma_k, \vetor \eta \cdot \vetor \sigma]\\
-                                        &= \unity + \frac12 [\vetor \eta\cdot \vetor \sigma, \vetor \eta\cdot \vetor \sigma]\\
+        (\vetor \eta \cdot \vetor \sigma)^2 &= \eta_k \eta_\ell \sigma_k \sigma_\ell\\
+                                        &= \eta_k \eta_\ell \left(\delta_{k\ell}\unity + i \epsilon_{k\ell m}\sigma_m\right)\\
+                                        &= \eta_k \eta_\ell \delta_{k \ell}\unity + i \epsilon_{k\ell m} \eta_k \eta_\ell \sigma_m\\
+                                        &= \unity + \frac12 \eta_k \eta_\ell [\sigma_k, \sigma_\ell]\\
+                                        &= \unity + \frac12[\vetor{\eta}\cdot \sigma, \vetor{\eta}\cdot\vetor{\sigma}]\\
                                         &= \unity,
     \end{align*}
     onde usamos a bilinearidade e anticomutatividade do comutador.
