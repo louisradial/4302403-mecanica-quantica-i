@@ -27,19 +27,15 @@
                                                           &= -\left(1 + \frac{y^2}{x^2}\right)\cos^2\varphi \diffp{}{\varphi}\\
                                                           &= - \diffp{}{\varphi},
     \end{align*}
-    isto é,
+    isto é, \(L_z = -i \hbar \diffp{}{\varphi}\) é a expressão para a componente \(z\) do momento angular para uma trajetória planar. Consideremos uma autofunção \(\Phi_m(\varphi)\) de \(L_z\) associada ao autovalor \(\hbar m\), então
     \begin{equation*}
-        L_z = -i \hbar \diffp{}{\varphi}
+        \diff{\Phi_m}{\varphi} + i m \Phi_m(\varphi) = 0,
     \end{equation*}
-    é a expressão para a componente \(z\) do momento angular para uma trajetória planar\footnote{Coincidentemente, é a mesma expressão para uma trajetória tridimensional arbitrária.}. Consideremos uma autofunção \(f(r, \varphi)\) de \(L_z\) associada ao autovalor \(\hbar m\), então podemos escrever \(f(r, \varphi) = R(r) \Phi(\varphi)\), com
-    \begin{equation*}
-        \diff{\Phi}{\varphi} + i m \Phi(\varphi) = 0,
-    \end{equation*}
-    logo \(\Phi(\varphi) = e^{-i m \varphi}\) e devemos ter \(m\in \mathbb{Z}\) para que \(\Phi\) seja \(2\pi\)-periódica.
+    logo \(\Phi_m(\varphi) = \frac{1}{\sqrt{2\pi}} e^{-i m \varphi}\) e devemos ter \(m\in \mathbb{Z}\) para que \(\Phi_m\) seja \(2\pi\)-periódica.
 
     As demais componentes do momento angular são nulas pois não há variação em \(z\), e o plano de rotação pode ser tomado como \(z = 0\). Desta forma, o hamiltoniano de uma partícula em rotação no plano é dado por
     \begin{equation*}
         H = \frac{1}{2\mu r^2} L^2 = -\frac{\hbar^2}{2\mu r^2} \diffp[2]{}{\varphi},
     \end{equation*}
-    logo \([L_z,H] = 0\), já que \(L^2 = L_z^2\). Assim, o \(H\) e \(L_z\) formam um conjunto completo de operadores compatíveis.
+    logo \([L_z,H] = 0\), já que \(L^2 = L_z^2\). Assim, as autofunções de \(H\) são dadas por combinações lineares \(\alpha \Phi_{-\ell} + \beta \Phi_{\ell}\) e são associadas ao autovalor \(\frac{\hbar^2 \ell^2}{2\mu r^2}\).
 \end{proof}
