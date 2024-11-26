@@ -35,14 +35,15 @@
     \begin{equation*}
         a\ket{\lambda} = \sqrt{\lambda} \ket{1-\lambda}\quad\text{e}\quad \herm{a}\ket{\lambda} = \sqrt{1 - \lambda} \ket{1 - \lambda}
     \end{equation*}
-    para todo \(\lambda\) no espectro de \(N\). Se assumirmos que \(0\) é autovalor, temos ainda
-    \begin{equation*}
-        a\ket{0} = 0,\quad a\ket{1} = \ket{0}, \quad \herm{a}\ket{0} = \ket{1},\quad\text{e}\quad \herm{a}\ket{1} = 0.
-    \end{equation*}
+    para todo \(\lambda\) no espectro de \(N\).
 
     Se um operador \(u\) satisfaz \(\anticommutator{u}{u} = 0\), segue que \(u\) é nilpotente com \(u^2 = 0\). Desse modo, temos
     \begin{equation*}
         N^2 = (\herm{a}a)^2 = \herm{a}a\herm{a}a = \herm{a}\left(\unity - \herm{a}a\right)a = \herm{a}a - (\herm{a})^2a^2 = \herm{a}a = N,
     \end{equation*}
-    como desejado.
+    como desejado. Agora os únicos autovalores possíveis são \(0\) e \(1\), portanto temos
+    \begin{equation*}
+        a\ket{0} = 0,\quad a\ket{1} = \ket{0}, \quad \herm{a}\ket{0} = \ket{1},\quad\text{e}\quad \herm{a}\ket{1} = 0
+    \end{equation*}
+    pela idempotência de \(N\).
 \end{proof}
