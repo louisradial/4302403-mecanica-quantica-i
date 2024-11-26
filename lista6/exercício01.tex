@@ -46,17 +46,33 @@
     \end{equation*}
     onde definimos \(e^2 = \frac{q^2}{4\pi \epsilon_0}\). Notemos que
     \begin{align*}
-        H_1 &= \frac{e^2}{R} + \frac{e^2}{R}\left(1 + \frac{x_1 + x_2}{R}\right)^{-1} - \frac{e^2}{R} \left(1 - \frac{x_1}{R}\right)^{-1} - \frac{e^2}{R}\left(1 + \frac{x_2}{R}\right)^{-1} \\
-            &= \frac{e^2}{R}\left[1 + \left(1 + \frac{x_1 - x_2}{R}\right)^{-1} - \left(1 - \frac{x_1}{R}\right)^{-1} - \left(1 + \frac{x_2}{R}\right)^{-1}\right],
+        H_1 &= \frac{e^2}{R} + \frac{e^2}{R}\left(1 + \frac{x_1 - x_2}{R}\right)^{-1} - \frac{e^2}{R} \left(1 + \frac{x_1}{R}\right)^{-1} - \frac{e^2}{R}\left(1 - \frac{x_2}{R}\right)^{-1} \\
+            &= \frac{e^2}{R}\left[1 + \left(1 + \frac{x_1 - x_2}{R}\right)^{-1} - \left(1 + \frac{x_1}{R}\right)^{-1} - \left(1 - \frac{x_2}{R}\right)^{-1}\right],
     \end{align*}
-    portanto em primeira ordem de \(\frac{x_1}{R}\) e \(\frac{x_2}{R}\), temos
-    \begin{equation*}
-        H_1 \simeq \frac{e^2\left[(x_1 + x_2)^2 + x_1^2 - x_2^2\right]}{R^3}
-    \end{equation*}
-    Neste limite, o hamiltoniano do sistema é dado por
+    portanto
     \begin{align*}
-        H &= \frac{1}{2m}(P_1^2 + P_2^2) + \frac12 m \omega^2(x_1^2 + x_2^2) + \frac{e^2\left[(x_1 + x_2)^2 + x_1^2 - x_2^2\right]}{R^3}\\
-          &= \frac{1}{4m}\left[(P_s + P_a)^2 + (P_s - P_a)^2\right] + \frac14 m \omega^2\left[(x_s + x_a)^2 + (x_s - x_a)^2\right] -\frac{e^2\left[x_s^2 + \right]}{2R^3}\\
-          &= \frac{1}{2m}\left(P_s^2 + P_a^2\right) + \frac{1}{2}m \omega^2 \left(x_s^2 + x_a^2\right) - \frac{2e^2}{R^2} x_a.
+        \diffp{H_1}{x_1} &= \frac{e^2}{R^2}\left[\left(1 + \frac{x_1}{R}\right)^{-2} - \left(1 + \frac{x_1 - x_2}{R}\right)^{-2}\right]&
+        \diffp{H_1}{x_2} &= \frac{e^2}{R^2}\left[\left(1 + \frac{x_1 - x_2}{R}\right)^{-2} - \left(1 - \frac{x_2}{R}\right)^{-2}\right]\\
+        \diffp[2]{H_1}{x_1} &= -\frac{2e^2}{R^3}\left[\left(1 + \frac{x_1}{R}\right)^{-3} - \left(1 + \frac{x_1 - x_2}{R}\right)^{-3}\right]&
+        \diffp[2]{H_1}{x_2} &= \frac{2e^2}{R^2}\left[\left(1 + \frac{x_1 - x_2}{R}\right)^{-3} - \left(1 - \frac{x_2}{R}\right)^{-3}\right]
     \end{align*}
+    e
+    \begin{equation*}
+        \diffp{H_1}{x_1,x_2} = \diffp{H_1}{x_2,x_1} = -\frac{2e^2}{R^3}\left(1 + \frac{x_1 - x_2}{R}\right).
+    \end{equation*}
+    Avaliando em \((x_1,x_2) = (0,0)\), temos verificamos que todos os temos se anulam, exceto pela derivada mista, que é negativa, portanto este ponto é um ponto de equilíbrio estável e podemos aproximar
+    \begin{equation*}
+        H_1 \simeq \diffp{H_1}{x_1,x_2}[(0,0)]x_1x_2 = -\frac{2e^2x_1x_2}{R^3}
+    \end{equation*}
+    para \(x_1,x_2 \ll R\). Neste limite, o hamiltoniano do sistema é dado por
+    \begin{align*}
+        H &= \frac{1}{2m}(P_1^2 + P_2^2) + \frac12 m \omega^2(x_1^2 + x_2^2) - \frac{2e^2x_1x_2}{R^3}\\
+          &= \frac{(P_s + P_a)^2 + (P_s - P_a)^2}{4m} + \frac{m \omega^2\left[(x_s + x_a)^2 + (x_s - x_a)^2\right]}4  -\frac{e^2(x_s^2 - x_a^2)}{R^3}\\
+          &= \frac{P_s^2 + P_a^2}{2m} + \frac{m \omega^2\left[x_s^2 + x_a^2\right]}2  -\frac{e^2(x_s^2 - x_a^2)}{R^3}\\
+          &= \frac{P_s^2}{2m} + \frac12m\left(\omega^2 - \frac{e^2}{mR^3}\right)x_s^2 + \frac{P_a^2}{2m} + \frac12 m\left(\omega^2 + \frac{e^2}{m R^3}\right)x_a^2,
+    \end{align*}
+    portanto as frequência dos modos normais são dadas por
+    \begin{equation*}
+        \omega_s^2 = \omega^2 - \frac{e^2}{mR^3}\quad\text{e}\quad\omega_a^2 = \omega^2 + \frac{e^2}{m R^3}.
+    \end{equation*}
 \end{proof}
