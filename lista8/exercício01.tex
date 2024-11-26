@@ -1,4 +1,4 @@
-\begin{exercício}{Gerador infinitesimal do grupo de translações}{exercício1}
+\begin{exercício}{Gerador infinitesimal de translações}{exercício1}
     Mostre que
     \begin{equation*}
         \psi(x + a) = \exp\left(\frac{i a p}{\hbar}\right)\psi(x),
@@ -6,5 +6,21 @@
     em que \(p = -i\hbar \diff*{}{x}\) é o operador momento linear e \(a\) é a uma constante real.
 \end{exercício}
 \begin{proof}[Resolução]
-
+    Seja \(U(\alpha)\) a representação de \((\mathbb{R},+)\) dada pela ação
+    \begin{equation*}
+        U(\alpha)\psi(x) = \psi(x + \alpha)
+    \end{equation*}
+    para qualquer \(\alpha \in \mathbb{R}\). Uma translação infinitesimal é dada por
+    \begin{equation*}
+        U(\epsilon) = \unity + i \epsilon T,
+    \end{equation*}
+    com \(T\) auto-adjunto, já que \(U\) é unitário. Expandindo \(\psi(x + \epsilon)\), temos
+    \begin{equation*}
+        \psi(x + \epsilon) = \psi(x) + \epsilon \diff{\psi}{x} = (\unity + \epsilon\diff{\psi}{x})\psi(x),
+    \end{equation*}
+    portanto \(T = -i \diff{}{x}\). Isto é, o gerador infinitesimal de translações é \(\frac1{\hbar}p\) e temos pelo teorema de Stone que
+    \begin{equation*}
+        U(\alpha) = \exp\left(\frac{i \alpha p}{\hbar}\right)
+    \end{equation*}
+    para todo \(\alpha \in \mathbb{R}\).
 \end{proof}
