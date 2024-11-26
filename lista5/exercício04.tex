@@ -46,7 +46,20 @@
 \end{proof}
 
 \begin{proof}[Resolução do item (d)]
-
+    Sejam \(\ket{\psi_1}\) e \(\ket{\psi_2}\) autoestados de energia \(E\), então
+    \begin{equation*}
+        -\frac{\hbar^2}{2m}\diff[2]{\psi_1}{x} + V(x)\psi_1(x) = E\psi_1(x) \quad\text{e}\quad
+        -\frac{\hbar^2}{2m}\diff[2]{\psi_2}{x} + V(x)\psi_2(x) = E\psi_2(x).
+    \end{equation*}
+    Multiplicando a primeira equação por \(\psi_2(x)\) e a segunda por \(\psi_1(x)\) e subtraindo os resultados, obtemos
+    \begin{equation*}
+        -\frac{\hbar^2}{2m} \left(\psi_2(x) \diff[2]{\psi_1}{x} - \psi_1(x) \diff[2]{\psi_2}{x}\right) = 0 \implies \diff*{\left(\psi_2(x)\diff{\psi_1}{x}-\psi_1(x) \diff{\psi_2}{x}\right)}{x} = 0,
+    \end{equation*}
+    isto é, existe uma constante \(\alpha\) tal que
+    \begin{equation*}
+        \psi_2(x) \diff{\psi_1}{x} - \psi_1(x) \diff{\psi_2}{x} = \alpha
+    \end{equation*}
+    \todo
 \end{proof}
 
 \begin{proof}[Resolução do item (e)]
