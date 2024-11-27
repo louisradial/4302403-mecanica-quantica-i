@@ -2,7 +2,7 @@
     \begin{enumerate}[label=(\alph*)]
         \item Mostre que
             \begin{equation*}
-                L_+ = \hbar e^{i\phi} \left(\diffp{}{\theta} + i \cot\theta\diffp{}{\phi}\right).
+                L_{\pm} = -i\hbar e^{\pm i \phi} \left(\pm i\diffp{}\theta - \cot\theta \diffp{}\phi\right)
             \end{equation*}
         \item Escrevendo \(Y_\ell^\ell(\theta, \phi) = \Theta_\ell^\ell(\theta)e^{i\ell \phi}\), mostre que
             \begin{equation*}
@@ -13,6 +13,88 @@
         \item Calcule \(Y_\ell^m(\theta,\phi)\) a partir de \(Y_\ell^\ell(\theta,\phi)\).
     \end{enumerate}
 \end{exercício}
-\begin{proof}[Resolução]
-
+\begin{proof}[Resolução do item (a)]
+    Em coordenadas cartesianas, temos
+    \begin{equation*}
+        L_x =  -i \hbar \left(y \partial_{z} - z \partial_{y}\right)\quad\text{e}\quad L_y = -i \hbar \left(z\partial_{x} - x \partial_{z}\right).
+    \end{equation*}
+    Em coordenadas esféricas, temos \(r = \sqrt{x^2 + y^2 + z^2}\), \(\cos\theta = \frac{z}{\sqrt{x^2 + y^2 + z^2}}\), e \(\tan\phi = \frac{y}{x}\), portanto
+    \begin{align*}
+        \partial_{x} &=\textstyle \diffp{r}{x}\partial_r + \diffp{\theta}{x}\partial_\theta + \diffp{\phi}{x}\partial_\phi&
+        \partial_{y} &=\textstyle \diffp{r}{y}\partial_r + \diffp{\theta}{y}\partial_\theta + \diffp{\phi}{y}\partial_\phi&
+        \partial_{z} &=\textstyle \diffp{r}{z}\partial_r + \diffp{\theta}{z}\partial_\theta + \diffp{\phi}{z}\partial_\phi\\
+                     &=\textstyle \frac{x}{r} \partial_r +  \frac{xz\csc\theta}{r^3} \partial_\theta -  \frac{y\cos^2\phi}{x^2} \partial_\phi&
+                     &=\textstyle \frac{y}{r} \partial_r +  \frac{yz\csc\theta}{r^3} \partial_\theta -  \frac{\cos^2\phi}{x} \partial_\phi&
+                     % &=\textstyle \frac{z}{r} \partial_r - \csc\theta \left(\frac{1}{r} - \frac{z^2}{r^3}\right)\partial_\theta\\
+                       &=\textstyle \frac{z}{r}\partial_r - \frac{\sin\theta}{r} \partial_\theta,
+    \end{align*}
+    e
+    \begin{align*}
+        \partial_{z} &= \diffp{r}{z}\partial_r + \diffp{\theta}{z}\partial_\theta + \diffp{\phi}{z}\partial_\phi\\
+                     &= \frac{z}{r} \partial_r - \csc\theta \left(\frac{1}{r} - \frac{z^2}{r^3}\right)\partial_\theta\\
+                     &= \cos\theta \partial_r - \frac{\sin\theta}{r} \partial_\theta,
+    \end{align*}
+    portanto
+    \begin{equation*}
+        y \partial_z - z \partial_y = -\frac{yz^2 \csc\theta + y r^2\sin\theta}{r^3}\partial_\theta - \frac{z \cos^2\phi}{x}\partial_\phi
+                                    = -\sin\phi\partial_\theta - \cot\theta \cos\phi \partial_\phi
+    \end{equation*}
+    e
+    \begin{equation*}
+        z \partial_x - x \partial_z = \frac{xz^2 \csc\theta + xr^2 \sin\theta}{r^3}\partial\theta - \frac{yz \cos^2\phi}{x^2}\partial_\phi\\
+                                    = \cos\phi \partial_\theta- \cot\theta \sin\phi \partial_\phi,
+    \end{equation*}
+    isto é,
+    \begin{equation*}
+        L_x = i\hbar \left(\sin\phi \partial_\theta + \cot\theta \cos\phi \partial_\phi\right)\quad\text{e}\quad
+        L_y = -i\hbar \left(\cos\phi \partial_\theta- \cot\theta \sin\phi \partial_\phi\right).
+    \end{equation*}
+    Assim,
+    \begin{align*}
+        L_\pm &= L_x \pm i L_y = i\hbar\left(\sin\phi \partial_\theta + \cot\theta \cos\phi\partial_\phi\right) \pm \hbar \left(\cos\phi \partial_\theta- \cot\theta \sin\phi \partial_\phi\right)\\
+              &= \hbar \left[\pm\left(\cos\phi \pm i \sin\phi\right)\partial_\theta  + i\cot\theta\left(\cos\phi \pm i\sin\phi\right)\partial_\phi\right]\\
+              &= \hbar e^{\pm i \phi}\left[\pm\partial_\theta + i\cot\theta \partial_\phi\right]\\
+              &= -i\hbar e^{\pm i \phi} \left[\pm i\partial_\theta - \cot\theta \partial_\phi\right],
+    \end{align*}
+    como desejado.
+\end{proof}
+\begin{proof}[Resolução do item (b)]
+    Como \(L_+ Y_\ell^\ell(\theta,\phi) = 0\), temos para \(Y_{\ell}^\ell(\theta,\phi) = \Theta_\ell^\ell(\theta)e^{i\ell \phi}\) que
+    \begin{equation*}
+        \diff{\Theta_\ell^\ell}{\theta} - \ell\cot\theta \Theta_\ell^\ell(\theta) = 0 \implies \diff{\ln\Theta_\ell^\ell}{\theta} = \ell \cot\theta \implies \ln \Theta_\ell^\ell(\theta) = \ell \ln \sin\theta + c_\ell,
+    \end{equation*}
+    portanto \(Y_\ell^\ell(\theta, \phi) = c_\ell \sin^\ell\theta e^{i\ell\phi}\).
+\end{proof}
+\begin{proof}[Resolução do item (c)]
+    Consideremos
+    \begin{equation*}
+        I_n = \int_0^{\frac{\pi}{2}}\dli{\theta} \sin^{2n+1}\theta.
+    \end{equation*}
+    com \(n \in \mathbb{N}_0\). Integrando por partes temos
+    \begin{equation*}
+        I_n = \left[-\sin^{2n}\theta \cos\theta\right]_0^{\frac\pi2} + 2n \int_0^{\frac\pi2} \dli{\theta} \sin^{2n}\theta \cos^2\theta = 2n I_{n - 1} - 2n I_n,
+    \end{equation*}
+    isto é,
+    \begin{equation*}
+        I_n = \frac{2n}{2n + 1} I_{n-1}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}_0\). Por indução em \(n\), temos
+    \begin{equation*}
+        I_n = \frac{2^{2n}n!^2}{(2n+1)!},
+    \end{equation*}
+    pois \(I_0 = 1\) e supondo que vale para \(m \in \mathbb{N}_0\) segue que vale para \(m+1\), já que
+    \begin{equation*}
+        I_{m+1} = \frac{2m+2}{2m+1} I_{m} = \frac{2^{2m + 1}(m+1)!m!}{(2m+1)!} = \frac{2^{2(m+1)}(m+1)!^2}{(2m+2)!}.
+    \end{equation*}
+    Da condição de normalização, temos
+    \begin{align*}
+        1 &= \int_0^{\pi}\dli{\theta} \int_0^{2\pi} \sin\theta \dli{\phi} Y_\ell^\ell(\theta,\phi) \conj{Y_\ell^\ell}(\theta,\phi)\\
+          &= 2\pi \abs{c_\ell}^2\int_0^\pi \dli{\theta}\sin\theta \sin^{2\ell + 1}\theta\\
+          &= 4\pi \abs{c_\ell}^2 I_\ell,
+    \end{align*}
+    portanto
+    \begin{equation*}
+        c_\ell = \frac{(-1)^{\ell}}{2^\ell \ell!}\sqrt{\frac{(2\ell+1)!}{4\pi}},
+    \end{equation*}
+    onde escolhemos a fase \((-1)^\ell\) por motivos psicológicos.
 \end{proof}
