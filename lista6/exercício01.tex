@@ -69,12 +69,59 @@
         H &= \frac{1}{2m}(P_1^2 + P_2^2) + \frac12 m \omega^2(x_1^2 + x_2^2) - \frac{2e^2x_1x_2}{R^3}\\
           &= \frac{(P_s + P_a)^2 + (P_s - P_a)^2}{4m} + \frac{m \omega^2\left[(x_s + x_a)^2 + (x_s - x_a)^2\right]}4  -\frac{e^2(x_s^2 - x_a^2)}{R^3}\\
           &= \frac{P_s^2 + P_a^2}{2m} + \frac{m \omega^2\left[x_s^2 + x_a^2\right]}2  -\frac{e^2(x_s^2 - x_a^2)}{R^3}\\
-          &= \frac{P_s^2}{2m} + \frac12m\left(\omega^2 - \frac{e^2}{mR^3}\right)x_s^2 + \frac{P_a^2}{2m} + \frac12 m\left(\omega^2 + \frac{e^2}{m R^3}\right)x_a^2,
+          &= \frac{P_s^2}{2m} + \frac12m\left(\omega^2 - \frac{e^2}{mR^3}\right)x_s^2 + \frac{P_a^2}{2m} + \frac12 m\left(\omega^2 + \frac{e^2}{m R^3}\right)x_a^2\\
+          &= \frac{1}{2m}P_s^2 + \frac12 m \omega_s^2 x_s^2 + \frac{1}{2m}P_a^2 + \frac12 m \omega_a^2 x_a^2
     \end{align*}
-    portanto as frequência dos modos normais são dadas por
+    onde definimos as frequências dos modos normais por
     \begin{equation*}
         \omega_s^2 = \omega^2 - \frac{e^2}{mR^3}\quad\text{e}\quad\omega_a^2 = \omega^2 + \frac{e^2}{m R^3}.
     \end{equation*}
+    Definindo os operadores
+    \begin{equation*}
+        \tilde{p}_s = \frac{1}{\sqrt{m\hbar \omega_s}}\quad\text{e}\quad \tilde{x}_s = \sqrt{\frac{m \omega_s}{\hbar}}x_s
+    \end{equation*}
+    e analogamente para \(x_a\) e \(p_a\), podemos escrever o hamiltoniano como
+    \begin{equation*}
+        H = \frac{\hbar \omega_s}{2}\left(\tilde{p}_s^2 + \tilde{x}_s^2\right) + \frac{\hbar \omega_a}{2}\left(\tilde{p}_a^2 + \tilde{x}_a^2\right),
+    \end{equation*}
+    e o hamiltoniano de oscilação como
+    \begin{equation*}
+        H_1 = \frac{\hbar e^2}{m R^3}\left(\frac{1}{\omega_s}\tilde{x}_s^2 - \frac{1}{\omega_a}\tilde{x}_a^2\right).
+    \end{equation*}
+    Definindo os operadores de abaixamento para cada oscilador por
+    \begin{equation*}
+        a_s = \frac1{\sqrt{2}}\left(\tilde{x}_s + i\tilde{p}_s\right)
+        \quad\text{e}\quad
+        a_a = \frac1{\sqrt{2}}\left(\tilde{x}_a + i\tilde{p}_a\right),
+    \end{equation*}
+    que satisfazem \(\commutator{a_s}{\herm{a}_s} = \unity,\) \(\commutator{a_a}{\herm{a}_a} = \unity,\) \(\commutator{a_s}{a_a} = \commutator{\herm{a}_s}{a_a} = \commutator{a_s}{\herm{a}_a} = \commutator{\herm{a}_s}{\herm{a}_a} = 0\), obtemos
+    \begin{equation*}
+        H = \hbar \omega_s\left(\herm{a}_sa_s +  \frac12 \unity\right) + \hbar \omega_a \left(\herm{a}_aa_a + \frac12\unity\right)
+    \end{equation*}
+    e
+    \begin{align*}
+        H_1 &= \frac{\hbar e^2}{m R^3} \left[\frac{a_s^2 + {\herm{a}_s}^2  + \anticommutator{a_s}{\herm{a}_s}}{\omega_s} - \frac{a_a^2 + {\herm{a}_a}^2  + \anticommutator{a_a}{\herm{a}_a}}{\omega_a}\right]\\
+            &= \frac{\hbar e^2}{m R^3} \left[\frac{a_s^2 + {\herm{a}_s}^2  + \unity + 2\herm{a}_sa_s}{\omega_s} - \frac{a_a^2 + {\herm{a}_a}^2  + \unity + 2\herm{a}_aa_a}{\omega_a}\right].
+    \end{align*}
+    Os operadores de abaixamento e levantamento atuam nos autoestados de forma que
+    \begin{align*}
+        a_s\ket{n,m} = \sqrt{n}\ket{n-1,m},\quad\text{e}\quad
+        \herm{a}_s\ket{n,m} = \sqrt{n+1}\ket{n+1, m},\\
+        a_a\ket{n,m} = \sqrt{m}\ket{n,m-1},\quad\text{e}\quad
+        \herm{a}_a\ket{n,m} = \sqrt{m+1}\ket{n, m+1},
+    \end{align*}
+    portanto no estado fundamental temos
+    \begin{equation*}
+        a_s\ket{0,0} = 0,\quad
+        \herm{a}_s\ket{0,0} = \ket{1, 0},\quad
+        a_a\ket{0,0} = 0,\quad\text{e}\quad
+        \herm{a}_a\ket{0,0} = \ket{0, 1}.
+    \end{equation*}
+    Assim, a energia de interação no estado fundamental é
+    \begin{equation*}
+        \bra{0,0}H_1\ket{0,0} = \frac{\hbar  e^2}{m R^3}\left[\frac{\sqrt{2}\braket{0,0}{2,0} + \braket{0,0}{0,0}}{\omega_s} - \frac{\sqrt{2}\braket{0,0}{0,2} + \braket{0,0}{0,0}}{\omega_a}\right] = \frac{\hbar e^2}{m R^3} \left[\frac{1}{\omega_s} - \frac{1}{\omega_a}\right].
+    \end{equation*}
+
     Assumindo que \(\frac{e^2}{mR^3 \omega^2} \ll 1\), as frequências de oscilação são dadas por
     \begin{equation*}
         \omega_s = \omega \left(1 - \frac{e^2}{mR^3 \omega^2}\right)^{\frac12} \simeq \omega \left(1 - \frac{e^2}{2mR^3\omega^2} + \frac{e^4}{8m^2 R^6 \omega^4}\right)
@@ -83,5 +130,9 @@
     \begin{equation*}
         \omega_a = \omega \left(1 + \frac{e^2}{mR^3 \omega^2}\right)^{\frac12} \simeq \omega \left(1 + \frac{e^2}{2mR^3\omega^2} - \frac{e^4}{8m^2 R^6 \omega^4}\right)
     \end{equation*}
-    em até segunda ordem de \(\frac{e^2}{mR^3 \omega^2}\).
+    em até segunda ordem de \(\frac{e^2}{mR^3 \omega^2}\). Nessa aproximação,
+    \begin{equation*}
+        \bra{0,0}H_1\ket{0,0} \simeq \frac{\hbar e^2}{m \omega R^3}\left[\frac{e^2}{mR^3 \omega^2} - \frac{e^4}{4m^2 R^6 \omega^4}\right] = \frac{\hbar e^4}{m^2 \omega^3 R^6}
+    \end{equation*}
+    é a energia de interação no estado fundamental.
 \end{proof}
