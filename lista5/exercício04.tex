@@ -8,7 +8,7 @@
             onde \(\ket{\psi(t)}\) não precisa ser um estado estacionário.
         \item Mostre que, se uma partícula está num estado estacionário em um tempo qualquer \(t_0\), então ela sempre permanecerá num estado estacionário.
         \item Se em \(t = 0\) a função de onda é constante na região \([-a,a]\) e nula em seu complemento, expresse a função de onda completa para um tempo \(t\) qualquer em termos dos autoestados do sistema.
-        \item \todo[Mostre que em problemas unidimensionais o espectro de energia do estado ligado é sempre não degenerado.]
+        \item Mostre que em problemas unidimensionais o espectro de energia do estado ligado é sempre não degenerado.
         \item Mostre que a primeira derivada de uma função de onda de um estado estacionário é contínua mesmo que o potencial \(V(x)\) tiver uma descontinuidade finita.
         \item Mostre que para um potencial par tal que \(V(x) = V(-x)\) as autofunções dos estados estacionários da equação de evolução temporal para os estados ligados são ou par ou ímpar sob a troca \(x \mapsto -x\).
 \end{enumerate}
@@ -26,19 +26,11 @@
 \end{proof}
 
 \begin{proof}[Resolução do item (b)]
-    Seja \(\ket{\psi(t)}\) um estado que no instante \(t_0\) é um estado estacionário de energia \(\hbar \omega\). Sua evolução temporal é descrita por
-    % \begin{equation*}
-    %     \ket{\psi(t)} = U(t, t_0)\ket{\psi(t_0)},
-    % \end{equation*}
-    % onde o operador de evolução temporal é dado por
-    % \begin{equation*}
-    %     U(t, t_0) = \unity + \sum_{k = 1}^\infty \frac{1}{(i\hbar)^k}\int_{t_0}^t \dli{\tau_k} \int_{t_0}^{\tau_{k}} \dli{\tau_{k-1}} \dots \int_{t_0}^{\tau_2} \dli{\tau_1} H(\tau_k) \dots H(\tau_1).
-    % \end{equation*}
-    % Dessa forma,
-    % \begin{equation*}
-    %     \diffp*{U(t,t_0)}{t} &= \sum_{k = 1}^\infty \frac{1}{(i\hbar)^k} \diffp*{\int_{t_0}^t \dli{\tau_k} \int_{t_0}^{\tau_{k}} \dli{\tau_{k-1}} \dots \int_{t_0}^{\tau_2} \dli{\tau_1} H(\tau_k) \dots H(\tau_1)}{t}\\
-    %                          &= \frac{1}{i\hbar} \diffp*{\int_{t_0}^t \dli{\tau} H(\tau)}{t} + \frac{1}{(i\hbar) }\sum_{k=1}^\infty \frac{1}{(i \hbar)^{k - 1}}
-    % \end{equation*}
+    Seja \(\ket{\psi(t)}\) um estado que no instante \(t=0\) é um estado estacionário de energia \(\hbar \omega\). Sua evolução temporal é descrita por
+    \begin{equation*}
+        \ket{\psi(t)} = \exp\left(\frac{t}{i\hbar}H\right)\ket{\psi(0)} = \int_{\sigma(H)} \dli{\lambda} e^{-i\frac{\lambda}{\hbar} t}P_{\lambda} \ket{\psi(0)} = e^{-i\omega t} \ket{\psi(0)},
+    \end{equation*}
+    portanto há apenas uma diferença de fase em relação ao estado inicial.
 \end{proof}
 
 \begin{proof}[Resolução do item (c)]
@@ -57,9 +49,13 @@
     \end{equation*}
     isto é, existe uma constante \(\alpha\) tal que
     \begin{equation*}
-        \psi_2(x) \diff{\psi_1}{x} - \psi_1(x) \diff{\psi_2}{x} = \alpha
+        \psi_2(x) \diff{\psi_1}{x} - \psi_1(x) \diff{\psi_2}{x} = \alpha.
     \end{equation*}
-    \todo
+    Como as funções de onda devem ser normalizáveis, temos \(\psi \to 0\) conforme \(x \to \infty\) e temos as suas derivadas limitadas, portanto concluímos que \(\alpha = 0\). Disso, segue que
+    \begin{equation*}
+        \frac{1}{\psi_1(x)}\diff{\psi_1}{x} = \frac{1}{\psi_2(x)}\diff{\psi_2}{x} \implies \psi_2(x) = \beta \psi_1(x),
+    \end{equation*}
+    para alguma constante \(\beta\). Isto é, \(\set{\ket{\psi_1},\ket{\psi_2}}\) é linearmente dependente, portanto o espectro de energia é não degenerado.
 \end{proof}
 
 \begin{proof}[Resolução do item (e)]
