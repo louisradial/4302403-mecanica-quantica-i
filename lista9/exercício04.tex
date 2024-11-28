@@ -12,5 +12,13 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-
+    Para que o estado seja normalizado, temos
+    \begin{equation*}
+        \abs{N}^{-2} = \int_0^\pi \dli{\theta}\int_0^{2\pi} \sin\theta \dli{\varphi} \left[\frac{1}{3}\conj{Y_0^0}(\theta,\varphi) + \frac16 \conj{Y_{1}^0}(\theta, \varphi)\right]\left[\frac{1}{3}Y_0^0(\theta,\varphi) + \frac16 Y_{1}^0 (\theta, \varphi)\right]= \frac19 + \frac1{36} = \frac{5}{36},
+    \end{equation*}
+    já que \(\int \dli{\Omega} \conj{Y_{\ell'}^{m'}} Y_\ell^m = \delta_{\ell \ell'} \delta_{m m'}\), portanto podemos tomar \(N = \frac{6}{\sqrt{5}}\). Na base \(\ket{\ell m}\) com \(\vetor{L}^2 \ket{\ell m} = \hbar^2 \ell (\ell + 1) \ket{\ell m}\) e \(L_z \ket{\ell m} \hbar m \ket{\ell m}\), temos
+    \begin{equation*}
+        \ket{\Psi} = \frac{2}{\sqrt{5}}\ket{00} + \frac1{\sqrt{5}} \ket{10},
+    \end{equation*}
+    portanto vemos que o estado é autovetor de \(L_z\), com autovalor \(0\), mas que não é autovetor de \(\vetor{L}^2\), e tem probabilidade \(\frac15\) de se medir \(\ell = 1\).
 \end{proof}
