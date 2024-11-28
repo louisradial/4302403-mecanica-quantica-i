@@ -92,3 +92,35 @@
     \end{equation*}
     onde escolhemos a fase \((-1)^\ell\) por motivos psicológicos.
 \end{proof}
+\begin{proof}[Resolução do item (d)]
+    Mostremos por indução que
+    \begin{equation*}
+        Y_\ell^{\ell - k}(\theta,\phi) = c_\ell \sqrt{\frac{(2\ell - k)!}{k! (2\ell)!}} e^{i(\ell - k)\phi}\frac{1}{\sin^{\ell - k}\theta} \diff[k]{\sin^{2\ell}\theta}{\cos\theta}
+    \end{equation*}
+    para todo \(k \in \set{0,1,\dots,2\ell}\). É claro que a expressão acima nos fornece \(Y_\ell^\ell\) para \(k = 0\). Supondo válida para algum \(0 \leq k < 2\ell\), segue de
+    \begin{equation*}
+        L_-Y_\ell^{\ell - k}(\theta, \phi) = \hbar\sqrt{\ell(\ell + 1) - (\ell - k)(\ell - k - 1)}Y_\ell^{\ell - k - 1}(\theta,\phi),
+    \end{equation*}
+    que
+    \begin{align*}
+        Y_\ell^{\ell - (k + 1)}(\theta,\phi) &= c_\ell\sqrt{\frac{(2\ell - k!)}{(2\ell)!(2\ell - k)(k + 1)k!}}e^{-i\phi}\left(- \partial_\theta + i\cot \theta\partial_\phi\right)\left[e^{i(\ell-k) \phi} \frac{1}{\sin^{\ell - k}\theta}\diff[k]{\sin^{2\ell}\theta}{\cos\theta}\right]\\
+                                             &= c_\ell \sqrt{\frac{[2\ell - (k+1)]!}{(2\ell)! (k+1)!}} e^{-i\phi} \left(- \partial_\theta + i\cot \theta\partial_\phi\right)\left[e^{i(\ell-k) \phi} \frac{1}{\sin^{\ell - k}\theta}\diff[k]{\sin^{2\ell}\theta}{\cos\theta}\right].
+    \end{align*}
+    Para calcular esta derivada, notemos que
+    \begin{equation*}
+        \diffp**\theta{\left[e^{i(\ell - k)\phi}\frac{1}{\sin^{\ell - k}\theta} \diff[k]{\sin^{2\ell}\theta}{\cos\theta}\right]} = e^{i(\ell - k)\phi}\left[\frac{(k - \ell)\cot\theta}{\sin^{\ell - k}\theta}\diff[k]{\sin^{2\ell}\theta}{\cos\theta} - \frac{1}{\sin^{\ell - k - 1}\theta}\diff[k+1]{\sin^{2\ell}\theta}{\cos\theta}\right],
+    \end{equation*}
+    e que
+    \begin{equation*}
+        i\cot\theta \diffp**\phi{\left[e^{i(\ell - k)\phi}\frac{1}{\sin^{\ell - k}\theta} \diff[k]{\sin^{2\ell}\theta}{\cos\theta}\right]} = e^{i(\ell - k)\phi}\frac{(k - \ell)\cot\theta}{\sin^{\ell - k}\theta} \diff[k]{\sin^{2\ell}\theta}{\cos\theta},
+    \end{equation*}
+    logo
+    \begin{equation*}
+        Y_{\ell}^{\ell - (k+1)}(\theta, \phi) = c_\ell\sqrt{\frac{[2\ell - (k+1)]!}{(2\ell)! (k+1)!}} e^{i[\ell - (k+1)]\phi}\frac{1}{\sin^{\ell - (k + 1)}}\diff[k+1]{\sin^{2\ell}\theta}{\cos\theta},
+    \end{equation*}
+    isto é, a expressão é válida para \(1 \leq k + 1 \leq 2\ell\). Deste modo, pelo princípio da indução finita concluímos que a expressão é válida para todo \(k \in \set{0, 1,\dots, 2\ell}\), e podemos escrever
+    \begin{equation*}
+        Y_\ell^m(\theta, \phi) = \frac{(-1)^\ell}{2^{\ell}\ell!}\sqrt{\frac{(2\ell + 1)(\ell + m)!}{4\pi(\ell - m)!}}e^{im\phi} \frac{1}{\sin^m\theta}\diff[\ell - m]{\sin^{2\ell}\theta}{\cos\theta}
+    \end{equation*}
+    para todo \(m \in \set{-\ell, -\ell + 1, \dots, -1, 0,1,\dots,\ell}\), tomando \(\ell - k = m\).
+\end{proof}
