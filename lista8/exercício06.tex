@@ -7,8 +7,8 @@
     \begin{enumerate}[label=(\alph*)]
         \item Qual o momento angular total da partícula?
         \item Qual o valor esperado da componente \(z\) do momento angular da partícula?
-        \item Caso medíssemos \(L_x\), qual a probabilidade de que o resultado encontrado fosse \(\hbar\)?
         \item Qual a probabilidade de encontrar a partícula no ângulo sólido \(\dl{\Omega}\) em \(\theta\) e \(\phi\)?
+        \item Caso medíssemos \(L_x\), qual a probabilidade de que o resultado encontrado fosse \(\hbar\)?
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
@@ -54,7 +54,17 @@
                           &= i\hbar A\left[\int_{\mathbb{R}^3} \dli{x,y,z} \conj{\psi}(x,y,z)y e^{-\alpha r} - \int_{\mathbb{R}^3} \dli{x',y',z} \conj{\psi}(y',x',z) y' e^{-\alpha r}\right]\\
                           &= i\hbar A\left[\int_{\mathbb{R}^3} \dli{x,y,z} \conj{\psi}(x,y,z)y e^{-\alpha r} - \int_{\mathbb{R}^3} \dli{x',y',z} \conj{\psi}(x',y',z) y' e^{-\alpha r}\right] = 0,
     \end{align*}
-    como vimos antes.
+    como vimos antes. Notemos que da normalização da função de onda e das relações de ortogonalidade temos
+    \begin{equation*}
+        1 = \frac{4\pi\abs{A}^2}{3}\int_0^\infty \dli{r} r^4 \left[2\abs*{\frac{1 + i}{\sqrt{2}}}^2 + 4\right] e^{-2 \alpha r} \implies \frac{4\pi\abs{A}^2}{3}\int_0^\infty \dli{r} r^4 e^{-2 \alpha r} = \frac{1}{6}
+    \end{equation*}
+    portanto
+    \begin{align*}
+        P(\theta,\varphi)\dl{\Omega} &= \left[\int_0^\infty \dli{r} r^2 \conj{\psi}(r,\theta,\varphi) \psi(r,\theta,\varphi)\right] \dl{\Omega}\\
+                                     &= \left[\abs{A}^2 \int_0^\infty \dli{r}r^4 e^{-2 \alpha r}\right] \left[\sin\theta \cos\varphi + \sin\theta \sin\varphi + 2\cos\theta\right]^2 \dl{\Omega}\\
+                                     &= \frac{1}{8\pi} \left[\sin\theta \cos\varphi + \sin\theta \sin\varphi + 2\cos\theta\right]^2 \dl{\Omega}
+    \end{align*}
+    é a probabilidade de encontrar a partícula no ângulo sólido \(\dl{\Omega}\) nos ângulos \(\theta\) e \(\varphi\).
 
     Consideremos agora outras coordenadas esféricas, com o ângulo polar definido a partir do eixo \(x\) e o ângulo azimutal a partir do eixo \(y\), então
     \begin{equation*}
@@ -72,24 +82,4 @@
                 &= \frac{5}{12}
     \end{align*}
     é a probabilidade de medir a componente \(x\) do momento angular como \(\hbar\).
-    % Consideramos os operadores \(L_\pm = L_x \pm i L_y\) definidos por
-    % \begin{equation*}
-    %     L_\pm Y_{\ell}^m(\theta,\varphi) = \hbar \sqrt{\ell(\ell + 1) - m(m \pm 1)} Y_{\ell}^{m\pm1}(\theta,\varphi),
-    % \end{equation*}
-    % então \(L_x = \frac12 \left(L_+ + L_-\right)\), isto é,
-    % \begin{equation*}
-    %     L_xY_{\ell}^m(\theta,\varphi) = \frac{\hbar}{2} \left[\sqrt{\ell^2 + \ell - m^2 - m}Y_{\ell}^{m + 1}(\theta,\varphi) + \sqrt{\ell^2 + \ell - m^2 + m}Y_{\ell}^{m-1}(\theta,\varphi)\right],
-    % \end{equation*}
-    % portanto
-    % \begin{align*}
-    %     L_x Y_{1}^{-1}(\theta,\varphi) &= \frac{\hbar}{\sqrt{2}} Y_1^0(\theta,\varphi)&
-    %     L_x Y_{1}^{0}(\theta,\varphi) &= \frac{\hbar}{\sqrt{2}} \left[Y_1^{-1}(\theta,\varphi) + Y_1^{1}(\theta,\varphi)\right]&
-    %     L_x Y_{1}^{1}(\theta,\varphi) &= \frac{\hbar}{\sqrt{2}} Y_1^0(\theta,\varphi).
-    % \end{align*}
-    % Concluímos que \(X_+(\theta,\varphi) = \frac12 \left[Y_{1}^{-1}(\theta,\varphi) + \sqrt{2}\right]\)
-    % Dessa forma, temos
-    % \begin{align*}
-    %     L_x \psi &= \sqrt{\frac{4\pi}{3}} \hbar A \left\{\frac{1 + i}{2}Y_1^0(\theta, \varphi) - \frac{1-i}{2}Y_1^0(\theta, \varphi) + \frac{2}{\sqrt{2}}\left[Y_{1}^{-1}(\theta, \varphi) + Y_1^1(\theta, \varphi)\right]\right\}r e^{-\alpha r}\\
-    %              &= \sqrt{\frac{4\pi}{3}} \hbar A \left[\sqrt{2} Y_1^{-1}(\theta,\varphi) + i Y_{1}^0(\theta,\varphi) + \sqrt{2} Y_{1}^{1}(\theta,\varphi)\right]r e^{-\alpha r}
-    % \end{align*}
 \end{proof}
