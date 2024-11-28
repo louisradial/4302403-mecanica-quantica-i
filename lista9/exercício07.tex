@@ -3,7 +3,7 @@
     \begin{equation*}
         \Psi(\vetor{r}) = \frac1{\sqrt{35}}\left[\psi_{311}(\vetor{r}) + 5 \psi_{21-1}(\vetor{r}) + 3\psi_{210}(\vetor{r})\right],
     \end{equation*}
-    onde \(\psi_{n\ell m}(\vetor{r}) = R_{n\ell}(r) Y_{\ell m}(\theta, \phi)\) são as autofunções normalizadas da hamiltoniana e \(E_n = - \frac{m e^4}{2\hbar^2 n^2}\) as energias.
+    onde \(\psi_{n\ell m}(\vetor{r}) = R_{n\ell}(r) Y_{\ell}^m(\theta, \phi)\) são as autofunções normalizadas da hamiltoniana e suas energias são \(E_n = - \frac{m e^4}{2\hbar^2 n^2}\).
     \begin{enumerate}[label=(\alph*)]
         \item \(\Psi(\vetor{r})\) é uma autofunção de \(H\)? Se é, qual é o autovalor correspondente de \(H\)? Se não é, qual é o valor esperado de \(H\)?
         \item \(\Psi(\vetor{r})\) é uma autofunção de \(\vetor{L}^2\)? Se é, qual é o autovalor correspondente de \(\vetor{L}^2\)? Se não é, qual é o valor esperado de \(\vetor{L}^2\)?
@@ -12,5 +12,20 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-
+    Temos
+    \begin{equation*}
+        H\Psi(\vetor{r}) = -\frac{me^4}{2\hbar^2\sqrt{35}}\left[\frac{1}{9}\psi_{311}(\vetor{r}) + \frac{5}{4}\psi_{21-1}(\vetor{r}) + \frac{3}{4} \psi_{210}(\vetor{r})\right],
+    \end{equation*}
+    portanto o estado não é autofunção de \(H\) e o valor esperado da energia neste estado é \(\mean{H} = -\frac{m e^4}{12\hbar^2}\). O estado é autofunção de \(\vetor{L}^2\) associado ao autovalor \(2\hbar^2\). Temos
+    \begin{equation*}
+        L_z \Psi(\vetor{r}) = \frac{\hbar}{\sqrt{35}}\left[\psi_{311}(\vetor{r}) - 5\psi_{21-1}(\vetor{r})\right],
+    \end{equation*}
+    portanto o valor esperado de \(L_z\) é \(\mean{L_z} = -\frac{24}{35}\hbar \)
+    Para este estado, temos as probabilidades
+    \begin{equation*}
+        P(\ell = 1, m = -1) = \frac{5}{7},\quad
+        P(\ell = 1, m = 0) = \frac{9}{35},\quad\text{e}\quad
+        P(\ell = 1, m = 1) = \frac{1}{35}
+    \end{equation*}
+    de encontrar o elétron com momento angular total \(\hbar \sqrt{\ell(\ell + 1)}\) e componente a projeção \(z\) do momento angular \(\hbar m\).
 \end{proof}
