@@ -6,5 +6,15 @@
     Obtenha as variâncias \((\Delta L_z)^2\) e \((\Delta \vetor{L}^2)^2\).
 \end{exercício}
 \begin{proof}[Resolução]
-
+    Na base \(\ket{\ell m}\) com \(\vetor{L}^2 \ket{\ell m} = \hbar^2 \ell (\ell + 1) \ket{\ell m}\) e \(L_z \ket{\ell m} \hbar m \ket{\ell m}\), temos
+    \begin{equation*}
+        \ket{\psi} = \frac1{\sqrt6} \ket{20} - \frac{1}{\sqrt6}\ket{2-1} + \frac{2i}{\sqrt{6}}\ket{22}
+    \end{equation*}
+    portanto
+    \begin{align*}
+        L_z \ket{\psi} &= \frac{\hbar}{\sqrt{6}}\ket{2-1} + \frac{4i\hbar}{\sqrt{6}} \ket{22} \implies \mean{L_z} = \frac{7\hbar}{6},\\
+        L_z^2\ket{\psi} &= -\frac{\hbar^2}{\sqrt{6}} \ket{2-1} + \frac{8i\hbar^2}{\sqrt{6}}\ket{22} \implies \mean{L_z^2} = \frac{17\hbar^2}{6}\\
+        \vetor{L}^2\ket{\psi} &= 6\hbar^2 \ket{\psi} \implies \Delta \vetor{L}^2 = 0,
+    \end{align*}
+    e temos \((\Delta L_z)^2 = \frac{53}{36}\hbar^2\).
 \end{proof}
