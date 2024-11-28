@@ -2,10 +2,41 @@
     Considere o estado fundamental do átomo de hidrogênio. Encontre
     \begin{enumerate}[label=(\alph*)]
         \item Os valores esperados \(\mean{r}\) e \(\mean{r^2}\) em termos do raio de Bohr \(a_0\).
-        \item Os valores esperados \(\mean{x}\) e \(\mean{x^2}\). \todo[Explore a simetria do estado fundamental.]
+        \item Os valores esperados \(\mean{x}\) e \(\mean{x^2}\).
         \item O valor esperado \(\mean{x^2}\) para o estado \(\ket{211}\).
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
+    Consideremos a família de integrais para \(k > -1\)
+    \begin{equation*}
+        I(k, n) = \int_0^\infty \dli{r} r^k \exp\left(-\frac{r}{n a_0}\right),
+    \end{equation*}
+    onde \(a_0 = \frac{\hbar^2}{\mu e^2}\) é o raio de Bohr e \(n > 0\). Integrando por partes, temos
+    \begin{equation*}
+        I(k, n) = \left[-n a_0 r^k \exp\left(-\frac{r}{n a_0}\right)\right]_0^\infty + kn a_0 \int_0^\infty \dli{r} r^{k-1}\exp\left(-\frac{r}{n a_0}\right) = kn a_0 I(k - 1, n),
+    \end{equation*}
+    portanto de \(I(0,n) = na_0,\) segue que \(I(k,n) = k!(na_0)^{k+1}\) para todo \(k \in \mathbb{N}_0\), por indução.\footnote{Com uma mudança de variáveis, é fácil ver que \(I(k,n) = (na_0)^{k+1} \Gamma(k+1)\) para todo \(k > -1\) e todo \(n > 0\).}
 
+    Como o estado fundamental do átomo de hidrogênio é dado por
+    \begin{equation*}
+        \psi_{100}(\vetor{r}) = \frac{1}{\sqrt{\pi a_0^3}} \exp\left(-\frac{\norm{\vetor{r}}}{a_0}\right),
+    \end{equation*}
+    temos
+    \begin{equation*}
+        \mean{r^q}_{100} = \int_{\mathbb{R}^3} \dln3r \frac{r^q}{\pi a_0^3} \exp\left(-\frac{2\norm{\vetor{r}}}{a_0}\right) = \frac{4}{a_0^3} \int_{0}^\infty \dli{r} r^{q+2} \exp\left(-\frac{\norm{\vetor{r}}}{\frac12 a_0}\right) = \frac{4 (q + 2)!}{a_0^3}\left(\frac{a_0}{2}\right)^{q + 3} = \frac{(q + 2)!a_0^q}{2^{q+1}},
+    \end{equation*}
+    para todo \(q \in \mathbb{N}_0\), isto é, \(\mean{r}_{100} = \frac{3}{2}a_0\) e \(\mean{r^2}_{100} = 3a_0^2\). Como este estado é radialmente simétrico, temos \(\mean{x^2} = \mean{y^2} = \mean{z^2} = \frac13 \mean{r^2} = \frac12 a_0\) e \(\mean{x} = \mean{y} = \mean{z} = 0\).
+
+    A função de onda no estado \(\ket{211}\) é
+    \begin{equation*}
+        \psi_{211}(r, \theta,\phi) = -\frac{1}{8\sqrt{\pi a_0^3}} \frac{r}{a_0}\exp\left(-\frac{r}{2a_0} \right)\sin\theta e^{i\phi},
+    \end{equation*}
+    portanto\footnote{Encontramos a expressão geral para a integral de potências ímpares de seno na Lista VIII.}
+    \begin{align*}
+        \mean{x^2}_{211} &= \frac{1}{2^6\pi a_0^5} \int_0^\infty \dli{r} \int_0^\pi r \dli{\theta} \int_0^{2\pi} r\sin\theta \dli{\phi} r^2 x^2 \exp\left(-\frac{r}{a_0}\right) \sin^2 \theta\\
+                         &= \frac{1}{2^6\pi a_0^5} \int_0^\infty \dli{r} r^6 \exp\left(-\frac{r}{a_0}\right) \int_0^{\pi} \dli\theta \sin^5\theta \int_0^{2\pi}\dli{\phi} \cos^2\phi\\
+                         &= \frac{6! a_0^7 2^5 2!^2 \pi}{2^6 \pi a_0^5 5!}\\
+                         &= 12a_0^2
+    \end{align*}
+    é o valor esperado de \(x^2\) neste estado.
 \end{proof}
