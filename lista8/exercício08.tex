@@ -1,3 +1,21 @@
+\begin{lemma}{Soma dos quadrados de naturais consecutivos}{exercício08}
+    Vale
+    \begin{equation*}
+        \sum_{k = 1}^n k^2 = \frac{n(n+1)(2n+1)}{6}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\).
+\end{lemma}
+\begin{proof}
+    Consideramos o conjunto
+    \begin{equation*}
+        S = \setc*{n \in \mathbb{N}}{\sum_{k = 1}^n k^2 = \frac{n(n+1)(2n+1)}{6}}.
+    \end{equation*}
+    Notemos que \(S\) é não vazio, já que \(1 \in S\), pois \(\frac{1 \cdot 2 \cdot 3}{6} = 1 = \sum_{k = 1}^1 k^2\). Suponhamos que \(n \in S\), então
+    \begin{equation*}
+        \sum_{k = 1}^{n+1} k^2 = (n+1)^2 + \sum_{k= 1}^n k^2 = \frac{(n+1)(2n^2 + 7n + 6)}{6} = \frac{(n+1)(n + 2)(2n + 3)}{6},
+    \end{equation*}
+    portanto \(n + 1 \in S\). Pelo princípio da indução finita, concluímos que \(S = \mathbb{N}\).
+\end{proof}
 \begin{exercício}{Valor esperado do momento angular}{exercício08}
     Mostre que a expressão
     \begin{equation*}
@@ -5,10 +23,22 @@
     \end{equation*}
     pode ser obtida diretamente das condições
     \begin{enumerate}[label=(\alph*)]
-        \item os únicos valores possíveis que o memento angular orbital pode assumir em qualquer eixo são \(- \ell \hbar, (-\ell + 1)\hbar, \dots, \ell\hbar;\)
+        \item os únicos valores possíveis que o momento angular orbital pode assumir em qualquer eixo são \(- \ell \hbar, (-\ell + 1)\hbar, \dots, \ell\hbar;\)
         \item todas as componentes do momento angular orbital são igualmente prováveis.
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-
+    Escrevamos o estado como
+    \begin{equation*}
+        \ket{\psi} = \frac{1}{\sqrt{2\ell + 1}}\sum_{m = -\ell}^\ell \ket{m},
+    \end{equation*}
+    segundo as condições (a) e (b), onde \(\ket{m}\) é um autovetor de \(L_z\) com autovalor \(\hbar m\). O valor esperado de \(L_z^2\) neste estado é
+    \begin{equation*}
+        \mean{L_z^2} = \frac{1}{2\ell + 1} \sum_{m = -\ell}^\ell \sum_{n = -\ell}^\ell\bra{n}L_z^2 \ket{m} = \frac{1}{2\ell + 1} \sum_{m = -\ell}^\ell \hbar^2 m^2 = \frac{2\hbar^2}{2\ell + 1}\sum_{m = 1}^\ell m^2 = \frac{\hbar^2 \ell (\ell + 1)}{3},
+    \end{equation*}
+    pelo \cref{lem:exercício08}. Por simetria, temos \(\mean{L_x^2} = \mean{L_y^2} = \mean{L_z^2}\), portanto
+    \begin{equation*}
+        \mean{L^2} = 3\mean{L_z^2} = \hbar^2 \ell (\ell + 1),
+    \end{equation*}
+    como desejado.
 \end{proof}
