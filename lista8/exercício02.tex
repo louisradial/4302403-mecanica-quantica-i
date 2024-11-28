@@ -1,14 +1,13 @@
 \begin{exercício}{O grupo \(\mathrm{SU}(2)\)}{exercício2}
     O grupo \(\mathrm{SU}(2)\) é o grupo de matrizes \(2\times 2\) unitárias e de determinante unitário.
     \begin{enumerate}[label=(\alph*)]
-        \item Mostre que se \(U \in \mathrm{SU}(2)\), então
+        \item Mostre que
             \begin{equation*}
-                U = \begin{pmatrix}
+                \mathrm{SU}(2) = \setc*{\begin{pmatrix}
                     a && b\\
                     -\conj{b} && \conj{a}
-                \end{pmatrix},
+                \end{pmatrix}}{a,b \in \mathbb{C} : \abs{a}^2 + \abs{b}^2 = 1}.
             \end{equation*}
-            para \(a,b \in \mathbb{C}\) tais que \(\abs{a}^2 + \abs{b}^2 = 1\).
         \item Mostre que se \(U \in \mathrm{SU}(2)\) pertence a uma vizinhança da identidade podemos escrever \(U = \unity - i \tau\), com \(\tau\) auto-adjunto, e que \(\tau\) é combinação linear real das matrizes de Pauli, dada por \(\tau = \frac12 \theta_i \sigma_i\), com \(\theta_i \to 0\).
         \item Seja \(\theta^2 = \theta_i \theta_j \delta_{ij}\) e \(\theta_i = \theta n_i\), onde \(\vetor{n}\) é um vetor unitário. Supondo agora que os \(\theta_i\) sejam finitos, definimos
             \begin{equation*}
@@ -18,18 +17,96 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    \todo[Pelo item (a)], consideramos a parametrização  de \(\mathrm{SU}(2)\) dada por
+    Consideremos a aplicação
+    \begin{align*}
+        A : \mathbb{C} \times \mathbb{C} &\to \mathrm{Mat}(2, \mathbb{C})\\
+                                   (x,y) &\mapsto
+        \begin{pmatrix}
+            x && y\\
+            -\conj{y} && \conj{x}
+        \end{pmatrix}.
+    \end{align*}
+    Sejam \(a, b \in \mathbb{C}\) tais que \(\abs{a}^2 + \abs{b}^2 = 1\), então \(\det{A(a,b)} = 1\) e
     \begin{equation*}
-        U(a,b) = \begin{pmatrix}
+        \herm{A(a,b)}A(a,b) = \begin{pmatrix}
+            \conj{a} && -b\\
+            \conj{b} && a
+        \end{pmatrix}
+        \begin{pmatrix}
             a && b\\
             -\conj{b}&&\conj{a}
+        \end{pmatrix} =
+        \begin{pmatrix}
+            \abs{a}^2 + \abs{b}^2 && 0\\
+            0 && \abs{a}^2 + \abs{b}^2
+        \end{pmatrix}
+         = \unity,
+    \end{equation*}
+    portanto \(A(a,b) \in \mathrm{SU}(2)\), isto é, \(\mathrm{SU}(2) \supset \setc{A(a,b)}{a,b\in \mathbb{C} : \abs{a}^2 + \abs{b}^2 = 1}\). Seja \(U \in \mathrm{SU}(2)\), então existem \(\alpha_{0}, \alpha_{1}, \alpha_{2}, \alpha_{3} \in \mathbb{C}\) tais que
+    \begin{equation*}
+        U = \begin{pmatrix}
+            \alpha_0 && \alpha_1\\
+            \alpha_2 && \alpha_3
+        \end{pmatrix}.
+    \end{equation*}
+    Como \(\det(U) = 1\), temos \(\alpha_0 \alpha_3 - \alpha_1 \alpha_2 = 1\) e da unitariedade de \(U\), segue que
+    \begin{equation*}
+        \begin{pmatrix}
+            \conj{\alpha_0} && \conj{\alpha_2}\\
+            \conj{\alpha_1} && \conj{\alpha_3}
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            \alpha_3 && -\alpha_1\\
+            -\alpha_2 && \alpha_0
         \end{pmatrix},
     \end{equation*}
-    onde \(a,b \in \mathbb{C}\) tais que \(\abs{a}^2 + \abs{b}^2 = 1\). Notemos que podemos trocar os parâmetros complexos \(a,b\) pelos parâmetros reais \(\phi \in [0,\pi)\) e \(\vetor{\eta} \in \mathbb{R}^3\) com \(\norm{\vetor{\eta}} = 1\) com
+    portanto \(\conj{\alpha_3} = \alpha_0\) e \(\alpha_2 = -\conj{\alpha_1}\). Assim, temos \(\abs{\alpha_0}^2 + \abs{\alpha_1}^2 = 1\) e
     \begin{equation*}
-        a = \cos\left(\frac{\phi}{2}\right) - i \eta_3 \sin\left(\frac{\phi}{2}\right)
-        \quad\text{e}\quad
-        b = -\sin\left(\frac{\phi}{2}\right)\left(\eta_2 + i\eta_1\right).
+        U = \begin{pmatrix}
+            \alpha_0 && \alpha_1\\
+            -\conj{\alpha_1} && \conj{\alpha_0}
+        \end{pmatrix} = A(\alpha_0, \alpha_1),
     \end{equation*}
-    Assim, para \(\phi \ll 1\), temos
+    e concluímos que \(\mathrm{SU}(2) =\setc{A(a,b)}{a,b\in \mathbb{C} : \abs{a}^2 + \abs{b}^2 = 1}. \)
+
+    É claro que podemos tomar a aplicação \(A\) como uma função de quatro números reais, a saber as partes real e imaginária dos argumentos, portanto
+    \begin{equation*}
+        A(a_1, a_2, b_1,b_2) = \begin{pmatrix}
+            a_1 + i a_2 && b_1 + i b_2\\
+            -b_1 + i b_2 && a_1 - i a_2
+        \end{pmatrix} = a_1 \unity + i a_2 \sigma_1 + i b_1 \sigma_2 + i b_2 \sigma_3,
+    \end{equation*}
+    e podemos escrever \(\mathrm{SU}(2) = \setc{u_0 \unity + i u_1 \sigma_1 + i u_2 \sigma_2 + i u_3 \sigma_3}{(u_0, u_1, u_2, u_3) \in S^3}\), onde \(S^3\) é a 3-esfera. Notemos que para todo \(U \in \mathrm{SU}(2) \setminus \set{\unity, -\unity}\), podemos escrever univocamente \(u_0 = \cos\varphi\) para algum \(\varphi \in (-\pi, \pi)\), de forma que podemos definir \(\eta_j = \frac{u_j}{\sin\varphi}\), o que implica que o vetor \(\vetor{\eta} = \eta_j \vetor{e}_j\) é unitário e podemos escrever
+    \begin{equation*}
+        U = \cos\varphi \unity + i \sin\varphi \vetor{\eta}\cdot \vetor{\sigma}.
+    \end{equation*}
+    Resumindo, concluímos que
+    \begin{equation*}
+        \mathrm{SU}(2) = \setc{\cos\varphi \unity + i \sin\varphi \vetor{\eta}\cdot \vetor{\sigma}}{\varphi \in [-\pi,\pi], \vetor{\eta} \in \mathbb{R}^3 : \norm{\vetor{\eta}} = 1},
+    \end{equation*}
+    já que tomando \(\varphi = \pm\pi\), temos \(\pm \unity\) e a escolha de \(\vetor{\eta}\) é irrelevante. No \cref{ex:exercício3} mostraremos ainda que
+    \begin{equation*}
+        \mathrm{SU}(2) = \setc*{\exp\left(-\frac12 i \theta \vetor{n}\cdot\vetor{\sigma}\right)}{\theta \in [-2\pi,2\pi], \vetor{n} \in \mathbb{R}^3 : \norm{\vetor{n}} = 1},
+    \end{equation*}
+    portanto para uma elemento \(U\) na vizinhança da identidade temos
+    \begin{equation*}
+        U = \exp\left(-\frac12 i \theta \vetor{n}\cdot\vetor{\sigma}\right) \simeq \unity - \frac12 i \theta \vetor{n} \cdot \vetor{\sigma},
+    \end{equation*}
+    onde \(\abs{\theta} \ll 1\) e \(\frac12 \theta \vetor{n} \cdot \vetor{\sigma}\) é auto-adjunto.
+
+    Definimos então a aplicação
+    \begin{align*}
+        U : S^2 \times (-\epsilon, \epsilon) &\to \mathrm{SU}(2)\\
+                          (\vetor{n},\theta) &\mapsto \unity - \frac12 i \theta \vetor{n} \cdot \vetor{\sigma}
+    \end{align*}
+    onde \(\epsilon \ll 1\). Fixando uma direção \(\vetor{n} \in S^2\), temos
+    \begin{equation*}
+        U(\theta_1, \vetor{n}) U(\theta_2, \vetor{n}) = \unity - \frac12 i(\theta_1 + \theta_2)\vetor{n}\cdot\vetor{\sigma} + O(\theta_1 \theta_2) = U(\theta_1 + \theta_2, \vetor{n})
+    \end{equation*}
+    sempre que \(\theta_1, \theta_2 \in (-\epsilon, \epsilon)\). Dessa forma, obtemos
+    \begin{equation*}
+        U(\theta,\vetor{n}) = \lim_{N \to \infty} U\left(\frac{\theta}{N}, \vetor{n}\right)^N = U(\theta,\vetor{n}) = \lim_{N\to \infty} \left[\unity - \frac{i \theta \vetor{n}\cdot \vetor{\sigma}}{2N}\right]^N = \exp\left(-\frac12 i \theta \vetor{n}\cdot\vetor{\sigma}\right),
+    \end{equation*}
+    como desejado.
 \end{proof}
