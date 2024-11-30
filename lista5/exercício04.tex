@@ -34,7 +34,36 @@
 \end{proof}
 
 \begin{proof}[Resolução do item (c)]
+    Consideramos o potencial como \(V(x) = 0\) em \([-a,a]\) e \(V(x) = \infty\) caso contrário. Sabemos que as autofunções do hamiltoniano para o potencial \(\tilde{V}(\tilde{x}) = 0\) para \(\tilde{x} \in [0,2a]\) são
+    \begin{equation*}
+        \psi_n(\tilde{x}) = \sqrt{\frac{2}{2a}} \sin\left(\frac{n\pi \tilde{x}}{2a}\right),
+    \end{equation*}
+    portanto as autofunções do hamiltoniano para o potencial considerado são dadas por
+    \begin{equation*}
+        \psi_n(x) = a^{-\frac12} \sin\left(\frac{n \pi x}{2a} + \frac{n \pi}{2}\right) = a^{-\frac12} \left[\sin\left(\frac{n \pi x}{2a}\right)\cos\left(\frac{n\pi}{2}\right) + \cos\left(\frac{n \pi x}{2a}\right)\sin\left(\frac{n\pi}{2}\right)\right],
+    \end{equation*}
+    isto é,
+    \begin{equation*}
+        \psi_n(x) = \begin{cases}
+            a^{-\frac12} \sin\left(\frac{n \pi x}{2a}\right),&\text{se }n\text{ é par}\\
+            a^{-\frac12} \cos\left(\frac{n \pi x}{2a}\right),&\text{se }n\text{ é ímpar}
+        \end{cases}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\), onde utilizamos a liberdade de escolha de fase.
 
+    Assim, no instante \(t = 0\) se a função de onda de uma partícula é dada por \(\varphi(x, 0) = \frac{1}{\sqrt{2a}}\) para \(x \in [-a,a]\), temos
+    \begin{equation*}
+        \varphi(x, t) = \sum_{n = 1}^\infty c_n e^{-i \omega_n t}\psi_n(x),
+    \end{equation*}
+    onde \(\hbar \omega_n = \frac{\hbar^2 n^2 \pi^2}{2m(2a)^2}\) e \(c_n = \frac{1}{\sqrt{2a}}\int_{-a}^a \dli{x} \conj{\psi_n}(x)\). Como \(\psi_n\) é real e é ímpar para todo \(n\) par, segue que \(c_{2n} = 0\), e temos
+    \begin{equation*}
+        c_{2n - 1} = \frac{2}{\sqrt{2a}} \int_{0}^a \dli{x} a^{-\frac12} \cos\left(\frac{(2n-1)\pi x}{2a}\right) = \frac{4}{\sqrt{2}(2n - 1)\pi} \sin\left(\frac{(2n - 1)\pi}{2}\right) = -\frac{(-1)^n\sqrt{8}}{(2n - 1) \pi},
+    \end{equation*}
+    isto é,
+    \begin{equation*}
+        \varphi(x, t) = -\frac{\sqrt{8}}{\pi} \sum_{n = 1}^\infty \frac{(-1)^n}{2n - 1}\exp\left(-i\frac{\hbar n^2 \pi^2}{2m(2a)^2}t\right)\cos\left(\frac{(2n-1)\pi x}{2a}\right)
+    \end{equation*}
+    é a função de onda desta partícula em qualquer instante \(t\).
 \end{proof}
 
 \begin{proof}[Resolução do item (d)]
