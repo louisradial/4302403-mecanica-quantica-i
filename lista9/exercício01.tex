@@ -7,11 +7,60 @@
     \begin{enumerate}[label=(\alph*)]
         \item Qual o valor esperado da energia desse sistema?
         \item Qual a probabilidade de encontrar o sistema com \(\ell = 1\) e \(m = 1\) como função do tempo?
-        \item Qual a probabilidade de encontrar o elétron dentro de um raio de \(\SI{1}{\pico\meter}\) do próton em \(t = 0\)? Uma boa aproximação é aceitável aqui.
         \item Como a função de onda correspondente evolui no tempo? Isto é, como é \(\psi(\vetor{r}, t)\)?
-        \item Suponha que uma medida é feita que mostra que \(L = 1\) e \(L_z = 1\). Descreva a função de onda imediatamente após essa medida.
+        \item Qual a probabilidade de encontrar o elétron dentro de um raio de \(\SI{1}{\pico\meter}\) do próton em \(t = 0\)? Uma boa aproximação é aceitável aqui.
+        \item Suponha que uma medida é feita que mostra que \(L = \sqrt{2}\hbar\) e \(L_z = \hbar\). Descreva a função de onda imediatamente após essa medida.
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
+    Temos
+    \begin{equation*}
+        H\ket{\psi(0)} = \frac{E_1}{\sqrt{10}} \left(2\ket{100} + \frac14 \ket{210} + \frac{1}{2\sqrt{2}}\ket{211} + \frac{\sqrt{3}}{4}\ket{21-1}\right),
+    \end{equation*}
+    onde \(E_1 = - \frac12 \alpha^2 \mu c^2\) é a energia do estado fundamental do átomo de hidrogênio, onde a massa reduzida é dada por \(\mu = \frac{m_e m_p}{m_e + m_p} \simeq m_e\). Assim, o valor esperado da energia desse sistema é
+    \begin{equation*}
+        \mean{H} = \bra{\psi(0)}H\ket{\psi(0)} = \frac{E_1}{10}\left(4 + \frac14 + \frac12 + \frac34\right) = \frac{11}{20}E_1.
+    \end{equation*}
+    A evolução temporal deste estado é dada por
+    \begin{equation*}
+        \ket{\psi(t)} = e^{-i\frac{tH}{\hbar}} \ket{\psi(0)} = \frac{1}{\sqrt{10}} \left[2 \exp\left(-i\omega_1 t\right)\ket{100} + \exp\left(-\frac14i\omega_1 t\right)\left(\ket{210} + \sqrt{2} \ket{211} + \sqrt{3}\ket{21-1}\right)\right],
+    \end{equation*}
+    onde \(\hbar \omega_1 = E_1\). Assim, a probabilidade de encontrar o sistema com \(\ell = 1\) e \(m = 1\) é igual a \(\frac15\) em qualquer instante de tempo. Sendo \(\psi_{n\ell m}(\vetor{r}) = \braket{\vetor{r}}{n \ell m}\), a função de onda deste estado \(\braket{\vetor{r}}{\psi(t)} = \psi(\vetor{r},t)\) é dada por
+    \begin{equation*}
+        \psi(\vetor{r},t) = \frac{1}{\sqrt{10}} \left[2 \exp\left(-i\omega_1 t\right)\psi_{100}(\vetor{r}) + \exp\left(-\frac14i\omega_1 t\right)\left(\psi_{210}(\vetor{r}) + \sqrt{2} \psi_{211}(\vetor{r}) + \sqrt{3}\psi_{21-1}(\vetor{r})\right)\right].
+    \end{equation*}
 
+    As autofunções do hamiltoniano podem ser escritas como \(\psi_{n \ell m}(\vetor{r}) = R_{n \ell}(r) Y_{\ell}^m(\theta,\phi),\) onde \(R_{n \ell}\) é a solução normalizada da equação radial e \(Y_\ell^m\) são as autofunções normalizadas simultâneas de \(\vetor{L}^2\) e \(L_z\), com as relações de ortogonalidade
+    \begin{equation*}
+        \int_0^\pi \dli{\theta}\int_0^{2\pi}\sin\theta\dli{\phi} \conj{Y_{\ell}^m}(\theta,\phi)Y_{\ell'}^{m'}(\theta,\phi) = \delta_{\ell \ell'} \delta_{m m'},
+    \end{equation*}
+    então a probabilidade \(P(r_0)\) de, no instante \(t=0\), encontrar o elétron dentro de um raio \(r_0 = \SI{1}{\pico\meter}\) é
+    \begin{equation*}
+        P(r_0)=\frac{1}{10} \int_0^{r_0} r^2 \dli{r}  \left[4\abs{R_{10}(r)}^2 + 6\abs{R_{21}(r)}^2\right].
+    \end{equation*}
+    Sendo \(a_0 = \frac{\hbar^2}{\mu e^2}\simeq 53 r_0\) o raio de Bohr, a solução geral da equação radial é dada por
+    \begin{equation*}
+        R_{n\ell}(r) = \sqrt{\left(\frac{2}{n a_0 (\ell + n)!}\right)^3\frac{(n - \ell -1)!}{2n}}  \left(\frac{2r}{n a_0}\right)^\ell \exp\left(-\frac{r}{na_0}\right) L^{2\ell + 1}_{n - \ell - 1}\left(\frac{2r}{n a_0}\right),
+    \end{equation*}
+    onde \(L_k^j(x)\) é o polinômio de Laguerre associado, portanto
+    \begin{equation*}
+        R_{10}(r) = 2a_0^{-\frac32} \exp\left(-\frac{r}{a_0}\right)
+        \quad\text{e}\quad
+        R_{21}(r) = \frac{1}{2\sqrt{6}}a_0^{-\frac32} \frac{r}{a_0} \exp\left(-\frac{r}{2a_0}\right).
+    \end{equation*}
+    Substituindo estas funções na integral, temos
+    \begin{align*}
+        P(r_0) &= \frac{1}{10} \int_0^{r_0} \left(\frac{r}{a_0}\right)^2 \frac{1}{a_0} \dli{r} \left[16 \exp\left(-\frac{2r}{a_0}\right) + \frac14 \left(\frac{r}{a_0}\right)^2\exp\left(-\frac{r}{a_0}\right)\right]\\
+               % &= \frac{1}{40}  \int_0^{r_0/a_0} \dli{\rho} e^{-\rho}\rho^2 \left(64 e^{-\rho} + \rho^2\right)\\
+               &= \frac{1}{40} \int_0^{r_0/a_0} \dli{\rho} \left(64 \rho^2 e^{-2\rho} + \rho^4 e^{-\rho}\right)\\
+               &\simeq \frac{1}{40} \int_0^{r_0/a_0} \dli{\rho} \left[64 \rho^2(1 - 2\rho)\right] + O\left(\frac{r_0^5}{a_0^5}\right)\\
+               &= \frac{8}{5}\left[\frac{r_0^3}{3a_0^3} - \frac{r_0^4}{2a_0^4}\right] = \SI{3.497e-6}{},
+    \end{align*}
+    em até quarta ordem de \(\frac{r_0}{a_0}\).
+
+    Se no instante \(t_0\) for aferido que \(L = \sqrt{2}\hbar\) e \(L_z = \hbar\), então
+    \begin{equation*}
+        \psi(\vetor{r}, t_0^+) = \psi_{211}(\vetor{r}) = -\frac{e^{i\phi}}{8\sqrt{\pi a_0^3}} \frac{r}{a_0} \exp\left(-\frac{r}{2a_0}\right) \sin\theta
+    \end{equation*}
+    é a função de onda imediatamente após esta medida.
 \end{proof}
