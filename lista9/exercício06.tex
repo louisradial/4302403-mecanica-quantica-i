@@ -1,7 +1,62 @@
-\begin{exercício}{Partícula confinada em uma caixa esférica}{exercício06}
-    Uma partícula de massa \(m\) confinada numa caixa esférica de raio \(a\) é descrita pelo hamiltoniano
+\begin{lemma}{Equação radial para um potencial central}{equação_radial}
+    Seja
     \begin{equation*}
-        H = \frac{\vetor{p}^2}{2m} + V(r),
+        H = -\frac{\hbar^2}{2\mu} \nabla^2 + V(r)
+    \end{equation*}
+    o hamiltoniano de uma partícula de massa \(\mu\) sujeita ao potencial central \(V\) e seja \(\ket{n\ell m}\) o autoestado simultâneo de \(H, {L}^2\), e \(Lz\),
+    \begin{equation*}
+        H\ket{n\ell m} = E_n\ket{n\ell m},\quad
+        L^2\ket{n\ell m} = \hbar^2\ell(\ell+1)\ket{n\ell m},\quad\text{e}\quad
+        L_z\ket{n\ell m} = \hbar m\ket{n\ell m}.
+    \end{equation*}
+    Então escrevendo \(\braket{\vetor{r}}{n\ell m} = R_{n\ell}(r) Y_{\ell}^m(\theta,\phi)\), temos a equação radial
+    \begin{equation*}
+        -\frac{\hbar^2}{2\mu r^2}\diff*{\left(r^2 \diff{R_{n\ell}}{r}\right)}{r} + \left[\frac{\hbar^2\ell(\ell+1)}{2\mu r^2} + V(r) - E_n\right]R_{n\ell}(r) = 0.
+    \end{equation*}
+    Com a substituição \(R_{n\ell}(r) = \frac{u_{n\ell}(r)}{r}\) podemos escrever
+    \begin{equation*}
+        -\frac{\hbar^2}{2\mu}\diff[2]{u_{n\ell}}{r} + \left[\frac{\hbar^2\ell(\ell+1)}{2\mu r^2} + V(r) - E_n\right]u_{n\ell}(r) = 0.
+    \end{equation*}
+    como a equação radial.
+\end{lemma}
+\begin{proof}
+    Na Lista VIII, mostramos que
+    \begin{equation*}
+        L_z = -i\hbar \diffp{}{\phi}\quad\text{e}\quad L_{\pm} = -i\hbar e^{\pm i \phi}\left(\pm i \diffp{}{\theta} - \cot\theta \diffp{}{\phi}\right),
+    \end{equation*}
+    então
+    \begin{align*}
+        L_\pm L_\mp &= -\hbar^2 e^{\pm i \phi}\left(\pm i \diffp{}{\theta} - \cot\theta \diffp{}{\phi}\right)e^{\mp i \phi}\left(\mp i \diffp{}{\theta} - \cot\theta \diffp{}{\phi}\right)\\
+                    &= -\hbar^2 \left[\left(\diffp[2]{}{\theta} \pm i\csc^2\theta \diffp{}{\phi} \mp i \cot\theta \diffp{}{\theta,\phi}\right) - \cot\theta \left(- \diffp{}{\theta} \pm i \cot\theta \diffp{}{\phi} \mp i \diffp{}{\phi, \theta} - \cot\theta \diffp[2]{}{\phi}\right)\right]\\
+                    &= -\hbar^2 \left[\diffp[2]{}{\theta} + \cot\theta \diffp{}{\theta} \pm i \left(\csc^2\theta - \cot^2\theta\right)\diffp{}{\phi} + \cot^2\theta \diffp{}{\phi^2}\right]\\
+                    &= -\hbar^2\left[\frac{1}{\sin\theta}\diffp*{\left(\sin\theta\diffp{}{\theta}\right)}{\theta}  \pm i \diffp{}{\phi} + \cot^2\theta \diffp{}{\phi^2}\right]
+    \end{align*}
+    portanto
+    \begin{align*}
+        L^2 &= L_z^2 + \frac12 \anticommutator{L_+}{L_-}\\
+            &= -\hbar^2 \left[\frac{1}{\sin\theta}\diffp*{\left(\sin\theta \diffp{}{\theta}\right)}{\theta} + \left(1 + \cot^2\theta\right)\diffp[2]{}{\phi}\right]\\
+            &= - \hbar^2\left[\frac{1}{\sin\theta}\diffp*{\left(\sin\theta \diffp{}{\theta}\right)}{\theta} + \frac{1}{\sin^2\theta}\diffp[2]{}{\phi}\right]\\
+            &= -\hbar^2\left[r^2\nabla^2 - \diffp*{\left(r^2 \diffp{}{r}\right)}{r}\right],
+    \end{align*}
+    e podemos escrever o hamiltoniano como
+    \begin{equation*}
+        H = -\frac{\hbar^2}{2\mu r^2}\diffp*{\left(r^2 \diffp{}{r}\right)}{r} + \frac{L^2}{2\mu r^2} + V(r)
+    \end{equation*}
+    e mostramos explicitamente que \(\commutator{L^2}{H} = 0\). Assim, com \(\braket{\vetor{r}}{n\ell m} = R_{n\ell}(r) Y_\ell^m(\theta,\phi)\), temos de \(H\ket{n\ell m} = E_n \ket{n\ell m}\) que
+    \begin{equation*}
+        -\frac{\hbar^2}{2\mu r^2}\diff{\left(r^2 \diff{R_{n\ell}}{r}\right)}{r} + \frac{\hbar^2\ell(\ell + 1)}{2\mu r^2}R_{n\ell}(r) + V(r) R_{n\ell}(r) = E_n R_{n\ell}(r),
+    \end{equation*}
+    já que \(L^2Y_\ell^m(\theta,\phi) = \hbar^2 \ell (\ell + 1) Y_{\ell}^m(\theta, \phi)\). Com a substituição \(R_{n\ell}(r) = \frac{u_{n\ell}(r)}{r}\), temos
+    \begin{equation*}
+        \frac{1}{r^2}\diff*{\left(r^2 \diff{R_{n\ell}}{r}\right)}{r} = \frac{1}{r^2} \diff*{\left(r \diff{u_{n\ell}}{r} - u_{n\ell}(r)\right)}{r} = \frac{1}{r}\diff[2]{u_{n\ell}}{r},
+    \end{equation*}
+    portanto obtemos a equação radial desejada.
+\end{proof}
+
+\begin{exercício}{Partícula confinada em uma caixa esférica}{exercício06}
+    Uma partícula de massa \(\mu\) confinada numa caixa esférica de raio \(a\) é descrita pelo hamiltoniano
+    \begin{equation*}
+        H = \frac{\vetor{p}^2}{2\mu} + V(r),
     \end{equation*}
     onde o potencial central \(V(r)\) é dado por
     \begin{equation*}
@@ -16,5 +71,29 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-
+    Pelo \cref{lem:equação_radial}, para \(\braket{\vetor{r}}{n\ell m} = R_{n\ell}(r)Y_{\ell}^m(\theta,\phi)\) segue que \(R_{n\ell}(r)\) satisfaz a equação radial
+    \begin{equation*}
+        -\frac{\hbar^2}{2\mu r^2}\diff*{\left(r^2 \diff{R_{n\ell}}{r}\right)}{r} + \left[\frac{\hbar^2\ell(\ell+1)}{2\mu r^2} - E_n\right]R_{n\ell}(r) = 0.
+    \end{equation*}
+    para todo \(r \in (0,a)\), sujeito a condição de contorno \(u_{n \ell}(a) = 0\) e \(u_{n\ell}(0) = 0\), pela continuidade da função de onda. Escrevendo \(E_n = \frac{\hbar^2k^2}{2\mu}\), temos
+    \begin{equation*}
+        r^2\diff[2]{R_{n\ell}}{r} + 2r\diff{R_{n\ell}}{r} + \left[k^2r^2 - \ell(\ell + 1)\right] R_{n\ell}(r) = 0.
+    \end{equation*}
+    Fazendo \(\rho = k r\) e escrevendo \(R_{n\ell}(r) = S_{n\ell}(\rho)\), temos
+    \begin{equation*}
+        \rho^2 \diff[2]{S_{n\ell}}{\rho} + 2\rho \diff{S_{n\ell}}{\rho} + \left[\rho^2 - \ell(\ell + 1)\right] S_{n\ell}(\rho) = 0,
+    \end{equation*}
+    que é a equação de Bessel esférica, cujas soluções são da forma
+    \begin{equation*}
+        S_{n\ell}(\rho) = A j_\ell(\rho) + B y_\ell(\rho),
+    \end{equation*}
+    onde \(j_\ell\) e \(y_\ell\) são as funções de Bessel esféricas de ordem \(\ell\). Como \(y_\ell\) diverge para \(\rho = 0\), sabemos que \(B= 0\) pela condição de contorno \(R_{n\ell}(0) = 0\), isto é,
+    \begin{equation*}
+        R_{n\ell}(r) = A j_\ell(k_n r).
+    \end{equation*}
+    Denotemos o \(q\)-ésimo zero positivo da função de Bessel esférica de ordem \(\ell\) por \(\alpha^q_\ell\), então da condição de contorno \(R_{n\ell}(a) = 0\), segue que \(k a = \alpha_\ell^n\), para algum \(n \in \mathbb{N}\), isto é,
+    \begin{equation*}
+        \braket{\vetor{r}}{n\ell m} = A_{n\ell} j_{\ell}\left(\alpha_\ell^n\frac{r}{a}\right) Y_{\ell}^m(\theta, \phi).
+    \end{equation*}
+    Também pela condição \(R_{n\ell}(0) = 0\) segue que \(\ell > 0\), já que \(j_0(0) = 1\), isto é, todo autoestado tem momento angular orbital não nulo. A menos que existam zeros da função de Bessel de ordens distintas que sejam idênticos, a degenerescência de um nível de energia é sempre igual a \(2\ell + 1\), portanto o estado fundamental, de energia \(\frac{\hbar^2 (\alpha_{1}^1)^2}{2\mu a^2} \simeq \frac{4.49^2 \hbar^2}{2\mu a^2}\), tem degenerescência igual a três.
 \end{proof}
