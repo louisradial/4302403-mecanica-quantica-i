@@ -2,5 +2,24 @@
     Dois férmions não relativísticos de massa \(m\) e spin 1/2 estão em um poço quadrado unidimensional de comprimento \(L\), com \(V\) infinitamente grande e repulsivo fora do poço. Escreva as autofunções dos três estados de menor energia do sistema (autofunção espacial e de spin) em termos das autofunções dos estados individuais dos férmions.
 \end{exercício}
 \begin{proof}[Resolução]
-
+    A função de onda espacial para um estado ligado de energia \(E_n = \frac{\hbar^2 \pi^2 n^2}{2m a^2}\) deste sistema com uma única partícula é dada por
+    \begin{equation*}
+        \psi_n(x) = \begin{cases}
+            \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right),&\text{se }x \in [0,a]\\
+            0,&\text{se }x \notin [0,a]
+        \end{cases},
+    \end{equation*}
+    onde \(n \in \mathbb{N}\). Para o sistema com dois férmions de spin \(\frac12\), o estado fundamental é dado pela autofunção
+    \begin{equation*}
+        \Psi_0(x_1, x_2) = \alpha \psi_1(x_1)\psi_1(x_2) \chi_a
+    \end{equation*}
+    onde \(\chi_{a} = \frac1{\sqrt{2}}\left(\ket{\uparrow \downarrow} - \ket{\downarrow \uparrow}\right)\) é a função de onda de spin antissimétrica (singleto). O primeiro estado excitado é degenerado e dado pela combinação linear
+    \begin{equation*}
+        \Psi_1(x_1, x_2) = \beta \left(\psi_1(x_1)\psi_2(x_2) + \psi_2(x_1)\psi_1(x_2)\right) \chi_a + \gamma \left(\psi_1(x_1)\psi_2(x_2) - \psi_2(x_1)\psi_1(x_2)\right)\chi_s,
+    \end{equation*}
+    onde \(\chi_s = \gamma_{++}\ket{\uparrow \uparrow} + \frac{\gamma_{+-}}{\sqrt{2}}\left(\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}\right) + \gamma_{--}\ket{\downarrow \downarrow}\) é a função de onda de spin simétrica (tripleto). O segundo estado excitado é dado por
+    \begin{equation*}
+        \Psi_2(x_1,x_2) = \alpha \psi_2(x_1)\psi_2(x_2) \chi_a,
+    \end{equation*}
+    portanto é não-degenerado.
 \end{proof}
