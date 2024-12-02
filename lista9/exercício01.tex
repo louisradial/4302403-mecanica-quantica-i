@@ -25,28 +25,29 @@
     \begin{equation*}
         \ket{\psi(t)} = e^{-i\frac{tH}{\hbar}} \ket{\psi(0)} = \frac{1}{\sqrt{10}} \left[2 \exp\left(-i\omega_1 t\right)\ket{100} + \exp\left(-\frac14i\omega_1 t\right)\left(\ket{210} + \sqrt{2} \ket{211} + \sqrt{3}\ket{21-1}\right)\right],
     \end{equation*}
-    onde \(\hbar \omega_1 = E_1\). Assim, a probabilidade de encontrar o sistema com \(\ell = 1\) e \(m = 1\) é igual a \(\frac15\) em qualquer instante de tempo. Sendo \(\psi_{n\ell m}(\vetor{r}) = \braket{\vetor{r}}{n \ell m}\), a função de onda deste estado \(\braket{\vetor{r}}{\psi(t)} = \psi(\vetor{r},t)\) é dada por
+    onde \(\hbar \omega_1 = E_1\). Assim, a probabilidade de encontrar o sistema com \(\ell = 1\) e \(m = 1\) é igual a \(\frac15\) em qualquer instante de tempo.
+
+    Sendo \(\psi_{n\ell m}(\vetor{r}) = \braket{\vetor{r}}{n \ell m}\), a função de onda deste estado \(\braket{\vetor{r}}{\psi(t)} = \psi(\vetor{r},t)\) é dada por
     \begin{equation*}
         \psi(\vetor{r},t) = \frac{1}{\sqrt{10}} \left[2 \exp\left(-i\omega_1 t\right)\psi_{100}(\vetor{r}) + \exp\left(-\frac14i\omega_1 t\right)\left(\psi_{210}(\vetor{r}) + \sqrt{2} \psi_{211}(\vetor{r}) + \sqrt{3}\psi_{21-1}(\vetor{r})\right)\right].
     \end{equation*}
-
-    As autofunções do hamiltoniano podem ser escritas como \(\psi_{n \ell m}(\vetor{r}) = R_{n \ell}(r) Y_{\ell}^m(\theta,\phi),\) onde \(R_{n \ell}\) é a solução normalizada da equação radial e \(Y_\ell^m\) são as autofunções normalizadas simultâneas de \(\vetor{L}^2\) e \(L_z\), com as relações de ortogonalidade
+    As autofunções do hamiltoniano podem ser escritas como \(\psi_{n \ell m}(\vetor{r}) = R_{n \ell}(r) Y_{\ell}^m(\theta,\phi),\) onde \(R_{n \ell}\) é a solução normalizada da equação radial,
     \begin{equation*}
-        \int_0^\pi \dli{\theta}\int_0^{2\pi}\sin\theta\dli{\phi} \conj{Y_{\ell}^m}(\theta,\phi)Y_{\ell'}^{m'}(\theta,\phi) = \delta_{\ell \ell'} \delta_{m m'},
+        R_{n\ell}(r) = \sqrt{\left(\frac{2}{n a_0 }\right)^3\frac{(n - \ell -1)!}{2n(\ell + n)!}}  \left(\frac{2r}{n a_0}\right)^\ell \exp\left(-\frac{r}{na_0}\right) L^{2\ell + 1}_{n - \ell - 1}\left(\frac{2r}{n a_0}\right),
+    \end{equation*}
+    onde \(a_0 = \frac{\hbar^2}{\mu e^2}\simeq 53 r_0\) o raio de Bohr e \(L_k^j(x)\) é o polinômio de Laguerre associado, e \(Y_\ell^m\) são os harmônicos esféricos, as autofunções normalizadas simultâneas de \(\vetor{L}^2\) e \(L_z\), com as relações de ortogonalidade
+    \begin{equation*}
+        \int_0^\pi \dli{\theta}\int_0^{2\pi}\sin\theta\dli{\phi} \conj{Y_{\ell}^m}(\theta,\phi)Y_{\ell'}^{m'}(\theta,\phi) = \delta_{\ell \ell'} \delta_{m m'}.
+    \end{equation*}
+    Assim, temos
+    \begin{equation*}
+        R_{10}(r) = 2a_0^{-\frac32} \exp\left(-\frac{r}{a_0}\right)
+        \quad\text{e}\quad
+        R_{21}(r) = \frac{1}{2\sqrt{6}}a_0^{-\frac32} \frac{r}{a_0} \exp\left(-\frac{r}{2a_0}\right),
     \end{equation*}
     então a probabilidade \(P(r_0)\) de, no instante \(t=0\), encontrar o elétron dentro de um raio \(r_0 = \SI{1}{\pico\meter}\) é
     \begin{equation*}
         P(r_0)=\frac{1}{10} \int_0^{r_0} r^2 \dli{r}  \left[4\abs{R_{10}(r)}^2 + 6\abs{R_{21}(r)}^2\right].
-    \end{equation*}
-    Sendo \(a_0 = \frac{\hbar^2}{\mu e^2}\simeq 53 r_0\) o raio de Bohr, a solução geral da equação radial é dada por
-    \begin{equation*}
-        R_{n\ell}(r) = \sqrt{\left(\frac{2}{n a_0 }\right)^3\frac{(n - \ell -1)!}{2n(\ell + n)!}}  \left(\frac{2r}{n a_0}\right)^\ell \exp\left(-\frac{r}{na_0}\right) L^{2\ell + 1}_{n - \ell - 1}\left(\frac{2r}{n a_0}\right),
-    \end{equation*}
-    onde \(L_k^j(x)\) é o polinômio de Laguerre associado, portanto
-    \begin{equation*}
-        R_{10}(r) = 2a_0^{-\frac32} \exp\left(-\frac{r}{a_0}\right)
-        \quad\text{e}\quad
-        R_{21}(r) = \frac{1}{2\sqrt{6}}a_0^{-\frac32} \frac{r}{a_0} \exp\left(-\frac{r}{2a_0}\right).
     \end{equation*}
     Substituindo estas funções na integral, temos
     \begin{align*}
