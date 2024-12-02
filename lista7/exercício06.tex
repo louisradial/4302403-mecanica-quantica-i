@@ -1,3 +1,4 @@
+
 \begin{exercício}{Potencial periódico}{exercício6}
     Uma partícula de massa \(m\) move-se num potencial unidimensional periódico de extensão infinita. O potencial é zero em quase todos os lugares, mas em regiões estreitas de comprimento \(b\) separadas por espaços de comprimento \(a \gg b\) o potencial é \(V_0 > 0\). Podemos escrever
     \begin{equation*}
@@ -10,6 +11,189 @@
         \item Mostre que existem intervalos de energia para os quais não existe auto-função. Encontre o valor da energia do início do primeiro desses intervalos.
     \end{enumerate}
 \end{exercício}
-\begin{proof}[Resolução]
+\begin{proof}[Resolução do item (a)]
+    Consideremos o operador
+    \begin{equation*}
+        D_a \ket{x} = \ket{x + a},
+    \end{equation*}
+    que é unitário já que é um operador de translação. Dessa forma, seu espectro é contido na circunferência unitária, isto é, é da forma \(e^{i\theta}\), com \(\theta \in \mathbb{R}\). Como \(\delta(x - y)f(x) = \delta(x - y)f(y)\), temos \([D_a, V] = 0\), pois
+    \begin{align*}
+        [D_a, V]\psi(x) &= V_0 bD_a \sum_{n \in \mathbb{Z}} \psi(na)\delta(x - na) - V_0 b\sum_{n \in \mathbb{Z}} \delta(x - na)\psi(x - a)\\
+                        &= V_0 b\sum_{n \in \mathbb{Z}}\psi(na) \delta(x - na - a) - V_0 b\sum_{n \in \mathbb{Z}} \psi(na - a) \delta(x - na)\\
+                        &= V_0 b \sum_{n' \in \mathbb{Z}}\psi(n'a - a) \delta(x - n'a) - V_0 b\sum_{n \in \mathbb{Z}} \psi(na - a) \delta(x - na)\\
+                        &= 0.
+    \end{align*}
+    Temos também \([D_a, p] = 0\), pois
+    \begin{equation*}
+        [D_a, p]\psi(x) = -i\hbar \diff*{\psi(x - a)}{x}  + i\hbar D_a \psi'(x) = i\hbar \psi'(x - a) - i\hbar \psi'(x - a) = 0,
+    \end{equation*}
+    portanto concluímos que \(\set{D_a, H}\) é um conjunto completo de operadores compatíveis.
 
+    Consideremos os vetores \(\ket{n}\) que representam a partícula completamente localizada em uma das regiões estreitas de comprimento \(b\), de posição \(x = na,\) com \(n \in \mathbb{Z}\). Desta definição segue que \(D_a \ket{n} = \ket{n+1}\), portanto
+    \begin{equation*}
+        \ket{\theta} = \sum_{n \in \mathbb{Z}} e^{i n \theta} \ket{n}
+    \end{equation*}
+    é autovetor de \(D_a\), pois
+    \begin{equation*}
+        D_a \ket{\theta} = \sum_{n \in \mathbb{Z}} e^{i n \theta} \ket{n+1} = e^{-i \theta} \sum_{n' \in \mathbb{Z}} e^{i n'\theta} \ket{n'} = e^{-i\theta} \ket{\theta}.
+    \end{equation*}
+    Tornemos agora nossa atenção para a função de onda \(\braket{x}{\theta}\), que satisfaz
+    \begin{equation*}
+        \bra{x}D_a\ket{\theta} = e^{-i\theta} \braket{x}{\theta}\quad\text{e}\quad
+        \bra{x}D_a\ket{\theta} = \bra{x}\herm{(D_a^{-1})}\ket{\theta} = \braket{x - a}{\theta},
+    \end{equation*}
+    então concluímos que \(\braket{x - a}\theta = e^{-i\theta}\braket{x}{\theta}\). Notemos que \(\braket{x}\theta = e^{iqx} u_q(x)\), satisfaz esta relação para uma função \(a\)-periódica \(u_q(x)\) e \(qa = \theta\), pois
+    \begin{equation*}
+        e^{iq(x - a)} u_q(x - a) = e^{iqx}u_q(x) e^{-iqa}.
+    \end{equation*}
+    Notemos ainda que se aproximarmos o hamiltoniano para um modelo em que há apenas tunelamento de posições vizinhas com uma energia \(\delta \epsilon\) e energia \(\epsilon\) para permanecer em uma posição, isto é,
+    \begin{equation*}
+        H\ket{n} = \epsilon \ket{n} - \delta \epsilon \ket{n - 1} - \delta \epsilon \ket{n + 1},
+    \end{equation*}
+    temos
+    \begin{align*}
+        H \ket{\theta} &= \sum_{n \in \mathbb{Z}} e^{in\theta} \left[\epsilon \ket{n} - \delta \epsilon \ket{n - 1} - \delta \epsilon \ket{n + 1}\right]\\
+                       &= \epsilon \sum_{n \in \mathbb{Z}} e^{in\theta}\ket{n} - \delta \epsilon \left[\sum_{n' \in \mathbb{Z}} e^{i (n' - 1) \theta} \ket{n'} + \sum_{n'' \in \mathbb{Z}} e^{i (n'' + 1)\theta} \ket{n''}\right]\\
+                       &= \left[\epsilon  - \delta \epsilon\left(e^{-i \theta} + e^{i\theta}\right)\right]\ket{\theta}\\
+                       &= \left(\epsilon - 2\delta \epsilon \cos\theta\right) \ket{\theta},
+    \end{align*}
+    ou seja, \(\ket{\theta}\) é autovetor simultâneo de \(H\) e de \(D_a\). Baseado na simetria de translações e neste último resultado, buscamos funções de onda que são autoestados simultâneos de \(H\) e de \(D_a\), isto é, devem ser funções \(a\)-períodicas do tipo \(\psi(x) = e^{iqx}u_q(x)\), com \(e^{-iqa}\) autovalor de \(D_a\), satisfazendo \(\psi(x - a) = e^{-iaq}\psi(x)\), resultado conhecido como o teorema de Bloch.
+\end{proof}
+\begin{lemma}{Espalhamento por potencial delta}{espalhamento_delta}
+    A matriz de transmissão para o potencial
+    \begin{equation*}
+        V(x) = \frac{\hbar^2 g}{2m} \delta(x)
+    \end{equation*}
+    é dada por
+    \begin{equation*}
+        M(k) =
+        \begin{pmatrix}
+            1 + \frac{g}{2ik} && \frac{g}{2ik}\\
+            -\frac{g}{2ik} && 1 - \frac{g}{2ik}
+        \end{pmatrix}.
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    Uma partícula livre com energia \(E = \frac{\hbar^2k^2}{2m}\) submetida a este potencial tem função de onda dada por
+    \begin{equation*}
+        \psi(x) = \begin{cases}
+            A_1 e^{ikx} + A_2 e^{-ikx},&\text{se }x < 0\\
+            B_1 e^{ikx} + B_2 e^{-ikx},&\text{se }x > 0
+        \end{cases}.
+    \end{equation*}
+    Como a função de onda deve ser contínua, devemos ter \(A_1 + A_2 = B_1 + B_2\). Determinamos a descontinuidade da derivada em \(x = 0\) por integração em \([-\varepsilon, \varepsilon]\), obtendo
+    \begin{equation*}
+        \diff{\psi}{x}[x = \varepsilon] - \diff{\psi}{x}[x = -\varepsilon] = g \psi(0).
+    \end{equation*}
+    Assim, obtemos \(ik(B_1 - B_2) - ik(A_1 - A_2) = g (A_1 + A_2)\), portanto
+    \begin{equation*}
+        \begin{pmatrix}
+            B_1\\
+            B_2
+        \end{pmatrix} =
+        \begin{pmatrix}
+            1 + \frac{g}{2ik} && \frac{g}{2ik}\\
+            -\frac{g}{2ik} && 1 - \frac{g}{2ik}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_1\\
+            A_2
+        \end{pmatrix}
+    \end{equation*}
+    é a matriz de transferência desejada.
+\end{proof}
+\begin{proof}[Resolução do item (b)]
+    Pela periodicidade da função de onda, consideramos a função de onda de uma partícula com energia \(E\) entre os sítios \(x = na\) e \(x = (n+1)a\), que escreveremos como
+    \begin{equation*}
+        \varphi_n(x) = A_n e^{ikx} + B_n e^{-ikx}
+    \end{equation*}
+    onde \(\hbar k = \sqrt{2m E}\). Pelo espalhamento mostrado no \cref{lem:espalhamento_delta}, temos
+    \begin{equation*}
+        \begin{pmatrix}
+            A_{n+1}\\
+            B_{n+1}
+        \end{pmatrix} =
+        \begin{pmatrix}
+            1 + \frac{g}{2ik} && \frac{g}{2ik}\\
+            -\frac{g}{2ik} && 1-\frac{g}{2ik}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_n\\
+            B_n
+        \end{pmatrix}
+        = M(k)
+        \begin{pmatrix}
+            A_n\\
+            B_n
+        \end{pmatrix}
+    \end{equation*}
+    onde definimos \(g = \frac{2m V_0 b}{\hbar^2}\). Pelo teorema de Bloch, devemos ter \(\varphi_{n+1}(x+a) = e^{iqa}\varphi_{n}(x)\), portanto
+    \begin{equation*}
+        A_{n+1} e^{ika} e^{ikx} + B_{n+1} e^{-ika} e^{-ikx} = e^{iqa}(A_n  e^{ikx} + B_n e^{-ikx}),
+    \end{equation*}
+    donde segue que
+    \begin{equation*}
+        e^{iqa}
+        \begin{pmatrix}
+            A_{n}\\
+            B_{n}
+        \end{pmatrix} =
+        \begin{pmatrix}
+            e^{ika} && 0\\
+            0 && e^{-ika}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_{n+1}\\
+            B_{n+1}
+        \end{pmatrix}
+        =
+        T(k)
+        \begin{pmatrix}
+            A_{n+1}\\
+            B_{n+1}
+        \end{pmatrix}
+    \end{equation*}
+    pela independência linear de \(\set{e^{ikx}, e^{-ikx}}\). Determinamos assim que \(\begin{psmallmatrix} A_n \\ B_n\end{psmallmatrix}\) é autovetor de \(T(k) M(k)\) com autovalor \(e^{iqa}\). Temos
+    \begin{equation*}
+        T(k) M(k) = \begin{pmatrix}
+            \left(1 + \frac{g}{2ik}\right)e^{ika} && \frac{g}{2ik} e^{ika}\\
+            - \frac{g}{2ik}e^{-ika} && \left(1 - \frac{g}{2ik}\right) e^{-ika}
+        \end{pmatrix},
+    \end{equation*}
+    portanto a equação secular é dada por
+    \begin{equation*}
+        \left[\left(1 + \frac{g}{2ik}\right)e^{ika} - \lambda\right]\left[\conj{\left(1 + \frac{g}{2ik}\right)}e^{-ika} - \lambda\right]- \frac{g^2}{4k^2} = 0,
+    \end{equation*}
+    isto é,
+    \begin{equation*}
+        \lambda^2 - 2 \alpha \lambda + 1 = 0,
+    \end{equation*}
+    onde \(\alpha = \Re\left[\left(1 + \frac{g}{2ik}\right)e^{ika}\right]\). A solução desta equação é
+    \begin{equation*}
+        \lambda_{\pm} = \alpha \pm \sqrt{\alpha^2 - 1},
+    \end{equation*}
+    portanto como \(e^{iqa}\) satisfaz esta equação, devemos ter \(\abs{\alpha} \leq 1\), isto é,
+    \begin{equation*}
+        \lambda_{\pm} = \alpha \pm i \sqrt{1 - \alpha^2},
+    \end{equation*}
+    e identificamos \(\cos(qa) = \alpha\). Disso concluímos que
+    \begin{equation*}
+        \cos(qa) = \cos(ka) + \frac{g}{2k} \sin(ka),
+    \end{equation*}
+    que é a equação que determina as bandas de energia do sistema.
+\end{proof}
+\begin{proof}[Resolução do item (d)]
+    Consideramos a equação que determina as energias do sistema, dada por
+    \begin{equation*}
+        \cos(qa) = \cos(ka) + \frac{g}{2k} \sin(ka) = \sqrt{1 + \frac{g^2}{4k^2}} \left[\sin(\xi_k)\cos(ka) + \cos(\xi_k) \sin(ka)\right],
+    \end{equation*}
+    onde definimos \(\xi_k \in [0, 2\pi)\) por
+    \begin{equation*}
+        \sin(\xi_k) = \frac{1}{\sqrt{1 + \frac{g^2}{4k^2}}}\quad\text{e}\quad \cos(\xi_k) = \frac{g}{\sqrt{4k^2 + g^2}}.
+    \end{equation*}
+    Desta forma, temos
+    \begin{equation*}
+        \cos(qa) = \sqrt{1 + \frac{g^2}{4k^2}} \sin(ka + \xi_k)
+    \end{equation*}
+    e vemos que o lado direito possui valores em \([-1,1]\), mas que não é o caso para o lado direito, que pode exceder 1. Com isso, concluímos que nem todo valor de \(k\) satisfaz esta equação, portanto há valores de energia para os quais não existe auto-função. Ainda, pela continuidade da expressão, devemos ter na verdade intervalos de energia em que esta relação não é satisfeita.
 \end{proof}
