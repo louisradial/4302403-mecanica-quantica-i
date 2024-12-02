@@ -1,0 +1,104 @@
+\begin{exercício}{Representação irredutível de \(\mathrm{SU}(2)\)}{exercício10}
+    Sejam \(J_1, J_2, J_3\) operadores de momento angular, isto é, são autoadjuntos e satisfazem a relação de comutação \(\commutator{J_a}{J_b} = i \hbar \epsilon_{abc} J_c\).
+    \begin{enumerate}[label=(\alph*)]
+        \item Mostre que \(\commutator{A^2}{B} = A\commutator{A}{B} + \commutator{A}{B}A\) para quaisquer operadores \(A\) e \(B\). Conclua que o operador de momento angular total, \(J^2 = \delta_{ab} J_{a}J_{b}\), é um operador de Casimir, isto é, que \(\commutator{J^2}{J_a} = 0\).
+        \item Mostre que o espectro de \(J^2\) são números reais da forma \(\hbar^2 j (j + 1)\), com \(j \geq 0\).
+        \item Definindo os operadores \(J_\pm = J_1 \pm i J_2\), mostre que
+            \begin{equation*}
+                \commutator{J_\pm}{J_\mp} = \pm 2\hbar J_3\quad
+                \anticommutator{J_\pm}{J_\mp} = 2J^2 - 2J_3^2,\quad
+                \commutator{J_3}{J_\pm} = \pm \hbar J_\pm,\quad\text{e}\quad
+                \commutator{J^2}{J_\pm} = 0.
+            \end{equation*}
+        \item Consideramos a base de autovetores simultâneos de \(J^2\) e \(J_3\), definidos por
+            \begin{equation*}
+                J^2 \ket{jm} = \hbar^2 j(j+1)\ket{jm}\quad\text{e}\quad J_3 \ket{jm} = \hbar m \ket{jm},
+            \end{equation*}
+            com \(j \geq 0\). Mostre que \(-j \leq m \leq j\) e que \(j \in \frac12 \mathbb{N} = \setc*{\frac12 p}{p \in \mathbb{N}}\). Conclua que
+            \begin{equation*}
+                J_\pm \ket{jm} = \hbar \sqrt{j(j+1) - m(m\pm1)} \ket{jm\pm1},
+            \end{equation*}
+            onde em particular temos \(J_+ \ket{jj} = 0\) e \(J_- \ket{j-j} = 0\).
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução do item (a)]
+    Para dois operadores \(A\) e \(B\) temos
+    \begin{equation*}
+        \commutator{A^2}{B} = A^2 B - ABA + ABA - BA^2 = A(AB - BA) + (AB - BA)A = A\commutator{A}{B} + \commutator{A}{B}A,
+    \end{equation*}
+    como desejado. Para o momento angular total temos
+    \begin{equation*}
+        \commutator{J^2}{J_a} = \commutator*{\sum_{b = 1}^3 J_b^2}{J_a} = \sum_{b = 1}^3\commutator{J_b^2}{J_a} = \sum_{b = 1}^3 \left(J_b\commutator{J_b}{J_a} + \commutator{J_b}{J_a}J_b\right) = i \hbar\epsilon_{bac} \anticommutator{J_b}{J_c} = 0,
+    \end{equation*}
+    portanto \(J^2\) é um operador de Casimir.
+\end{proof}
+\begin{proof}[Resolução do item (b)]
+    Como \(J_a\) é autoadjunto, segue que \(J^2\) também o é, portanto seu espectro é real. Seja \(\ket{\lambda}\) um autovetor de \(J^2\) associado ao autovalor \(\lambda \in \mathbb{R}\), então
+    \begin{equation*}
+        \lambda = \bra{\lambda}J^2\ket{\lambda} = \bra{\lambda}J_a J_b \delta_{ab} \ket{\lambda} = \sum_{a = 1}^3 \bra{\lambda} \herm{J_a}J_a \ket{\lambda} = \sum_{a = 1}^3 \norm{J_a\ket{\lambda}}^2 \geq 0.
+    \end{equation*}
+    Consideremos agora a equação \(\hbar^2j(j+1) = \lambda\) com \(\lambda \geq 0\), cuja solução é
+    \begin{equation*}
+        2 \hbar^2 j = -\hbar^2 \pm \sqrt{\hbar^4 + 4 \hbar^2\lambda^2}.
+    \end{equation*}
+    Como o resultado daquela raiz é sempre maior ou igual a \(\hbar^2\), segue que sempre há solução para \(j \geq 0\), isto é,
+    \begin{equation*}
+        \sigma(J^2) = \setc{\hbar^2 j (j + 1)}{j \geq 0}
+    \end{equation*}
+    é o espectro de \(J^2\).
+\end{proof}
+\begin{proof}[Resolução do item (c)]
+    Notemos que
+    \begin{equation*}
+        J_\pm J_\mp = (J_1 \pm i J_2)(J_1 \mp i J_2) = J_1^2 \mp i J_1 J_2 \pm i J_2 J_1 + J_2^2 = J^2 - J_3^2 \mp i \commutator{J_1}{J_2} = J^2 - J_3^2 \pm \hbar J_3,
+    \end{equation*}
+    portanto segue que \(\commutator{J_\pm}{J_\mp} = \pm2\hbar J_3\) e \(\anticommutator{J_\pm}{J_\mp} = 2J_2^2 - 2J_3^2\). Temos também
+    \begin{equation*}
+        \commutator{J_3}{J_\pm} = \commutator{J_3}{J_1} \pm i \commutator{J_3}{J_2} = i \hbar J_2 \pm \hbar J_1 = \pm \hbar J_\pm
+    \end{equation*}
+    e \(\commutator{J^2}{J_\pm}\) segue da bilinearidade do comutador e de \(\commutator{J^2}{J_a}\).
+\end{proof}
+\begin{proof}[Resolução do item (d)]
+    Como \(J_1\) e \(J_2\) são autoadjuntos, temos \(\herm{J_\pm} = J_\mp\), portanto
+    \begin{align*}
+        \norm{J_\pm \ket{jm}}^2 &= \bra{jm}J_\mp J_\pm\ket{jm}\\
+                                &= \bra{jm}J^2 - J_3^2 \mp \hbar J_3 \ket{jm}\\
+                                &= \hbar^2\left[j(j+1) - m^2 \mp m\right]\\
+                                &= \hbar^2 \left[j(j+1) - m(m \pm 1)\right],
+    \end{align*}
+    isto é, vemos que
+    \begin{equation*}
+        j(j + 1) - m(m \pm 1) \geq 0 \implies (j \mp m)(j \pm m + 1) \geq 0
+    \end{equation*}
+    para todos \(j,m\) no espectro de \(J^2\) e \(J_3\), respectivamente. Para o sinal superior temos que \(j - m \geq 0\) e \(j + m + 1 \geq 0\) ou que \(j - m \leq 0\) e \(j + m + 1 - \leq 0\). Descartamos esta segunda opção já que a soma das duas inequações implica \(2j + 1 \leq 0\), que não é possível, então nos resta a primeira opção, que nos diz que \(m \leq j\) e que \(m \geq -(j+1)\). A inequação do sinal inferior nos informa que \(j + m \geq 0\) e \(j - m + 1 \geq 0\) ou que \(j + m \leq 0\) e \(j - m + 1 \leq 0\), e analogamente concluímos que \(m \geq -j\) e que \(m \leq j+1\). Reunindo estes resultados, concluímos que \(-j \leq m \leq j\).
+
+    A equação
+    \begin{equation*}
+        \norm{J_{\pm}\ket{jm}}^2 = \hbar^2\left[j(j+1) - m(m \pm 1)\right]
+    \end{equation*}
+    nos garante que se \(m = \pm j\) é autovalor de \(J_3\), então
+    \begin{equation*}
+        J_\pm \ket{j\pm j} = 0.
+    \end{equation*}
+    Pela mesma equação, sabemos também que se \(J_\pm\ket{jm} = 0\) então \(m = \pm j\). Isto é, se provarmos que \(\pm \hbar j\) é autovalor de \(J_3\), então saberemos que \(\ket{j \pm j}\) são os únicos autovetores que satisfazem \(J_\pm \ket{j m} = 0\). Consideremos \(m \neq \pm j\) por ora, então as relações de comutação \(\commutator{J^2}{J_\pm} = 0\) e \(\commutator{J_3}{J_\pm} = \pm \hbar J_\pm\) nos mostram
+    \begin{equation*}
+        J^2 J_\pm\ket{jm} = J_\pm J^2\ket{jm} = \hbar^2 j(j+1) J_\pm \ket{jm}
+    \end{equation*}
+    e que
+    \begin{equation*}
+        J_3 J_\pm \ket{jm} = J_\pm J_3 \ket{jm} + \commutator{J_3}{J_\pm}\ket{jm} = \hbar (m \pm 1) J_\pm\ket{jm},
+    \end{equation*}
+    portanto \(J_\pm \ket{jm}\) é autovetor de \(J^2\) e de \(J_3\) associado aos autovalores \(\hbar^2 j(j+1)\) e \(\hbar(m\pm 1)\). Seja \(p \geq 0\) o maior número inteiro tal que \(m + p \leq j\), então \(m + p + 1 > j\) e  devemos ter
+    \begin{equation*}
+        (J_+)^{p+1} \ket{jm} = J_+ (J_+)^p\ket{jm} \propto J_+ \ket{j m+p} = 0,
+    \end{equation*}
+    caso contrário o último resultado seria um autovetor associado ao autovalor \(\hbar (m + p + 1) > \hbar l\), o que não é possível, já que o espectro de \(J_3\) está contido em \([-\hbar j,\hbar j]\). Notamos que como \(\ket{jm}\) não é um vetor nulo e estamos assumindo \(m \neq \pm j\), temos \(p > 0\), caso em que podemos concluir que \((J_+)^p\ket{jm}\) é autovetor de \(J_3\) com autovalor \(\hbar j\). Analogamente concluímos que existe um autovetor de \(J_3\) com autovalor \(-\hbar j\).
+
+    Apliquemos o operador \(J_-\) no autovetor \(\ket{jj}\) sucessivamente \(p \in \mathbb{N}\) vezes, obtendo autovetor de \(J_3\) com autovalor \(\hbar (j - p)\). Vemos que podemos fazer isso apenas \(p = 2j\) vezes, caso contrário existiria um autovetor de \(J_3\) com autovalor \(-\hbar(j+1) < -\hbar j\). Dessa forma, vemos que \(2j \in \mathbb{N}\), isto é, \(j\) ou é inteiro positivo ou é semi-inteiro positivo.
+
+    Como temos a norma de \(J_\pm\ket{jm}\), podemos definir
+    \begin{equation*}
+        J_\pm\ket{jm} = \hbar\sqrt{j(j+1) - m(m\pm1)} \ket{jm\pm1},
+    \end{equation*}
+    a menos de uma fase. Notamos que o lado direito está bem definido, já que o coeficiente se anula para \(m = \pm j\).
+\end{proof}
